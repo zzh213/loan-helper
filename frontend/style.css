@@ -239,6 +239,7 @@ body {
   transition: all 0.18s;
 }
 .side-tabs .tab-btn .tb-ico { font-size: 16px; line-height: 1; }
+.nav-chat-btn { display: none; }
 .side-tabs .tab-btn:hover {
   background: rgba(255, 255, 255, 0.16);
   color: #fff;
@@ -2035,6 +2036,8 @@ body.dark .bank-btn { background: linear-gradient(135deg, #1d4ed8, #3b82f6); col
   }
   .side-tabs-title { display: none; }
   .side-tabs #theme-toggle { display: none; }
+  .side-tabs .nav-chat-btn { display: flex; }
+  #chat-launcher { display: none !important; }
   .side-tabs .tab-btn {
     flex: 1;
     min-width: 0;
@@ -2065,7 +2068,7 @@ body.dark .bank-btn { background: linear-gradient(135deg, #1d4ed8, #3b82f6); col
 
   /* 悬浮元素抬高,避免被底部栏遮挡 */
   #chat-launcher { bottom: calc(80px + env(safe-area-inset-bottom, 0px)); }
-  #chat-window { bottom: calc(80px + env(safe-area-inset-bottom, 0px)); }
+  #chat-window { bottom: calc(80px + env(safe-area-inset-bottom, 0px)); max-height: calc(100vh - 110px - env(safe-area-inset-bottom, 0px)); }
   #fav-bar.show { bottom: calc(80px + env(safe-area-inset-bottom, 0px)); }
   #pwa-install { bottom: calc(80px + env(safe-area-inset-bottom, 0px)) !important; }
   #toast-host { z-index: 320; }

@@ -864,7 +864,7 @@ function statusClass(s) {
   );
 }
 
-document.querySelectorAll(".tab-btn").forEach((btn) => {
+document.querySelectorAll(".tab-btn[data-tab]").forEach((btn) => {
   btn.addEventListener("click", () => activateTab(btn.dataset.tab));
 });
 
@@ -1705,6 +1705,8 @@ bindCustomControls();
 renderAvatar();
 
 chatLauncher.addEventListener("click", openChat);
+const navChatBtn = document.getElementById("nav-chat-btn");
+if (navChatBtn) navChatBtn.addEventListener("click", openChat);
 chatClose.addEventListener("click", () => {
   chatWindow.classList.add("hidden");
   chatLauncher.classList.remove("hidden");

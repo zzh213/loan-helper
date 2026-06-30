@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>中小微企业贷款服务小助手</title>
+  <link rel="stylesheet" href="/static/style.css?v=20260630p" />
+</head>
+<body>
+  <!-- 开屏加载动画 -->
+  <div id="splash" class="splash">
+    <div class="splash-bg" aria-hidden="true">
+      <span class="float-coin c1">💰</span>
+      <span class="float-coin c2">🪙</span>
+      <span class="float-coin c3">📈</span>
+      <span class="float-coin c4">🏦</span>
+      <span class="float-coin c5">💳</span>
+      <span class="float-coin c6">📊</span>
+    </div>
+    <div class="splash-inner">
+      <div class="splash-logo">
+        <div class="splash-ring"></div>
+        <span class="splash-emoji">💰</span>
+      </div>
+      <h1 class="splash-title">中小微企业贷款服务小助手</h1>
+      <p class="splash-sub">智能匹配 · 精细风控 · 政策补贴 · 知识闯关</p>
+      <div class="splash-bar"><div class="splash-bar-fill"></div></div>
+      <div class="splash-tip" id="splash-tip">正在加载智能服务…</div>
+    </div>
+  </div>
+
+  <header class="hero">
+    <div class="hero-bg" aria-hidden="true">
+      <span class="hero-blob b1"></span>
+      <span class="hero-blob b2"></span>
+      <span class="hero-blob b3"></span>
+    </div>
+    <div class="hero-inner">
+      <div class="hero-badge">✨ 一站式企业融资智能助手</div>
+      <h1>💰 中小微企业贷款服务小助手</h1>
+      <p>填写企业实际情况,智能为你匹配最优贷款方案</p>
+      <div class="hero-promise">🎯 精准匹配本地银行产品,助你高效拿到放款</div>
+      <button id="hero-subsidy-cta" class="hero-cta">🔒 解锁园区/区县隐藏贴息专区 →</button>
+      <div class="hero-stats">
+        <div class="hero-stat"><b>6+</b><span>贷款产品</span></div>
+        <div class="hero-stat-divider"></div>
+        <div class="hero-stat"><b>8</b><span>维度风控</span></div>
+        <div class="hero-stat-divider"></div>
+        <div class="hero-stat"><b>6类</b><span>补贴政策</span></div>
+        <div class="hero-stat-divider"></div>
+        <div class="hero-stat"><b>50</b><span>知识闯关题</span></div>
+      </div>
+    </div>
+  </header>
+
+  <main class="layout">
+    <aside class="sidebar">
+      <nav class="side-tabs">
+        <div class="side-tabs-title">功能导航</div>
+        <button class="tab-btn active" data-tab="apply">🔍 智能匹配</button>
+        <button class="tab-btn" data-tab="subsidy">🔒 隐藏贴息</button>
+        <button class="tab-btn" data-tab="calc">🧮 月供试算</button>
+        <button class="tab-btn" data-tab="records">📁 申请记录</button>
+        <button class="tab-btn" data-tab="game">🎮 知识闯关</button>
+        <button id="theme-toggle" class="theme-toggle" title="切换深色模式">🌙 深色模式</button>
+      </nav>
+    </aside>
+    <div class="container">
+    <div id="tab-apply">
+    <section class="feature-strip">
+      <div class="feature-item">
+        <span class="feature-ico">🎯</span>
+        <div><b>智能匹配</b><small>多产品自动测算最优方案</small></div>
+      </div>
+      <div class="feature-item">
+        <span class="feature-ico">🛡️</span>
+        <div><b>精细风控</b><small>8+ 维度评分与风险画像</small></div>
+      </div>
+      <div class="feature-item">
+        <span class="feature-ico">🏛️</span>
+        <div><b>补贴政策</b><small>自动匹配可申报扶持政策</small></div>
+      </div>
+      <div class="feature-item">
+        <span class="feature-ico">📄</span>
+        <div><b>一键导出</b><small>生成 PDF / Excel 方案报告</small></div>
+      </div>
+    </section>
+    <section class="card chain-card">
+      <h2>🚀 一站式融资闭环·结果交付</h2>
+      <p class="card-sub">不止问答,而是从预审到放款全程跑通。通用AI止步于文字,这里直达放款。</p>
+      <div class="chain-steps">
+        <div class="chain-step" data-tab="apply"><span class="cs-no">1</span><b>资质预审</b><small>模拟风控打分</small></div>
+        <div class="chain-arrow">→</div>
+        <div class="chain-step" data-tab="apply"><span class="cs-no">2</span><b>最优匹配</b><small>分层推荐方案</small></div>
+        <div class="chain-arrow">→</div>
+        <div class="chain-step" data-tab="subsidy"><span class="cs-no">3</span><b>贴息测算</b><small>叠加隐藏补贴</small></div>
+        <div class="chain-arrow">→</div>
+        <div class="chain-step" data-tab="apply"><span class="cs-no">4</span><b>材料导出</b><small>银行成品一键生成</small></div>
+        <div class="chain-arrow">→</div>
+        <div class="chain-step" id="chain-manager"><span class="cs-no">5</span><b>对接经理</b><small>线下客户经理跟进</small></div>
+      </div>
+    </section>
+    <section class="card form-card">
+      <h2>📋 企业情况</h2>
+      <p class="card-sub">如实填写以下信息,系统将在数秒内为你测算最优融资方案。带 * 为必填项。<a href="#" id="fill-sample" class="sample-link">🧪 不知道怎么填?填入示例看看</a></p>
+      <form id="loan-form">
+        <div class="grid">
+          <div class="field">
+            <label for="f-company">企业名称</label>
+            <input id="f-company" type="text" name="company_name" placeholder="选填" />
+          </div>
+          <div class="field">
+            <label for="f-industry">所属行业 *</label>
+            <select id="f-industry" name="industry" required>
+              <option value="制造业">制造业</option>
+              <option value="批发零售">批发零售</option>
+              <option value="餐饮">餐饮</option>
+              <option value="科技">科技/互联网</option>
+              <option value="建筑">建筑工程</option>
+              <option value="物流">物流运输</option>
+              <option value="农业">农业</option>
+              <option value="服务业">服务业</option>
+              <option value="医疗健康">医疗健康</option>
+              <option value="教育培训">教育培训</option>
+              <option value="文化旅游">文化旅游/民宿</option>
+              <option value="电商直播">电商直播</option>
+              <option value="美容美发">美容美发</option>
+              <option value="五金机电">五金机电</option>
+            </select>
+          </div>
+          <div class="field field-full" id="industry-template-box"></div>
+          <div class="field">
+            <label for="f-years">经营年限(年) *</label>
+            <input id="f-years" type="number" name="years_in_business" min="0" step="0.5" value="2" required />
+          </div>
+          <div class="field">
+            <label for="f-revenue">年营业额(万元) *</label>
+            <input id="f-revenue" type="number" name="annual_revenue" min="0" step="1" value="200" required />
+          </div>
+          <div class="field">
+            <label for="f-capital">注册资本(万元)</label>
+            <input id="f-capital" type="number" name="registered_capital" min="0" step="1" value="100" />
+          </div>
+          <div class="field">
+            <label for="f-employees">员工人数(选填)</label>
+            <input id="f-employees" type="number" name="employees" min="0" step="1" value="10" />
+          </div>
+          <div class="field">
+            <label for="f-credit">征信状况 *<span class="hint" title="指企业及法人在央行征信系统中的信用记录,逾期越少等级越高,直接影响通过率与利率。">?</span></label>
+            <select id="f-credit" name="credit_level" required>
+              <option value="excellent">优秀(无逾期,征信良好)</option>
+              <option value="good" selected>良好(偶有轻微逾期)</option>
+              <option value="fair">一般(有少量逾期)</option>
+              <option value="poor">较差(较多逾期)</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="f-collateral">抵押物估值(万元,选填)<span class="hint" title="可用于抵押的房产、设备等资产的市场估值,有抵押物通常能提高额度、降低利率。">?</span></label>
+            <input id="f-collateral" type="number" name="collateral_value" min="0" step="1" value="0" />
+          </div>
+          <div class="field">
+            <label for="f-amount">期望贷款金额(万元) *</label>
+            <input id="f-amount" type="number" name="loan_amount" min="1" step="1" value="100" required />
+            <small id="leverage-warn" class="leverage-warn hidden"></small>
+          </div>
+          <div class="field">
+            <label for="f-purpose">贷款用途 *</label>
+            <select id="f-purpose" name="loan_purpose" required>
+              <option value="working_capital">流动资金周转</option>
+              <option value="equipment">设备采购</option>
+              <option value="expansion">扩大经营</option>
+              <option value="inventory">备货采购</option>
+              <option value="rd">研发投入</option>
+              <option value="other">其他</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="f-term">期望期限(月) *</label>
+            <input id="f-term" type="number" name="preferred_term_months" min="1" step="1" value="12" required />
+          </div>
+        </div>
+
+        <div class="checks">
+          <label><input type="checkbox" name="has_collateral" /> 有可抵押资产</label>
+          <label><input type="checkbox" name="has_tax_record" /> 有连续纳税记录</label>
+          <label><input type="checkbox" name="has_invoice" /> 有稳定开票流水</label>
+          <label><input type="checkbox" name="has_overdue" /> 当前存在逾期</label>
+          <label><input type="checkbox" name="urgent" /> 急需放款</label>
+        </div>
+
+        <div class="form-btns">
+          <button type="button" id="preaudit-btn" class="preaudit-btn">🛡️ 前置预审(提交前先体检)</button>
+          <button type="submit" id="submit-btn">🔍 智能匹配最优方案</button>
+        </div>
+      </form>
+      <div id="live-score" class="live-score hidden">
+        <div class="live-score-ring"><span id="live-score-num">--</span><small>实时预审分</small></div>
+        <div class="live-score-tip" id="live-score-tip">填写信息或勾选加分项,这里实时显示风控得分</div>
+      </div>
+    </section>
+
+    <section id="preaudit-result" class="result hidden"></section>
+
+    <section id="result" class="result hidden"></section>
+    </div>
+
+    <div id="tab-subsidy" class="hidden">
+    <section class="card hidden-sub-card">
+      <h2>🔒 园区/区县隐藏贴息专区</h2>
+      <p class="card-sub">通用 AI 检索不到的园区、区县级非公开贴息。输入企业地址,解锁专属补贴清单。</p>
+      <div class="hidden-sub-search">
+        <select id="hs-prov" class="hs-sel"><option value="">省/直辖市</option></select>
+        <select id="hs-city" class="hs-sel"><option value="">市</option></select>
+        <select id="hs-dist" class="hs-sel"><option value="">区县/园区</option></select>
+      </div>
+      <div class="hidden-sub-search">
+        <input type="text" id="hidden-sub-addr" placeholder="或直接输入:上海张江 / 深圳南山科技园 / 杭州余杭未来科技城" />
+        <button id="hidden-sub-btn" class="export-btn">🔓 解锁专属补贴</button>
+      </div>
+      <div id="hidden-sub-list"></div>
+      <div class="policy-remind">
+        <button id="policy-remind-btn" class="ghost-btn">🔔 开启贴息窗口到期提醒</button>
+        <small>中关村等园区贴息不定期开放,开启后窗口期将提醒你及时申报。</small>
+      </div>
+    </section>
+    </div>
+
+    <div id="tab-calc" class="hidden">
+    <section class="card calc-card">
+      <h2>🧮 月供试算器</h2>
+      <p class="card-sub">输入金额、年化利率和期限,实时估算每月还款与总利息(等额本息)。</p>
+      <div class="grid">
+        <div class="field">
+          <label for="calc-amount">贷款金额(万元)</label>
+          <input id="calc-amount" type="number" min="1" step="1" value="100" />
+        </div>
+        <div class="field">
+          <label for="calc-rate">年化利率(%)</label>
+          <input id="calc-rate" type="number" min="0" step="0.1" value="6" />
+        </div>
+        <div class="field">
+          <label for="calc-term">期限(月)</label>
+          <input id="calc-term" type="number" min="1" step="1" value="12" />
+        </div>
+        <div class="field">
+          <label for="calc-mode">还款方式</label>
+          <select id="calc-mode">
+            <option value="equal">等额本息</option>
+            <option value="interest_first">先息后本</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="calc-subsidy">贴息抵扣(%,选填)</label>
+          <input id="calc-subsidy" type="number" min="0" step="0.1" value="0" />
+        </div>
+      </div>
+      <div id="calc-result" class="calc-result">
+        <div class="calc-stat"><span id="calc-monthly">—</span><small>每月还款</small></div>
+        <div class="calc-stat"><span id="calc-interest">—</span><small>总利息</small></div>
+        <div class="calc-stat"><span id="calc-total">—</span><small>本息合计</small></div>
+        <div class="calc-stat calc-save hidden"><span id="calc-saved">—</span><small>贴息后省</small></div>
+      </div>
+      <div class="calc-chart-wrap">
+        <div class="calc-chart-title">📉 剩余本金递减趋势</div>
+        <canvas id="calc-chart" height="180"></canvas>
+      </div>
+    </section>
+
+    <section class="card credit-card">
+      <h2>🩺 征信养护工具箱</h2>
+      <p class="card-sub">从源头优化资质,降低审批被拒概率。以下为模拟测算,仅供参考。</p>
+      <div class="grid">
+        <div class="field">
+          <label for="ct-overdue">近2年逾期次数</label>
+          <input id="ct-overdue" type="number" min="0" step="1" value="0" />
+        </div>
+        <div class="field">
+          <label for="ct-queries">近半年硬查询次数<span class="hint" title="信用卡/贷款审批触发的查询,1个月>3次或半年>6次易被视为'征信花'。">?</span></label>
+          <input id="ct-queries" type="number" min="0" step="1" value="2" />
+        </div>
+        <div class="field">
+          <label for="ct-debt">现有总负债(万元)</label>
+          <input id="ct-debt" type="number" min="0" step="1" value="50" />
+        </div>
+        <div class="field">
+          <label for="ct-revenue">年营业额(万元)</label>
+          <input id="ct-revenue" type="number" min="0" step="1" value="200" />
+        </div>
+      </div>
+      <div id="credit-health" class="credit-health"></div>
+    </section>
+    </div>
+
+    <div id="tab-records" class="hidden">
+      <section class="card" id="data-assets-card"><div id="data-assets"></div></section>
+      <section class="card">
+        <div class="records-head">
+          <h2>📁 我的申请记录</h2>
+          <input id="rec-filter" class="rec-filter" type="text" placeholder="🔍 按企业名筛选" />
+          <select id="rec-speed" class="bank-sel" title="状态自动推进节奏">
+            <option value="demo">演示加速(分钟)</option>
+            <option value="real">真实节奏(按天)</option>
+          </select>
+          <button id="refresh-records" class="export-btn">🔄 刷新</button>
+          <button id="export-records-pdf" class="export-btn">📄 导出汇总报表</button>
+        </div>
+        <p class="card-sub">⏱️ 状态会随提交时长+风控等级自动推进(模拟):提交→审核中→通过/放款;手动改过的记录则以你的设置为准。</p>
+        <div id="records-stats"></div>
+        <div id="records-list"></div>
+      </section>
+    </div>
+
+    <div id="tab-game" class="hidden">
+      <section class="card game-dash">
+        <div class="game-dash-head">
+          <div class="game-level-badge">
+            <span id="game-emoji" class="game-emoji">🌱</span>
+            <div>
+              <div class="game-level-title" id="game-title">金融小白</div>
+              <div class="game-level-sub">Lv.<span id="game-level">1</span></div>
+            </div>
+          </div>
+          <div class="game-coins">
+            <span class="coin-icon">🪙</span>
+            <span id="game-coins">0</span>
+            <span class="coin-label">金币</span>
+          </div>
+        </div>
+        <div class="game-progress-wrap">
+          <div class="game-progress-bar"><div id="game-progress-fill" class="game-progress-fill"></div></div>
+          <div class="game-progress-text" id="game-progress-text">距离下一等级还差 60 金币</div>
+        </div>
+        <div class="game-stats">
+          <div class="game-stat"><span id="game-answered">0</span><small>已答题</small></div>
+          <div class="game-stat"><span id="game-correct">0</span><small>答对</small></div>
+          <div class="game-stat"><span id="game-accuracy">0%</span><small>正确率</small></div>
+          <div class="game-stat"><span id="game-streak">0</span><small>最佳连胜</small></div>
+        </div>
+      </section>
+
+      <section class="card" id="game-start-card">
+        <h2>🎯 选择关卡开始闯关</h2>
+        <p class="muted">答对得金币,金币越多等级越高。连续答对还有连胜加成提示!</p>
+        <div id="game-levels" class="game-levels"></div>
+        <h2 style="margin-top:18px">📚 体系化课程闯关</h2>
+        <p class="muted">区别于零散问答,围绕小微融资三大主题成体系学习。</p>
+        <div id="game-courses" class="game-levels"></div>
+        <div class="game-start-actions">
+          <button id="game-start-mixed" class="export-btn">🎲 随机混合一组(5题)</button>
+        </div>
+      </section>
+
+      <section class="card hidden" id="game-play-card">
+        <div class="game-play-head">
+          <span class="game-q-progress" id="game-q-progress">第 1 / 5 题</span>
+          <span class="game-streak-pill" id="game-streak-pill">🔥 连胜 0</span>
+        </div>
+        <div class="game-q-type" id="game-q-type">判断题</div>
+        <div class="game-q-text" id="game-q-text">题目加载中…</div>
+        <div class="game-options" id="game-options"></div>
+        <div class="game-feedback hidden" id="game-feedback"></div>
+        <div class="game-play-actions">
+          <button id="game-next" class="export-btn hidden">下一题 →</button>
+          <button id="game-quit" class="ghost-btn">退出闯关</button>
+        </div>
+      </section>
+
+      <section class="card hidden" id="game-result-card">
+        <h2 id="game-result-title">🎉 本轮闯关完成!</h2>
+        <div id="game-result-body" class="game-result-body"></div>
+        <div class="game-start-actions">
+          <button id="game-again" class="export-btn">再来一组</button>
+        </div>
+      </section>
+
+      <section class="card">
+        <div class="records-head">
+          <h2>🏆 金币排行榜</h2>
+          <button id="game-set-name" class="ghost-btn">✏️ 设置昵称</button>
+        </div>
+        <div id="game-leaderboard" class="game-leaderboard"></div>
+      </section>
+    </div>
+    </div>
+  </main>
+
+  <div id="detail-modal" class="modal hidden">
+    <div class="modal-backdrop"></div>
+    <div class="modal-body">
+      <button id="modal-close" class="modal-close">✕</button>
+      <div id="modal-content"></div>
+    </div>
+  </div>
+
+  <!-- 智能助手 -->
+  <div id="chat-launcher" title="向智能助手提问">
+    <span class="avatar-face">🤖</span>
+    <span class="launcher-label">智能助手</span>
+  </div>
+
+  <div id="chat-window" class="hidden">
+    <div class="chat-header">
+      <div class="chat-title">
+        <span class="chat-avatar">🤖</span>
+        <div>
+          <div class="chat-name">小微贷管家</div>
+          <div class="chat-status" id="chat-mode">智能助手</div>
+        </div>
+      </div>
+      <div class="chat-header-actions">
+        <button id="chat-history-btn" class="chat-icon-btn" title="历史会话">🕑</button>
+        <button id="chat-new-btn" class="chat-icon-btn" title="新对话">✚</button>
+        <button id="chat-close" class="chat-close">✕</button>
+      </div>
+    </div>
+
+    <!-- 虚拟人形象舞台(JS 动态渲染,可切换/自定义) -->
+    <div id="avatar-stage" class="avatar-stage" data-state="idle">
+      <div id="avatar-render" class="avatar-render"></div>
+      <div class="avatar-picker" id="avatar-picker"></div>
+    </div>
+
+    <!-- 自定义形象面板 -->
+    <div id="avatar-custom-panel" class="avatar-custom-panel hidden">
+      <div class="acp-head">
+        <span>🎨 自定义形象</span>
+        <button id="acp-close" class="chat-icon-btn" title="关闭">✕</button>
+      </div>
+      <div class="acp-preview"><div id="acp-preview" class="avatar-render"></div></div>
+      <div class="acp-body">
+        <div class="acp-row"><label>主色调</label><div class="acp-swatches" id="acp-primary"></div></div>
+        <div class="acp-row"><label>眼睛颜色</label><div class="acp-swatches" id="acp-eye"></div></div>
+        <div class="acp-row"><label>头部形状</label><div class="acp-opts" id="acp-head"></div></div>
+        <div class="acp-row"><label>配饰<br><small style="color:#9ca3af;font-size:10px">可多选搭配</small></label><div class="acp-opts" id="acp-acc"></div></div>
+        <div class="acp-row"><label>昵称</label><input id="acp-name" maxlength="10" placeholder="我的顾问"/></div>
+      </div>
+      <div class="acp-actions">
+        <button id="acp-save">保存并使用</button>
+      </div>
+    </div>
+
+    <div id="chat-messages" class="chat-messages"></div>
+    <div id="chat-quick" class="chat-quick"></div>
+
+    <!-- 历史会话面板 -->
+    <div id="chat-history-panel" class="chat-history-panel hidden"></div>
+
+    <div class="chat-input-bar">
+      <button id="chat-mic" class="chat-icon-btn mic-btn" title="语音输入">🎤</button>
+      <input type="text" id="chat-input" placeholder="任何问题都可以问我..." autocomplete="off" />
+      <button id="chat-tts" class="chat-icon-btn tts-btn" title="朗读回复(开/关)">🔊</button>
+      <button id="chat-send">发送</button>
+    </div>
+  </div>
+
+  <footer>
+    <p class="compliance-note">本平台仅提供融资方案测算、政策匹配与咨询服务,<b>不发放贷款</b>;所示额度、利率、月供、通过率均为基于公开规则与历史样本的估算,最终审批结果与利率以银行、担保机构官方审核为准。</p>
+  </footer>
+
+  <script src="/static/avatars.js"></script>
+  <script src="/static/app.js?v=20260630p"></script>
+  <script>
+    (function () {
+      var tips = [
+        "正在加载智能服务…",
+        "正在准备风控模型…",
+        "正在匹配补贴政策…",
+        "马上就好,祝你融资顺利 🎉",
+      ];
+      var tipEl = document.getElementById("splash-tip");
+      var i = 0;
+      var timer = setInterval(function () {
+        i = (i + 1) % tips.length;
+        if (tipEl) tipEl.textContent = tips[i];
+      }, 700);
+      function hideSplash() {
+        clearInterval(timer);
+        var s = document.getElementById("splash");
+        if (!s) return;
+        s.classList.add("splash-hide");
+        setTimeout(function () { s.style.display = "none"; }, 700);
+      }
+      var minDelay = new Promise(function (r) { setTimeout(r, 2200); });
+      var loaded = new Promise(function (r) {
+        if (document.readyState === "complete") r();
+        else window.addEventListener("load", r);
+      });
+      Promise.all([minDelay, loaded]).then(hideSplash);
+      setTimeout(hideSplash, 6000);
+    })();
+  </script>
+</body>
+</html>

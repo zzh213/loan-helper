@@ -1,0 +1,15 @@
+# 环境变量与密钥(切勿提交)
+.env
+*.key
+secret.txt
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# 数据库与运行产物
+*.db
+*.sqlite3
+backend/*.db

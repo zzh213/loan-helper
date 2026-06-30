@@ -869,6 +869,7 @@ document.querySelectorAll(".tab-btn[data-tab]").forEach((btn) => {
 });
 
 function activateTab(tab) {
+  closeChatPanel();
   document.querySelectorAll(".tab-btn").forEach((b) =>
     b.classList.toggle("active", b.dataset.tab === tab)
   );
@@ -1707,11 +1708,14 @@ renderAvatar();
 chatLauncher.addEventListener("click", openChat);
 const navChatBtn = document.getElementById("nav-chat-btn");
 if (navChatBtn) navChatBtn.addEventListener("click", openChat);
-chatClose.addEventListener("click", () => {
+function closeChatPanel() {
+  if (chatWindow.classList.contains("hidden")) return;
   chatWindow.classList.add("hidden");
   chatLauncher.classList.remove("hidden");
+  if (navChatBtn) navChatBtn.classList.remove("active");
   stopSpeak();
-});
+}
+chatClose.addEventListener("click", closeChatPanel);
 chatSend.addEventListener("click", sendChat);
 chatInput.addEventListener("keydown", (e) => {
   if (e.key === "Enter" && !e.isComposing) sendChat();
@@ -1724,6 +1728,10 @@ chatMic.addEventListener("click", toggleMic);
 async function openChat() {
   chatWindow.classList.remove("hidden");
   chatLauncher.classList.add("hidden");
+  if (navChatBtn) {
+    document.querySelectorAll(".tab-btn").forEach((b) => b.classList.remove("active"));
+    navChatBtn.classList.add("active");
+  }
   chatInput.focus();
   setAvatarState("idle");
   if (chatInited) return;

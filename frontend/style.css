@@ -2068,23 +2068,23 @@ body.dark .bank-btn { background: linear-gradient(135deg, #1d4ed8, #3b82f6); col
 
   /* 悬浮元素抬高,避免被底部栏遮挡 */
   #chat-launcher { bottom: calc(80px + env(safe-area-inset-bottom, 0px)); }
-  /* 智能助手:手机上点开后铺满整个屏幕(独立页面体验) */
+  /* 智能助手:手机上铺满底部栏以上的整个区域,像普通页面 */
   #chat-window {
     top: 0;
     left: 0;
     right: 0;
-    bottom: 0;
+    bottom: calc(60px + env(safe-area-inset-bottom, 0px));
     width: 100%;
     max-width: 100%;
-    height: 100%;
-    max-height: 100%;
+    height: auto;
+    max-height: none;
     border-radius: 0;
-    z-index: 400;
+    z-index: 250;
     padding-top: env(safe-area-inset-top, 0px);
-    padding-bottom: env(safe-area-inset-bottom, 0px);
   }
   #fav-bar.show { bottom: calc(80px + env(safe-area-inset-bottom, 0px)); }
   #pwa-install { bottom: calc(80px + env(safe-area-inset-bottom, 0px)) !important; }
+  #chat-close { display: none; }
   #toast-host { z-index: 420; }
 }
 @media (max-width: 480px) {

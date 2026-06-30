@@ -227,6 +227,9 @@ body {
 .side-tabs .tab-btn {
   width: 100%;
   text-align: left;
+  display: flex;
+  align-items: center;
+  gap: 9px;
   background: rgba(255, 255, 255, 0.06);
   color: rgba(255, 255, 255, 0.82);
   border: 1px solid rgba(255, 255, 255, 0.08);
@@ -235,6 +238,7 @@ body {
   font-size: 14.5px;
   transition: all 0.18s;
 }
+.side-tabs .tab-btn .tb-ico { font-size: 16px; line-height: 1; }
 .side-tabs .tab-btn:hover {
   background: rgba(255, 255, 255, 0.16);
   color: #fff;
@@ -2007,10 +2011,64 @@ body.dark .bank-btn { background: linear-gradient(135deg, #1d4ed8, #3b82f6); col
   .sk-cards { flex-direction: column; }
   .sk-card { height: 80px; }
   .layout { flex-direction: column; gap: 14px; }
-  .sidebar { position: static; width: 100%; }
-  .side-tabs { flex-direction: row; height: auto; padding: 8px; overflow-x: auto; border-radius: 14px; }
+
+  /* 底部 Tab 栏(像传统 App) */
+  .sidebar {
+    position: fixed;
+    top: auto;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    z-index: 300;
+  }
+  .side-tabs {
+    flex-direction: row;
+    height: auto;
+    gap: 0;
+    padding: 6px 4px;
+    padding-bottom: calc(6px + env(safe-area-inset-bottom, 0px));
+    border-radius: 0;
+    background: linear-gradient(180deg, #557191 0%, #4a6580 100%);
+    box-shadow: 0 -4px 18px rgba(74, 101, 128, 0.28);
+    overflow: visible;
+  }
   .side-tabs-title { display: none; }
-  .side-tabs .tab-btn { white-space: nowrap; padding: 10px 14px; }
+  .side-tabs #theme-toggle { display: none; }
+  .side-tabs .tab-btn {
+    flex: 1;
+    min-width: 0;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 3px;
+    white-space: nowrap;
+    background: transparent;
+    border: none;
+    color: rgba(255, 255, 255, 0.78);
+    padding: 6px 2px;
+    border-radius: 12px;
+    font-size: 11px;
+  }
+  .side-tabs .tab-btn .tb-ico { font-size: 21px; }
+  .side-tabs .tab-btn .tb-txt { font-size: 11px; line-height: 1.1; }
+  .side-tabs .tab-btn:hover { transform: none; background: transparent; }
+  .side-tabs .tab-btn.active {
+    background: transparent;
+    color: #fff;
+    font-weight: 700;
+    box-shadow: none;
+  }
+  /* 给底部栏留出空间,避免遮挡内容 */
+  body { padding-bottom: calc(66px + env(safe-area-inset-bottom, 0px)); }
+
+  /* 悬浮元素抬高,避免被底部栏遮挡 */
+  #chat-launcher { bottom: calc(80px + env(safe-area-inset-bottom, 0px)); }
+  #chat-window { bottom: calc(80px + env(safe-area-inset-bottom, 0px)); }
+  #fav-bar.show { bottom: calc(80px + env(safe-area-inset-bottom, 0px)); }
+  #pwa-install { bottom: calc(80px + env(safe-area-inset-bottom, 0px)) !important; }
+  #toast-host { z-index: 320; }
 }
 @media (max-width: 480px) {
   .grid { grid-template-columns: 1fr; }

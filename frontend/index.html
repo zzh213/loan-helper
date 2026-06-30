@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>中小微企业贷款服务小助手</title>
   <link rel="manifest" href="/manifest.webmanifest" />
-  <meta name="theme-color" content="#5f7d99" />
+  <meta name="theme-color" content="#3c76bc" />
   <meta name="mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
@@ -509,7 +509,7 @@
       var btn = document.createElement("button");
       btn.id = "pwa-install";
       btn.textContent = "📲 安装到桌面";
-      btn.style.cssText = "position:fixed;left:50%;bottom:18px;transform:translateX(-50%);z-index:9999;background:#5f7d99;color:#fff;border:none;padding:11px 20px;border-radius:24px;font-size:15px;box-shadow:0 6px 18px rgba(46,62,79,.35);cursor:pointer;display:none";
+      btn.style.cssText = "position:fixed;left:50%;bottom:18px;transform:translateX(-50%);z-index:9999;background:#3c76bc;color:#fff;border:none;padding:11px 20px;border-radius:24px;font-size:15px;box-shadow:0 6px 18px rgba(28, 59, 97,.35);cursor:pointer;display:none";
       document.body.appendChild(btn);
       window.addEventListener("beforeinstallprompt", function (e) {
         e.preventDefault();
@@ -528,7 +528,7 @@
       if (isIOS && !standalone && !localStorage.getItem("iosPwaHinted")) {
         setTimeout(function () {
           var t = document.createElement("div");
-          t.style.cssText = "position:fixed;left:12px;right:12px;bottom:16px;z-index:9999;background:#2e3e4f;color:#fff;padding:12px 14px;border-radius:12px;font-size:14px;line-height:1.6;box-shadow:0 6px 18px rgba(0,0,0,.3)";
+          t.style.cssText = "position:fixed;left:12px;right:12px;bottom:16px;z-index:9999;background:#1c3b61;color:#fff;padding:12px 14px;border-radius:12px;font-size:14px;line-height:1.6;box-shadow:0 6px 18px rgba(0,0,0,.3)";
           t.innerHTML = "📲 想把它当 App 用?点底部 <b>分享</b> 按钮 → 选「<b>添加到主屏幕</b>」即可。 <span style='float:right;cursor:pointer;opacity:.7' onclick=\"this.parentNode.remove();localStorage.setItem('iosPwaHinted','1')\">✕</span>";
           document.body.appendChild(t);
         }, 3500);

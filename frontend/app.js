@@ -351,7 +351,7 @@ function makePoster(data) {
   c.width = W; c.height = H;
   const ctx = c.getContext("2d");
   const g = ctx.createLinearGradient(0, 0, W, H);
-  g.addColorStop(0, "#5f7d99"); g.addColorStop(0.5, "#7b96b0"); g.addColorStop(1, "#6d8aa6");
+  g.addColorStop(0, "#3c76bc"); g.addColorStop(0.5, "#6190ca"); g.addColorStop(1, "#6d8aa6");
   ctx.fillStyle = g; ctx.fillRect(0, 0, W, H);
   ctx.textAlign = "center";
   ctx.fillStyle = "#fff"; ctx.font = "bold 46px sans-serif"; ctx.fillText("💰 我的融资方案", W / 2, 100);
@@ -373,7 +373,7 @@ function makePoster(data) {
   box(cy + 640, "通过率·放款", p.approval_probability + " · " + p.expected_release_days);
   if (subsidy && subsidy.after_subsidy) {
     ctx.fillStyle = "#fbbf24"; ctx.fillRect(70, cy + 770, W - 140, 64);
-    ctx.fillStyle = "#2e3e4f"; ctx.font = "bold 22px sans-serif"; ctx.textAlign = "center";
+    ctx.fillStyle = "#1c3b61"; ctx.font = "bold 22px sans-serif"; ctx.textAlign = "center";
     ctx.fillText("🎁 含贴息更省:" + subsidy.after_subsidy.slice(0, 22), W / 2, cy + 810);
   }
   ctx.textAlign = "center"; ctx.fillStyle = "rgba(219,228,238,.85)"; ctx.font = "18px sans-serif";
@@ -1066,7 +1066,7 @@ function drawCalcChart(amt, r, monthly, term) {
     pts.push(Math.max(0, bal));
   }
   const dark = document.body.classList.contains("dark");
-  const line = dark ? "#60a5fa" : "#5f7d99";
+  const line = dark ? "#60a5fa" : "#3c76bc";
   const grid = dark ? "#2a3a55" : "#e5e7eb";
   const pad = { l: 44, r: 12, t: 12, b: 24 };
   const cw = W - pad.l - pad.r, ch = H - pad.t - pad.b;

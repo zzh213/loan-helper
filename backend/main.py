@@ -453,4 +453,20 @@ if os.path.isdir(FRONTEND_DIR):
         html = _re.sub(r"app\.js\?v=[\w]+", f"app.js?v={_asset_ver('app.js')}", html)
         return Response(content=html, media_type="text/html")
 
+    @app.get("/sw.js")
+    def service_worker():
+        """Service Worker 必须从根路径提供,才能控制整个站点。"""
+        return FileResponse(
+            os.path.join(FRONTEND_DIR, "sw.js"),
+            media_type="application/javascript",
+            headers={"Service-Worker-Allowed": "/", "Cache-Control": "no-cache"},
+        )
+
+    @app.get("/manifest.webmanifest")
+    def manifest():
+        return FileResponse(
+            os.path.join(FRONTEND_DIR, "manifest.webmanifest"),
+            media_type="application/manifest+json",
+        )
+
     app.mount("/static", StaticFiles(directory=FRONTEND_DIR), name="static")

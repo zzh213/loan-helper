@@ -1,0 +1,17 @@
+{
+  "name": "中小微企业贷款服务小助手",
+  "short_name": "小微贷管家",
+  "description": "智能匹配贷款产品、风控评估、补贴政策、材料导出,一站式小微融资助手。",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#2e3e4f",
+  "theme_color": "#5f7d99",
+  "lang": "zh-CN",
+  "icons": [
+    { "src": "/static/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "/static/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "/static/icon-maskable.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}

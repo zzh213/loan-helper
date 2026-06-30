@@ -13,3 +13,6 @@ venv/
 *.db
 *.sqlite3
 backend/*.db
+
+# 部署密钥(切勿提交)
+deploy.env

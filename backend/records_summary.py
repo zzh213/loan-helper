@@ -65,7 +65,7 @@ def build_records_summary(records: list, hidden: list = None) -> bytes:
     st = Table(rows, colWidths=[60 * mm, 40 * mm, 40 * mm])
     st.setStyle(TableStyle([
         ("FONTNAME", (0, 0), (-1, -1), FONT), ("FONTSIZE", (0, 0), (-1, -1), 10),
-        ("BACKGROUND", (0, 0), (-1, 0), colors.HexColor("#6491c7")),
+        ("BACKGROUND", (0, 0), (-1, 0), colors.HexColor("#8cacd2")),
         ("TEXTCOLOR", (0, 0), (-1, 0), colors.white),
         ("ALIGN", (1, 0), (-1, -1), "CENTER"),
         ("GRID", (0, 0), (-1, -1), 0.5, colors.HexColor("#d1d5db")),
@@ -104,7 +104,7 @@ def build_records_summary(records: list, hidden: list = None) -> bytes:
         ht = Table(hr, colWidths=[26*mm, 32*mm, 14*mm, 12*mm, 70*mm])
         ht.setStyle(TableStyle([
             ("FONTNAME", (0, 0), (-1, -1), FONT), ("FONTSIZE", (0, 0), (-1, 0), 8),
-            ("BACKGROUND", (0, 0), (-1, 0), colors.HexColor("#6491c7")),
+            ("BACKGROUND", (0, 0), (-1, 0), colors.HexColor("#8cacd2")),
             ("TEXTCOLOR", (0, 0), (-1, 0), colors.white),
             ("ALIGN", (2, 0), (3, -1), "CENTER"),
             ("GRID", (0, 0), (-1, -1), 0.4, colors.HexColor("#d1d5db")),

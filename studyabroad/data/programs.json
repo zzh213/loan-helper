@@ -1,7 +1,7 @@
 {
   "meta": {
     "name": "留学选校匹配数据集",
-    "version": "0.3.5",
+    "version": "0.3.6",
     "updated": "2026-07",
     "disclaimer": "本数据为参考性示例数据，基于公开招生信息与往年中国大陆申请者录取经验整理，均分门槛为「建议达到」的参考线，并非官方保证。实际录取受名额、竞争、文书、科研实习、面试等多因素影响，请以学校官网为准。",
     "tiers": [
@@ -37,9 +37,9 @@
       "金融",
       "金融工程"
     ],
-    "count": 646,
+    "count": 657,
     "provenanceNote": "每个项目带 provenance 溯源：dataSource=参考估算/官方核实，verified 表示是否经官方页核实，lastVerified 为核实年月，sourceUrl 为官方项目页。参考估算分数线来自公开信息与往年经验，仅供参考；官方核实项由 scripts/ingest.py 从官方来源导入。",
-    "verifiedCount": 337
+    "verifiedCount": 348
   },
   "programs": [
     {
@@ -22731,6 +22731,391 @@
         "lastVerified": "2026-07",
         "sourceUrl": "https://www.sheffield.ac.uk/postgraduate/taught/courses/2026/clinical-neurology-msc",
         "searchUrl": "https://www.google.com/search?q=谢菲尔德大学+Clinical+Neurology+MSc+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-strath-fintech",
+      "country": "英国",
+      "university": "斯特拉斯克莱德大学",
+      "qsRank": 276,
+      "program": "Financial Technology MSc",
+      "field": "金融科技",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 76,
+          "211": 78,
+          "双一流": 80,
+          "双非": 82,
+          "海本/中外合作": 72
+        },
+        "ielts": {
+          "overall": 6.5,
+          "sub": 5.5
+        },
+        "gre": null,
+        "background": "second-class Honours degree, or overseas equivalent (",
+        "notes": "官方入学要求：second-class Honours degree, or overseas equivalent (；雅思总分 6.5、单项不低于 5.5（取自官方课程页）"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.strath.ac.uk/courses/postgraduatetaught/financialtechnology/",
+        "searchUrl": "https://www.google.com/search?q=斯特拉斯克莱德大学+Financial+Technology+MSc+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-strath-fin",
+      "country": "英国",
+      "university": "斯特拉斯克莱德大学",
+      "qsRank": 276,
+      "program": "Finance MSc",
+      "field": "金融",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 76,
+          "211": 78,
+          "双一流": 80,
+          "双非": 82,
+          "海本/中外合作": 72
+        },
+        "ielts": {
+          "overall": 6.5,
+          "sub": 5.5
+        },
+        "gre": null,
+        "background": "second-class Honours degree, or overseas equivalent - see our international studen",
+        "notes": "官方入学要求：second-class Honours degree, or overseas equivalent - see our international studen；雅思总分 6.5、单项不低于 5.5（取自官方课程页）"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.strath.ac.uk/courses/postgraduatetaught/finance/",
+        "searchUrl": "https://www.google.com/search?q=斯特拉斯克莱德大学+Finance+MSc+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-strath-intmgmt",
+      "country": "英国",
+      "university": "斯特拉斯克莱德大学",
+      "qsRank": 276,
+      "program": "International Management MSc",
+      "field": "管理学/商科",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 76,
+          "211": 78,
+          "双一流": 80,
+          "双非": 82,
+          "海本/中外合作": 72
+        },
+        "ielts": {
+          "overall": 6.5,
+          "sub": 5.5
+        },
+        "gre": null,
+        "background": "second-class Honours degree, or overseas equivalent (",
+        "notes": "官方入学要求：second-class Honours degree, or overseas equivalent (；雅思总分 6.5、单项不低于 5.5（取自官方课程页）"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.strath.ac.uk/courses/postgraduatetaught/internationalmanagement/",
+        "searchUrl": "https://www.google.com/search?q=斯特拉斯克莱德大学+International+Management+MSc+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-strath-mkt",
+      "country": "英国",
+      "university": "斯特拉斯克莱德大学",
+      "qsRank": 276,
+      "program": "Marketing MSc",
+      "field": "市场营销",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 76,
+          "211": 78,
+          "双一流": 80,
+          "双非": 82,
+          "海本/中外合作": 72
+        },
+        "ielts": {
+          "overall": 6.5,
+          "sub": 5.5
+        },
+        "gre": null,
+        "background": "second-class Honours degree, or overseas equivalent , in a non-marketing disciplin",
+        "notes": "官方入学要求：second-class Honours degree, or overseas equivalent , in a non-marketing disciplin；雅思总分 6.5、单项不低于 5.5（取自官方课程页）"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.strath.ac.uk/courses/postgraduatetaught/marketing/",
+        "searchUrl": "https://www.google.com/search?q=斯特拉斯克莱德大学+Marketing+MSc+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-strath-hrm",
+      "country": "英国",
+      "university": "斯特拉斯克莱德大学",
+      "qsRank": 276,
+      "program": "Human Resource Management MSc",
+      "field": "人力资源",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 76,
+          "211": 78,
+          "双一流": 80,
+          "双非": 82,
+          "海本/中外合作": 72
+        },
+        "ielts": {
+          "overall": 6.5,
+          "sub": 5.5
+        },
+        "gre": null,
+        "background": "second-class Honours degree, or overseas equivalent (",
+        "notes": "官方入学要求：second-class Honours degree, or overseas equivalent (；雅思总分 6.5、单项不低于 5.5（取自官方课程页）"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.strath.ac.uk/courses/postgraduatetaught/humanresourcemanagement/",
+        "searchUrl": "https://www.google.com/search?q=斯特拉斯克莱德大学+Human+Resource+Management+MSc+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-strath-bac",
+      "country": "英国",
+      "university": "斯特拉斯克莱德大学",
+      "qsRank": 276,
+      "program": "Business Analysis & Consulting MSc",
+      "field": "商业分析/咨询",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 76,
+          "211": 78,
+          "双一流": 80,
+          "双非": 82,
+          "海本/中外合作": 72
+        },
+        "ielts": {
+          "overall": 6.5,
+          "sub": 5.5
+        },
+        "gre": null,
+        "background": "second-class Honours degree, or overseas equivalent (",
+        "notes": "官方入学要求：second-class Honours degree, or overseas equivalent (；雅思总分 6.5、单项不低于 5.5（取自官方课程页）"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.strath.ac.uk/courses/postgraduatetaught/businessanalysisconsulting/",
+        "searchUrl": "https://www.google.com/search?q=斯特拉斯克莱德大学+Business+Analysis+&+Consulting+MSc+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-strath-da",
+      "country": "英国",
+      "university": "斯特拉斯克莱德大学",
+      "qsRank": 276,
+      "program": "Data Analytics MSc",
+      "field": "数据分析",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 76,
+          "211": 78,
+          "双一流": 80,
+          "双非": 82,
+          "海本/中外合作": 72
+        },
+        "ielts": {
+          "overall": 6.5,
+          "sub": 5.5
+        },
+        "gre": null,
+        "background": "Honours degree, or overseas equivalent ( see our country pages for further informati",
+        "notes": "官方入学要求：Honours degree, or overseas equivalent ( see our country pages for further informati；雅思总分 6.5、单项不低于 5.5（取自官方课程页）"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.strath.ac.uk/courses/postgraduatetaught/dataanalytics/",
+        "searchUrl": "https://www.google.com/search?q=斯特拉斯克莱德大学+Data+Analytics+MSc+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-strath-ecofin",
+      "country": "英国",
+      "university": "斯特拉斯克莱德大学",
+      "qsRank": 276,
+      "program": "Economics & Finance MSc",
+      "field": "经济/金融",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 76,
+          "211": 78,
+          "双一流": 80,
+          "双非": 82,
+          "海本/中外合作": 72
+        },
+        "ielts": {
+          "overall": 6.5,
+          "sub": 5.5
+        },
+        "gre": null,
+        "background": "second-class honours degree or overseas equivalent (",
+        "notes": "官方入学要求：second-class honours degree or overseas equivalent (；雅思总分 6.5、单项不低于 5.5（取自官方课程页）"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.strath.ac.uk/courses/postgraduatetaught/economicsfinance/",
+        "searchUrl": "https://www.google.com/search?q=斯特拉斯克莱德大学+Economics+&+Finance+MSc+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-strath-appecon",
+      "country": "英国",
+      "university": "斯特拉斯克莱德大学",
+      "qsRank": 276,
+      "program": "Applied Economics MSc",
+      "field": "应用经济",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 76,
+          "211": 78,
+          "双一流": 80,
+          "双非": 82,
+          "海本/中外合作": 72
+        },
+        "ielts": {
+          "overall": 6.5,
+          "sub": 5.5
+        },
+        "gre": null,
+        "background": "second-class honours degree or overseas equivalent in any subject (",
+        "notes": "官方入学要求：second-class honours degree or overseas equivalent in any subject (；雅思总分 6.5、单项不低于 5.5（取自官方课程页）"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.strath.ac.uk/courses/postgraduatetaught/appliedeconomics/",
+        "searchUrl": "https://www.google.com/search?q=斯特拉斯克莱德大学+Applied+Economics+MSc+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-strath-ads",
+      "country": "英国",
+      "university": "斯特拉斯克莱德大学",
+      "qsRank": 276,
+      "program": "Advanced Data Science MSc",
+      "field": "数据科学/AI",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 74,
+          "211": 76,
+          "双一流": 78,
+          "双非": 80,
+          "海本/中外合作": 70
+        },
+        "ielts": {
+          "overall": 6.0,
+          "sub": 5.5
+        },
+        "gre": null,
+        "background": "second-class (2:2) Honours degree or overseas equivalent* in a mathematical discip",
+        "notes": "官方入学要求：second-class (2:2) Honours degree or overseas equivalent* in a mathematical discip；雅思总分 6.0、单项不低于 5.5（取自官方课程页）"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.strath.ac.uk/courses/postgraduatetaught/advanceddatascience/",
+        "searchUrl": "https://www.google.com/search?q=斯特拉斯克莱德大学+Advanced+Data+Science+MSc+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-strath-actsci",
+      "country": "英国",
+      "university": "斯特拉斯克莱德大学",
+      "qsRank": 276,
+      "program": "Actuarial Science MSc",
+      "field": "精算学",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 74,
+          "211": 76,
+          "双一流": 78,
+          "双非": 80,
+          "海本/中外合作": 70
+        },
+        "ielts": {
+          "overall": 6.0,
+          "sub": 5.5
+        },
+        "gre": null,
+        "background": "second-class honours degree or international equivalent in: engineering science su",
+        "notes": "官方入学要求：second-class honours degree or international equivalent in: engineering science su；雅思总分 6.0、单项不低于 5.5（取自官方课程页）"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.strath.ac.uk/courses/postgraduatetaught/actuarialscience/",
+        "searchUrl": "https://www.google.com/search?q=斯特拉斯克莱德大学+Actuarial+Science+MSc+entry+requirements"
       }
     }
   ]

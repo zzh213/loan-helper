@@ -1,7 +1,7 @@
 {
   "meta": {
     "name": "留学选校匹配数据集",
-    "version": "0.3.3",
+    "version": "0.3.4",
     "updated": "2026-07",
     "disclaimer": "本数据为参考性示例数据，基于公开招生信息与往年中国大陆申请者录取经验整理，均分门槛为「建议达到」的参考线，并非官方保证。实际录取受名额、竞争、文书、科研实习、面试等多因素影响，请以学校官网为准。",
     "tiers": [
@@ -37,9 +37,9 @@
       "金融",
       "金融工程"
     ],
-    "count": 629,
+    "count": 639,
     "provenanceNote": "每个项目带 provenance 溯源：dataSource=参考估算/官方核实，verified 表示是否经官方页核实，lastVerified 为核实年月，sourceUrl 为官方项目页。参考估算分数线来自公开信息与往年经验，仅供参考；官方核实项由 scripts/ingest.py 从官方来源导入。",
-    "verifiedCount": 320
+    "verifiedCount": 330
   },
   "programs": [
     {
@@ -22136,6 +22136,356 @@
         "lastVerified": "2026-07",
         "sourceUrl": "https://www.stir.ac.uk/courses/pg-taught/management-english-language-teaching/",
         "searchUrl": "https://www.google.com/search?q=斯特林大学+Management+&+English+Language+Teaching+MSc+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-plym-fin",
+      "country": "英国",
+      "university": "普利茅斯大学",
+      "qsRank": 651,
+      "program": "Finance MSc",
+      "field": "金融",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 74,
+          "211": 76,
+          "双一流": 78,
+          "双非": 80,
+          "海本/中外合作": 70
+        },
+        "ielts": {
+          "overall": 6.5,
+          "sub": 5.5
+        },
+        "gre": null,
+        "background": "官方要求相关专业荣誉学位或同等学历（详见官方课程页）",
+        "notes": "雅思总分 6.5、单项不低于 5.5（取自官方课程页）；入学学位要求见官方页面"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.plymouth.ac.uk/courses/postgraduate/msc-finance",
+        "searchUrl": "https://www.google.com/search?q=普利茅斯大学+Finance+MSc+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-plym-dsba",
+      "country": "英国",
+      "university": "普利茅斯大学",
+      "qsRank": 651,
+      "program": "Data Science & Business Analytics MSc",
+      "field": "数据科学/商业分析",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 74,
+          "211": 76,
+          "双一流": 78,
+          "双非": 80,
+          "海本/中外合作": 70
+        },
+        "ielts": {
+          "overall": 6.5,
+          "sub": 5.5
+        },
+        "gre": null,
+        "background": "官方要求相关专业荣誉学位或同等学历（详见官方课程页）",
+        "notes": "雅思总分 6.5、单项不低于 5.5（取自官方课程页）；入学学位要求见官方页面"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.plymouth.ac.uk/courses/postgraduate/msc-data-science-and-business-analytics",
+        "searchUrl": "https://www.google.com/search?q=普利茅斯大学+Data+Science+&+Business+Analytics+MSc+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-plym-cyber",
+      "country": "英国",
+      "university": "普利茅斯大学",
+      "qsRank": 651,
+      "program": "Cyber Security MSc",
+      "field": "网络安全",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 74,
+          "211": 76,
+          "双一流": 78,
+          "双非": 80,
+          "海本/中外合作": 70
+        },
+        "ielts": {
+          "overall": 6.5,
+          "sub": 5.5
+        },
+        "gre": null,
+        "background": "官方要求相关专业荣誉学位或同等学历（详见官方课程页）",
+        "notes": "雅思总分 6.5、单项不低于 5.5（取自官方课程页）；入学学位要求见官方页面"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.plymouth.ac.uk/courses/postgraduate/msc-cyber-security",
+        "searchUrl": "https://www.google.com/search?q=普利茅斯大学+Cyber+Security+MSc+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-plym-ai",
+      "country": "英国",
+      "university": "普利茅斯大学",
+      "qsRank": 651,
+      "program": "Artificial Intelligence MSc",
+      "field": "人工智能",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 74,
+          "211": 76,
+          "双一流": 78,
+          "双非": 80,
+          "海本/中外合作": 70
+        },
+        "ielts": {
+          "overall": 6.5,
+          "sub": 5.5
+        },
+        "gre": null,
+        "background": "官方要求相关专业荣誉学位或同等学历（详见官方课程页）",
+        "notes": "雅思总分 6.5、单项不低于 5.5（取自官方课程页）；入学学位要求见官方页面"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.plymouth.ac.uk/courses/postgraduate/msc-artificial-intelligence",
+        "searchUrl": "https://www.google.com/search?q=普利茅斯大学+Artificial+Intelligence+MSc+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-plym-robotics",
+      "country": "英国",
+      "university": "普利茅斯大学",
+      "qsRank": 651,
+      "program": "Robotics MSc",
+      "field": "机器人",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 74,
+          "211": 76,
+          "双一流": 78,
+          "双非": 80,
+          "海本/中外合作": 70
+        },
+        "ielts": {
+          "overall": 6.5,
+          "sub": 5.5
+        },
+        "gre": null,
+        "background": "官方要求相关专业荣誉学位或同等学历（详见官方课程页）",
+        "notes": "雅思总分 6.5、单项不低于 5.5（取自官方课程页）；入学学位要求见官方页面"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.plymouth.ac.uk/courses/postgraduate/msc-robotics",
+        "searchUrl": "https://www.google.com/search?q=普利茅斯大学+Robotics+MSc+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-plym-civil",
+      "country": "英国",
+      "university": "普利茅斯大学",
+      "qsRank": 651,
+      "program": "Civil Engineering MSc",
+      "field": "土木工程",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 74,
+          "211": 76,
+          "双一流": 78,
+          "双非": 80,
+          "海本/中外合作": 70
+        },
+        "ielts": {
+          "overall": 6.5,
+          "sub": 5.5
+        },
+        "gre": null,
+        "background": "官方要求相关专业荣誉学位或同等学历（详见官方课程页）",
+        "notes": "雅思总分 6.5、单项不低于 5.5（取自官方课程页）；入学学位要求见官方页面"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.plymouth.ac.uk/courses/postgraduate/msc-civil-engineering",
+        "searchUrl": "https://www.google.com/search?q=普利茅斯大学+Civil+Engineering+MSc+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-plym-envcon",
+      "country": "英国",
+      "university": "普利茅斯大学",
+      "qsRank": 651,
+      "program": "Environmental Consultancy MSc",
+      "field": "环境咨询",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 74,
+          "211": 76,
+          "双一流": 78,
+          "双非": 80,
+          "海本/中外合作": 70
+        },
+        "ielts": {
+          "overall": 6.5,
+          "sub": 5.5
+        },
+        "gre": null,
+        "background": "官方要求相关专业荣誉学位或同等学历（详见官方课程页）",
+        "notes": "雅思总分 6.5、单项不低于 5.5（取自官方课程页）；入学学位要求见官方页面"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.plymouth.ac.uk/courses/postgraduate/msc-environmental-consultancy",
+        "searchUrl": "https://www.google.com/search?q=普利茅斯大学+Environmental+Consultancy+MSc+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-plym-marine",
+      "country": "英国",
+      "university": "普利茅斯大学",
+      "qsRank": 651,
+      "program": "Marine Conservation MSc",
+      "field": "海洋保护",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 74,
+          "211": 76,
+          "双一流": 78,
+          "双非": 80,
+          "海本/中外合作": 70
+        },
+        "ielts": {
+          "overall": 6.5,
+          "sub": 5.5
+        },
+        "gre": null,
+        "background": "官方要求相关专业荣誉学位或同等学历（详见官方课程页）",
+        "notes": "雅思总分 6.5、单项不低于 5.5（取自官方课程页）；入学学位要求见官方页面"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.plymouth.ac.uk/courses/postgraduate/msc-marine-conservation",
+        "searchUrl": "https://www.google.com/search?q=普利茅斯大学+Marine+Conservation+MSc+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-plym-tourism",
+      "country": "英国",
+      "university": "普利茅斯大学",
+      "qsRank": 651,
+      "program": "Tourism & Hospitality Management MSc",
+      "field": "旅游/酒店管理",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 74,
+          "211": 76,
+          "双一流": 78,
+          "双非": 80,
+          "海本/中外合作": 70
+        },
+        "ielts": {
+          "overall": 6.5,
+          "sub": 5.5
+        },
+        "gre": null,
+        "background": "官方要求相关专业荣誉学位或同等学历（详见官方课程页）",
+        "notes": "雅思总分 6.5、单项不低于 5.5（取自官方课程页）；入学学位要求见官方页面"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.plymouth.ac.uk/courses/postgraduate/msc-tourism-and-hospitality-management",
+        "searchUrl": "https://www.google.com/search?q=普利茅斯大学+Tourism+&+Hospitality+Management+MSc+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-plym-sustenv",
+      "country": "英国",
+      "university": "普利茅斯大学",
+      "qsRank": 651,
+      "program": "Sustainable Environmental Management MSc",
+      "field": "可持续环境管理",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 74,
+          "211": 76,
+          "双一流": 78,
+          "双非": 80,
+          "海本/中外合作": 70
+        },
+        "ielts": {
+          "overall": 6.5,
+          "sub": 5.5
+        },
+        "gre": null,
+        "background": "官方要求相关专业荣誉学位或同等学历（详见官方课程页）",
+        "notes": "雅思总分 6.5、单项不低于 5.5（取自官方课程页）；入学学位要求见官方页面"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.plymouth.ac.uk/courses/postgraduate/msc-sustainable-environmental-management",
+        "searchUrl": "https://www.google.com/search?q=普利茅斯大学+Sustainable+Environmental+Management+MSc+entry+requirements"
       }
     }
   ]

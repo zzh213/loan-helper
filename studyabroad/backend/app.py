@@ -1213,9 +1213,10 @@ def export_pdf(body: ExportReq):
 
 
 # ===================== 静态页面托管 =====================
-# 仅暴露前端所需的 css / js 目录，避免公网访问到 data / backend / scripts 等内部文件
+# 仅暴露前端所需的 css / js / data 目录；backend（含数据库）与 scripts 不对外暴露
 app.mount("/css", StaticFiles(directory=os.path.join(BASE_DIR, "css")), name="css")
 app.mount("/js", StaticFiles(directory=os.path.join(BASE_DIR, "js")), name="js")
+app.mount("/data", StaticFiles(directory=os.path.join(BASE_DIR, "data")), name="data")
 
 
 @app.get("/")

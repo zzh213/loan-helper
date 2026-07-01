@@ -2362,6 +2362,37 @@ body.dark .tpl-tip { color: #bbb; }
 .field-full { grid-column: 1 / -1; }
 .field-full:empty { display: none; }
 
+/* 自定义行业 + AI 识别 */
+.ci-row { display: flex; gap: 8px; align-items: stretch; }
+.ci-row input { flex: 1; min-width: 0; }
+.ci-btn {
+  flex: 0 0 auto; background: #6491c7; color: #fff; border: none;
+  border-radius: 10px; padding: 0 16px; font-size: 14px; font-weight: 600;
+  cursor: pointer; transition: background .15s; white-space: nowrap;
+}
+.ci-btn:hover { background: #4d7db6; }
+.ci-btn:disabled { opacity: .6; cursor: default; }
+.ci-result {
+  margin-top: 8px; padding: 10px 12px; border-radius: 10px;
+  background: rgba(100,145,199,0.10); border: 1px solid rgba(100,145,199,0.28);
+  font-size: 13.5px; display: flex; flex-wrap: wrap; align-items: center; gap: 8px;
+}
+.ci-ok { color: #1f7a44; font-weight: 600; }
+.ci-ok b { color: #1f7a44; }
+.ci-err { color: #dc2626; }
+.ci-loading { color: #4d7db6; }
+.ci-tag {
+  font-size: 11px; background: #6491c7; color: #fff;
+  border-radius: 10px; padding: 1px 8px;
+}
+.ci-hint { flex-basis: 100%; font-size: 12px; color: #64748b; line-height: 1.5; }
+body.dark .ci-result { background: rgba(100,145,199,0.14); border-color: rgba(100,145,199,0.35); }
+body.dark .ci-hint { color: #9fb2c9; }
+@media (max-width: 480px) {
+  .ci-row { flex-direction: column; }
+  .ci-btn { padding: 10px 16px; }
+}
+
 .tpl-sub { font-size: 0.8rem; color: #777; margin: 6px 0 4px; }
 .tpl-chk { display: inline-flex; align-items: center; gap: 5px; font-size: 0.8rem; cursor: pointer;
   background: rgba(16,140,80,0.08); border: 1px solid rgba(16,140,80,0.22); color: #108c50;

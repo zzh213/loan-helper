@@ -376,3 +376,40 @@ def stream_reply(message: str, history: List[dict]) -> Iterator[str]:
         yield from _stream_dashscope(message, history)
     else:
         yield _fallback_answer(message)
+
+
+def complete(prompt: str, system: str = "", max_tokens: int = 64) -> str:
+    """非流式补全:用于短任务(如行业分类)。无可用大模型或失败时返回空串。"""
+    provider = active_provider()
+    if provider == "fallback":
+        return ""
+    messages = []
+    if system:
+        messages.append({"role": "system", "content": system})
+    messages.append({"role": "user", "content": prompt})
+    try:
+        if provider == "azure":
+            url = (f"{AZURE_ENDPOINT}/openai/deployments/{AZURE_DEPLOYMENT}"
+                   f"/chat/completions?api-version={AZURE_API_VERSION}")
+            payload = {"messages": messages, "temperature": 0, "max_tokens": max_tokens}
+            headers = {"api-key": AZURE_API_KEY, "Content-Type": "application/json"}
+            resp = httpx.post(url, json=payload, headers=headers, timeout=30.0)
+        elif provider == "ollama":
+            payload = {"model": OLLAMA_MODEL, "messages": messages, "stream": False,
+                       "options": {"temperature": 0}}
+            resp = httpx.post(f"{OLLAMA_URL}/api/chat", json=payload, timeout=60.0)
+            if resp.status_code == 200:
+                return (resp.json().get("message", {}).get("content", "") or "").strip()
+            return ""
+        else:  # dashscope
+            payload = {"model": MODEL, "messages": messages, "stream": False,
+                       "temperature": 0, "max_tokens": max_tokens}
+            headers = {"Authorization": f"Bearer {os.environ.get('DASHSCOPE_API_KEY')}",
+                       "Content-Type": "application/json"}
+            resp = httpx.post(DASHSCOPE_URL, json=payload, headers=headers, timeout=30.0)
+        if resp.status_code != 200:
+            return ""
+        obj = resp.json()
+        return (obj["choices"][0]["message"]["content"] or "").strip()
+    except Exception:
+        return ""

@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>选校匹配 · 出国读研 DIY 助手</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header class="hero">
+    <div class="container hero-inner">
+      <div class="hero-text">
+        <h1>🎓 出国读研选校匹配</h1>
+        <p class="subtitle">输入背景，立刻看到能申请的学校与硬性要求 —— 打破信息差，不花冤枉钱</p>
+        <nav class="hero-nav" id="hero-nav">
+          <button type="button" class="nav-btn active" data-view="match">🎯 选校匹配</button>
+          <button type="button" class="nav-btn" data-view="cases">📊 申研参考案例</button>
+          <button type="button" class="nav-btn" data-view="policies">📚 政策知识库</button>
+        </nav>
+      </div>
+      <div class="account" id="account">
+        <!-- 账号区由 JS 渲染 -->
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <div id="view-match" class="view">
+    <section class="card form-card">
+      <h2>填写你的背景</h2>
+
+      <div class="resume-box" id="resume-box">
+        <div class="resume-left">
+          <strong>🤖 上传简历，AI 自动提取背景</strong>
+          <p class="hint">支持 PDF 简历，自动识别院校 / 专业 / 均分 / 语言成绩 / 实习 / 论文 / 竞赛，一键回填下方表单。</p>
+        </div>
+        <div class="resume-right">
+          <input type="file" id="resume-file" accept="application/pdf" hidden />
+          <button type="button" class="btn-secondary" id="resume-pick">📄 选择 PDF 简历</button>
+          <span class="resume-name" id="resume-name"></span>
+        </div>
+      </div>
+      <div class="resume-result hidden" id="resume-result"></div>
+
+      <form id="profile-form">
+        <div class="grid">
+          <div class="field">
+            <label for="school">本科院校（输入中文名搜索）</label>
+            <input list="uni-list" id="school" placeholder="如 武汉大学 / 深圳大学 / 西交利物浦大学" autocomplete="off" />
+            <datalist id="uni-list"></datalist>
+            <div class="hint" id="school-hint">选择院校后将自动识别院校层次</div>
+          </div>
+
+          <div class="field">
+            <label for="tier">院校层次（自动识别，可手动调整）</label>
+            <select id="tier">
+              <option value="985">985</option>
+              <option value="211">211</option>
+              <option value="双一流">双一流（非 985/211）</option>
+              <option value="双非" selected>双非（普通本科）</option>
+              <option value="海本/中外合作">海本 / 中外合作</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="undergradMajor">本科专业（输入搜索，可填列表外专业）</label>
+            <input list="major-list" id="undergradMajor" placeholder="如 计算机科学与技术 / 金融学 / 法学" autocomplete="off" />
+            <datalist id="major-list"></datalist>
+            <div class="hint">填本科专业后，下方会自动推荐匹配的研究生方向（列表外专业也会用 AI 智能识别）</div>
+          </div>
+
+          <div class="field">
+            <label for="gradField">研究生专业方向（可多选，支持自定义）</label>
+            <div class="multi-input">
+              <input list="gradfield-list" id="gradField" placeholder="选择推荐 / 输入自定义后按回车或点添加" autocomplete="off" />
+              <button type="button" class="add-btn" id="addGradField">添加</button>
+            </div>
+            <datalist id="gradfield-list"></datalist>
+            <div class="selected-fields" id="selectedFields"></div>
+            <div class="hint">不选 = 匹配全部方向；可同时选多个方向（结果取并集）</div>
+            <div class="recommend" id="recommend"></div>
+          </div>
+        </div>
+
+        <div class="gpa-block">
+          <div class="field">
+            <label>成绩类型</label>
+            <div class="radios">
+              <label><input type="radio" name="scoreType" value="avg" checked /> 均分（百分制）</label>
+              <label><input type="radio" name="scoreType" value="gpa" /> GPA</label>
+            </div>
+          </div>
+
+          <div class="field" id="avg-field">
+            <label for="avg">均分（百分制）</label>
+            <input type="number" id="avg" min="0" max="100" step="0.1" placeholder="如 85" value="85" />
+            <div class="hint" id="wes-est"></div>
+          </div>
+
+          <div class="field hidden" id="gpa-field">
+            <label for="gpa">GPA</label>
+            <div class="inline">
+              <input type="number" id="gpa" min="0" max="5" step="0.01" placeholder="如 3.5" />
+              <select id="gpaScale">
+                <option value="4.0">4.0 制</option>
+                <option value="4.3">4.3 制</option>
+                <option value="5.0">5.0 制</option>
+              </select>
+            </div>
+            <div class="hint" id="gpa-converted"></div>
+          </div>
+        </div>
+
+        <details class="wes-info">
+          <summary>📄 什么是 WES 认证？申美/加是否需要？</summary>
+          <div class="wes-info-body">
+            <p><strong>WES（World Education Services）</strong> 是北美最常用的第三方学历学位认证机构（NACES 成员，同类还有 ECE / SpanTran）。它把你的中国成绩单按课程逐门换算成美国 4.0 制 GPA（iGPA），并出具官方认证报告。</p>
+            <ul>
+              <li><strong>谁需要：</strong>主要是<strong>美国 / 加拿大</strong>部分院校的研究生申请要求 WES/NACES 认证；英国 / 港新 / 欧洲一般<strong>不需要</strong>（用学位证 + CDGDC 翻译认证即可）。</li>
+              <li><strong>流程：</strong>WES 注册建档 → 国内通过<strong>学信网 / 学位网（CDGDC）</strong>做电子认证并直接发送给 WES → WES 评估出报告。</li>
+              <li><strong>费用：</strong>Course-by-course（逐门课）约 <strong>$205</strong>，另加学信网认证费（约 ¥360/份）。</li>
+              <li><strong>耗时：</strong>WES 收到材料后约 7 个工作日；含学信网认证 + 传输，整体通常 <strong>4–8 周</strong>，建议<strong>尽早办理</strong>。</li>
+            </ul>
+            <p class="wes-disclaimer">⚠️ 下方 GPA 换算为<strong>估算</strong>，仅供匹配参考。WES 实际按各门课程学分加权逐门换算，最终 iGPA 以官方报告为准。</p>
+          </div>
+        </details>
+
+        <div class="grid">
+          <div class="field">
+            <label for="ielts">雅思总分（可留空）</label>
+            <input type="number" id="ielts" min="0" max="9" step="0.5" placeholder="如 6.5" />
+          </div>
+          <div class="field">
+            <label for="ieltsSub">雅思最低小分（可留空）</label>
+            <input type="number" id="ieltsSub" min="0" max="9" step="0.5" placeholder="如 6.0" />
+          </div>
+          <div class="field">
+            <label for="gre">GRE 总分（可留空，主要用于美国）</label>
+            <input type="number" id="gre" min="260" max="340" step="1" placeholder="如 320" />
+          </div>
+        </div>
+
+        <div class="field">
+          <label>意向国家 / 地区（不选=全部）</label>
+          <div class="checks" id="countries">
+            <label><input type="checkbox" value="英国" /> 英国</label>
+            <label><input type="checkbox" value="美国" /> 美国</label>
+            <label><input type="checkbox" value="中国香港" /> 中国香港</label>
+            <label><input type="checkbox" value="新加坡" /> 新加坡</label>
+            <label><input type="checkbox" value="澳大利亚" /> 澳大利亚</label>
+            <label><input type="checkbox" value="加拿大" /> 加拿大</label>
+          </div>
+          <label class="verified-filter"><input type="checkbox" id="onlyVerified" /> 只看 ✔ 官方核实项目</label>
+        </div>
+
+        <details class="soft-block" id="soft-block">
+          <summary>💪 软实力背景（选填，可显著提升申研竞争力）<span class="soft-badge" id="soft-badge"></span></summary>
+
+          <div class="soft-section">
+            <div class="soft-section-head">
+              <label>实习经历（填写公司、岗位与内容，越具体越好）</label>
+              <button type="button" class="btn-mini" id="add-internship">+ 添加实习</button>
+            </div>
+            <div id="internship-list" class="entry-list"></div>
+          </div>
+
+          <div class="soft-grid">
+            <div class="field">
+              <label for="papers">论文发表数量</label>
+              <div class="inline">
+                <input type="number" id="papers" min="0" max="50" step="1" placeholder="如 1" />
+                <select id="paperLevel">
+                  <option value="">级别</option>
+                  <option value="SCI/EI">SCI / EI</option>
+                  <option value="核心">中文核心 / CPCI</option>
+                  <option value="会议">普通会议</option>
+                  <option value="在投">在投 / under review</option>
+                </select>
+              </div>
+            </div>
+            <div class="field">
+              <label for="competitions">竞赛获奖数量</label>
+              <div class="inline">
+                <input type="number" id="competitions" min="0" max="50" step="1" placeholder="如 1" />
+                <select id="competitionLevel">
+                  <option value="">级别</option>
+                  <option value="国际/国家级">国际 / 国家级</option>
+                  <option value="省级">省级</option>
+                  <option value="校级">校级</option>
+                </select>
+              </div>
+            </div>
+            <div class="field">
+              <label for="research">科研经历段数</label>
+              <input type="number" id="research" min="0" max="20" step="1" placeholder="如 1（含 RA / 课题 / 实验室）" />
+            </div>
+            <div class="field">
+              <label for="workYears">全职工作年限</label>
+              <input type="number" id="workYears" min="0" max="40" step="0.5" placeholder="如 1（MBA/部分项目看重）" />
+            </div>
+          </div>
+
+          <div class="soft-section">
+            <div class="soft-section-head">
+              <label>项目经历（课程项目 / 个人作品 / 开源等）</label>
+              <button type="button" class="btn-mini" id="add-project">+ 添加项目</button>
+            </div>
+            <div id="project-list" class="entry-list"></div>
+          </div>
+
+          <div class="soft-section">
+            <div class="soft-section-head">
+              <label>校园活动 / 社团 / 志愿（领导力与组织经历）</label>
+              <button type="button" class="btn-mini" id="add-activity">+ 添加活动</button>
+            </div>
+            <div id="activity-list" class="entry-list"></div>
+          </div>
+
+          <div class="soft-section">
+            <div class="soft-section-head">
+              <label>交换 / 海外经历（交换、暑研、海外课程等）</label>
+              <button type="button" class="btn-mini" id="add-exchange">+ 添加交换</button>
+            </div>
+            <div id="exchange-list" class="entry-list"></div>
+          </div>
+
+          <div class="field soft-certs">
+            <label for="certificates">证书 / 资格（每行一项，如 CFA 一级、CPA、教师资格证、计算机二级、托业 900）</label>
+            <textarea id="certificates" rows="3" placeholder="CFA 一级&#10;计算机技术与软件专业技术资格（软考）中级&#10;全国计算机等级考试二级"></textarea>
+          </div>
+
+          <div class="soft-preview hint" id="soft-preview"></div>
+        </details>
+
+        <button type="submit" class="btn-primary">开始匹配</button>
+      </form>
+    </section>
+
+    <section id="summary" class="summary hidden"></section>
+    <section id="results" class="results"></section>
+
+    <section id="shortlist-section" class="shortlist-section hidden">
+      <div class="shortlist-head">
+        <h2>⭐ 我的选校清单 / 申请进度 <span id="shortlist-count" class="badge">0</span></h2>
+        <div class="shortlist-actions">
+          <button id="checklist-btn" class="btn-secondary">📋 时间线 + 文书清单</button>
+          <button id="sop-btn" class="btn-secondary">✍️ AI 文书辅助</button>
+          <button id="export-pdf-btn" class="btn-secondary">⬇️ 导出 PDF</button>
+          <button id="export-xlsx-btn" class="btn-secondary">⬇️ 导出 Excel</button>
+        </div>
+      </div>
+      <div id="progress-summary"></div>
+      <div id="shortlist-list" class="program-list"></div>
+    </section>
+
+    <section id="sop-section" class="checklist-section hidden"></section>
+
+    <section id="checklist-section" class="checklist-section hidden"></section>
+    </div><!-- /view-match -->
+
+    <div id="view-cases" class="view hidden">
+      <section class="card">
+        <div class="view-intro">
+          <h2>📊 申研参考案例</h2>
+          <p class="hint">基于公开录取数据与往年规律整理的<strong>参考画像</strong>，帮你对标「和我背景相似的人，大致能申到什么」。按本科层次 / 专业方向筛选。</p>
+        </div>
+        <div class="case-filters">
+          <div class="field">
+            <label>本科层次</label>
+            <select id="case-tier">
+              <option value="">全部层次</option>
+              <option value="985">985</option>
+              <option value="211">211</option>
+              <option value="双非">双非</option>
+              <option value="海本/中外合作">海本/中外合作</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>专业方向（关键词）</label>
+            <input type="text" id="case-major" placeholder="如 金融 / CS / 传媒 / 经济" />
+          </div>
+        </div>
+        <div id="case-legend" class="case-legend"></div>
+        <div id="case-list" class="case-list"></div>
+        <p class="disclaimer" id="case-disclaimer"></p>
+      </section>
+    </div><!-- /view-cases -->
+
+    <div id="view-policies" class="view hidden">
+      <section class="card">
+        <div class="view-intro">
+          <h2>📚 政策知识库</h2>
+          <p class="hint">申研是个复杂的事，很多信息差不了解就会吃亏。这里系统整理了学位认证、语言豁免、申请策略、避坑等关键政策。点击展开细节。</p>
+        </div>
+        <div id="policy-cats" class="policy-cats"></div>
+        <div class="field policy-search-field">
+          <input type="text" id="policy-search" placeholder="🔍 搜索关键词，如 中外合办 / WES / 双非 / rolling / 保录" />
+        </div>
+        <div id="policy-list" class="policy-list"></div>
+        <p class="disclaimer" id="policy-disclaimer"></p>
+      </section>
+    </div><!-- /view-policies -->
+
+    <p class="disclaimer" id="disclaimer"></p>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>本工具为参考性 DIY 选校助手，数据仅供参考，最终以学校官网为准。</p>
+    </div>
+  </footer>
+
+  <script src="js/match.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

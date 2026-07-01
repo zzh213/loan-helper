@@ -84,6 +84,20 @@ def api_industry_template(industry: str):
     return t or {}
 
 
+class IndustryClassifyRequest(BaseModel):
+    text: str
+
+
+@app.post("/api/classify-industry")
+def api_classify_industry(req: IndustryClassifyRequest):
+    """AI 识别自定义行业描述,归类到平台规范行业类别。"""
+    import industry_classify
+    text = (req.text or "").strip()
+    if not text:
+        raise HTTPException(status_code=400, detail="请填写行业描述")
+    return industry_classify.classify(text)
+
+
 @app.post("/api/export/pdf")
 def api_export_pdf(profile: EnterpriseProfile):
     """生成并下载贷款方案 PDF 报告。"""

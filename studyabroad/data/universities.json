@@ -1,0 +1,1189 @@
+{
+ "meta": {
+  "note": "院校层次为申请参考常用分类。985 同时含 211；双一流含原 985/211 及新增高校，此处 985/211 单列，双一流列表为新增(非985/211)的双一流高校。★中外合作大学（独立法人，如西交利物浦/宁波诺丁汉/上纽/昆山杜克/温州肯恩/北师港浸大/港中深/广以理）申研时以合作方海外学位申请，按【海本/中外合作】层次评估：成绩按合作方所在国体系（英国荣誉等级/美国GPA/香港体系）解读，全英文授课背景在英/港/新等地常可申请语言豁免——具体均以目标院校官网为准。",
+  "tiers": [
+   "985",
+   "211",
+   "双一流",
+   "双非",
+   "海本/中外合作",
+   "其他/不在列表"
+  ]
+ },
+ "universities": [
+  {
+   "name": "上海交通大学",
+   "province": "上海",
+   "tier": "985"
+  },
+  {
+   "name": "东北大学",
+   "province": "辽宁",
+   "tier": "985"
+  },
+  {
+   "name": "东南大学",
+   "province": "江苏",
+   "tier": "985"
+  },
+  {
+   "name": "中南大学",
+   "province": "湖南",
+   "tier": "985"
+  },
+  {
+   "name": "中国人民大学",
+   "province": "北京",
+   "tier": "985"
+  },
+  {
+   "name": "中国农业大学",
+   "province": "北京",
+   "tier": "985"
+  },
+  {
+   "name": "中国海洋大学",
+   "province": "山东",
+   "tier": "985"
+  },
+  {
+   "name": "中国科学技术大学",
+   "province": "安徽",
+   "tier": "985"
+  },
+  {
+   "name": "中央民族大学",
+   "province": "北京",
+   "tier": "985"
+  },
+  {
+   "name": "中山大学",
+   "province": "广东",
+   "tier": "985"
+  },
+  {
+   "name": "兰州大学",
+   "province": "甘肃",
+   "tier": "985"
+  },
+  {
+   "name": "北京大学",
+   "province": "北京",
+   "tier": "985"
+  },
+  {
+   "name": "北京师范大学",
+   "province": "北京",
+   "tier": "985"
+  },
+  {
+   "name": "北京理工大学",
+   "province": "北京",
+   "tier": "985"
+  },
+  {
+   "name": "北京航空航天大学",
+   "province": "北京",
+   "tier": "985"
+  },
+  {
+   "name": "华东师范大学",
+   "province": "上海",
+   "tier": "985"
+  },
+  {
+   "name": "华中科技大学",
+   "province": "湖北",
+   "tier": "985"
+  },
+  {
+   "name": "华南理工大学",
+   "province": "广东",
+   "tier": "985"
+  },
+  {
+   "name": "南京大学",
+   "province": "江苏",
+   "tier": "985"
+  },
+  {
+   "name": "南开大学",
+   "province": "天津",
+   "tier": "985"
+  },
+  {
+   "name": "厦门大学",
+   "province": "福建",
+   "tier": "985"
+  },
+  {
+   "name": "吉林大学",
+   "province": "吉林",
+   "tier": "985"
+  },
+  {
+   "name": "同济大学",
+   "province": "上海",
+   "tier": "985"
+  },
+  {
+   "name": "哈尔滨工业大学",
+   "province": "黑龙江",
+   "tier": "985"
+  },
+  {
+   "name": "四川大学",
+   "province": "四川",
+   "tier": "985"
+  },
+  {
+   "name": "国防科技大学",
+   "province": "湖南",
+   "tier": "985"
+  },
+  {
+   "name": "复旦大学",
+   "province": "上海",
+   "tier": "985"
+  },
+  {
+   "name": "大连理工大学",
+   "province": "辽宁",
+   "tier": "985"
+  },
+  {
+   "name": "天津大学",
+   "province": "天津",
+   "tier": "985"
+  },
+  {
+   "name": "山东大学",
+   "province": "山东",
+   "tier": "985"
+  },
+  {
+   "name": "武汉大学",
+   "province": "湖北",
+   "tier": "985"
+  },
+  {
+   "name": "浙江大学",
+   "province": "浙江",
+   "tier": "985"
+  },
+  {
+   "name": "清华大学",
+   "province": "北京",
+   "tier": "985"
+  },
+  {
+   "name": "湖南大学",
+   "province": "湖南",
+   "tier": "985"
+  },
+  {
+   "name": "电子科技大学",
+   "province": "四川",
+   "tier": "985"
+  },
+  {
+   "name": "西北农林科技大学",
+   "province": "陕西",
+   "tier": "985"
+  },
+  {
+   "name": "西北工业大学",
+   "province": "陕西",
+   "tier": "985"
+  },
+  {
+   "name": "西安交通大学",
+   "province": "陕西",
+   "tier": "985"
+  },
+  {
+   "name": "重庆大学",
+   "province": "重庆",
+   "tier": "985"
+  },
+  {
+   "name": "上海外国语大学",
+   "province": "上海",
+   "tier": "211"
+  },
+  {
+   "name": "上海大学",
+   "province": "上海",
+   "tier": "211"
+  },
+  {
+   "name": "上海财经大学",
+   "province": "上海",
+   "tier": "211"
+  },
+  {
+   "name": "东北农业大学",
+   "province": "黑龙江",
+   "tier": "211"
+  },
+  {
+   "name": "东北师范大学",
+   "province": "吉林",
+   "tier": "211"
+  },
+  {
+   "name": "东北林业大学",
+   "province": "黑龙江",
+   "tier": "211"
+  },
+  {
+   "name": "东华大学",
+   "province": "上海",
+   "tier": "211"
+  },
+  {
+   "name": "中南财经政法大学",
+   "province": "湖北",
+   "tier": "211"
+  },
+  {
+   "name": "中国传媒大学",
+   "province": "北京",
+   "tier": "211"
+  },
+  {
+   "name": "中国地质大学(北京)",
+   "province": "北京",
+   "tier": "211"
+  },
+  {
+   "name": "中国地质大学(武汉)",
+   "province": "湖北",
+   "tier": "211"
+  },
+  {
+   "name": "中国政法大学",
+   "province": "北京",
+   "tier": "211"
+  },
+  {
+   "name": "中国石油大学(北京)",
+   "province": "北京",
+   "tier": "211"
+  },
+  {
+   "name": "中国石油大学(华东)",
+   "province": "山东",
+   "tier": "211"
+  },
+  {
+   "name": "中国矿业大学",
+   "province": "江苏",
+   "tier": "211"
+  },
+  {
+   "name": "中国矿业大学(北京)",
+   "province": "北京",
+   "tier": "211"
+  },
+  {
+   "name": "中国药科大学",
+   "province": "江苏",
+   "tier": "211"
+  },
+  {
+   "name": "中央财经大学",
+   "province": "北京",
+   "tier": "211"
+  },
+  {
+   "name": "云南大学",
+   "province": "云南",
+   "tier": "211"
+  },
+  {
+   "name": "内蒙古大学",
+   "province": "内蒙古",
+   "tier": "211"
+  },
+  {
+   "name": "北京中医药大学",
+   "province": "北京",
+   "tier": "211"
+  },
+  {
+   "name": "北京交通大学",
+   "province": "北京",
+   "tier": "211"
+  },
+  {
+   "name": "北京体育大学",
+   "province": "北京",
+   "tier": "211"
+  },
+  {
+   "name": "北京化工大学",
+   "province": "北京",
+   "tier": "211"
+  },
+  {
+   "name": "北京外国语大学",
+   "province": "北京",
+   "tier": "211"
+  },
+  {
+   "name": "北京工业大学",
+   "province": "北京",
+   "tier": "211"
+  },
+  {
+   "name": "北京林业大学",
+   "province": "北京",
+   "tier": "211"
+  },
+  {
+   "name": "北京科技大学",
+   "province": "北京",
+   "tier": "211"
+  },
+  {
+   "name": "北京邮电大学",
+   "province": "北京",
+   "tier": "211"
+  },
+  {
+   "name": "华东理工大学",
+   "province": "上海",
+   "tier": "211"
+  },
+  {
+   "name": "华中农业大学",
+   "province": "湖北",
+   "tier": "211"
+  },
+  {
+   "name": "华中师范大学",
+   "province": "湖北",
+   "tier": "211"
+  },
+  {
+   "name": "华北电力大学",
+   "province": "北京",
+   "tier": "211"
+  },
+  {
+   "name": "华南师范大学",
+   "province": "广东",
+   "tier": "211"
+  },
+  {
+   "name": "南京农业大学",
+   "province": "江苏",
+   "tier": "211"
+  },
+  {
+   "name": "南京师范大学",
+   "province": "江苏",
+   "tier": "211"
+  },
+  {
+   "name": "南京理工大学",
+   "province": "江苏",
+   "tier": "211"
+  },
+  {
+   "name": "南京航空航天大学",
+   "province": "江苏",
+   "tier": "211"
+  },
+  {
+   "name": "南京邮电大学",
+   "province": "江苏",
+   "tier": "211"
+  },
+  {
+   "name": "南昌大学",
+   "province": "江西",
+   "tier": "211"
+  },
+  {
+   "name": "合肥工业大学",
+   "province": "安徽",
+   "tier": "211"
+  },
+  {
+   "name": "哈尔滨工程大学",
+   "province": "黑龙江",
+   "tier": "211"
+  },
+  {
+   "name": "四川农业大学",
+   "province": "四川",
+   "tier": "211"
+  },
+  {
+   "name": "大连海事大学",
+   "province": "辽宁",
+   "tier": "211"
+  },
+  {
+   "name": "天津医科大学",
+   "province": "天津",
+   "tier": "211"
+  },
+  {
+   "name": "太原理工大学",
+   "province": "山西",
+   "tier": "211"
+  },
+  {
+   "name": "宁夏大学",
+   "province": "宁夏",
+   "tier": "211"
+  },
+  {
+   "name": "安徽大学",
+   "province": "安徽",
+   "tier": "211"
+  },
+  {
+   "name": "对外经济贸易大学",
+   "province": "北京",
+   "tier": "211"
+  },
+  {
+   "name": "广西大学",
+   "province": "广西",
+   "tier": "211"
+  },
+  {
+   "name": "延边大学",
+   "province": "吉林",
+   "tier": "211"
+  },
+  {
+   "name": "新疆大学",
+   "province": "新疆",
+   "tier": "211"
+  },
+  {
+   "name": "暨南大学",
+   "province": "广东",
+   "tier": "211"
+  },
+  {
+   "name": "武汉理工大学",
+   "province": "湖北",
+   "tier": "211"
+  },
+  {
+   "name": "江南大学",
+   "province": "江苏",
+   "tier": "211"
+  },
+  {
+   "name": "河北工业大学",
+   "province": "天津",
+   "tier": "211"
+  },
+  {
+   "name": "河海大学",
+   "province": "江苏",
+   "tier": "211"
+  },
+  {
+   "name": "海军军医大学",
+   "province": "上海",
+   "tier": "211"
+  },
+  {
+   "name": "海南大学",
+   "province": "海南",
+   "tier": "211"
+  },
+  {
+   "name": "湖南师范大学",
+   "province": "湖南",
+   "tier": "211"
+  },
+  {
+   "name": "石河子大学",
+   "province": "新疆",
+   "tier": "211"
+  },
+  {
+   "name": "福州大学",
+   "province": "福建",
+   "tier": "211"
+  },
+  {
+   "name": "空军军医大学",
+   "province": "陕西",
+   "tier": "211"
+  },
+  {
+   "name": "苏州大学",
+   "province": "江苏",
+   "tier": "211"
+  },
+  {
+   "name": "西北大学",
+   "province": "陕西",
+   "tier": "211"
+  },
+  {
+   "name": "西南交通大学",
+   "province": "四川",
+   "tier": "211"
+  },
+  {
+   "name": "西南财经大学",
+   "province": "四川",
+   "tier": "211"
+  },
+  {
+   "name": "西安电子科技大学",
+   "province": "陕西",
+   "tier": "211"
+  },
+  {
+   "name": "西藏大学",
+   "province": "西藏",
+   "tier": "211"
+  },
+  {
+   "name": "贵州大学",
+   "province": "贵州",
+   "tier": "211"
+  },
+  {
+   "name": "辽宁大学",
+   "province": "辽宁",
+   "tier": "211"
+  },
+  {
+   "name": "郑州大学",
+   "province": "河南",
+   "tier": "211"
+  },
+  {
+   "name": "长安大学",
+   "province": "陕西",
+   "tier": "211"
+  },
+  {
+   "name": "陕西师范大学",
+   "province": "陕西",
+   "tier": "211"
+  },
+  {
+   "name": "青海大学",
+   "province": "青海",
+   "tier": "211"
+  },
+  {
+   "name": "上海中医药大学",
+   "province": "上海",
+   "tier": "双一流"
+  },
+  {
+   "name": "上海海洋大学",
+   "province": "上海",
+   "tier": "双一流"
+  },
+  {
+   "name": "上海科技大学",
+   "province": "上海",
+   "tier": "双一流"
+  },
+  {
+   "name": "东北石油大学",
+   "province": "黑龙江",
+   "tier": "双一流"
+  },
+  {
+   "name": "中国人民公安大学",
+   "province": "北京",
+   "tier": "双一流"
+  },
+  {
+   "name": "中国美术学院",
+   "province": "浙江",
+   "tier": "双一流"
+  },
+  {
+   "name": "中国音乐学院",
+   "province": "北京",
+   "tier": "双一流"
+  },
+  {
+   "name": "中央戏剧学院",
+   "province": "北京",
+   "tier": "双一流"
+  },
+  {
+   "name": "中央美术学院",
+   "province": "北京",
+   "tier": "双一流"
+  },
+  {
+   "name": "中央音乐学院",
+   "province": "北京",
+   "tier": "双一流"
+  },
+  {
+   "name": "北京协和医学院",
+   "province": "北京",
+   "tier": "双一流"
+  },
+  {
+   "name": "华南农业大学",
+   "province": "广东",
+   "tier": "双一流"
+  },
+  {
+   "name": "南京中医药大学",
+   "province": "江苏",
+   "tier": "双一流"
+  },
+  {
+   "name": "南京信息工程大学",
+   "province": "江苏",
+   "tier": "双一流"
+  },
+  {
+   "name": "南京医科大学",
+   "province": "江苏",
+   "tier": "双一流"
+  },
+  {
+   "name": "南京林业大学",
+   "province": "江苏",
+   "tier": "双一流"
+  },
+  {
+   "name": "南京艺术学院",
+   "province": "江苏",
+   "tier": "双一流"
+  },
+  {
+   "name": "南方科技大学",
+   "province": "广东",
+   "tier": "双一流"
+  },
+  {
+   "name": "外交学院",
+   "province": "北京",
+   "tier": "双一流"
+  },
+  {
+   "name": "天津中医药大学",
+   "province": "天津",
+   "tier": "双一流"
+  },
+  {
+   "name": "天津工业大学",
+   "province": "天津",
+   "tier": "双一流"
+  },
+  {
+   "name": "宁波大学",
+   "province": "浙江",
+   "tier": "双一流"
+  },
+  {
+   "name": "山西大学",
+   "province": "山西",
+   "tier": "双一流"
+  },
+  {
+   "name": "广州中医药大学",
+   "province": "广东",
+   "tier": "双一流"
+  },
+  {
+   "name": "广州医科大学",
+   "province": "广东",
+   "tier": "双一流"
+  },
+  {
+   "name": "成都中医药大学",
+   "province": "四川",
+   "tier": "双一流"
+  },
+  {
+   "name": "成都理工大学",
+   "province": "四川",
+   "tier": "双一流"
+  },
+  {
+   "name": "江西师范大学",
+   "province": "江西",
+   "tier": "双一流"
+  },
+  {
+   "name": "河南大学",
+   "province": "河南",
+   "tier": "双一流"
+  },
+  {
+   "name": "湘潭大学",
+   "province": "湖南",
+   "tier": "双一流"
+  },
+  {
+   "name": "首都师范大学",
+   "province": "北京",
+   "tier": "双一流"
+  },
+  {
+   "name": "三峡大学",
+   "province": "湖北",
+   "tier": "双非"
+  },
+  {
+   "name": "上海工程技术大学",
+   "province": "上海",
+   "tier": "双非"
+  },
+  {
+   "name": "上海师范大学",
+   "province": "上海",
+   "tier": "双非"
+  },
+  {
+   "name": "上海理工大学",
+   "province": "上海",
+   "tier": "双非"
+  },
+  {
+   "name": "上海纽约大学",
+   "province": "上海",
+   "tier": "海本/中外合作",
+   "partner": "纽约大学",
+   "partnerEn": "New York University",
+   "degreeRegion": "美国",
+   "gradeSystem": "US",
+   "englishTaught": true,
+   "coopNote": "中外合作大学：申研时以合作方【纽约大学（美国）】的海外学位申请。成绩按美国 4.0 GPA 体系评估（满分 4.0）。申美/加常无需雅思托福（全英文授课可豁免），但部分项目仍要求 GRE/GMAT。"
+  },
+  {
+   "name": "东北财经大学",
+   "province": "辽宁",
+   "tier": "双非"
+  },
+  {
+   "name": "中北大学",
+   "province": "山西",
+   "tier": "双非"
+  },
+  {
+   "name": "中国医科大学",
+   "province": "辽宁",
+   "tier": "双非"
+  },
+  {
+   "name": "云南师范大学",
+   "province": "云南",
+   "tier": "双非"
+  },
+  {
+   "name": "内蒙古工业大学",
+   "province": "内蒙古",
+   "tier": "双非"
+  },
+  {
+   "name": "北京工商大学",
+   "province": "北京",
+   "tier": "双非"
+  },
+  {
+   "name": "北京师范大学-香港浸会大学联合国际学院",
+   "province": "广东",
+   "tier": "海本/中外合作",
+   "partner": "香港浸会大学",
+   "partnerEn": "Hong Kong Baptist University",
+   "degreeRegion": "香港",
+   "gradeSystem": "HK",
+   "englishTaught": true,
+   "coopNote": "中外合作大学：申研时以合作方【香港浸会大学（香港）】的海外学位申请。成绩按香港院校体系（GPA/荣誉等级）评估，全英文授课背景申港/英/新常可豁免雅思。"
+  },
+  {
+   "name": "北京建筑大学",
+   "province": "北京",
+   "tier": "双非"
+  },
+  {
+   "name": "华侨大学",
+   "province": "福建",
+   "tier": "双非"
+  },
+  {
+   "name": "南京审计大学",
+   "province": "江苏",
+   "tier": "双非"
+  },
+  {
+   "name": "南京工业大学",
+   "province": "江苏",
+   "tier": "双非"
+  },
+  {
+   "name": "南京财经大学",
+   "province": "江苏",
+   "tier": "双非"
+  },
+  {
+   "name": "南方医科大学",
+   "province": "广东",
+   "tier": "双非"
+  },
+  {
+   "name": "哈尔滨医科大学",
+   "province": "黑龙江",
+   "tier": "双非"
+  },
+  {
+   "name": "哈尔滨理工大学",
+   "province": "黑龙江",
+   "tier": "双非"
+  },
+  {
+   "name": "大连大学",
+   "province": "辽宁",
+   "tier": "双非"
+  },
+  {
+   "name": "天津师范大学",
+   "province": "天津",
+   "tier": "双非"
+  },
+  {
+   "name": "天津理工大学",
+   "province": "天津",
+   "tier": "双非"
+  },
+  {
+   "name": "天津财经大学",
+   "province": "天津",
+   "tier": "双非"
+  },
+  {
+   "name": "宁波诺丁汉大学",
+   "province": "浙江",
+   "tier": "海本/中外合作",
+   "partner": "诺丁汉大学",
+   "partnerEn": "University of Nottingham",
+   "degreeRegion": "英国",
+   "gradeSystem": "UK",
+   "englishTaught": true,
+   "coopNote": "中外合作大学：申研时以合作方【诺丁汉大学（英国）】的海外学位申请。成绩按英国荣誉学位等级评估：一等(First)≥70、二等一(2:1)60–69、二等二(2:2)50–59。申英/港/新常凭学位等级而非百分制评估，多数院校可豁免雅思。"
+  },
+  {
+   "name": "安徽工业大学",
+   "province": "安徽",
+   "tier": "双非"
+  },
+  {
+   "name": "安徽师范大学",
+   "province": "安徽",
+   "tier": "双非"
+  },
+  {
+   "name": "山东师范大学",
+   "province": "山东",
+   "tier": "双非"
+  },
+  {
+   "name": "山东财经大学",
+   "province": "山东",
+   "tier": "双非"
+  },
+  {
+   "name": "广东外语外贸大学",
+   "province": "广东",
+   "tier": "双非"
+  },
+  {
+   "name": "广东工业大学",
+   "province": "广东",
+   "tier": "双非"
+  },
+  {
+   "name": "广州大学",
+   "province": "广东",
+   "tier": "双非"
+  },
+  {
+   "name": "广西师范大学",
+   "province": "广西",
+   "tier": "双非"
+  },
+  {
+   "name": "成都信息工程大学",
+   "province": "四川",
+   "tier": "双非"
+  },
+  {
+   "name": "扬州大学",
+   "province": "江苏",
+   "tier": "双非"
+  },
+  {
+   "name": "昆山杜克大学",
+   "province": "江苏",
+   "tier": "海本/中外合作",
+   "partner": "杜克大学",
+   "partnerEn": "Duke University",
+   "degreeRegion": "美国",
+   "gradeSystem": "US",
+   "englishTaught": true,
+   "coopNote": "中外合作大学：申研时以合作方【杜克大学（美国）】的海外学位申请。成绩按美国 4.0 GPA 体系评估（满分 4.0）。申美/加常无需雅思托福（全英文授课可豁免），但部分项目仍要求 GRE/GMAT。"
+  },
+  {
+   "name": "昆明理工大学",
+   "province": "云南",
+   "tier": "双非"
+  },
+  {
+   "name": "杭州电子科技大学",
+   "province": "浙江",
+   "tier": "双非"
+  },
+  {
+   "name": "桂林电子科技大学",
+   "province": "广西",
+   "tier": "双非"
+  },
+  {
+   "name": "武汉科技大学",
+   "province": "湖北",
+   "tier": "双非"
+  },
+  {
+   "name": "汕头大学",
+   "province": "广东",
+   "tier": "双非"
+  },
+  {
+   "name": "江苏大学",
+   "province": "江苏",
+   "tier": "双非"
+  },
+  {
+   "name": "江西理工大学",
+   "province": "江西",
+   "tier": "双非"
+  },
+  {
+   "name": "江西财经大学",
+   "province": "江西",
+   "tier": "双非"
+  },
+  {
+   "name": "沈阳工业大学",
+   "province": "辽宁",
+   "tier": "双非"
+  },
+  {
+   "name": "河北大学",
+   "province": "河北",
+   "tier": "双非"
+  },
+  {
+   "name": "河南师范大学",
+   "province": "河南",
+   "tier": "双非"
+  },
+  {
+   "name": "河南科技大学",
+   "province": "河南",
+   "tier": "双非"
+  },
+  {
+   "name": "济南大学",
+   "province": "山东",
+   "tier": "双非"
+  },
+  {
+   "name": "浙江工业大学",
+   "province": "浙江",
+   "tier": "双非"
+  },
+  {
+   "name": "浙江工商大学",
+   "province": "浙江",
+   "tier": "双非"
+  },
+  {
+   "name": "浙江师范大学",
+   "province": "浙江",
+   "tier": "双非"
+  },
+  {
+   "name": "浙江理工大学",
+   "province": "浙江",
+   "tier": "双非"
+  },
+  {
+   "name": "海南师范大学",
+   "province": "海南",
+   "tier": "双非"
+  },
+  {
+   "name": "深圳大学",
+   "province": "广东",
+   "tier": "双非"
+  },
+  {
+   "name": "温州医科大学",
+   "province": "浙江",
+   "tier": "双非"
+  },
+  {
+   "name": "温州肯恩大学",
+   "province": "浙江",
+   "tier": "海本/中外合作",
+   "partner": "肯恩大学",
+   "partnerEn": "Kean University",
+   "degreeRegion": "美国",
+   "gradeSystem": "US",
+   "englishTaught": true,
+   "coopNote": "中外合作大学：申研时以合作方【肯恩大学（美国）】的海外学位申请。成绩按美国 4.0 GPA 体系评估（满分 4.0）。申美/加常无需雅思托福（全英文授课可豁免），但部分项目仍要求 GRE/GMAT。"
+  },
+  {
+   "name": "湖北大学",
+   "province": "湖北",
+   "tier": "双非"
+  },
+  {
+   "name": "湖南科技大学",
+   "province": "湖南",
+   "tier": "双非"
+  },
+  {
+   "name": "燕山大学",
+   "province": "河北",
+   "tier": "双非"
+  },
+  {
+   "name": "福建农林大学",
+   "province": "福建",
+   "tier": "双非"
+  },
+  {
+   "name": "福建师范大学",
+   "province": "福建",
+   "tier": "双非"
+  },
+  {
+   "name": "西交利物浦大学",
+   "province": "江苏",
+   "tier": "海本/中外合作",
+   "partner": "利物浦大学",
+   "partnerEn": "University of Liverpool",
+   "degreeRegion": "英国",
+   "gradeSystem": "UK",
+   "englishTaught": true,
+   "coopNote": "中外合作大学：申研时以合作方【利物浦大学（英国）】的海外学位申请。成绩按英国荣誉学位等级评估：一等(First)≥70、二等一(2:1)60–69、二等二(2:2)50–59。申英/港/新常凭学位等级而非百分制评估，多数院校可豁免雅思。"
+  },
+  {
+   "name": "西北政法大学",
+   "province": "陕西",
+   "tier": "双非"
+  },
+  {
+   "name": "西南石油大学",
+   "province": "四川",
+   "tier": "双非"
+  },
+  {
+   "name": "西安建筑科技大学",
+   "province": "陕西",
+   "tier": "双非"
+  },
+  {
+   "name": "西安理工大学",
+   "province": "陕西",
+   "tier": "双非"
+  },
+  {
+   "name": "贵州师范大学",
+   "province": "贵州",
+   "tier": "双非"
+  },
+  {
+   "name": "重庆交通大学",
+   "province": "重庆",
+   "tier": "双非"
+  },
+  {
+   "name": "重庆医科大学",
+   "province": "重庆",
+   "tier": "双非"
+  },
+  {
+   "name": "重庆邮电大学",
+   "province": "重庆",
+   "tier": "双非"
+  },
+  {
+   "name": "长沙理工大学",
+   "province": "湖南",
+   "tier": "双非"
+  },
+  {
+   "name": "青岛大学",
+   "province": "山东",
+   "tier": "双非"
+  },
+  {
+   "name": "青岛科技大学",
+   "province": "山东",
+   "tier": "双非"
+  },
+  {
+   "name": "首都医科大学",
+   "province": "北京",
+   "tier": "双非"
+  },
+  {
+   "name": "黑龙江大学",
+   "province": "黑龙江",
+   "tier": "双非"
+  },
+  {
+   "name": "香港中文大学（深圳）",
+   "province": "广东",
+   "tier": "海本/中外合作",
+   "partner": "香港中文大学",
+   "partnerEn": "The Chinese University of Hong Kong",
+   "degreeRegion": "香港",
+   "gradeSystem": "HK",
+   "englishTaught": true,
+   "coopNote": "中外合作大学：申研时以合作方【香港中文大学（香港）】的海外学位申请。成绩按香港院校体系（GPA/荣誉等级）评估，全英文授课背景申港/英/新常可豁免雅思。"
+  },
+  {
+   "name": "深圳北理莫斯科大学",
+   "province": "广东",
+   "tier": "海本/中外合作",
+   "partner": "莫斯科国立罗蒙诺索夫大学",
+   "partnerEn": "Lomonosov Moscow State University",
+   "degreeRegion": "俄罗斯",
+   "gradeSystem": "OTHER",
+   "englishTaught": false,
+   "coopNote": "中外合作大学：申研时以合作方【莫斯科国立罗蒙诺索夫大学（俄罗斯）】的海外学位申请。持合作方海外学位申请，授课语言非全英文时仍可能需要雅思/托福，请以目标院校官网为准。"
+  },
+  {
+   "name": "广东以色列理工学院",
+   "province": "广东",
+   "tier": "海本/中外合作",
+   "partner": "以色列理工学院",
+   "partnerEn": "Technion - Israel Institute of Technology",
+   "degreeRegion": "以色列",
+   "gradeSystem": "US",
+   "englishTaught": true,
+   "coopNote": "中外合作大学：申研时以合作方【以色列理工学院（以色列）】的海外学位申请。成绩按美国 4.0 GPA 体系评估（满分 4.0）。申美/加常无需雅思托福（全英文授课可豁免），但部分项目仍要求 GRE/GMAT。"
+  }
+ ]
+}

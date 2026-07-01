@@ -1,0 +1,555 @@
+{
+ "meta": {
+  "note": "本科专业→研究生方向为常见跨/同专业申请参考，推荐方向按相关度排序；研究生方向可自定义，不限于推荐项。",
+  "gradFields": [
+   "计算机/CS",
+   "数据科学/AI",
+   "软件工程",
+   "信息系统/IT",
+   "商业分析",
+   "金融",
+   "金融工程",
+   "会计",
+   "经济学",
+   "管理学/商科",
+   "市场营销",
+   "电子/电气工程",
+   "通信工程",
+   "机械工程",
+   "土木/建筑",
+   "材料工程",
+   "传媒",
+   "教育",
+   "法律(LLM)",
+   "心理学",
+   "公共政策/管理",
+   "设计/艺术",
+   "翻译/语言",
+   "环境科学"
+  ]
+ },
+ "undergradMajors": [
+  {
+   "name": "计算机科学与技术",
+   "category": "工科·计算机",
+   "recommendFields": [
+    "计算机/CS",
+    "数据科学/AI",
+    "软件工程",
+    "信息系统/IT",
+    "商业分析"
+   ]
+  },
+  {
+   "name": "软件工程",
+   "category": "工科·计算机",
+   "recommendFields": [
+    "软件工程",
+    "计算机/CS",
+    "数据科学/AI",
+    "信息系统/IT"
+   ]
+  },
+  {
+   "name": "人工智能",
+   "category": "工科·计算机",
+   "recommendFields": [
+    "数据科学/AI",
+    "计算机/CS",
+    "软件工程"
+   ]
+  },
+  {
+   "name": "数据科学与大数据技术",
+   "category": "工科·计算机",
+   "recommendFields": [
+    "数据科学/AI",
+    "商业分析",
+    "计算机/CS",
+    "金融工程"
+   ]
+  },
+  {
+   "name": "信息安全",
+   "category": "工科·计算机",
+   "recommendFields": [
+    "计算机/CS",
+    "信息系统/IT",
+    "软件工程"
+   ]
+  },
+  {
+   "name": "网络工程",
+   "category": "工科·计算机",
+   "recommendFields": [
+    "计算机/CS",
+    "信息系统/IT",
+    "通信工程"
+   ]
+  },
+  {
+   "name": "电子信息工程",
+   "category": "工科·电子",
+   "recommendFields": [
+    "电子/电气工程",
+    "通信工程",
+    "计算机/CS",
+    "数据科学/AI"
+   ]
+  },
+  {
+   "name": "电气工程及其自动化",
+   "category": "工科·电子",
+   "recommendFields": [
+    "电子/电气工程",
+    "机械工程",
+    "计算机/CS"
+   ]
+  },
+  {
+   "name": "通信工程",
+   "category": "工科·电子",
+   "recommendFields": [
+    "通信工程",
+    "电子/电气工程",
+    "计算机/CS"
+   ]
+  },
+  {
+   "name": "自动化",
+   "category": "工科·电子",
+   "recommendFields": [
+    "电子/电气工程",
+    "机械工程",
+    "数据科学/AI"
+   ]
+  },
+  {
+   "name": "微电子科学与工程",
+   "category": "工科·电子",
+   "recommendFields": [
+    "电子/电气工程",
+    "材料工程",
+    "通信工程"
+   ]
+  },
+  {
+   "name": "机械工程",
+   "category": "工科·机械",
+   "recommendFields": [
+    "机械工程",
+    "材料工程",
+    "电子/电气工程"
+   ]
+  },
+  {
+   "name": "机械设计制造及其自动化",
+   "category": "工科·机械",
+   "recommendFields": [
+    "机械工程",
+    "电子/电气工程",
+    "材料工程"
+   ]
+  },
+  {
+   "name": "车辆工程",
+   "category": "工科·机械",
+   "recommendFields": [
+    "机械工程",
+    "材料工程",
+    "电子/电气工程"
+   ]
+  },
+  {
+   "name": "土木工程",
+   "category": "工科·土建",
+   "recommendFields": [
+    "土木/建筑",
+    "材料工程",
+    "公共政策/管理"
+   ]
+  },
+  {
+   "name": "建筑学",
+   "category": "工科·土建",
+   "recommendFields": [
+    "土木/建筑",
+    "设计/艺术",
+    "公共政策/管理"
+   ]
+  },
+  {
+   "name": "城乡规划",
+   "category": "工科·土建",
+   "recommendFields": [
+    "土木/建筑",
+    "公共政策/管理",
+    "设计/艺术"
+   ]
+  },
+  {
+   "name": "材料科学与工程",
+   "category": "工科·材料",
+   "recommendFields": [
+    "材料工程",
+    "机械工程",
+    "电子/电气工程"
+   ]
+  },
+  {
+   "name": "环境工程",
+   "category": "工科·环境",
+   "recommendFields": [
+    "环境科学",
+    "公共政策/管理",
+    "土木/建筑"
+   ]
+  },
+  {
+   "name": "化学工程与工艺",
+   "category": "工科·化工",
+   "recommendFields": [
+    "材料工程",
+    "环境科学",
+    "数据科学/AI"
+   ]
+  },
+  {
+   "name": "金融学",
+   "category": "经管·金融",
+   "recommendFields": [
+    "金融",
+    "金融工程",
+    "商业分析",
+    "经济学",
+    "会计"
+   ]
+  },
+  {
+   "name": "金融工程",
+   "category": "经管·金融",
+   "recommendFields": [
+    "金融工程",
+    "金融",
+    "数据科学/AI",
+    "商业分析"
+   ]
+  },
+  {
+   "name": "经济学",
+   "category": "经管·经济",
+   "recommendFields": [
+    "经济学",
+    "金融",
+    "商业分析",
+    "公共政策/管理"
+   ]
+  },
+  {
+   "name": "国际经济与贸易",
+   "category": "经管·经济",
+   "recommendFields": [
+    "经济学",
+    "金融",
+    "管理学/商科",
+    "商业分析"
+   ]
+  },
+  {
+   "name": "会计学",
+   "category": "经管·商科",
+   "recommendFields": [
+    "会计",
+    "金融",
+    "商业分析",
+    "管理学/商科"
+   ]
+  },
+  {
+   "name": "财务管理",
+   "category": "经管·商科",
+   "recommendFields": [
+    "会计",
+    "金融",
+    "商业分析",
+    "管理学/商科"
+   ]
+  },
+  {
+   "name": "工商管理",
+   "category": "经管·商科",
+   "recommendFields": [
+    "管理学/商科",
+    "市场营销",
+    "商业分析",
+    "金融"
+   ]
+  },
+  {
+   "name": "市场营销",
+   "category": "经管·商科",
+   "recommendFields": [
+    "市场营销",
+    "管理学/商科",
+    "商业分析",
+    "传媒"
+   ]
+  },
+  {
+   "name": "人力资源管理",
+   "category": "经管·商科",
+   "recommendFields": [
+    "管理学/商科",
+    "心理学",
+    "市场营销"
+   ]
+  },
+  {
+   "name": "物流管理",
+   "category": "经管·商科",
+   "recommendFields": [
+    "商业分析",
+    "管理学/商科",
+    "数据科学/AI"
+   ]
+  },
+  {
+   "name": "信息管理与信息系统",
+   "category": "经管·商科",
+   "recommendFields": [
+    "信息系统/IT",
+    "商业分析",
+    "数据科学/AI",
+    "计算机/CS"
+   ]
+  },
+  {
+   "name": "统计学",
+   "category": "理科·数理",
+   "recommendFields": [
+    "数据科学/AI",
+    "商业分析",
+    "金融工程",
+    "经济学"
+   ]
+  },
+  {
+   "name": "数学与应用数学",
+   "category": "理科·数理",
+   "recommendFields": [
+    "数据科学/AI",
+    "金融工程",
+    "计算机/CS",
+    "经济学"
+   ]
+  },
+  {
+   "name": "应用物理学",
+   "category": "理科·数理",
+   "recommendFields": [
+    "材料工程",
+    "电子/电气工程",
+    "数据科学/AI"
+   ]
+  },
+  {
+   "name": "应用化学",
+   "category": "理科·化生",
+   "recommendFields": [
+    "材料工程",
+    "环境科学",
+    "化工相关"
+   ]
+  },
+  {
+   "name": "生物科学",
+   "category": "理科·化生",
+   "recommendFields": [
+    "环境科学",
+    "数据科学/AI",
+    "公共政策/管理"
+   ]
+  },
+  {
+   "name": "新闻学",
+   "category": "人文·传媒",
+   "recommendFields": [
+    "传媒",
+    "公共政策/管理",
+    "市场营销"
+   ]
+  },
+  {
+   "name": "广告学",
+   "category": "人文·传媒",
+   "recommendFields": [
+    "传媒",
+    "市场营销",
+    "设计/艺术"
+   ]
+  },
+  {
+   "name": "广播电视学",
+   "category": "人文·传媒",
+   "recommendFields": [
+    "传媒",
+    "设计/艺术",
+    "市场营销"
+   ]
+  },
+  {
+   "name": "汉语言文学",
+   "category": "人文·语言",
+   "recommendFields": [
+    "传媒",
+    "教育",
+    "翻译/语言",
+    "公共政策/管理"
+   ]
+  },
+  {
+   "name": "英语",
+   "category": "人文·语言",
+   "recommendFields": [
+    "翻译/语言",
+    "教育",
+    "传媒",
+    "管理学/商科"
+   ]
+  },
+  {
+   "name": "翻译",
+   "category": "人文·语言",
+   "recommendFields": [
+    "翻译/语言",
+    "教育",
+    "传媒"
+   ]
+  },
+  {
+   "name": "法学",
+   "category": "人文·法政",
+   "recommendFields": [
+    "法律(LLM)",
+    "公共政策/管理",
+    "商业分析"
+   ]
+  },
+  {
+   "name": "行政管理",
+   "category": "人文·法政",
+   "recommendFields": [
+    "公共政策/管理",
+    "管理学/商科",
+    "法律(LLM)"
+   ]
+  },
+  {
+   "name": "国际政治",
+   "category": "人文·法政",
+   "recommendFields": [
+    "公共政策/管理",
+    "法律(LLM)",
+    "传媒"
+   ]
+  },
+  {
+   "name": "社会学",
+   "category": "人文·社科",
+   "recommendFields": [
+    "公共政策/管理",
+    "心理学",
+    "传媒"
+   ]
+  },
+  {
+   "name": "心理学",
+   "category": "人文·社科",
+   "recommendFields": [
+    "心理学",
+    "教育",
+    "公共政策/管理",
+    "数据科学/AI"
+   ]
+  },
+  {
+   "name": "教育学",
+   "category": "人文·社科",
+   "recommendFields": [
+    "教育",
+    "心理学",
+    "公共政策/管理"
+   ]
+  },
+  {
+   "name": "学前教育",
+   "category": "人文·社科",
+   "recommendFields": [
+    "教育",
+    "心理学"
+   ]
+  },
+  {
+   "name": "视觉传达设计",
+   "category": "艺术·设计",
+   "recommendFields": [
+    "设计/艺术",
+    "传媒",
+    "市场营销"
+   ]
+  },
+  {
+   "name": "环境设计",
+   "category": "艺术·设计",
+   "recommendFields": [
+    "设计/艺术",
+    "土木/建筑"
+   ]
+  },
+  {
+   "name": "产品设计",
+   "category": "艺术·设计",
+   "recommendFields": [
+    "设计/艺术",
+    "机械工程",
+    "市场营销"
+   ]
+  },
+  {
+   "name": "数字媒体艺术",
+   "category": "艺术·设计",
+   "recommendFields": [
+    "设计/艺术",
+    "传媒",
+    "计算机/CS"
+   ]
+  },
+  {
+   "name": "临床医学",
+   "category": "医学",
+   "recommendFields": [
+    "公共政策/管理",
+    "数据科学/AI",
+    "心理学"
+   ]
+  },
+  {
+   "name": "护理学",
+   "category": "医学",
+   "recommendFields": [
+    "公共政策/管理",
+    "教育",
+    "心理学"
+   ]
+  },
+  {
+   "name": "药学",
+   "category": "医学",
+   "recommendFields": [
+    "材料工程",
+    "环境科学",
+    "数据科学/AI"
+   ]
+  }
+ ]
+}

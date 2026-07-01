@@ -26,6 +26,7 @@ class EnterpriseProfile(BaseModel):
 
     company_name: Optional[str] = Field(default="", description="企业名称")
     industry: str = Field(description="所属行业,如 制造业/批发零售/餐饮/科技/建筑/物流/农业/服务业")
+    industry_detail: Optional[str] = Field(default="", description="用户填写的具体/自定义行业描述,展示与留存用")
     years_in_business: float = Field(ge=0, description="经营年限(年)")
     annual_revenue: float = Field(ge=0, description="年营业额(万元)")
     registered_capital: float = Field(default=0, ge=0, description="注册资本(万元)")

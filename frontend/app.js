@@ -88,7 +88,8 @@ function collectProfile() {
   const fd = new FormData(form);
   return {
     company_name: fd.get("company_name") || "",
-    industry: fd.get("industry"),
+    industry: effectiveIndustry().industry,
+    industry_detail: effectiveIndustry().detail,
     years_in_business: parseFloat(fd.get("years_in_business")) || 0,
     annual_revenue: parseFloat(fd.get("annual_revenue")) || 0,
     registered_capital: parseFloat(fd.get("registered_capital")) || 0,
@@ -269,7 +270,7 @@ async function queryHiddenSubsidies() {
     showToast("请输入企业所在地址", "error");
     return;
   }
-  const industry = (new FormData(form).get("industry")) || "";
+  const industry = currentCanonicalIndustry();
   hiddenSubList.innerHTML = '<div class="empty">解锁中...</div>';
   try {
     const res = await fetch("/api/hidden-subsidies", {
@@ -397,7 +398,7 @@ function makePoster(data) {
 }
 
 async function showChecklist() {
-  const ind = (window.__lastProfile && window.__lastProfile.industry) || document.getElementById("f-industry").value;
+  const ind = (window.__lastProfile && window.__lastProfile.industry) || currentCanonicalIndustry();
   let mats = ["营业执照副本", "近12个月对公流水", "近一年纳税证明", "法人身份证", "经营场所租赁合同", "贷款用途说明"];
   let title = "通用材料清单";
   try {
@@ -893,12 +894,31 @@ const _heroCta = document.getElementById("hero-subsidy-cta");
 if (_heroCta) _heroCta.addEventListener("click", () => activateTab("subsidy"));
 
 // 行业专属风控模板:切换行业即展示授信加分项与材料清单
+let _customIndustry = { category: "", detail: "" };
+
+function effectiveIndustry() {
+  const sel = document.getElementById("f-industry");
+  if (!sel) return { industry: "服务业", detail: "" };
+  if (sel.value === "__custom__") {
+    const txt = (document.getElementById("f-industry-custom") || {}).value || "";
+    return { industry: _customIndustry.category || "", detail: (_customIndustry.detail || txt.trim()) };
+  }
+  const opt = sel.selectedOptions && sel.selectedOptions[0];
+  const detail = (opt && opt.dataset && opt.dataset.detail) || "";
+  return { industry: sel.value, detail };
+}
+
+function currentCanonicalIndustry() {
+  return effectiveIndustry().industry || "";
+}
+
 async function loadIndustryTemplate() {
   const box = document.getElementById("industry-template-box");
-  const sel = document.getElementById("f-industry");
-  if (!box || !sel) return;
+  const ind = currentCanonicalIndustry();
+  if (!box) return;
+  if (!ind) { box.innerHTML = ""; return; }
   try {
-    const res = await fetch(`/api/industry-template/${encodeURIComponent(sel.value)}`);
+    const res = await fetch(`/api/industry-template/${encodeURIComponent(ind)}`);
     const t = await res.json();
     if (!t || !t.title) { box.innerHTML = ""; return; }
     const bonus = (t.bonus_items || []).map((x, i) =>
@@ -912,9 +932,76 @@ async function loadIndustryTemplate() {
       <details class="tpl-mat"><summary>建议准备材料</summary><ul>${mats}</ul></details></div>`;
   } catch (_) { box.innerHTML = ""; }
 }
+
+// 行业下拉:自定义模式切换 + AI 识别
 {
-  const _is = document.getElementById("f-industry");
-  if (_is) { _is.addEventListener("change", loadIndustryTemplate); loadIndustryTemplate(); }
+  const _sel = document.getElementById("f-industry");
+  const _box = document.getElementById("custom-industry-box");
+  const _input = document.getElementById("f-industry-custom");
+  const _detectBtn = document.getElementById("ci-detect");
+  const _result = document.getElementById("ci-result");
+
+  function showCustom(show) {
+    if (_box) _box.classList.toggle("hidden", !show);
+  }
+
+  async function detectIndustry() {
+    if (!_input || !_result) return;
+    const text = (_input.value || "").trim();
+    if (!text) { showToast("请先描述你的行业或主营业务", "error"); return; }
+    _result.classList.remove("hidden");
+    _result.innerHTML = `<span class="ci-loading">🤖 AI 识别中…</span>`;
+    if (_detectBtn) { _detectBtn.disabled = true; }
+    try {
+      const res = await fetch("/api/classify-industry", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ text }),
+      });
+      if (!res.ok) throw new Error("classify failed");
+      const d = await res.json();
+      _customIndustry = { category: d.category || "", detail: text };
+      const tag = d.method === "ai" ? "AI 智能识别" : (d.method === "keyword" ? "智能匹配" : "默认归类");
+      _result.innerHTML =
+        `<span class="ci-ok">✅ 已归类为【<b>${escapeHtml(d.category)}</b>】</span>` +
+        `<span class="ci-tag">${tag}</span>` +
+        `<div class="ci-hint">将按此行业为你匹配风控模型、专属模板与补贴政策。识别不准?可换个下拉选项。</div>`;
+      loadIndustryTemplate();
+    } catch (e) {
+      _result.innerHTML = `<span class="ci-err">识别失败,请重试或直接选择上方下拉行业</span>`;
+    } finally {
+      if (_detectBtn) { _detectBtn.disabled = false; }
+    }
+  }
+
+  if (_sel) {
+    _sel.addEventListener("change", () => {
+      const isCustom = _sel.value === "__custom__";
+      showCustom(isCustom);
+      if (isCustom) {
+        if (_input) _input.focus();
+        // 若已有识别结果则保留,否则清空模板等待识别
+        if (!_customIndustry.category) {
+          const box = document.getElementById("industry-template-box");
+          if (box) box.innerHTML = "";
+        }
+      }
+      loadIndustryTemplate();
+    });
+    loadIndustryTemplate();
+  }
+  if (_detectBtn) _detectBtn.addEventListener("click", detectIndustry);
+  if (_input) {
+    _input.addEventListener("keydown", (e) => {
+      if (e.key === "Enter") { e.preventDefault(); detectIndustry(); }
+    });
+    let _t;
+    _input.addEventListener("input", () => {
+      _customIndustry = { category: "", detail: (_input.value || "").trim() };
+      clearTimeout(_t);
+      _t = setTimeout(detectIndustry, 900);
+    });
+  }
 }
 
 document.getElementById("refresh-records").addEventListener("click", loadRecords);
@@ -1409,7 +1496,7 @@ async function viewRecord(id) {
     <p class="modal-sub">状态:${escapeHtml(rec.status)} · 创建于 ${escapeHtml(rec.created_at)}</p>
     <h3 class="modal-h3">企业信息</h3>
     <div class="modal-grid">
-      <div><b>行业</b>${escapeHtml(p.industry)}</div>
+      <div><b>行业</b>${escapeHtml(p.industry_detail ? `${p.industry_detail}(${p.industry})` : p.industry)}</div>
       <div><b>经营年限</b>${p.years_in_business} 年</div>
       <div><b>年营业额</b>${p.annual_revenue} 万元</div>
       <div><b>注册资本</b>${p.registered_capital} 万元</div>

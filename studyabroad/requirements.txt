@@ -1,0 +1,10 @@
+# 出国读研选校匹配 - 后端依赖
+fastapi>=0.111
+uvicorn>=0.30
+pydantic>=2.7
+# 简历 PDF 解析
+pypdf>=4.0
+python-multipart>=0.0.9
+# 导出 Excel / PDF（PDF 中文用 reportlab 内置 STSong-Light）
+openpyxl>=3.1
+reportlab>=4.0

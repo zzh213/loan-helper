@@ -121,21 +121,117 @@
           <div class="field">
             <label for="f-industry">所属行业 *</label>
             <select id="f-industry" name="industry" required>
-              <option value="制造业">制造业</option>
-              <option value="批发零售">批发零售</option>
-              <option value="餐饮">餐饮</option>
-              <option value="科技">科技/互联网</option>
-              <option value="建筑">建筑工程</option>
-              <option value="物流">物流运输</option>
-              <option value="农业">农业</option>
-              <option value="服务业">服务业</option>
-              <option value="医疗健康">医疗健康</option>
-              <option value="教育培训">教育培训</option>
-              <option value="文化旅游">文化旅游/民宿</option>
-              <option value="电商直播">电商直播</option>
-              <option value="美容美发">美容美发</option>
-              <option value="五金机电">五金机电</option>
+              <optgroup label="制造 / 加工">
+                <option value="制造业" data-detail="通用制造/加工">通用制造/加工</option>
+                <option value="制造业" data-detail="食品加工">食品加工</option>
+                <option value="制造业" data-detail="服装纺织">服装纺织</option>
+                <option value="制造业" data-detail="家具制造">家具制造</option>
+                <option value="制造业" data-detail="塑料橡胶">塑料/橡胶制品</option>
+                <option value="制造业" data-detail="包装印刷">包装印刷</option>
+                <option value="制造业" data-detail="电子组装">电子/电器组装</option>
+                <option value="制造业" data-detail="汽车零部件">汽车零部件</option>
+                <option value="五金机电" data-detail="五金制品">五金制品</option>
+                <option value="五金机电" data-detail="机械设备">机械/机床设备</option>
+                <option value="五金机电" data-detail="电机电气">电机/电气设备</option>
+              </optgroup>
+              <optgroup label="批发 / 零售">
+                <option value="批发零售" data-detail="综合批发零售">综合批发/零售</option>
+                <option value="批发零售" data-detail="超市便利店">超市/便利店</option>
+                <option value="批发零售" data-detail="服装百货">服装/百货</option>
+                <option value="批发零售" data-detail="生鲜果蔬">生鲜果蔬</option>
+                <option value="批发零售" data-detail="烟酒副食">烟酒/副食</option>
+                <option value="批发零售" data-detail="建材经销">建材经销</option>
+                <option value="批发零售" data-detail="汽配经销">汽配经销</option>
+              </optgroup>
+              <optgroup label="餐饮 / 食品">
+                <option value="餐饮" data-detail="正餐餐厅">正餐/餐厅</option>
+                <option value="餐饮" data-detail="快餐小吃">快餐/小吃</option>
+                <option value="餐饮" data-detail="火锅烧烤">火锅/烧烤</option>
+                <option value="餐饮" data-detail="奶茶咖啡">奶茶/咖啡</option>
+                <option value="餐饮" data-detail="烘焙甜品">烘焙/甜品</option>
+              </optgroup>
+              <optgroup label="科技 / 互联网">
+                <option value="科技" data-detail="软件开发">软件开发</option>
+                <option value="科技" data-detail="互联网服务">互联网/App</option>
+                <option value="科技" data-detail="人工智能大数据">人工智能/大数据</option>
+                <option value="科技" data-detail="电子信息硬件">电子信息/硬件</option>
+                <option value="科技" data-detail="生物医药科技">生物/医药科技</option>
+                <option value="科技" data-detail="新能源新材料">新能源/新材料</option>
+              </optgroup>
+              <optgroup label="建筑 / 工程">
+                <option value="建筑" data-detail="房建土建">房建/土建</option>
+                <option value="建筑" data-detail="市政路桥">市政/路桥</option>
+                <option value="建筑" data-detail="装修装饰">装修/装饰</option>
+                <option value="建筑" data-detail="水电安装">水电/安装工程</option>
+                <option value="建筑" data-detail="园林绿化">园林绿化</option>
+              </optgroup>
+              <optgroup label="物流 / 运输">
+                <option value="物流" data-detail="公路货运">公路货运</option>
+                <option value="物流" data-detail="快递配送">快递/同城配送</option>
+                <option value="物流" data-detail="仓储供应链">仓储/供应链</option>
+                <option value="物流" data-detail="冷链运输">冷链运输</option>
+              </optgroup>
+              <optgroup label="农业 / 养殖">
+                <option value="农业" data-detail="种植业">种植业</option>
+                <option value="农业" data-detail="养殖畜牧">养殖/畜牧</option>
+                <option value="农业" data-detail="水产渔业">水产/渔业</option>
+                <option value="农业" data-detail="农产品加工">农产品加工</option>
+                <option value="农业" data-detail="林业苗木">林业/苗木</option>
+              </optgroup>
+              <optgroup label="生活 / 商务服务">
+                <option value="服务业" data-detail="综合服务">综合服务</option>
+                <option value="服务业" data-detail="家政保洁">家政/保洁</option>
+                <option value="服务业" data-detail="汽车维修">汽车维修/洗车</option>
+                <option value="服务业" data-detail="咨询中介">咨询/中介</option>
+                <option value="服务业" data-detail="广告设计">广告/设计</option>
+                <option value="服务业" data-detail="人力劳务">人力/劳务</option>
+                <option value="服务业" data-detail="宠物服务">宠物服务</option>
+              </optgroup>
+              <optgroup label="医疗 / 健康">
+                <option value="医疗健康" data-detail="诊所门诊">诊所/门诊</option>
+                <option value="医疗健康" data-detail="药店医药">药店/医药</option>
+                <option value="医疗健康" data-detail="口腔牙科">口腔/牙科</option>
+                <option value="医疗健康" data-detail="医美养生">医美/养生</option>
+                <option value="医疗健康" data-detail="医疗器械">医疗器械</option>
+              </optgroup>
+              <optgroup label="教育 / 培训">
+                <option value="教育培训" data-detail="学科辅导">学科辅导</option>
+                <option value="教育培训" data-detail="早教托管">早教/托管</option>
+                <option value="教育培训" data-detail="职业技能培训">职业/技能培训</option>
+                <option value="教育培训" data-detail="艺术培训">艺术培训</option>
+                <option value="教育培训" data-detail="驾校">驾校</option>
+              </optgroup>
+              <optgroup label="文化 / 旅游 / 娱乐">
+                <option value="文化旅游" data-detail="酒店民宿">酒店/民宿</option>
+                <option value="文化旅游" data-detail="旅行社景区">旅行社/景区</option>
+                <option value="文化旅游" data-detail="影视传媒">影视/传媒</option>
+                <option value="文化旅游" data-detail="休闲娱乐">休闲娱乐(KTV/游乐)</option>
+                <option value="文化旅游" data-detail="文创演出">文创/演出</option>
+              </optgroup>
+              <optgroup label="电商 / 直播">
+                <option value="电商直播" data-detail="网店电商">网店/电商</option>
+                <option value="电商直播" data-detail="直播带货">直播带货</option>
+                <option value="电商直播" data-detail="跨境电商">跨境电商</option>
+                <option value="电商直播" data-detail="自媒体">自媒体/短视频</option>
+              </optgroup>
+              <optgroup label="美容 / 美发">
+                <option value="美容美发" data-detail="美发造型">美发/造型</option>
+                <option value="美容美发" data-detail="美容美体">美容/美体</option>
+                <option value="美容美发" data-detail="美甲美睫">美甲/美睫</option>
+                <option value="美容美发" data-detail="皮肤管理">皮肤管理</option>
+              </optgroup>
+              <optgroup label="其他">
+                <option value="__custom__" data-detail="">✏️ 找不到?自定义行业(AI 智能识别)</option>
+              </optgroup>
             </select>
+          </div>
+          <div class="field field-full hidden" id="custom-industry-box">
+            <label for="f-industry-custom">描述你的行业 / 主营业务</label>
+            <div class="ci-row">
+              <input id="f-industry-custom" type="text" placeholder="例如:做宠物殡葬服务、社区团购、无人机航拍…" />
+              <button type="button" id="ci-detect" class="ci-btn">AI 识别</button>
+            </div>
+            <div id="ci-result" class="ci-result hidden"></div>
           </div>
           <div class="field field-full" id="industry-template-box"></div>
           <div class="field">

@@ -1,7 +1,7 @@
 {
   "meta": {
     "name": "留学选校匹配数据集",
-    "version": "0.2.1",
+    "version": "0.3.3",
     "updated": "2026-07",
     "disclaimer": "本数据为参考性示例数据，基于公开招生信息与往年中国大陆申请者录取经验整理，均分门槛为「建议达到」的参考线，并非官方保证。实际录取受名额、竞争、文书、科研实习、面试等多因素影响，请以学校官网为准。",
     "tiers": [
@@ -37,9 +37,9 @@
       "金融",
       "金融工程"
     ],
-    "count": 479,
+    "count": 629,
     "provenanceNote": "每个项目带 provenance 溯源：dataSource=参考估算/官方核实，verified 表示是否经官方页核实，lastVerified 为核实年月，sourceUrl 为官方项目页。参考估算分数线来自公开信息与往年经验，仅供参考；官方核实项由 scripts/ingest.py 从官方来源导入。",
-    "verifiedCount": 170
+    "verifiedCount": 320
   },
   "programs": [
     {
@@ -87,11 +87,11 @@
       "degree": "硕士",
       "requirements": {
         "avgByTier": {
-          "985": 80,
-          "211": 83,
-          "双一流": 85,
-          "双非": 87,
-          "海本/中外合作": 76
+          "985": 82,
+          "211": 84,
+          "双一流": 86,
+          "双非": 88,
+          "海本/中外合作": 78
         },
         "ielts": {
           "overall": 7.0,
@@ -16886,6 +16886,5256 @@
         "lastVerified": "2026-07",
         "sourceUrl": "https://www.gla.ac.uk/postgraduate/taught/wealth-management-private-equity/",
         "searchUrl": "https://www.google.com/search?q=格拉斯哥大学+Wealth+Management+&+Private+Equity+MSc+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-gla-aero",
+      "country": "英国",
+      "university": "格拉斯哥大学",
+      "qsRank": 78,
+      "program": "Aerospace Engineering MSc",
+      "field": "机械工程",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 78,
+          "211": 80,
+          "双一流": 82,
+          "双非": 84,
+          "海本/中外合作": 74
+        },
+        "ielts": {
+          "overall": 6.5,
+          "sub": 6.0
+        },
+        "gre": null,
+        "background": "2.1 Hons (or non-UK equivalent) in any Engineering discipline, Physical Sciences, or Mat",
+        "notes": "官方入学要求：2.1 Hons (or non-UK equivalent) in any Engineering discipline, Physical Sciences, or Mat"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.gla.ac.uk/postgraduate/taught/aerospace-engineering/",
+        "searchUrl": "https://www.google.com/search?q=格拉斯哥大学+Aerospace+Engineering+MSc+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-gla-civil",
+      "country": "英国",
+      "university": "格拉斯哥大学",
+      "qsRank": 78,
+      "program": "Civil Engineering MSc",
+      "field": "土木/建筑",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 78,
+          "211": 80,
+          "双一流": 82,
+          "双非": 84,
+          "海本/中外合作": 74
+        },
+        "ielts": {
+          "overall": 6.5,
+          "sub": 6.0
+        },
+        "gre": null,
+        "background": "2.1 Hons (or non-UK equivalent) in Engineering discipline or Physical Sciences/Mathemati",
+        "notes": "官方入学要求：2.1 Hons (or non-UK equivalent) in Engineering discipline or Physical Sciences/Mathemati"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.gla.ac.uk/postgraduate/taught/civil-engineering/",
+        "searchUrl": "https://www.google.com/search?q=格拉斯哥大学+Civil+Engineering+MSc+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-gla-mech",
+      "country": "英国",
+      "university": "格拉斯哥大学",
+      "qsRank": 78,
+      "program": "Mechanical Engineering MSc",
+      "field": "机械工程",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 78,
+          "211": 80,
+          "双一流": 82,
+          "双非": 84,
+          "海本/中外合作": 74
+        },
+        "ielts": {
+          "overall": 6.5,
+          "sub": 6.0
+        },
+        "gre": null,
+        "background": "2.1 Hons (or non-UK equivalent) in any Engineering discipline, Computing Science or Phys",
+        "notes": "官方入学要求：2.1 Hons (or non-UK equivalent) in any Engineering discipline, Computing Science or Phys"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.gla.ac.uk/postgraduate/taught/mechanicalengineering/",
+        "searchUrl": "https://www.google.com/search?q=格拉斯哥大学+Mechanical+Engineering+MSc+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-gla-eee",
+      "country": "英国",
+      "university": "格拉斯哥大学",
+      "qsRank": 78,
+      "program": "Electronics & Electrical Engineering MSc",
+      "field": "电子/电气工程",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 78,
+          "211": 80,
+          "双一流": 82,
+          "双非": 84,
+          "海本/中外合作": 74
+        },
+        "ielts": {
+          "overall": 6.5,
+          "sub": 6.0
+        },
+        "gre": null,
+        "background": "2.1 Hons (or non-UK equivalent) in any Engineering discipline, Computing Science, Physic",
+        "notes": "官方入学要求：2.1 Hons (or non-UK equivalent) in any Engineering discipline, Computing Science, Physic"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.gla.ac.uk/postgraduate/taught/electronicselectricalengineering/",
+        "searchUrl": "https://www.google.com/search?q=格拉斯哥大学+Electronics+&+Electrical+Engineering+MSc+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-gla-cse",
+      "country": "英国",
+      "university": "格拉斯哥大学",
+      "qsRank": 78,
+      "program": "Computer Systems Engineering MSc",
+      "field": "电子/电气工程",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 78,
+          "211": 80,
+          "双一流": 82,
+          "双非": 84,
+          "海本/中外合作": 74
+        },
+        "ielts": {
+          "overall": 6.5,
+          "sub": 6.0
+        },
+        "gre": null,
+        "background": "2.1 Hons (or non-UK equivalent) in any Engineering discipline, Computing Science, Physic",
+        "notes": "官方入学要求：2.1 Hons (or non-UK equivalent) in any Engineering discipline, Computing Science, Physic"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.gla.ac.uk/postgraduate/taught/computersystemsengineering/",
+        "searchUrl": "https://www.google.com/search?q=格拉斯哥大学+Computer+Systems+Engineering+MSc+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-gla-afm",
+      "country": "英国",
+      "university": "格拉斯哥大学",
+      "qsRank": 78,
+      "program": "Advanced Functional Materials MSc",
+      "field": "材料工程",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 78,
+          "211": 80,
+          "双一流": 82,
+          "双非": 84,
+          "海本/中外合作": 74
+        },
+        "ielts": {
+          "overall": 6.5,
+          "sub": 6.0
+        },
+        "gre": null,
+        "background": "2.1 Hons (or non-UK equivalent) in Physical Sciences, Materials Science or Chemistry wit",
+        "notes": "官方入学要求：2.1 Hons (or non-UK equivalent) in Physical Sciences, Materials Science or Chemistry wit"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.gla.ac.uk/postgraduate/taught/advanced-functional-materials/",
+        "searchUrl": "https://www.google.com/search?q=格拉斯哥大学+Advanced+Functional+Materials+MSc+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-gla-bioinf",
+      "country": "英国",
+      "university": "格拉斯哥大学",
+      "qsRank": 78,
+      "program": "Bioinformatics MSc",
+      "field": "数据科学/AI",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 79,
+          "211": 81,
+          "双一流": 83,
+          "双非": 85,
+          "海本/中外合作": 75
+        },
+        "ielts": {
+          "overall": 6.5,
+          "sub": 6.0
+        },
+        "gre": null,
+        "background": "2.1 Hons (or non-UK equivalent) in Genetics, Molecular and Cellular Biology, Biochemistr",
+        "notes": "官方入学要求：2.1 Hons (or non-UK equivalent) in Genetics, Molecular and Cellular Biology, Biochemistr"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.gla.ac.uk/postgraduate/taught/bioinformatics/",
+        "searchUrl": "https://www.google.com/search?q=格拉斯哥大学+Bioinformatics+MSc+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-gla-biomedeng",
+      "country": "英国",
+      "university": "格拉斯哥大学",
+      "qsRank": 78,
+      "program": "Biomedical Engineering MSc",
+      "field": "机械工程",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 78,
+          "211": 80,
+          "双一流": 82,
+          "双非": 84,
+          "海本/中外合作": 74
+        },
+        "ielts": {
+          "overall": 6.5,
+          "sub": 6.0
+        },
+        "gre": null,
+        "background": "2.1 Hons (or non-UK equivalent) in any Engineering discipline, Computing Science or Phys",
+        "notes": "官方入学要求：2.1 Hons (or non-UK equivalent) in any Engineering discipline, Computing Science or Phys"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.gla.ac.uk/postgraduate/taught/biomedical-engineering/",
+        "searchUrl": "https://www.google.com/search?q=格拉斯哥大学+Biomedical+Engineering+MSc+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-gla-mcij",
+      "country": "英国",
+      "university": "格拉斯哥大学",
+      "qsRank": 78,
+      "program": "Media, Communications & International Journalism MSc",
+      "field": "传媒",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 78,
+          "211": 80,
+          "双一流": 82,
+          "双非": 84,
+          "海本/中外合作": 74
+        },
+        "ielts": {
+          "overall": 6.5,
+          "sub": 6.0
+        },
+        "gre": null,
+        "background": "2.1 Hons (or non-UK equivalent) in Sociology, Politics, Economics, History, Law, Journal",
+        "notes": "官方入学要求：2.1 Hons (or non-UK equivalent) in Sociology, Politics, Economics, History, Law, Journal"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.gla.ac.uk/postgraduate/taught/mediacommunicationsinternationaljournalism/",
+        "searchUrl": "https://www.google.com/search?q=格拉斯哥大学+Media,+Communications+&+International+Journalism+MSc+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-gla-globcomm",
+      "country": "英国",
+      "university": "格拉斯哥大学",
+      "qsRank": 78,
+      "program": "Global Communications MSc",
+      "field": "传媒",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 78,
+          "211": 80,
+          "双一流": 82,
+          "双非": 84,
+          "海本/中外合作": 74
+        },
+        "ielts": {
+          "overall": 6.5,
+          "sub": 6.0
+        },
+        "gre": null,
+        "background": "2.1 Hons (or non-UK equivalent) in any subject",
+        "notes": "官方入学要求：2.1 Hons (or non-UK equivalent) in any subject"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.gla.ac.uk/postgraduate/taught/global-communications/",
+        "searchUrl": "https://www.google.com/search?q=格拉斯哥大学+Global+Communications+MSc+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-gla-mediamgmt",
+      "country": "英国",
+      "university": "格拉斯哥大学",
+      "qsRank": 78,
+      "program": "Media Management MSc",
+      "field": "传媒",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 78,
+          "211": 80,
+          "双一流": 82,
+          "双非": 84,
+          "海本/中外合作": 74
+        },
+        "ielts": {
+          "overall": 6.5,
+          "sub": 6.0
+        },
+        "gre": null,
+        "background": "2.1 Hons (or non-UK equivalent) in any subject",
+        "notes": "官方入学要求：2.1 Hons (or non-UK equivalent) in any subject"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.gla.ac.uk/postgraduate/taught/mediamanagement/",
+        "searchUrl": "https://www.google.com/search?q=格拉斯哥大学+Media+Management+MSc+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-gla-polcomm",
+      "country": "英国",
+      "university": "格拉斯哥大学",
+      "qsRank": 78,
+      "program": "Political Communication MSc",
+      "field": "传媒",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 78,
+          "211": 80,
+          "双一流": 82,
+          "双非": 84,
+          "海本/中外合作": 74
+        },
+        "ielts": {
+          "overall": 6.5,
+          "sub": 6.0
+        },
+        "gre": null,
+        "background": "2.1 Hons (or non-UK equivalent) in History, International Relations, International Polit",
+        "notes": "官方入学要求：2.1 Hons (or non-UK equivalent) in History, International Relations, International Polit"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.gla.ac.uk/postgraduate/taught/politicalcommunication/",
+        "searchUrl": "https://www.google.com/search?q=格拉斯哥大学+Political+Communication+MSc+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-gla-scicomm",
+      "country": "英国",
+      "university": "格拉斯哥大学",
+      "qsRank": 78,
+      "program": "Science Communications MSc",
+      "field": "传媒",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 78,
+          "211": 80,
+          "双一流": 82,
+          "双非": 84,
+          "海本/中外合作": 74
+        },
+        "ielts": {
+          "overall": 6.5,
+          "sub": 6.0
+        },
+        "gre": null,
+        "background": "2.1 Hons (or non-UK equivalent) in any STEM subject, Journalism or Marketing",
+        "notes": "官方入学要求：2.1 Hons (or non-UK equivalent) in any STEM subject, Journalism or Marketing"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.gla.ac.uk/postgraduate/taught/science-communications/",
+        "searchUrl": "https://www.google.com/search?q=格拉斯哥大学+Science+Communications+MSc+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-gla-intlaw",
+      "country": "英国",
+      "university": "格拉斯哥大学",
+      "qsRank": 78,
+      "program": "International Law LLM",
+      "field": "法律(LLM)",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 80,
+          "211": 82,
+          "双一流": 84,
+          "双非": 86,
+          "海本/中外合作": 76
+        },
+        "ielts": {
+          "overall": 7.0,
+          "sub": 6.5
+        },
+        "gre": null,
+        "background": "2.1 Hons (or non-UK equivalent) in Law (LLB or LLM)",
+        "notes": "官方入学要求：2.1 Hons (or non-UK equivalent) in Law (LLB or LLM)"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.gla.ac.uk/postgraduate/taught/internationallaw/",
+        "searchUrl": "https://www.google.com/search?q=格拉斯哥大学+International+Law+LLM+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-gla-comlaw",
+      "country": "英国",
+      "university": "格拉斯哥大学",
+      "qsRank": 78,
+      "program": "International Commercial Law LLM",
+      "field": "法律(LLM)",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 80,
+          "211": 82,
+          "双一流": 84,
+          "双非": 86,
+          "海本/中外合作": 76
+        },
+        "ielts": {
+          "overall": 7.0,
+          "sub": 6.5
+        },
+        "gre": null,
+        "background": "2.1 Hons (or non-UK equivalent) in Law (LLB or LLM) or other subjects with at least 50%",
+        "notes": "官方入学要求：2.1 Hons (or non-UK equivalent) in Law (LLB or LLM) or other subjects with at least 50%"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.gla.ac.uk/postgraduate/taught/internationalcommerciallaw/",
+        "searchUrl": "https://www.google.com/search?q=格拉斯哥大学+International+Commercial+Law+LLM+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-gla-econlaw",
+      "country": "英国",
+      "university": "格拉斯哥大学",
+      "qsRank": 78,
+      "program": "International Economic Law LLM",
+      "field": "法律(LLM)",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 80,
+          "211": 82,
+          "双一流": 84,
+          "双非": 86,
+          "海本/中外合作": 76
+        },
+        "ielts": {
+          "overall": 7.0,
+          "sub": 6.5
+        },
+        "gre": null,
+        "background": "2.1 Hons (or non-UK equivalent) in Law (LLB or LLM)",
+        "notes": "官方入学要求：2.1 Hons (or non-UK equivalent) in Law (LLB or LLM)"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.gla.ac.uk/postgraduate/taught/internationaleconomiclaw/",
+        "searchUrl": "https://www.google.com/search?q=格拉斯哥大学+International+Economic+Law+LLM+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-gla-corplaw",
+      "country": "英国",
+      "university": "格拉斯哥大学",
+      "qsRank": 78,
+      "program": "Corporate & Financial Law LLM",
+      "field": "法律(LLM)",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 80,
+          "211": 82,
+          "双一流": 84,
+          "双非": 86,
+          "海本/中外合作": 76
+        },
+        "ielts": {
+          "overall": 7.0,
+          "sub": 6.5
+        },
+        "gre": null,
+        "background": "2.1 Hons (or non-UK equivalent) in Law (LLB or LLM) or other subject with at least 50% o",
+        "notes": "官方入学要求：2.1 Hons (or non-UK equivalent) in Law (LLB or LLM) or other subject with at least 50% o"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.gla.ac.uk/postgraduate/taught/corporate-financial-law/",
+        "searchUrl": "https://www.google.com/search?q=格拉斯哥大学+Corporate+&+Financial+Law+LLM+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-gla-techlaw",
+      "country": "英国",
+      "university": "格拉斯哥大学",
+      "qsRank": 78,
+      "program": "Technology Law & Regulation LLM",
+      "field": "法律(LLM)",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 80,
+          "211": 82,
+          "双一流": 84,
+          "双非": 86,
+          "海本/中外合作": 76
+        },
+        "ielts": {
+          "overall": 7.0,
+          "sub": 6.5
+        },
+        "gre": null,
+        "background": "2.1 Hons (or non-UK equivalent) in Law",
+        "notes": "官方入学要求：2.1 Hons (or non-UK equivalent) in Law"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.gla.ac.uk/postgraduate/taught/technology-law-regulation/",
+        "searchUrl": "https://www.google.com/search?q=格拉斯哥大学+Technology+Law+&+Regulation+LLM+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-gla-edustudy",
+      "country": "英国",
+      "university": "格拉斯哥大学",
+      "qsRank": 78,
+      "program": "Educational Studies MSc",
+      "field": "教育",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 78,
+          "211": 80,
+          "双一流": 82,
+          "双非": 84,
+          "海本/中外合作": 74
+        },
+        "ielts": {
+          "overall": 6.5,
+          "sub": 6.0
+        },
+        "gre": null,
+        "background": "2.1 Hons (or non-UK equivalent) in any subject",
+        "notes": "官方入学要求：2.1 Hons (or non-UK equivalent) in any subject"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.gla.ac.uk/postgraduate/taught/educationalstudiesmsc/",
+        "searchUrl": "https://www.google.com/search?q=格拉斯哥大学+Educational+Studies+MSc+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-gla-edupolicy",
+      "country": "英国",
+      "university": "格拉斯哥大学",
+      "qsRank": 78,
+      "program": "Education, Public Policy & Equity MSc",
+      "field": "教育",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 78,
+          "211": 80,
+          "双一流": 82,
+          "双非": 84,
+          "海本/中外合作": 74
+        },
+        "ielts": {
+          "overall": 6.5,
+          "sub": 6.0
+        },
+        "gre": null,
+        "background": "2.1 Hons (or non-UK equivalent) in Education, Social Sciences, Business, Law, Public Adm",
+        "notes": "官方入学要求：2.1 Hons (or non-UK equivalent) in Education, Social Sciences, Business, Law, Public Adm"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.gla.ac.uk/postgraduate/taught/educationpublicpolicyequity/",
+        "searchUrl": "https://www.google.com/search?q=格拉斯哥大学+Education,+Public+Policy+&+Equity+MSc+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-gla-heta",
+      "country": "英国",
+      "university": "格拉斯哥大学",
+      "qsRank": 78,
+      "program": "Health Economics & Health Technology Assessment MSc",
+      "field": "经济学",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 80,
+          "211": 82,
+          "双一流": 84,
+          "双非": 86,
+          "海本/中外合作": 76
+        },
+        "ielts": {
+          "overall": 6.5,
+          "sub": 6.0
+        },
+        "gre": null,
+        "background": "2.1 Hons (or non-UK equivalent) in Economics, Mathematics, Statistics, Medicine, Pharmac",
+        "notes": "官方入学要求：2.1 Hons (or non-UK equivalent) in Economics, Mathematics, Statistics, Medicine, Pharmac"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.gla.ac.uk/postgraduate/taught/health-economics-health-technology-assessment/",
+        "searchUrl": "https://www.google.com/search?q=格拉斯哥大学+Health+Economics+&+Health+Technology+Assessment+MSc+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-gla-ppm",
+      "country": "英国",
+      "university": "格拉斯哥大学",
+      "qsRank": 78,
+      "program": "Public Policy & Management MSc",
+      "field": "公共政策/管理",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 78,
+          "211": 80,
+          "双一流": 82,
+          "双非": 84,
+          "海本/中外合作": 74
+        },
+        "ielts": {
+          "overall": 6.5,
+          "sub": 6.0
+        },
+        "gre": null,
+        "background": "2.1 Hons (or non-UK equivalent) in Politics, Sociology, Geography, Economics, Business,",
+        "notes": "官方入学要求：2.1 Hons (or non-UK equivalent) in Politics, Sociology, Geography, Economics, Business,"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.gla.ac.uk/postgraduate/taught/publicpolicymanagement/",
+        "searchUrl": "https://www.google.com/search?q=格拉斯哥大学+Public+Policy+&+Management+MSc+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-shef-civil",
+      "country": "英国",
+      "university": "谢菲尔德大学",
+      "qsRank": 105,
+      "program": "Civil Engineering MSc",
+      "field": "土木/建筑",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 78,
+          "211": 80,
+          "双一流": 82,
+          "双非": 84,
+          "海本/中外合作": 74
+        },
+        "ielts": {
+          "overall": 6.5,
+          "sub": 6.0
+        },
+        "gre": null,
+        "background": "2:1 undergraduate honours degree in any engineering or science subject which meets",
+        "notes": "官方入学要求：2:1 undergraduate honours degree in any engineering or science subject which meets"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.sheffield.ac.uk/postgraduate/taught/courses/2026/civil-engineering-msc",
+        "searchUrl": "https://www.google.com/search?q=谢菲尔德大学+Civil+Engineering+MSc+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-shef-aero",
+      "country": "英国",
+      "university": "谢菲尔德大学",
+      "qsRank": 105,
+      "program": "Aerospace Engineering MSc",
+      "field": "机械工程",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 78,
+          "211": 80,
+          "双一流": 82,
+          "双非": 84,
+          "海本/中外合作": 74
+        },
+        "ielts": {
+          "overall": 6.5,
+          "sub": 6.0
+        },
+        "gre": null,
+        "background": "2:1 undergraduate honours degree in a relevant subject with relevant modules",
+        "notes": "官方入学要求：2:1 undergraduate honours degree in a relevant subject with relevant modules"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.sheffield.ac.uk/postgraduate/taught/courses/2026/aerospace-engineering-msc",
+        "searchUrl": "https://www.google.com/search?q=谢菲尔德大学+Aerospace+Engineering+MSc+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-shef-mat",
+      "country": "英国",
+      "university": "谢菲尔德大学",
+      "qsRank": 105,
+      "program": "Materials Science and Engineering MSc",
+      "field": "材料工程",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 78,
+          "211": 80,
+          "双一流": 82,
+          "双非": 84,
+          "海本/中外合作": 74
+        },
+        "ielts": {
+          "overall": 6.5,
+          "sub": 6.0
+        },
+        "gre": null,
+        "background": "2:1 undergraduate honours degree in a relevant subject with relevant modules",
+        "notes": "官方入学要求：2:1 undergraduate honours degree in a relevant subject with relevant modules"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.sheffield.ac.uk/postgraduate/taught/courses/2026/materials-science-and-engineering-msc",
+        "searchUrl": "https://www.google.com/search?q=谢菲尔德大学+Materials+Science+and+Engineering+MSc+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-shef-advmech",
+      "country": "英国",
+      "university": "谢菲尔德大学",
+      "qsRank": 105,
+      "program": "Advanced Mechanical Engineering MSc",
+      "field": "机械工程",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 78,
+          "211": 80,
+          "双一流": 82,
+          "双非": 84,
+          "海本/中外合作": 74
+        },
+        "ielts": {
+          "overall": 6.5,
+          "sub": 6.0
+        },
+        "gre": null,
+        "background": "2:1 undergraduate honours degree in a relevant subject with relevant modules",
+        "notes": "官方入学要求：2:1 undergraduate honours degree in a relevant subject with relevant modules"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.sheffield.ac.uk/postgraduate/taught/courses/2026/advanced-mechanical-engineering-msc",
+        "searchUrl": "https://www.google.com/search?q=谢菲尔德大学+Advanced+Mechanical+Engineering+MSc+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-shef-cyberai",
+      "country": "英国",
+      "university": "谢菲尔德大学",
+      "qsRank": 105,
+      "program": "Cybersecurity and Artificial Intelligence MSc",
+      "field": "计算机/CS",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 80,
+          "211": 82,
+          "双一流": 84,
+          "双非": 86,
+          "海本/中外合作": 76
+        },
+        "ielts": {
+          "overall": 6.5,
+          "sub": 6.0
+        },
+        "gre": null,
+        "background": "2:1 undergraduate honours degree in a relevant subject",
+        "notes": "官方入学要求：2:1 undergraduate honours degree in a relevant subject"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.sheffield.ac.uk/postgraduate/taught/courses/2026/cybersecurity-and-artificial-intelligence-msc",
+        "searchUrl": "https://www.google.com/search?q=谢菲尔德大学+Cybersecurity+and+Artificial+Intelligence+MSc+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-shef-ai",
+      "country": "英国",
+      "university": "谢菲尔德大学",
+      "qsRank": 105,
+      "program": "Artificial Intelligence MSc",
+      "field": "数据科学/AI",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 81,
+          "211": 83,
+          "双一流": 85,
+          "双非": 87,
+          "海本/中外合作": 77
+        },
+        "ielts": {
+          "overall": 6.5,
+          "sub": 6.0
+        },
+        "gre": null,
+        "background": "2:1 undergraduate honours degree in a relevant subject",
+        "notes": "官方入学要求：2:1 undergraduate honours degree in a relevant subject"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.sheffield.ac.uk/postgraduate/taught/courses/2026/artificial-intelligence-msc",
+        "searchUrl": "https://www.google.com/search?q=谢菲尔德大学+Artificial+Intelligence+MSc+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-shef-robotics",
+      "country": "英国",
+      "university": "谢菲尔德大学",
+      "qsRank": 105,
+      "program": "Robotics MSc",
+      "field": "计算机/CS",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 80,
+          "211": 82,
+          "双一流": 84,
+          "双非": 86,
+          "海本/中外合作": 76
+        },
+        "ielts": {
+          "overall": 6.5,
+          "sub": 6.0
+        },
+        "gre": null,
+        "background": "2:1 undergraduate honours degree in a relevant subject with relevant modules",
+        "notes": "官方入学要求：2:1 undergraduate honours degree in a relevant subject with relevant modules"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.sheffield.ac.uk/postgraduate/taught/courses/2026/robotics-msc",
+        "searchUrl": "https://www.google.com/search?q=谢菲尔德大学+Robotics+MSc+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-shef-mbf",
+      "country": "英国",
+      "university": "谢菲尔德大学",
+      "qsRank": 105,
+      "program": "Money, Banking and Finance MSc",
+      "field": "金融",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 81,
+          "211": 83,
+          "双一流": 85,
+          "双非": 87,
+          "海本/中外合作": 77
+        },
+        "ielts": {
+          "overall": 6.5,
+          "sub": 6.0
+        },
+        "gre": null,
+        "background": "2:1 undergraduate honours degree in economics or a degree which meets the module re",
+        "notes": "官方入学要求：2:1 undergraduate honours degree in economics or a degree which meets the module re"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.sheffield.ac.uk/postgraduate/taught/courses/2026/money-banking-and-finance-msc",
+        "searchUrl": "https://www.google.com/search?q=谢菲尔德大学+Money,+Banking+and+Finance+MSc+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-shef-mgmt",
+      "country": "英国",
+      "university": "谢菲尔德大学",
+      "qsRank": 105,
+      "program": "Management MSc",
+      "field": "管理学/商科",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 80,
+          "211": 82,
+          "双一流": 84,
+          "双非": 86,
+          "海本/中外合作": 76
+        },
+        "ielts": {
+          "overall": 6.5,
+          "sub": 6.0
+        },
+        "gre": null,
+        "background": "2:1 undergraduate honours degree in any subject",
+        "notes": "官方入学要求：2:1 undergraduate honours degree in any subject"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.sheffield.ac.uk/postgraduate/taught/courses/2026/management-msc",
+        "searchUrl": "https://www.google.com/search?q=谢菲尔德大学+Management+MSc+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-shef-im",
+      "country": "英国",
+      "university": "谢菲尔德大学",
+      "qsRank": 105,
+      "program": "Information Management MSc",
+      "field": "信息系统/IT",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 79,
+          "211": 81,
+          "双一流": 83,
+          "双非": 85,
+          "海本/中外合作": 75
+        },
+        "ielts": {
+          "overall": 6.5,
+          "sub": 6.0
+        },
+        "gre": null,
+        "background": "2:1 undergraduate honours degree in any subject",
+        "notes": "官方入学要求：2:1 undergraduate honours degree in any subject"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.sheffield.ac.uk/postgraduate/taught/courses/2026/information-management-msc",
+        "searchUrl": "https://www.google.com/search?q=谢菲尔德大学+Information+Management+MSc+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-shef-journ",
+      "country": "英国",
+      "university": "谢菲尔德大学",
+      "qsRank": 105,
+      "program": "Journalism MA",
+      "field": "传媒",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 80,
+          "211": 82,
+          "双一流": 84,
+          "双非": 86,
+          "海本/中外合作": 76
+        },
+        "ielts": {
+          "overall": 7.5,
+          "sub": 7.0
+        },
+        "gre": null,
+        "background": "2:1 undergraduate honours degree in any subject",
+        "notes": "官方入学要求：2:1 undergraduate honours degree in any subject"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.sheffield.ac.uk/postgraduate/taught/courses/2026/journalism-ma",
+        "searchUrl": "https://www.google.com/search?q=谢菲尔德大学+Journalism+MA+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-nott-accfin",
+      "country": "英国",
+      "university": "诺丁汉大学",
+      "qsRank": 97,
+      "program": "Accounting and Finance MSc",
+      "field": "会计",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 80,
+          "211": 82,
+          "双一流": 84,
+          "双非": 86,
+          "海本/中外合作": 76
+        },
+        "ielts": {
+          "overall": 6.5,
+          "sub": 6.0
+        },
+        "gre": null,
+        "background": "2:1 荣誉学位（详见官方课程页）",
+        "notes": "官方入学要求：2:1 荣誉学位（详见官方课程页）"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.nottingham.ac.uk/pgstudy/course/taught/accounting-and-finance-msc",
+        "searchUrl": "https://www.google.com/search?q=诺丁汉大学+Accounting+and+Finance+MSc+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-nott-civil",
+      "country": "英国",
+      "university": "诺丁汉大学",
+      "qsRank": 97,
+      "program": "Advanced Civil Engineering MSc",
+      "field": "土木/建筑",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 76,
+          "211": 78,
+          "双一流": 80,
+          "双非": 82,
+          "海本/中外合作": 72
+        },
+        "ielts": {
+          "overall": 6.0,
+          "sub": 5.5
+        },
+        "gre": null,
+        "background": "2:1 荣誉学位（详见官方课程页）",
+        "notes": "官方入学要求：2:1 荣誉学位（详见官方课程页）"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.nottingham.ac.uk/pgstudy/course/taught/advanced-civil-engineering-msc",
+        "searchUrl": "https://www.google.com/search?q=诺丁汉大学+Advanced+Civil+Engineering+MSc+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-nott-mat",
+      "country": "英国",
+      "university": "诺丁汉大学",
+      "qsRank": 97,
+      "program": "Advanced Materials MSc",
+      "field": "材料工程",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 76,
+          "211": 78,
+          "双一流": 80,
+          "双非": 82,
+          "海本/中外合作": 72
+        },
+        "ielts": {
+          "overall": 6.0,
+          "sub": 5.5
+        },
+        "gre": null,
+        "background": "2:1 荣誉学位（详见官方课程页）",
+        "notes": "官方入学要求：2:1 荣誉学位（详见官方课程页）"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.nottingham.ac.uk/pgstudy/course/taught/advanced-materials-msc",
+        "searchUrl": "https://www.google.com/search?q=诺丁汉大学+Advanced+Materials+MSc+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-nott-chem",
+      "country": "英国",
+      "university": "诺丁汉大学",
+      "qsRank": 97,
+      "program": "Advanced Chemical Engineering MSc",
+      "field": "材料工程",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 76,
+          "211": 78,
+          "双一流": 80,
+          "双非": 82,
+          "海本/中外合作": 72
+        },
+        "ielts": {
+          "overall": 6.0,
+          "sub": 5.5
+        },
+        "gre": null,
+        "background": "2:1 荣誉学位（详见官方课程页）",
+        "notes": "官方入学要求：2:1 荣誉学位（详见官方课程页）"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.nottingham.ac.uk/pgstudy/course/taught/advanced-chemical-engineering-msc",
+        "searchUrl": "https://www.google.com/search?q=诺丁汉大学+Advanced+Chemical+Engineering+MSc+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-nott-csai",
+      "country": "英国",
+      "university": "诺丁汉大学",
+      "qsRank": 97,
+      "program": "Computer Science (Artificial Intelligence) MSc",
+      "field": "数据科学/AI",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 80,
+          "211": 82,
+          "双一流": 84,
+          "双非": 86,
+          "海本/中外合作": 76
+        },
+        "ielts": {
+          "overall": 6.5,
+          "sub": 6.0
+        },
+        "gre": null,
+        "background": "2:1 in Computer Science or a related subject",
+        "notes": "官方入学要求：2:1 in Computer Science or a related subject"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.nottingham.ac.uk/pgstudy/course/taught/computer-science-artificial-intelligence",
+        "searchUrl": "https://www.google.com/search?q=诺丁汉大学+Computer+Science+(Artificial+Intelligence)+MSc+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-nott-transl",
+      "country": "英国",
+      "university": "诺丁汉大学",
+      "qsRank": 97,
+      "program": "Applied Translation Studies MA",
+      "field": "翻译/语言",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 79,
+          "211": 81,
+          "双一流": 83,
+          "双非": 85,
+          "海本/中外合作": 75
+        },
+        "ielts": {
+          "overall": 7.0,
+          "sub": 6.5
+        },
+        "gre": null,
+        "background": "2:1 荣誉学位（详见官方课程页）",
+        "notes": "官方入学要求：2:1 荣誉学位（详见官方课程页）"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.nottingham.ac.uk/pgstudy/course/taught/applied-translation-studies-ma",
+        "searchUrl": "https://www.google.com/search?q=诺丁汉大学+Applied+Translation+Studies+MA+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-nott-fcm",
+      "country": "英国",
+      "university": "诺丁汉大学",
+      "qsRank": 97,
+      "program": "Financial and Computational Mathematics MSc",
+      "field": "金融工程",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 80,
+          "211": 82,
+          "双一流": 84,
+          "双非": 86,
+          "海本/中外合作": 76
+        },
+        "ielts": {
+          "overall": 6.5,
+          "sub": 6.0
+        },
+        "gre": null,
+        "background": "2:1 荣誉学位（详见官方课程页）",
+        "notes": "官方入学要求：2:1 荣誉学位（详见官方课程页）"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.nottingham.ac.uk/pgstudy/course/taught/financial-and-computational-mathematics-msc",
+        "searchUrl": "https://www.google.com/search?q=诺丁汉大学+Financial+and+Computational+Mathematics+MSc+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-gla-mst",
+      "country": "英国",
+      "university": "格拉斯哥大学",
+      "qsRank": 78,
+      "program": "Management & Sustainable Tourism MSc",
+      "field": "管理学/商科",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 79,
+          "211": 81,
+          "双一流": 83,
+          "双非": 85,
+          "海本/中外合作": 75
+        },
+        "ielts": {
+          "overall": 6.5,
+          "sub": 6.0
+        },
+        "gre": null,
+        "background": "2.1 Hons (or non-UK equivalent) in any subject",
+        "notes": "官方入学要求：2.1 Hons (or non-UK equivalent) in any subject"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.gla.ac.uk/postgraduate/taught/managementsustainabletourism/",
+        "searchUrl": "https://www.google.com/search?q=格拉斯哥大学+Management+&+Sustainable+Tourism+MSc+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-gla-mwe",
+      "country": "英国",
+      "university": "格拉斯哥大学",
+      "qsRank": 78,
+      "program": "Management & Enterprise MSc",
+      "field": "管理学/商科",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 79,
+          "211": 81,
+          "双一流": 83,
+          "双非": 85,
+          "海本/中外合作": 75
+        },
+        "ielts": {
+          "overall": 6.5,
+          "sub": 6.0
+        },
+        "gre": null,
+        "background": "2.1 Hons (or non-UK equivalent) in any subject",
+        "notes": "官方入学要求：2.1 Hons (or non-UK equivalent) in any subject"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.gla.ac.uk/postgraduate/taught/managementwithenterprise/",
+        "searchUrl": "https://www.google.com/search?q=格拉斯哥大学+Management+&+Enterprise+MSc+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-gla-mhr",
+      "country": "英国",
+      "university": "格拉斯哥大学",
+      "qsRank": 78,
+      "program": "Management with Human Resources MSc",
+      "field": "管理学/商科",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 79,
+          "211": 81,
+          "双一流": 83,
+          "双非": 85,
+          "海本/中外合作": 75
+        },
+        "ielts": {
+          "overall": 6.5,
+          "sub": 6.0
+        },
+        "gre": null,
+        "background": "2.1 Hons (or non-UK equivalent) in any subject",
+        "notes": "官方入学要求：2.1 Hons (or non-UK equivalent) in any subject"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.gla.ac.uk/postgraduate/taught/managementwithhumanresources/",
+        "searchUrl": "https://www.google.com/search?q=格拉斯哥大学+Management+with+Human+Resources+MSc+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-gla-ihrm",
+      "country": "英国",
+      "university": "格拉斯哥大学",
+      "qsRank": 78,
+      "program": "International HRM & Development MSc",
+      "field": "管理学/商科",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 79,
+          "211": 81,
+          "双一流": 83,
+          "双非": 85,
+          "海本/中外合作": 75
+        },
+        "ielts": {
+          "overall": 6.5,
+          "sub": 6.0
+        },
+        "gre": null,
+        "background": "2.1 Hons (or non-UK equivalent) in Business, Management, Engineering or a related Social",
+        "notes": "官方入学要求：2.1 Hons (or non-UK equivalent) in Business, Management, Engineering or a related Social"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.gla.ac.uk/postgraduate/taught/internationalhumanresourcemanagementdevelopment/",
+        "searchUrl": "https://www.google.com/search?q=格拉斯哥大学+International+HRM+&+Development+MSc+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-gla-hsm",
+      "country": "英国",
+      "university": "格拉斯哥大学",
+      "qsRank": 78,
+      "program": "Health Service Management MSc",
+      "field": "公共政策/管理",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 78,
+          "211": 80,
+          "双一流": 82,
+          "双非": 84,
+          "海本/中外合作": 74
+        },
+        "ielts": {
+          "overall": 6.5,
+          "sub": 6.0
+        },
+        "gre": null,
+        "background": "2.1 Hons (or non-UK equivalent) in Medicine, Nursing, Dentistry, Pharmacy, or other Alli",
+        "notes": "官方入学要求：2.1 Hons (or non-UK equivalent) in Medicine, Nursing, Dentistry, Pharmacy, or other Alli"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.gla.ac.uk/postgraduate/taught/healthservicemanagement/",
+        "searchUrl": "https://www.google.com/search?q=格拉斯哥大学+Health+Service+Management+MSc+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-gla-cityplan",
+      "country": "英国",
+      "university": "格拉斯哥大学",
+      "qsRank": 78,
+      "program": "City Planning MSc",
+      "field": "土木/建筑",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 78,
+          "211": 80,
+          "双一流": 82,
+          "双非": 84,
+          "海本/中外合作": 74
+        },
+        "ielts": {
+          "overall": 6.5,
+          "sub": 6.5
+        },
+        "gre": null,
+        "background": "2.1 Hons (or non-UK equivalent) in a relevant Social Science or Humanities subject such",
+        "notes": "官方入学要求：2.1 Hons (or non-UK equivalent) in a relevant Social Science or Humanities subject such"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.gla.ac.uk/postgraduate/taught/city-planning/",
+        "searchUrl": "https://www.google.com/search?q=格拉斯哥大学+City+Planning+MSc+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-gla-realestate",
+      "country": "英国",
+      "university": "格拉斯哥大学",
+      "qsRank": 78,
+      "program": "Real Estate MSc",
+      "field": "土木/建筑",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 78,
+          "211": 80,
+          "双一流": 82,
+          "双非": 84,
+          "海本/中外合作": 74
+        },
+        "ielts": {
+          "overall": 6.5,
+          "sub": 6.0
+        },
+        "gre": null,
+        "background": "2.1 Hons (or non-UK equivalent) in Property-related subjects e",
+        "notes": "官方入学要求：2.1 Hons (or non-UK equivalent) in Property-related subjects e"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.gla.ac.uk/postgraduate/taught/realestate/",
+        "searchUrl": "https://www.google.com/search?q=格拉斯哥大学+Real+Estate+MSc+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-gla-stats",
+      "country": "英国",
+      "university": "格拉斯哥大学",
+      "qsRank": 78,
+      "program": "Statistics MSc",
+      "field": "数据科学/AI",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 80,
+          "211": 82,
+          "双一流": 84,
+          "双非": 86,
+          "海本/中外合作": 76
+        },
+        "ielts": {
+          "overall": 6.5,
+          "sub": 6.0
+        },
+        "gre": null,
+        "background": "2.1 Hons (or non-UK equivalent) in a degree with a substantial Mathematics component (at",
+        "notes": "官方入学要求：2.1 Hons (or non-UK equivalent) in a degree with a substantial Mathematics component (at"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.gla.ac.uk/postgraduate/taught/statistics/",
+        "searchUrl": "https://www.google.com/search?q=格拉斯哥大学+Statistics+MSc+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-gla-quantum",
+      "country": "英国",
+      "university": "格拉斯哥大学",
+      "qsRank": 78,
+      "program": "Quantum Technology MSc",
+      "field": "电子/电气工程",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 79,
+          "211": 81,
+          "双一流": 83,
+          "双非": 85,
+          "海本/中外合作": 75
+        },
+        "ielts": {
+          "overall": 6.5,
+          "sub": 6.0
+        },
+        "gre": null,
+        "background": "2.1 Hons (or non-UK equivalent) in Physical Sciences, Electronic and Electrical Engineer",
+        "notes": "官方入学要求：2.1 Hons (or non-UK equivalent) in Physical Sciences, Electronic and Electrical Engineer"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.gla.ac.uk/postgraduate/taught/quantumtechnology/",
+        "searchUrl": "https://www.google.com/search?q=格拉斯哥大学+Quantum+Technology+MSc+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-gla-erm",
+      "country": "英国",
+      "university": "格拉斯哥大学",
+      "qsRank": 78,
+      "program": "Environmental Risk Management MSc",
+      "field": "环境科学",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 78,
+          "211": 80,
+          "双一流": 82,
+          "双非": 84,
+          "海本/中外合作": 74
+        },
+        "ielts": {
+          "overall": 6.5,
+          "sub": 6.0
+        },
+        "gre": null,
+        "background": "2.1 Hons (or non-UK equivalent) in any Science, Social Science, Engineering or Humanitie",
+        "notes": "官方入学要求：2.1 Hons (or non-UK equivalent) in any Science, Social Science, Engineering or Humanitie"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.gla.ac.uk/postgraduate/taught/environmentalriskmanagement/",
+        "searchUrl": "https://www.google.com/search?q=格拉斯哥大学+Environmental+Risk+Management+MSc+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-gla-susenergy",
+      "country": "英国",
+      "university": "格拉斯哥大学",
+      "qsRank": 78,
+      "program": "Sustainable Energy MSc",
+      "field": "环境科学",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 78,
+          "211": 80,
+          "双一流": 82,
+          "双非": 84,
+          "海本/中外合作": 74
+        },
+        "ielts": {
+          "overall": 6.5,
+          "sub": 6.0
+        },
+        "gre": null,
+        "background": "2.1 Hons (or non-UK equivalent) in any Engineering discipline or Physical Sciences/Mathe",
+        "notes": "官方入学要求：2.1 Hons (or non-UK equivalent) in any Engineering discipline or Physical Sciences/Mathe"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.gla.ac.uk/postgraduate/taught/sustainableenergy/",
+        "searchUrl": "https://www.google.com/search?q=格拉斯哥大学+Sustainable+Energy+MSc+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-gla-museum",
+      "country": "英国",
+      "university": "格拉斯哥大学",
+      "qsRank": 78,
+      "program": "Museum Studies MSc",
+      "field": "设计/艺术",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 78,
+          "211": 80,
+          "双一流": 82,
+          "双非": 84,
+          "海本/中外合作": 74
+        },
+        "ielts": {
+          "overall": 6.5,
+          "sub": 6.0
+        },
+        "gre": null,
+        "background": "2.1 Hons (or non-UK equivalent) in any subject",
+        "notes": "官方入学要求：2.1 Hons (or non-UK equivalent) in any subject"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.gla.ac.uk/postgraduate/taught/museumstudies/",
+        "searchUrl": "https://www.google.com/search?q=格拉斯哥大学+Museum+Studies+MSc+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-gla-tesol",
+      "country": "英国",
+      "university": "格拉斯哥大学",
+      "qsRank": 78,
+      "program": "TESOL MSc",
+      "field": "翻译/语言",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 79,
+          "211": 81,
+          "双一流": 83,
+          "双非": 85,
+          "海本/中外合作": 75
+        },
+        "ielts": {
+          "overall": 6.5,
+          "sub": 6.5
+        },
+        "gre": null,
+        "background": "2.1 Hons (or non-UK equivalent) in English, Education, Applied Linguistics, Translation,",
+        "notes": "官方入学要求：2.1 Hons (or non-UK equivalent) in English, Education, Applied Linguistics, Translation,"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.gla.ac.uk/postgraduate/taught/tesolmsc/",
+        "searchUrl": "https://www.google.com/search?q=格拉斯哥大学+TESOL+MSc+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-gla-appl",
+      "country": "英国",
+      "university": "格拉斯哥大学",
+      "qsRank": 78,
+      "program": "Applied Linguistics MSc",
+      "field": "翻译/语言",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 79,
+          "211": 81,
+          "双一流": 83,
+          "双非": 85,
+          "海本/中外合作": 75
+        },
+        "ielts": {
+          "overall": 6.5,
+          "sub": 6.0
+        },
+        "gre": null,
+        "background": "2.1 Hons (or non-UK equivalent) in any subject",
+        "notes": "官方入学要求：2.1 Hons (or non-UK equivalent) in any subject"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.gla.ac.uk/postgraduate/taught/applied-linguistics/",
+        "searchUrl": "https://www.google.com/search?q=格拉斯哥大学+Applied+Linguistics+MSc+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-leic-advcs",
+      "country": "英国",
+      "university": "莱斯特大学",
+      "qsRank": 240,
+      "program": "Advanced Computer Science MSc",
+      "field": "计算机/CS",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 76,
+          "211": 78,
+          "双一流": 80,
+          "双非": 82,
+          "海本/中外合作": 72
+        },
+        "ielts": {
+          "overall": 6.0,
+          "sub": 6.0
+        },
+        "gre": null,
+        "background": "2:1 degree (or equivalent) in a relevant subject with a substantial eleme",
+        "notes": "官方入学要求：2:1 degree (or equivalent) in a relevant subject with a substantial eleme；雅思总分 6.0（官方课程页只公布总分，小分标准以语言中心为准）"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://le.ac.uk/courses/advanced-computer-science-msc/2025",
+        "searchUrl": "https://www.google.com/search?q=莱斯特大学+Advanced+Computer+Science+MSc+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-leic-ai",
+      "country": "英国",
+      "university": "莱斯特大学",
+      "qsRank": 240,
+      "program": "Artificial Intelligence MSc",
+      "field": "数据科学/AI",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 77,
+          "211": 79,
+          "双一流": 81,
+          "双非": 83,
+          "海本/中外合作": 73
+        },
+        "ielts": {
+          "overall": 6.0,
+          "sub": 6.0
+        },
+        "gre": null,
+        "background": "2:1 degree (or equivalent) in a relevant subject with a substantial eleme",
+        "notes": "官方入学要求：2:1 degree (or equivalent) in a relevant subject with a substantial eleme；雅思总分 6.0（官方课程页只公布总分，小分标准以语言中心为准）"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://le.ac.uk/courses/artificial-intelligence-msc/2025",
+        "searchUrl": "https://www.google.com/search?q=莱斯特大学+Artificial+Intelligence+MSc+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-leic-ds",
+      "country": "英国",
+      "university": "莱斯特大学",
+      "qsRank": 240,
+      "program": "Data Science MSc",
+      "field": "数据科学/AI",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 77,
+          "211": 79,
+          "双一流": 81,
+          "双非": 83,
+          "海本/中外合作": 73
+        },
+        "ielts": {
+          "overall": 6.0,
+          "sub": 6.0
+        },
+        "gre": null,
+        "background": "2:1 degree (or equivalent) in any subject",
+        "notes": "官方入学要求：2:1 degree (or equivalent) in any subject；雅思总分 6.0（官方课程页只公布总分，小分标准以语言中心为准）"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://le.ac.uk/courses/data-science-msc/2025",
+        "searchUrl": "https://www.google.com/search?q=莱斯特大学+Data+Science+MSc+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-leic-cloud",
+      "country": "英国",
+      "university": "莱斯特大学",
+      "qsRank": 240,
+      "program": "Cloud Computing MSc",
+      "field": "计算机/CS",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 76,
+          "211": 78,
+          "双一流": 80,
+          "双非": 82,
+          "海本/中外合作": 72
+        },
+        "ielts": {
+          "overall": 6.0,
+          "sub": 6.0
+        },
+        "gre": null,
+        "background": "2:1 degree (or equivalent) in a relevant subject with a substantial eleme",
+        "notes": "官方入学要求：2:1 degree (or equivalent) in a relevant subject with a substantial eleme；雅思总分 6.0（官方课程页只公布总分，小分标准以语言中心为准）"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://le.ac.uk/courses/cloud-computing-msc/2025",
+        "searchUrl": "https://www.google.com/search?q=莱斯特大学+Cloud+Computing+MSc+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-leic-fin",
+      "country": "英国",
+      "university": "莱斯特大学",
+      "qsRank": 240,
+      "program": "Finance MSc",
+      "field": "金融",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 78,
+          "211": 80,
+          "双一流": 82,
+          "双非": 84,
+          "海本/中外合作": 74
+        },
+        "ielts": {
+          "overall": 6.5,
+          "sub": 6.5
+        },
+        "gre": null,
+        "background": "second class honours degree or equivalent from a recognised university",
+        "notes": "官方入学要求：second class honours degree or equivalent from a recognised university；雅思总分 6.5（官方课程页只公布总分，小分标准以语言中心为准）"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://le.ac.uk/courses/finance-msc/2025",
+        "searchUrl": "https://www.google.com/search?q=莱斯特大学+Finance+MSc+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-leic-ba",
+      "country": "英国",
+      "university": "莱斯特大学",
+      "qsRank": 240,
+      "program": "Business Analytics MSc",
+      "field": "商业分析",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 78,
+          "211": 80,
+          "双一流": 82,
+          "双非": 84,
+          "海本/中外合作": 74
+        },
+        "ielts": {
+          "overall": 6.5,
+          "sub": 6.5
+        },
+        "gre": null,
+        "background": "官方要求 2:1/2:2 荣誉学位（详见官方课程页）",
+        "notes": "官方入学要求：官方要求 2:1/2:2 荣誉学位（详见官方课程页）；雅思总分 6.5（官方课程页只公布总分，小分标准以语言中心为准）"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://le.ac.uk/courses/business-analytics-msc/2025",
+        "searchUrl": "https://www.google.com/search?q=莱斯特大学+Business+Analytics+MSc+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-leic-mgmt",
+      "country": "英国",
+      "university": "莱斯特大学",
+      "qsRank": 240,
+      "program": "Management MSc",
+      "field": "管理学/商科",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 78,
+          "211": 80,
+          "双一流": 82,
+          "双非": 84,
+          "海本/中外合作": 74
+        },
+        "ielts": {
+          "overall": 6.5,
+          "sub": 6.5
+        },
+        "gre": null,
+        "background": "官方要求 2:1/2:2 荣誉学位（详见官方课程页）",
+        "notes": "官方入学要求：官方要求 2:1/2:2 荣誉学位（详见官方课程页）；雅思总分 6.5（官方课程页只公布总分，小分标准以语言中心为准）"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://le.ac.uk/courses/management-msc/2025",
+        "searchUrl": "https://www.google.com/search?q=莱斯特大学+Management+MSc+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-leic-mkt",
+      "country": "英国",
+      "university": "莱斯特大学",
+      "qsRank": 240,
+      "program": "Marketing MSc",
+      "field": "市场营销",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 78,
+          "211": 80,
+          "双一流": 82,
+          "双非": 84,
+          "海本/中外合作": 74
+        },
+        "ielts": {
+          "overall": 6.5,
+          "sub": 6.5
+        },
+        "gre": null,
+        "background": "官方要求 2:1/2:2 荣誉学位（详见官方课程页）",
+        "notes": "官方入学要求：官方要求 2:1/2:2 荣誉学位（详见官方课程页）；雅思总分 6.5（官方课程页只公布总分，小分标准以语言中心为准）"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://le.ac.uk/courses/marketing-msc/2025",
+        "searchUrl": "https://www.google.com/search?q=莱斯特大学+Marketing+MSc+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-leic-law",
+      "country": "英国",
+      "university": "莱斯特大学",
+      "qsRank": 240,
+      "program": "Law LLM",
+      "field": "法律(LLM)",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 78,
+          "211": 80,
+          "双一流": 82,
+          "双非": 84,
+          "海本/中外合作": 74
+        },
+        "ielts": {
+          "overall": 6.5,
+          "sub": 6.5
+        },
+        "gre": null,
+        "background": "second class degree or an equivalent degree in an appropriate discipline",
+        "notes": "官方入学要求：second class degree or an equivalent degree in an appropriate discipline；雅思总分 6.5（官方课程页只公布总分，小分标准以语言中心为准）"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://le.ac.uk/courses/law-llm/2025",
+        "searchUrl": "https://www.google.com/search?q=莱斯特大学+Law+LLM+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-leic-comlaw",
+      "country": "英国",
+      "university": "莱斯特大学",
+      "qsRank": 240,
+      "program": "International Commercial Law LLM",
+      "field": "法律(LLM)",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 78,
+          "211": 80,
+          "双一流": 82,
+          "双非": 84,
+          "海本/中外合作": 74
+        },
+        "ielts": {
+          "overall": 6.5,
+          "sub": 6.5
+        },
+        "gre": null,
+        "background": "second class degree or an equivalent degree in an appropriate discipline",
+        "notes": "官方入学要求：second class degree or an equivalent degree in an appropriate discipline；雅思总分 6.5（官方课程页只公布总分，小分标准以语言中心为准）"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://le.ac.uk/courses/international-commercial-law-llm/2025",
+        "searchUrl": "https://www.google.com/search?q=莱斯特大学+International+Commercial+Law+LLM+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-leic-aero",
+      "country": "英国",
+      "university": "莱斯特大学",
+      "qsRank": 240,
+      "program": "Aerospace Engineering MSc",
+      "field": "机械工程",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 76,
+          "211": 78,
+          "双一流": 80,
+          "双非": 82,
+          "海本/中外合作": 72
+        },
+        "ielts": {
+          "overall": 6.0,
+          "sub": 6.0
+        },
+        "gre": null,
+        "background": "second class honours degree (or equivalent) in a relevant subject such as Aerospac",
+        "notes": "官方入学要求：second class honours degree (or equivalent) in a relevant subject such as Aerospac；雅思总分 6.0（官方课程页只公布总分，小分标准以语言中心为准）"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://le.ac.uk/courses/aerospace-engineering-msc/2025",
+        "searchUrl": "https://www.google.com/search?q=莱斯特大学+Aerospace+Engineering+MSc+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-leic-media",
+      "country": "英国",
+      "university": "莱斯特大学",
+      "qsRank": 240,
+      "program": "Communication and Media MA",
+      "field": "传媒",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 78,
+          "211": 80,
+          "双一流": 82,
+          "双非": 84,
+          "海本/中外合作": 74
+        },
+        "ielts": {
+          "overall": 6.5,
+          "sub": 6.5
+        },
+        "gre": null,
+        "background": "2:2 degree or equivalent professional qualification",
+        "notes": "官方入学要求：2:2 degree or equivalent professional qualification；雅思总分 6.5（官方课程页只公布总分，小分标准以语言中心为准）"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://le.ac.uk/courses/communication-and-media-ma/2025",
+        "searchUrl": "https://www.google.com/search?q=莱斯特大学+Communication+and+Media+MA+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-leic-adveee",
+      "country": "英国",
+      "university": "莱斯特大学",
+      "qsRank": 240,
+      "program": "Advanced Electrical and Electronic Engineering MSc",
+      "field": "电子/电气工程",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 76,
+          "211": 78,
+          "双一流": 80,
+          "双非": 82,
+          "海本/中外合作": 72
+        },
+        "ielts": {
+          "overall": 6.0,
+          "sub": 6.0
+        },
+        "gre": null,
+        "background": "second class honours degree (or equivalent) in a relevant subject such as Electric",
+        "notes": "官方入学要求：second class honours degree (or equivalent) in a relevant subject such as Electric；雅思总分 6.0（官方课程页只公布总分，小分标准以语言中心为准）"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://le.ac.uk/courses/advanced-electrical-and-electronic-engineering-msc/2025",
+        "searchUrl": "https://www.google.com/search?q=莱斯特大学+Advanced+Electrical+and+Electronic+Engineering+MSc+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-leic-advme",
+      "country": "英国",
+      "university": "莱斯特大学",
+      "qsRank": 240,
+      "program": "Advanced Mechanical Engineering MSc",
+      "field": "机械工程",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 76,
+          "211": 78,
+          "双一流": 80,
+          "双非": 82,
+          "海本/中外合作": 72
+        },
+        "ielts": {
+          "overall": 6.0,
+          "sub": 6.0
+        },
+        "gre": null,
+        "background": "second class honours degree (or equivalent) in a relevant subject such as Mechanic",
+        "notes": "官方入学要求：second class honours degree (or equivalent) in a relevant subject such as Mechanic；雅思总分 6.0（官方课程页只公布总分，小分标准以语言中心为准）"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://le.ac.uk/courses/advanced-mechanical-engineering-msc/2025",
+        "searchUrl": "https://www.google.com/search?q=莱斯特大学+Advanced+Mechanical+Engineering+MSc+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-leic-advse",
+      "country": "英国",
+      "university": "莱斯特大学",
+      "qsRank": 240,
+      "program": "Advanced Software Engineering MSc",
+      "field": "计算机/CS",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 76,
+          "211": 78,
+          "双一流": 80,
+          "双非": 82,
+          "海本/中外合作": 72
+        },
+        "ielts": {
+          "overall": 6.0,
+          "sub": 6.0
+        },
+        "gre": null,
+        "background": "2:1 degree (or equivalent) in a relevant subject with a substantial eleme",
+        "notes": "官方入学要求：2:1 degree (or equivalent) in a relevant subject with a substantial eleme；雅思总分 6.0（官方课程页只公布总分，小分标准以语言中心为准）"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://le.ac.uk/courses/advanced-software-engineering-msc/2025",
+        "searchUrl": "https://www.google.com/search?q=莱斯特大学+Advanced+Software+Engineering+MSc+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-leic-aibi",
+      "country": "英国",
+      "university": "莱斯特大学",
+      "qsRank": 240,
+      "program": "AI for Business Intelligence MSc",
+      "field": "数据科学/AI",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 77,
+          "211": 79,
+          "双一流": 81,
+          "双非": 83,
+          "海本/中外合作": 73
+        },
+        "ielts": {
+          "overall": 6.0,
+          "sub": 6.0
+        },
+        "gre": null,
+        "background": "2:2 degree in Maths or related subject (eg",
+        "notes": "官方入学要求：2:2 degree in Maths or related subject (eg；雅思总分 6.0（官方课程页只公布总分，小分标准以语言中心为准）"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://le.ac.uk/courses/ai-for-business-intelligence-msc/2025",
+        "searchUrl": "https://www.google.com/search?q=莱斯特大学+AI+for+Business+Intelligence+MSc+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-leic-embed",
+      "country": "英国",
+      "university": "莱斯特大学",
+      "qsRank": 240,
+      "program": "Embedded Systems and Control Engineering MSc",
+      "field": "电子/控制工程",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 76,
+          "211": 78,
+          "双一流": 80,
+          "双非": 82,
+          "海本/中外合作": 72
+        },
+        "ielts": {
+          "overall": 6.0,
+          "sub": 6.0
+        },
+        "gre": null,
+        "background": "second class honours degree (or equivalent) in a relevant subject",
+        "notes": "官方入学要求：second class honours degree (or equivalent) in a relevant subject；雅思总分 6.0（官方课程页只公布总分，小分标准以语言中心为准）"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://le.ac.uk/courses/embedded-systems-and-control-engineering-msc/2025",
+        "searchUrl": "https://www.google.com/search?q=莱斯特大学+Embedded+Systems+and+Control+Engineering+MSc+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-leic-ib",
+      "country": "英国",
+      "university": "莱斯特大学",
+      "qsRank": 240,
+      "program": "International Business MSc",
+      "field": "管理学/商科",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 78,
+          "211": 80,
+          "双一流": 82,
+          "双非": 84,
+          "海本/中外合作": 74
+        },
+        "ielts": {
+          "overall": 6.5,
+          "sub": 6.5
+        },
+        "gre": null,
+        "background": "官方要求 2:1/2:2 荣誉学位（详见官方课程页）",
+        "notes": "官方入学要求：官方要求 2:1/2:2 荣誉学位（详见官方课程页）；雅思总分 6.5（官方课程页只公布总分，小分标准以语言中心为准）"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://le.ac.uk/courses/international-business-msc/2025",
+        "searchUrl": "https://www.google.com/search?q=莱斯特大学+International+Business+MSc+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-leic-mfa",
+      "country": "英国",
+      "university": "莱斯特大学",
+      "qsRank": 240,
+      "program": "Management, Finance and Accounting MSc",
+      "field": "会计与金融",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 78,
+          "211": 80,
+          "双一流": 82,
+          "双非": 84,
+          "海本/中外合作": 74
+        },
+        "ielts": {
+          "overall": 6.5,
+          "sub": 6.5
+        },
+        "gre": null,
+        "background": "官方要求 2:1/2:2 荣誉学位（详见官方课程页）",
+        "notes": "官方入学要求：官方要求 2:1/2:2 荣誉学位（详见官方课程页）；雅思总分 6.5（官方课程页只公布总分，小分标准以语言中心为准）"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://le.ac.uk/courses/management-finance-and-accounting-msc/2025",
+        "searchUrl": "https://www.google.com/search?q=莱斯特大学+Management,+Finance+and+Accounting+MSc+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-leic-mem",
+      "country": "英国",
+      "university": "莱斯特大学",
+      "qsRank": 240,
+      "program": "Master of Engineering Management MEM",
+      "field": "工程管理",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 77,
+          "211": 79,
+          "双一流": 81,
+          "双非": 83,
+          "海本/中外合作": 73
+        },
+        "ielts": {
+          "overall": 6.5,
+          "sub": 6.5
+        },
+        "gre": null,
+        "background": "官方要求 2:1/2:2 荣誉学位（详见官方课程页）",
+        "notes": "官方入学要求：官方要求 2:1/2:2 荣誉学位（详见官方课程页）；雅思总分 6.5（官方课程页只公布总分，小分标准以语言中心为准）"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://le.ac.uk/courses/master-of-engineering-management-mem/2025",
+        "searchUrl": "https://www.google.com/search?q=莱斯特大学+Master+of+Engineering+Management+MEM+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-leic-gmc",
+      "country": "英国",
+      "university": "莱斯特大学",
+      "qsRank": 240,
+      "program": "Global Media and Communication MA",
+      "field": "传媒",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 78,
+          "211": 80,
+          "双一流": 82,
+          "双非": 84,
+          "海本/中外合作": 74
+        },
+        "ielts": {
+          "overall": 6.5,
+          "sub": 6.5
+        },
+        "gre": null,
+        "background": "2:2 degree or equivalent professional qualification",
+        "notes": "官方入学要求：2:2 degree or equivalent professional qualification；雅思总分 6.5（官方课程页只公布总分，小分标准以语言中心为准）"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://le.ac.uk/courses/global-media-and-communication-ma/2025",
+        "searchUrl": "https://www.google.com/search?q=莱斯特大学+Global+Media+and+Communication+MA+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-leic-madv",
+      "country": "英国",
+      "university": "莱斯特大学",
+      "qsRank": 240,
+      "program": "Media and Advertising MA",
+      "field": "传媒",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 78,
+          "211": 80,
+          "双一流": 82,
+          "双非": 84,
+          "海本/中外合作": 74
+        },
+        "ielts": {
+          "overall": 6.5,
+          "sub": 6.5
+        },
+        "gre": null,
+        "background": "2:2 degree or equivalent professional qualification",
+        "notes": "官方入学要求：2:2 degree or equivalent professional qualification；雅思总分 6.5（官方课程页只公布总分，小分标准以语言中心为准）"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://le.ac.uk/courses/media-and-advertising-ma/2025",
+        "searchUrl": "https://www.google.com/search?q=莱斯特大学+Media+and+Advertising+MA+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-leic-dms",
+      "country": "英国",
+      "university": "莱斯特大学",
+      "qsRank": 240,
+      "program": "Digital Media and Society MA",
+      "field": "传媒",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 78,
+          "211": 80,
+          "双一流": 82,
+          "双非": 84,
+          "海本/中外合作": 74
+        },
+        "ielts": {
+          "overall": 6.5,
+          "sub": 6.5
+        },
+        "gre": null,
+        "background": "2:2 degree or equivalent professional qualification",
+        "notes": "官方入学要求：2:2 degree or equivalent professional qualification；雅思总分 6.5（官方课程页只公布总分，小分标准以语言中心为准）"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://le.ac.uk/courses/digital-media-and-society-ma/2025",
+        "searchUrl": "https://www.google.com/search?q=莱斯特大学+Digital+Media+and+Society+MA+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-leic-scid",
+      "country": "英国",
+      "university": "莱斯特大学",
+      "qsRank": 240,
+      "program": "Security, Conflict and International Development MA",
+      "field": "国际关系/政治",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 78,
+          "211": 80,
+          "双一流": 82,
+          "双非": 84,
+          "海本/中外合作": 74
+        },
+        "ielts": {
+          "overall": 6.5,
+          "sub": 6.5
+        },
+        "gre": null,
+        "background": "2:1 degree or equivalent in Politics, History, International Relations or",
+        "notes": "官方入学要求：2:1 degree or equivalent in Politics, History, International Relations or；雅思总分 6.5（官方课程页只公布总分，小分标准以语言中心为准）"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://le.ac.uk/courses/security-conflict-and-international-development-ma/2025",
+        "searchUrl": "https://www.google.com/search?q=莱斯特大学+Security,+Conflict+and+International+Development+MA+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-gla-biotech",
+      "country": "英国",
+      "university": "格拉斯哥大学",
+      "qsRank": 76,
+      "program": "Biotechnology MSc",
+      "field": "生物技术",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 78,
+          "211": 80,
+          "双一流": 82,
+          "双非": 84,
+          "海本/中外合作": 74
+        },
+        "ielts": {
+          "overall": 6.5,
+          "sub": 6.0
+        },
+        "gre": null,
+        "background": "2.1 Hons (or non-UK equivalent) in degree related Molecular Biosciences, Biome",
+        "notes": "官方入学要求：2.1 Hons (or non-UK equivalent) in degree related Molecular Biosciences, Biome；雅思总分 6.5、单项不低于 6.0（取自官方课程页）"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.gla.ac.uk/postgraduate/taught/biotechnology/",
+        "searchUrl": "https://www.google.com/search?q=格拉斯哥大学+Biotechnology+MSc+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-gla-biotechmgmt",
+      "country": "英国",
+      "university": "格拉斯哥大学",
+      "qsRank": 76,
+      "program": "Biotechnology & Management MSc",
+      "field": "生物技术",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 78,
+          "211": 80,
+          "双一流": 82,
+          "双非": 84,
+          "海本/中外合作": 74
+        },
+        "ielts": {
+          "overall": 6.5,
+          "sub": 6.0
+        },
+        "gre": null,
+        "background": "2.1 Hons (or non-UK equivalent) in degree related Molecular Biosciences, Biome",
+        "notes": "官方入学要求：2.1 Hons (or non-UK equivalent) in degree related Molecular Biosciences, Biome；雅思总分 6.5、单项不低于 6.0（取自官方课程页）"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.gla.ac.uk/postgraduate/taught/biotechnology-management/",
+        "searchUrl": "https://www.google.com/search?q=格拉斯哥大学+Biotechnology+&+Management+MSc+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-gla-afm2",
+      "country": "英国",
+      "university": "格拉斯哥大学",
+      "qsRank": 76,
+      "program": "Advanced Functional Materials MSc",
+      "field": "材料科学",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 78,
+          "211": 80,
+          "双一流": 82,
+          "双非": 84,
+          "海本/中外合作": 74
+        },
+        "ielts": {
+          "overall": 6.5,
+          "sub": 6.0
+        },
+        "gre": null,
+        "background": "2.1 Hons (or non-UK equivalent) in Physical Sciences, Materials Science or Che",
+        "notes": "官方入学要求：2.1 Hons (or non-UK equivalent) in Physical Sciences, Materials Science or Che；雅思总分 6.5、单项不低于 6.0（取自官方课程页）"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.gla.ac.uk/postgraduate/taught/advanced-functional-materials/",
+        "searchUrl": "https://www.google.com/search?q=格拉斯哥大学+Advanced+Functional+Materials+MSc+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-gla-chem",
+      "country": "英国",
+      "university": "格拉斯哥大学",
+      "qsRank": 76,
+      "program": "Chemistry MSc",
+      "field": "化学",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 78,
+          "211": 80,
+          "双一流": 82,
+          "双非": 84,
+          "海本/中外合作": 74
+        },
+        "ielts": {
+          "overall": 6.5,
+          "sub": 6.0
+        },
+        "gre": null,
+        "background": "2.1 Hons (or non-UK equivalent) in Chemistry or other subject with a substanti",
+        "notes": "官方入学要求：2.1 Hons (or non-UK equivalent) in Chemistry or other subject with a substanti；雅思总分 6.5、单项不低于 6.0（取自官方课程页）"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.gla.ac.uk/postgraduate/taught/chemistry/",
+        "searchUrl": "https://www.google.com/search?q=格拉斯哥大学+Chemistry+MSc+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-gla-astro",
+      "country": "英国",
+      "university": "格拉斯哥大学",
+      "qsRank": 76,
+      "program": "Astrophysics MSc",
+      "field": "天体物理",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 78,
+          "211": 80,
+          "双一流": 82,
+          "双非": 84,
+          "海本/中外合作": 74
+        },
+        "ielts": {
+          "overall": 6.5,
+          "sub": 6.0
+        },
+        "gre": null,
+        "background": "2.1 Hons (or non-UK equivalent) in Astronomy, Astrophysics, Physics or Maths w",
+        "notes": "官方入学要求：2.1 Hons (or non-UK equivalent) in Astronomy, Astrophysics, Physics or Maths w；雅思总分 6.5、单项不低于 6.0（取自官方课程页）"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.gla.ac.uk/postgraduate/taught/astrophysics/",
+        "searchUrl": "https://www.google.com/search?q=格拉斯哥大学+Astrophysics+MSc+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-gla-behsci",
+      "country": "英国",
+      "university": "格拉斯哥大学",
+      "qsRank": 76,
+      "program": "Behavioural Science MSc",
+      "field": "心理/行为科学",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 79,
+          "211": 81,
+          "双一流": 83,
+          "双非": 85,
+          "海本/中外合作": 75
+        },
+        "ielts": {
+          "overall": 7.0,
+          "sub": 6.5
+        },
+        "gre": null,
+        "background": "2.1 Hons (or non-UK equivalent) in Psychology, Neuroscience, Sociology, Engine",
+        "notes": "官方入学要求：2.1 Hons (or non-UK equivalent) in Psychology, Neuroscience, Sociology, Engine；雅思总分 7.0、单项不低于 6.5（取自官方课程页）"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.gla.ac.uk/postgraduate/taught/behavioural-science/",
+        "searchUrl": "https://www.google.com/search?q=格拉斯哥大学+Behavioural+Science+MSc+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-gla-appneuro",
+      "country": "英国",
+      "university": "格拉斯哥大学",
+      "qsRank": 76,
+      "program": "Applied Neuropsychology MSc",
+      "field": "心理/神经科学",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 78,
+          "211": 80,
+          "双一流": 82,
+          "双非": 84,
+          "海本/中外合作": 74
+        },
+        "ielts": {
+          "overall": 6.5,
+          "sub": 6.0
+        },
+        "gre": null,
+        "background": "官方要求 2:1 荣誉学位（详见官方课程页）",
+        "notes": "官方入学要求：官方要求 2:1 荣誉学位（详见官方课程页）；雅思总分 6.5、单项不低于 6.0（取自官方课程页）"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.gla.ac.uk/postgraduate/taught/applied-neuropsychology/",
+        "searchUrl": "https://www.google.com/search?q=格拉斯哥大学+Applied+Neuropsychology+MSc+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-gla-crim",
+      "country": "英国",
+      "university": "格拉斯哥大学",
+      "qsRank": 76,
+      "program": "Criminology & Criminal Justice MSc",
+      "field": "犯罪学/法律",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 78,
+          "211": 80,
+          "双一流": 82,
+          "双非": 84,
+          "海本/中外合作": 74
+        },
+        "ielts": {
+          "overall": 6.5,
+          "sub": 6.0
+        },
+        "gre": null,
+        "background": "2.1 Hons (or non-UK equivalent) in any subject",
+        "notes": "官方入学要求：2.1 Hons (or non-UK equivalent) in any subject；雅思总分 6.5、单项不低于 6.0（取自官方课程页）"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.gla.ac.uk/postgraduate/taught/criminology-criminal-justice/",
+        "searchUrl": "https://www.google.com/search?q=格拉斯哥大学+Criminology+&+Criminal+Justice+MSc+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-gla-cw",
+      "country": "英国",
+      "university": "格拉斯哥大学",
+      "qsRank": 76,
+      "program": "Creative Writing MLitt",
+      "field": "创意写作",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 78,
+          "211": 80,
+          "双一流": 82,
+          "双非": 84,
+          "海本/中外合作": 74
+        },
+        "ielts": {
+          "overall": 6.5,
+          "sub": 6.0
+        },
+        "gre": null,
+        "background": "官方要求 2:1 荣誉学位（详见官方课程页）",
+        "notes": "官方入学要求：官方要求 2:1 荣誉学位（详见官方课程页）；雅思总分 6.5、单项不低于 6.0（取自官方课程页）"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.gla.ac.uk/postgraduate/taught/creativewritingmlitt/",
+        "searchUrl": "https://www.google.com/search?q=格拉斯哥大学+Creative+Writing+MLitt+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-gla-dsee",
+      "country": "英国",
+      "university": "格拉斯哥大学",
+      "qsRank": 76,
+      "program": "Data Science for Ecology & Epidemiology MSc",
+      "field": "数据科学/AI",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 79,
+          "211": 81,
+          "双一流": 83,
+          "双非": 85,
+          "海本/中外合作": 75
+        },
+        "ielts": {
+          "overall": 6.5,
+          "sub": 6.0
+        },
+        "gre": null,
+        "background": "2.1 Hons (or non-UK equivalent) in Ecology, Evolution, Mathematics, Statistics",
+        "notes": "官方入学要求：2.1 Hons (or non-UK equivalent) in Ecology, Evolution, Mathematics, Statistics；雅思总分 6.5、单项不低于 6.0（取自官方课程页）"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.gla.ac.uk/postgraduate/taught/data-science-for-ecology-epidemiology/",
+        "searchUrl": "https://www.google.com/search?q=格拉斯哥大学+Data+Science+for+Ecology+&+Epidemiology+MSc+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-gla-ecolem",
+      "country": "英国",
+      "university": "格拉斯哥大学",
+      "qsRank": 76,
+      "program": "Ecology & Environmental Monitoring MSc",
+      "field": "生态/环境",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 78,
+          "211": 80,
+          "双一流": 82,
+          "双非": 84,
+          "海本/中外合作": 74
+        },
+        "ielts": {
+          "overall": 6.5,
+          "sub": 6.0
+        },
+        "gre": null,
+        "background": "2.1 Hons (or non-UK equivalent) in Biology, Ecology, Zoology, Environmental Sc",
+        "notes": "官方入学要求：2.1 Hons (or non-UK equivalent) in Biology, Ecology, Zoology, Environmental Sc；雅思总分 6.5、单项不低于 6.0（取自官方课程页）"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.gla.ac.uk/postgraduate/taught/ecology-environmental-monitoring/",
+        "searchUrl": "https://www.google.com/search?q=格拉斯哥大学+Ecology+&+Environmental+Monitoring+MSc+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-gla-fineng2",
+      "country": "英国",
+      "university": "格拉斯哥大学",
+      "qsRank": 76,
+      "program": "Financial Engineering MSc",
+      "field": "金融工程",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 79,
+          "211": 81,
+          "双一流": 83,
+          "双非": 85,
+          "海本/中外合作": 75
+        },
+        "ielts": {
+          "overall": 6.5,
+          "sub": 6.0
+        },
+        "gre": null,
+        "background": "2.1 Hons (or non-UK equivalent) in Economics, Finance, Engineering, Physics, o",
+        "notes": "官方入学要求：2.1 Hons (or non-UK equivalent) in Economics, Finance, Engineering, Physics, o；雅思总分 6.5、单项不低于 6.0（取自官方课程页）"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.gla.ac.uk/postgraduate/taught/financial-engineering/",
+        "searchUrl": "https://www.google.com/search?q=格拉斯哥大学+Financial+Engineering+MSc+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-gla-filmtv",
+      "country": "英国",
+      "university": "格拉斯哥大学",
+      "qsRank": 76,
+      "program": "Film & Television Studies MSc",
+      "field": "传媒/影视",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 78,
+          "211": 80,
+          "双一流": 82,
+          "双非": 84,
+          "海本/中外合作": 74
+        },
+        "ielts": {
+          "overall": 6.5,
+          "sub": 6.0
+        },
+        "gre": null,
+        "background": "2.1 Hons (or non-UK equivalent) in any subject",
+        "notes": "官方入学要求：2.1 Hons (or non-UK equivalent) in any subject；雅思总分 6.5、单项不低于 6.0（取自官方课程页）"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.gla.ac.uk/postgraduate/taught/filmtelevisionstudies/",
+        "searchUrl": "https://www.google.com/search?q=格拉斯哥大学+Film+&+Television+Studies+MSc+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-gla-digsoc",
+      "country": "英国",
+      "university": "格拉斯哥大学",
+      "qsRank": 76,
+      "program": "Digital Society MSc",
+      "field": "数字社会/传媒",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 78,
+          "211": 80,
+          "双一流": 82,
+          "双非": 84,
+          "海本/中外合作": 74
+        },
+        "ielts": {
+          "overall": 6.5,
+          "sub": 6.0
+        },
+        "gre": null,
+        "background": "2.1 Hons (or non-UK equivalent) in Sociology, Political Economy, Cultural Stud",
+        "notes": "官方入学要求：2.1 Hons (or non-UK equivalent) in Sociology, Political Economy, Cultural Stud；雅思总分 6.5、单项不低于 6.0（取自官方课程页）"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.gla.ac.uk/postgraduate/taught/digitalsociety/",
+        "searchUrl": "https://www.google.com/search?q=格拉斯哥大学+Digital+Society+MSc+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-gla-econ",
+      "country": "英国",
+      "university": "格拉斯哥大学",
+      "qsRank": 76,
+      "program": "Economics MSc",
+      "field": "经济学",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 79,
+          "211": 81,
+          "双一流": 83,
+          "双非": 85,
+          "海本/中外合作": 75
+        },
+        "ielts": {
+          "overall": 6.5,
+          "sub": 6.0
+        },
+        "gre": null,
+        "background": "2.1 Hons (or non-UK equivalent) in Economics, Finance, Engineering, Physics, M",
+        "notes": "官方入学要求：2.1 Hons (or non-UK equivalent) in Economics, Finance, Engineering, Physics, M；雅思总分 6.5、单项不低于 6.0（取自官方课程页）"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.gla.ac.uk/postgraduate/taught/economics-msc/",
+        "searchUrl": "https://www.google.com/search?q=格拉斯哥大学+Economics+MSc+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-gla-finecon2",
+      "country": "英国",
+      "university": "格拉斯哥大学",
+      "qsRank": 76,
+      "program": "Financial Economics MSc",
+      "field": "金融经济",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 79,
+          "211": 81,
+          "双一流": 83,
+          "双非": 85,
+          "海本/中外合作": 75
+        },
+        "ielts": {
+          "overall": 6.5,
+          "sub": 6.0
+        },
+        "gre": null,
+        "background": "2.1 Hons (or non-UK equivalent) in Economics, Finance, Engineering, Physics, o",
+        "notes": "官方入学要求：2.1 Hons (or non-UK equivalent) in Economics, Finance, Engineering, Physics, o；雅思总分 6.5、单项不低于 6.0（取自官方课程页）"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.gla.ac.uk/postgraduate/taught/financialeconomics/",
+        "searchUrl": "https://www.google.com/search?q=格拉斯哥大学+Financial+Economics+MSc+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-gla-hrip",
+      "country": "英国",
+      "university": "格拉斯哥大学",
+      "qsRank": 76,
+      "program": "Human Rights & International Politics MSc",
+      "field": "国际关系/政治",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 78,
+          "211": 80,
+          "双一流": 82,
+          "双非": 84,
+          "海本/中外合作": 74
+        },
+        "ielts": {
+          "overall": 6.5,
+          "sub": 6.0
+        },
+        "gre": null,
+        "background": "2.1 Hons (or non-UK equivalent) in Social Sciences, Politics Law, Geography, H",
+        "notes": "官方入学要求：2.1 Hons (or non-UK equivalent) in Social Sciences, Politics Law, Geography, H；雅思总分 6.5、单项不低于 6.0（取自官方课程页）"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.gla.ac.uk/postgraduate/taught/humanrightsinternationalpolitics/",
+        "searchUrl": "https://www.google.com/search?q=格拉斯哥大学+Human+Rights+&+International+Politics+MSc+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-gla-arthist",
+      "country": "英国",
+      "university": "格拉斯哥大学",
+      "qsRank": 76,
+      "program": "History of Art MSc",
+      "field": "艺术史",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 78,
+          "211": 80,
+          "双一流": 82,
+          "双非": 84,
+          "海本/中外合作": 74
+        },
+        "ielts": {
+          "overall": 6.5,
+          "sub": 6.0
+        },
+        "gre": null,
+        "background": "2.1 Hons (or non-UK equivalent) in any subject",
+        "notes": "官方入学要求：2.1 Hons (or non-UK equivalent) in any subject；雅思总分 6.5、单项不低于 6.0（取自官方课程页）"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.gla.ac.uk/postgraduate/taught/art-history/",
+        "searchUrl": "https://www.google.com/search?q=格拉斯哥大学+History+of+Art+MSc+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-gla-archaeo",
+      "country": "英国",
+      "university": "格拉斯哥大学",
+      "qsRank": 76,
+      "program": "Archaeology MSc",
+      "field": "考古学",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 78,
+          "211": 80,
+          "双一流": 82,
+          "双非": 84,
+          "海本/中外合作": 74
+        },
+        "ielts": {
+          "overall": 6.5,
+          "sub": 6.0
+        },
+        "gre": null,
+        "background": "2.1 Hons (or non-UK equivalent) in any subject",
+        "notes": "官方入学要求：2.1 Hons (or non-UK equivalent) in any subject；雅思总分 6.5、单项不低于 6.0（取自官方课程页）"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.gla.ac.uk/postgraduate/taught/archaeology/",
+        "searchUrl": "https://www.google.com/search?q=格拉斯哥大学+Archaeology+MSc+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-gla-classics",
+      "country": "英国",
+      "university": "格拉斯哥大学",
+      "qsRank": 76,
+      "program": "Classics MSc",
+      "field": "古典学",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 78,
+          "211": 80,
+          "双一流": 82,
+          "双非": 84,
+          "海本/中外合作": 74
+        },
+        "ielts": {
+          "overall": 6.5,
+          "sub": 6.0
+        },
+        "gre": null,
+        "background": "2.1 Hons (or non-UK equivalent) in any subject",
+        "notes": "官方入学要求：2.1 Hons (or non-UK equivalent) in any subject；雅思总分 6.5、单项不低于 6.0（取自官方课程页）"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.gla.ac.uk/postgraduate/taught/classics/",
+        "searchUrl": "https://www.google.com/search?q=格拉斯哥大学+Classics+MSc+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-gla-engling",
+      "country": "英国",
+      "university": "格拉斯哥大学",
+      "qsRank": 76,
+      "program": "English Language & Linguistics MSc",
+      "field": "语言学",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 78,
+          "211": 80,
+          "双一流": 82,
+          "双非": 84,
+          "海本/中外合作": 74
+        },
+        "ielts": {
+          "overall": 6.5,
+          "sub": 6.0
+        },
+        "gre": null,
+        "background": "2.1 Hons (or non-UK equivalent) in any subject",
+        "notes": "官方入学要求：2.1 Hons (or non-UK equivalent) in any subject；雅思总分 6.5、单项不低于 6.0（取自官方课程页）"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.gla.ac.uk/postgraduate/taught/englishlanguagelinguistics/",
+        "searchUrl": "https://www.google.com/search?q=格拉斯哥大学+English+Language+&+Linguistics+MSc+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-gla-filmmaking",
+      "country": "英国",
+      "university": "格拉斯哥大学",
+      "qsRank": 76,
+      "program": "Filmmaking & Media Arts MSc",
+      "field": "影视制作",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 78,
+          "211": 80,
+          "双一流": 82,
+          "双非": 84,
+          "海本/中外合作": 74
+        },
+        "ielts": {
+          "overall": 6.5,
+          "sub": 6.0
+        },
+        "gre": null,
+        "background": "2.1 Hons (or non-UK equivalent) in Film and TV Studies, New Media Arts, Visual",
+        "notes": "官方入学要求：2.1 Hons (or non-UK equivalent) in Film and TV Studies, New Media Arts, Visual；雅思总分 6.5、单项不低于 6.0（取自官方课程页）"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.gla.ac.uk/postgraduate/taught/filmmaking/",
+        "searchUrl": "https://www.google.com/search?q=格拉斯哥大学+Filmmaking+&+Media+Arts+MSc+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-gla-childlit",
+      "country": "英国",
+      "university": "格拉斯哥大学",
+      "qsRank": 76,
+      "program": "Children's Literature, Media & Culture MSc",
+      "field": "文学/传媒",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 78,
+          "211": 80,
+          "双一流": 82,
+          "双非": 84,
+          "海本/中外合作": 74
+        },
+        "ielts": {
+          "overall": 6.5,
+          "sub": 6.0
+        },
+        "gre": null,
+        "background": "2.1 Hons (or non-UK equivalent) in",
+        "notes": "官方入学要求：2.1 Hons (or non-UK equivalent) in；雅思总分 6.5、单项不低于 6.0（取自官方课程页）"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.gla.ac.uk/postgraduate/taught/childrens-literature-media-culture/",
+        "searchUrl": "https://www.google.com/search?q=格拉斯哥大学+Children's+Literature,+Media+&+Culture+MSc+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-gla-dighum",
+      "country": "英国",
+      "university": "格拉斯哥大学",
+      "qsRank": 76,
+      "program": "Digital Humanities MSc",
+      "field": "数字人文",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 78,
+          "211": 80,
+          "双一流": 82,
+          "双非": 84,
+          "海本/中外合作": 74
+        },
+        "ielts": {
+          "overall": 6.5,
+          "sub": 6.0
+        },
+        "gre": null,
+        "background": "2.1 Hons (or non-UK equivalent) in any subject",
+        "notes": "官方入学要求：2.1 Hons (or non-UK equivalent) in any subject；雅思总分 6.5、单项不低于 6.0（取自官方课程页）"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.gla.ac.uk/postgraduate/taught/digital-humanities/",
+        "searchUrl": "https://www.google.com/search?q=格拉斯哥大学+Digital+Humanities+MSc+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-gla-cicp",
+      "country": "英国",
+      "university": "格拉斯哥大学",
+      "qsRank": 76,
+      "program": "Creative Industries & Cultural Policy MSc",
+      "field": "文化产业/政策",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 78,
+          "211": 80,
+          "双一流": 82,
+          "双非": 84,
+          "海本/中外合作": 74
+        },
+        "ielts": {
+          "overall": 6.5,
+          "sub": 6.0
+        },
+        "gre": null,
+        "background": "2.1 Hons (or non-UK equivalent) in any subject",
+        "notes": "官方入学要求：2.1 Hons (or non-UK equivalent) in any subject；雅思总分 6.5、单项不低于 6.0（取自官方课程页）"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.gla.ac.uk/postgraduate/taught/creative-industries-cultural-policy/",
+        "searchUrl": "https://www.google.com/search?q=格拉斯哥大学+Creative+Industries+&+Cultural+Policy+MSc+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-gla-ecc",
+      "country": "英国",
+      "university": "格拉斯哥大学",
+      "qsRank": 76,
+      "program": "Environment, Culture & Communication MSc",
+      "field": "环境传播",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 78,
+          "211": 80,
+          "双一流": 82,
+          "双非": 84,
+          "海本/中外合作": 74
+        },
+        "ielts": {
+          "overall": 6.5,
+          "sub": 6.0
+        },
+        "gre": null,
+        "background": "2.1 Hons (or non-UK equivalent) in any subject",
+        "notes": "官方入学要求：2.1 Hons (or non-UK equivalent) in any subject；雅思总分 6.5、单项不低于 6.0（取自官方课程页）"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.gla.ac.uk/postgraduate/taught/environmentculturecommunication/",
+        "searchUrl": "https://www.google.com/search?q=格拉斯哥大学+Environment,+Culture+&+Communication+MSc+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-gla-complit",
+      "country": "英国",
+      "university": "格拉斯哥大学",
+      "qsRank": 76,
+      "program": "Comparative Literature MSc",
+      "field": "比较文学",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 78,
+          "211": 80,
+          "双一流": 82,
+          "双非": 84,
+          "海本/中外合作": 74
+        },
+        "ielts": {
+          "overall": 6.5,
+          "sub": 6.0
+        },
+        "gre": null,
+        "background": "2.1 Hons (or non-UK equivalent) in Modern Language or Literature (including En",
+        "notes": "官方入学要求：2.1 Hons (or non-UK equivalent) in Modern Language or Literature (including En；雅思总分 6.5、单项不低于 6.0（取自官方课程页）"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.gla.ac.uk/postgraduate/taught/comparativeliterature/",
+        "searchUrl": "https://www.google.com/search?q=格拉斯哥大学+Comparative+Literature+MSc+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-gla-socio",
+      "country": "英国",
+      "university": "格拉斯哥大学",
+      "qsRank": 76,
+      "program": "Sociology MSc",
+      "field": "社会学",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 78,
+          "211": 80,
+          "双一流": 82,
+          "双非": 84,
+          "海本/中外合作": 74
+        },
+        "ielts": {
+          "overall": 6.5,
+          "sub": 6.0
+        },
+        "gre": null,
+        "background": "2.1 Hons (or non-UK equivalent) in all social sciences such as Sociology or An",
+        "notes": "官方入学要求：2.1 Hons (or non-UK equivalent) in all social sciences such as Sociology or An；雅思总分 6.5、单项不低于 6.0（取自官方课程页）"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.gla.ac.uk/postgraduate/taught/sociology/",
+        "searchUrl": "https://www.google.com/search?q=格拉斯哥大学+Sociology+MSc+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-gla-humgeo",
+      "country": "英国",
+      "university": "格拉斯哥大学",
+      "qsRank": 76,
+      "program": "Human Geography MSc",
+      "field": "人文地理",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 78,
+          "211": 80,
+          "双一流": 82,
+          "双非": 84,
+          "海本/中外合作": 74
+        },
+        "ielts": {
+          "overall": 6.5,
+          "sub": 6.0
+        },
+        "gre": null,
+        "background": "2.1 Hons (or non-UK equivalent) in Economics, Politics, Sociology, Geography,",
+        "notes": "官方入学要求：2.1 Hons (or non-UK equivalent) in Economics, Politics, Sociology, Geography,；雅思总分 6.5、单项不低于 6.0（取自官方课程页）"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.gla.ac.uk/postgraduate/taught/human-geography/",
+        "searchUrl": "https://www.google.com/search?q=格拉斯哥大学+Human+Geography+MSc+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-abdn-accfin",
+      "country": "英国",
+      "university": "阿伯丁大学",
+      "qsRank": 236,
+      "program": "Accounting & Finance MSc",
+      "field": "会计与金融",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 78,
+          "211": 80,
+          "双一流": 82,
+          "双非": 84,
+          "海本/中外合作": 74
+        },
+        "ielts": {
+          "overall": 6.5,
+          "sub": 5.5
+        },
+        "gre": null,
+        "background": "官方要求 2:1 荣誉学位或同等学历（详见官方课程页）",
+        "notes": "官方入学要求：官方要求 2:1 荣誉学位或同等学历（详见官方课程页）；雅思总分 6.5（听5.5/读6.0/说5.5/写6.0），取自官方课程页"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.abdn.ac.uk/study/postgraduate-taught/degree-programmes/1/accounting-and-finance/",
+        "searchUrl": "https://www.google.com/search?q=阿伯丁大学+Accounting+&+Finance+MSc+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-abdn-ai",
+      "country": "英国",
+      "university": "阿伯丁大学",
+      "qsRank": 236,
+      "program": "Artificial Intelligence MSc",
+      "field": "数据科学/AI",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 77,
+          "211": 79,
+          "双一流": 81,
+          "双非": 83,
+          "海本/中外合作": 73
+        },
+        "ielts": {
+          "overall": 6.5,
+          "sub": 5.5
+        },
+        "gre": null,
+        "background": "2:2 (lower second class) UK Honours level (or an Honours degree from a no",
+        "notes": "官方入学要求：2:2 (lower second class) UK Honours level (or an Honours degree from a no；雅思总分 6.5（听5.5/读5.5/说5.5/写6.0），取自官方课程页"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.abdn.ac.uk/study/postgraduate-taught/degree-programmes/1034/artificial-intelligence/",
+        "searchUrl": "https://www.google.com/search?q=阿伯丁大学+Artificial+Intelligence+MSc+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-abdn-biobiz",
+      "country": "英国",
+      "university": "阿伯丁大学",
+      "qsRank": 236,
+      "program": "Biotechnology, Bioinformatics & Bio-Business MSc",
+      "field": "生物技术",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 78,
+          "211": 80,
+          "双一流": 82,
+          "双非": 84,
+          "海本/中外合作": 74
+        },
+        "ielts": {
+          "overall": 6.5,
+          "sub": 5.5
+        },
+        "gre": null,
+        "background": "2:2) or equivalent in a biological or biomedical science subject or a rel",
+        "notes": "官方入学要求：2:2) or equivalent in a biological or biomedical science subject or a rel；雅思总分 6.5（听5.5/读6.0/说5.5/写6.0），取自官方课程页"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.abdn.ac.uk/study/postgraduate-taught/degree-programmes/1036/msc-biotechnology-bioinformatics-and-bio-business/",
+        "searchUrl": "https://www.google.com/search?q=阿伯丁大学+Biotechnology,+Bioinformatics+&+Bio-Business+MSc+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-abdn-mecheng",
+      "country": "英国",
+      "university": "阿伯丁大学",
+      "qsRank": 236,
+      "program": "Advanced Mechanical Engineering MSc",
+      "field": "机械工程",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 76,
+          "211": 78,
+          "双一流": 80,
+          "双非": 82,
+          "海本/中外合作": 72
+        },
+        "ielts": {
+          "overall": 6.5,
+          "sub": 5.5
+        },
+        "gre": null,
+        "background": "2:2 UK Honours degree, or an Honours degree from a non-UK institution whi",
+        "notes": "官方入学要求：2:2 UK Honours degree, or an Honours degree from a non-UK institution whi；雅思总分 6.5（听5.5/读5.5/说5.5/写6.0），取自官方课程页"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.abdn.ac.uk/study/postgraduate-taught/degree-programmes/1037/advanced-mechanical-engineering/",
+        "searchUrl": "https://www.google.com/search?q=阿伯丁大学+Advanced+Mechanical+Engineering+MSc+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-abdn-cheeng",
+      "country": "英国",
+      "university": "阿伯丁大学",
+      "qsRank": 236,
+      "program": "Advanced Chemical Engineering MSc",
+      "field": "化学工程",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 76,
+          "211": 78,
+          "双一流": 80,
+          "双非": 82,
+          "海本/中外合作": 72
+        },
+        "ielts": {
+          "overall": 6.5,
+          "sub": 5.5
+        },
+        "gre": null,
+        "background": "2:2 UK Honours degree, or an Honours degree from a non-UK institution whi",
+        "notes": "官方入学要求：2:2 UK Honours degree, or an Honours degree from a non-UK institution whi；雅思总分 6.5（听5.5/读5.5/说5.5/写6.0），取自官方课程页"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.abdn.ac.uk/study/postgraduate-taught/degree-programmes/1120/advanced-chemical-engineering/",
+        "searchUrl": "https://www.google.com/search?q=阿伯丁大学+Advanced+Chemical+Engineering+MSc+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-abdn-structeng",
+      "country": "英国",
+      "university": "阿伯丁大学",
+      "qsRank": 236,
+      "program": "Advanced Structural Engineering MSc",
+      "field": "结构/土木工程",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 76,
+          "211": 78,
+          "双一流": 80,
+          "双非": 82,
+          "海本/中外合作": 72
+        },
+        "ielts": {
+          "overall": 6.5,
+          "sub": 5.5
+        },
+        "gre": null,
+        "background": "2:2 Honours degree in Civil, Mechanical, Automotive, Aerospace, Energy or",
+        "notes": "官方入学要求：2:2 Honours degree in Civil, Mechanical, Automotive, Aerospace, Energy or；雅思总分 6.5（听5.5/读5.5/说5.5/写6.0），取自官方课程页"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.abdn.ac.uk/study/postgraduate-taught/degree-programmes/1126/advanced-structural-engineering/",
+        "searchUrl": "https://www.google.com/search?q=阿伯丁大学+Advanced+Structural+Engineering+MSc+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-abdn-buslaw",
+      "country": "英国",
+      "university": "阿伯丁大学",
+      "qsRank": 236,
+      "program": "Business Law & Sustainable Development LLM",
+      "field": "商法/法律",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 78,
+          "211": 80,
+          "双一流": 82,
+          "双非": 84,
+          "海本/中外合作": 74
+        },
+        "ielts": {
+          "overall": 6.5,
+          "sub": 5.5
+        },
+        "gre": null,
+        "background": "2:2 honours degree (or equivalent) in Law will be required to be accepted",
+        "notes": "官方入学要求：2:2 honours degree (or equivalent) in Law will be required to be accepted；雅思总分 6.5（听5.5/读6.0/说5.5/写6.0），取自官方课程页"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.abdn.ac.uk/study/postgraduate-taught/degree-programmes/1128/business-law-and-sustainable-development-with-dissertation/",
+        "searchUrl": "https://www.google.com/search?q=阿伯丁大学+Business+Law+&+Sustainable+Development+LLM+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-abdn-archaeo",
+      "country": "英国",
+      "university": "阿伯丁大学",
+      "qsRank": 236,
+      "program": "Archaeology MSc",
+      "field": "考古学",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 78,
+          "211": 80,
+          "双一流": 82,
+          "双非": 84,
+          "海本/中外合作": 74
+        },
+        "ielts": {
+          "overall": 6.5,
+          "sub": 5.5
+        },
+        "gre": null,
+        "background": "2:2 UK Honours degree, or an Honours degree from a non-UK institution whi",
+        "notes": "官方入学要求：2:2 UK Honours degree, or an Honours degree from a non-UK institution whi；雅思总分 6.5（听5.5/读5.5/说5.5/写6.0），取自官方课程页"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.abdn.ac.uk/study/postgraduate-taught/degree-programmes/17/archaeology/",
+        "searchUrl": "https://www.google.com/search?q=阿伯丁大学+Archaeology+MSc+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-abdn-anthro",
+      "country": "英国",
+      "university": "阿伯丁大学",
+      "qsRank": 236,
+      "program": "Anthropological Research MSc",
+      "field": "人类学",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 78,
+          "211": 80,
+          "双一流": 82,
+          "双非": 84,
+          "海本/中外合作": 74
+        },
+        "ielts": {
+          "overall": 6.5,
+          "sub": 5.5
+        },
+        "gre": null,
+        "background": "2:2 UK Honours degree, or an Honours degree from a non-UK institution whi",
+        "notes": "官方入学要求：2:2 UK Honours degree, or an Honours degree from a non-UK institution whi；雅思总分 6.5（听5.5/读6.0/说5.5/写6.0），取自官方课程页"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.abdn.ac.uk/study/postgraduate-taught/degree-programmes/2077/anthropological-research/",
+        "searchUrl": "https://www.google.com/search?q=阿伯丁大学+Anthropological+Research+MSc+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-abdn-biodiv",
+      "country": "英国",
+      "university": "阿伯丁大学",
+      "qsRank": 236,
+      "program": "Biodiversity Conservation & Management MSc",
+      "field": "生态/环境",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 78,
+          "211": 80,
+          "双一流": 82,
+          "双非": 84,
+          "海本/中外合作": 74
+        },
+        "ielts": {
+          "overall": 6.5,
+          "sub": 5.5
+        },
+        "gre": null,
+        "background": "2:2 (lower second class) UK Honours degree in biological sciences, enviro",
+        "notes": "官方入学要求：2:2 (lower second class) UK Honours degree in biological sciences, enviro；雅思总分 6.5（听5.5/读5.5/说5.5/写6.0），取自官方课程页"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.abdn.ac.uk/study/postgraduate-taught/degree-programmes/2179/biodiversity-conservation/",
+        "searchUrl": "https://www.google.com/search?q=阿伯丁大学+Biodiversity+Conservation+&+Management+MSc+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-abdn-climpol",
+      "country": "英国",
+      "university": "阿伯丁大学",
+      "qsRank": 236,
+      "program": "Climate Politics & Policy MSc",
+      "field": "气候政策/国际关系",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 78,
+          "211": 80,
+          "双一流": 82,
+          "双非": 84,
+          "海本/中外合作": 74
+        },
+        "ielts": {
+          "overall": 6.5,
+          "sub": 5.5
+        },
+        "gre": null,
+        "background": "2:1 standard from a recognised university or body",
+        "notes": "官方入学要求：2:1 standard from a recognised university or body；雅思总分 6.5（听5.5/读6.0/说5.5/写6.0），取自官方课程页"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.abdn.ac.uk/study/postgraduate-taught/degree-programmes/72/climate-politics-and-policy/",
+        "searchUrl": "https://www.google.com/search?q=阿伯丁大学+Climate+Politics+&+Policy+MSc+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-abdn-chemenergy",
+      "country": "英国",
+      "university": "阿伯丁大学",
+      "qsRank": 236,
+      "program": "Chemistry for Sustainable Energy MSc",
+      "field": "化学",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 78,
+          "211": 80,
+          "双一流": 82,
+          "双非": 84,
+          "海本/中外合作": 74
+        },
+        "ielts": {
+          "overall": 6.5,
+          "sub": 5.5
+        },
+        "gre": null,
+        "background": "2:2 (lower second class) UK Honours degree, or an Honours degree from a n",
+        "notes": "官方入学要求：2:2 (lower second class) UK Honours degree, or an Honours degree from a n；雅思总分 6.5（听5.5/读5.5/说5.5/写6.0），取自官方课程页"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.abdn.ac.uk/study/postgraduate-taught/degree-programmes/1912/chemistry-for-sustainable-energy/",
+        "searchUrl": "https://www.google.com/search?q=阿伯丁大学+Chemistry+for+Sustainable+Energy+MSc+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-stir-fin",
+      "country": "英国",
+      "university": "斯特林大学",
+      "qsRank": 431,
+      "program": "Finance MSc",
+      "field": "金融",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 76,
+          "211": 78,
+          "双一流": 80,
+          "双非": 82,
+          "海本/中外合作": 72
+        },
+        "ielts": {
+          "overall": 6.0,
+          "sub": 5.5
+        },
+        "gre": null,
+        "background": "minimum of a second class Honours degree or equivalent",
+        "notes": "官方入学要求：minimum of a second class Honours degree or equivalent；雅思总分 6.0、单项不低于 5.5（取自官方课程页）"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.stir.ac.uk/courses/pg-taught/finance/",
+        "searchUrl": "https://www.google.com/search?q=斯特林大学+Finance+MSc+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-stir-finrisk",
+      "country": "英国",
+      "university": "斯特林大学",
+      "qsRank": 431,
+      "program": "Finance & Risk Management MSc",
+      "field": "金融风险",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 76,
+          "211": 78,
+          "双一流": 80,
+          "双非": 82,
+          "海本/中外合作": 72
+        },
+        "ielts": {
+          "overall": 6.0,
+          "sub": 5.5
+        },
+        "gre": null,
+        "background": "minimum of a second class honours degree or equivalent",
+        "notes": "官方入学要求：minimum of a second class honours degree or equivalent；雅思总分 6.0、单项不低于 5.5（取自官方课程页）"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.stir.ac.uk/courses/pg-taught/finance-risk-management/",
+        "searchUrl": "https://www.google.com/search?q=斯特林大学+Finance+&+Risk+Management+MSc+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-stir-iaf",
+      "country": "英国",
+      "university": "斯特林大学",
+      "qsRank": 431,
+      "program": "International Accounting & Finance MSc",
+      "field": "会计与金融",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 76,
+          "211": 78,
+          "双一流": 80,
+          "双非": 82,
+          "海本/中外合作": 72
+        },
+        "ielts": {
+          "overall": 6.0,
+          "sub": 5.5
+        },
+        "gre": null,
+        "background": "minimum of a second class Honours degree or equivalent",
+        "notes": "官方入学要求：minimum of a second class Honours degree or equivalent；雅思总分 6.0、单项不低于 5.5（取自官方课程页）"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.stir.ac.uk/courses/pg-taught/international-accounting-finance/",
+        "searchUrl": "https://www.google.com/search?q=斯特林大学+International+Accounting+&+Finance+MSc+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-stir-ba",
+      "country": "英国",
+      "university": "斯特林大学",
+      "qsRank": 431,
+      "program": "Business Analytics MSc",
+      "field": "商业分析",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 76,
+          "211": 78,
+          "双一流": 80,
+          "双非": 82,
+          "海本/中外合作": 72
+        },
+        "ielts": {
+          "overall": 6.0,
+          "sub": 5.5
+        },
+        "gre": null,
+        "background": "minimum of a second class Honours degree in any subject, or an equivalent qualification",
+        "notes": "官方入学要求：minimum of a second class Honours degree in any subject, or an equivalent qualification；雅思总分 6.0、单项不低于 5.5（取自官方课程页）"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.stir.ac.uk/courses/pg-taught/business-analytics/",
+        "searchUrl": "https://www.google.com/search?q=斯特林大学+Business+Analytics+MSc+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-stir-ds",
+      "country": "英国",
+      "university": "斯特林大学",
+      "qsRank": 431,
+      "program": "Data Science MSc",
+      "field": "数据科学/AI",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 76,
+          "211": 78,
+          "双一流": 80,
+          "双非": 82,
+          "海本/中外合作": 72
+        },
+        "ielts": {
+          "overall": 6.0,
+          "sub": 5.5
+        },
+        "gre": null,
+        "background": "官方要求英国二等荣誉学位或同等学历（详见官方课程页）",
+        "notes": "官方入学要求：官方要求英国二等荣誉学位或同等学历（详见官方课程页）；雅思总分 6.0、单项不低于 5.5（取自官方课程页）"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.stir.ac.uk/courses/pg-taught/data-science/",
+        "searchUrl": "https://www.google.com/search?q=斯特林大学+Data+Science+MSc+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-stir-bm",
+      "country": "英国",
+      "university": "斯特林大学",
+      "qsRank": 431,
+      "program": "Business Management MSc",
+      "field": "管理学/商科",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 76,
+          "211": 78,
+          "双一流": 80,
+          "双非": 82,
+          "海本/中外合作": 72
+        },
+        "ielts": {
+          "overall": 6.0,
+          "sub": 5.5
+        },
+        "gre": null,
+        "background": "Honours degree or equivalent",
+        "notes": "官方入学要求：Honours degree or equivalent；雅思总分 6.0、单项不低于 5.5（取自官方课程页）"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.stir.ac.uk/courses/pg-taught/business-management/",
+        "searchUrl": "https://www.google.com/search?q=斯特林大学+Business+Management+MSc+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-stir-ai",
+      "country": "英国",
+      "university": "斯特林大学",
+      "qsRank": 431,
+      "program": "Artificial Intelligence MSc",
+      "field": "数据科学/AI",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 76,
+          "211": 78,
+          "双一流": 80,
+          "双非": 82,
+          "海本/中外合作": 72
+        },
+        "ielts": {
+          "overall": 6.0,
+          "sub": 5.5
+        },
+        "gre": null,
+        "background": "minimum of a second class honours degree (2",
+        "notes": "官方入学要求：minimum of a second class honours degree (2；雅思总分 6.0、单项不低于 5.5（取自官方课程页）"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.stir.ac.uk/courses/pg-taught/artificial-intelligence/",
+        "searchUrl": "https://www.google.com/search?q=斯特林大学+Artificial+Intelligence+MSc+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-stir-bigdata",
+      "country": "英国",
+      "university": "斯特林大学",
+      "qsRank": 431,
+      "program": "Big Data MSc",
+      "field": "数据科学/AI",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 76,
+          "211": 78,
+          "双一流": 80,
+          "双非": 82,
+          "海本/中外合作": 72
+        },
+        "ielts": {
+          "overall": 6.0,
+          "sub": 5.5
+        },
+        "gre": null,
+        "background": "minimum of a second class honours degree (2",
+        "notes": "官方入学要求：minimum of a second class honours degree (2；雅思总分 6.0、单项不低于 5.5（取自官方课程页）"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.stir.ac.uk/courses/pg-taught/big-data/",
+        "searchUrl": "https://www.google.com/search?q=斯特林大学+Big+Data+MSc+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-stir-mkt",
+      "country": "英国",
+      "university": "斯特林大学",
+      "qsRank": 431,
+      "program": "Marketing MSc",
+      "field": "市场营销",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 76,
+          "211": 78,
+          "双一流": 80,
+          "双非": 82,
+          "海本/中外合作": 72
+        },
+        "ielts": {
+          "overall": 6.0,
+          "sub": 5.5
+        },
+        "gre": null,
+        "background": "minimum of a second class honours degree, or equivalent",
+        "notes": "官方入学要求：minimum of a second class honours degree, or equivalent；雅思总分 6.0、单项不低于 5.5（取自官方课程页）"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.stir.ac.uk/courses/pg-taught/marketing/",
+        "searchUrl": "https://www.google.com/search?q=斯特林大学+Marketing+MSc+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-stir-mktanl",
+      "country": "英国",
+      "university": "斯特林大学",
+      "qsRank": 431,
+      "program": "Marketing Analytics MSc",
+      "field": "市场营销",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 76,
+          "211": 78,
+          "双一流": 80,
+          "双非": 82,
+          "海本/中外合作": 72
+        },
+        "ielts": {
+          "overall": 6.0,
+          "sub": 5.5
+        },
+        "gre": null,
+        "background": "minimum of a second class honours degree or equivalent",
+        "notes": "官方入学要求：minimum of a second class honours degree or equivalent；雅思总分 6.0、单项不低于 5.5（取自官方课程页）"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.stir.ac.uk/courses/pg-taught/marketing-analytics/",
+        "searchUrl": "https://www.google.com/search?q=斯特林大学+Marketing+Analytics+MSc+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-stir-hrm",
+      "country": "英国",
+      "university": "斯特林大学",
+      "qsRank": 431,
+      "program": "Human Resource Management MSc",
+      "field": "人力资源",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 78,
+          "211": 80,
+          "双一流": 82,
+          "双非": 84,
+          "海本/中外合作": 74
+        },
+        "ielts": {
+          "overall": 6.5,
+          "sub": 6.0
+        },
+        "gre": null,
+        "background": "minimum of a second class honours degree or equivalent",
+        "notes": "官方入学要求：minimum of a second class honours degree or equivalent；雅思总分 6.5、单项不低于 6.0（取自官方课程页）"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.stir.ac.uk/courses/pg-taught/human-resource-management/",
+        "searchUrl": "https://www.google.com/search?q=斯特林大学+Human+Resource+Management+MSc+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-stir-ib",
+      "country": "英国",
+      "university": "斯特林大学",
+      "qsRank": 431,
+      "program": "International Business MSc",
+      "field": "管理学/商科",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 76,
+          "211": 78,
+          "双一流": 80,
+          "双非": 82,
+          "海本/中外合作": 72
+        },
+        "ielts": {
+          "overall": 6.0,
+          "sub": 5.5
+        },
+        "gre": null,
+        "background": "Honours degree or equivalent",
+        "notes": "官方入学要求：Honours degree or equivalent；雅思总分 6.0、单项不低于 5.5（取自官方课程页）"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.stir.ac.uk/courses/pg-taught/international-business/",
+        "searchUrl": "https://www.google.com/search?q=斯特林大学+International+Business+MSc+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-stir-pm",
+      "country": "英国",
+      "university": "斯特林大学",
+      "qsRank": 431,
+      "program": "Project Management MSc",
+      "field": "项目管理",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 76,
+          "211": 78,
+          "双一流": 80,
+          "双非": 82,
+          "海本/中外合作": 72
+        },
+        "ielts": {
+          "overall": 6.0,
+          "sub": 5.5
+        },
+        "gre": null,
+        "background": "minimum of a second class honours degree (2",
+        "notes": "官方入学要求：minimum of a second class honours degree (2；雅思总分 6.0、单项不低于 5.5（取自官方课程页）"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.stir.ac.uk/courses/pg-taught/msc-project-management/",
+        "searchUrl": "https://www.google.com/search?q=斯特林大学+Project+Management+MSc+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-stir-dsbus",
+      "country": "英国",
+      "university": "斯特林大学",
+      "qsRank": 431,
+      "program": "Data Science for Business MSc",
+      "field": "数据科学/AI",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 76,
+          "211": 78,
+          "双一流": 80,
+          "双非": 82,
+          "海本/中外合作": 72
+        },
+        "ielts": {
+          "overall": 6.0,
+          "sub": 5.5
+        },
+        "gre": null,
+        "background": "minimum of a second class Honours degree or equivalent",
+        "notes": "官方入学要求：minimum of a second class Honours degree or equivalent；雅思总分 6.0、单项不低于 5.5（取自官方课程页）"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.stir.ac.uk/courses/pg-taught/data-science-for-business/",
+        "searchUrl": "https://www.google.com/search?q=斯特林大学+Data+Science+for+Business+MSc+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-stir-mathds",
+      "country": "英国",
+      "university": "斯特林大学",
+      "qsRank": 431,
+      "program": "Mathematics & Data Science MSc",
+      "field": "数据科学/AI",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 76,
+          "211": 78,
+          "双一流": 80,
+          "双非": 82,
+          "海本/中外合作": 72
+        },
+        "ielts": {
+          "overall": 6.0,
+          "sub": 5.5
+        },
+        "gre": null,
+        "background": "Honours degree, or equivalent, in a numerate subject, e",
+        "notes": "官方入学要求：Honours degree, or equivalent, in a numerate subject, e；雅思总分 6.0、单项不低于 5.5（取自官方课程页）"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.stir.ac.uk/courses/pg-taught/mathematics-and-data-science/",
+        "searchUrl": "https://www.google.com/search?q=斯特林大学+Mathematics+&+Data+Science+MSc+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-bangor-bf",
+      "country": "英国",
+      "university": "班戈大学",
+      "qsRank": 601,
+      "program": "Banking & Finance MSc",
+      "field": "银行与金融",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 76,
+          "211": 78,
+          "双一流": 80,
+          "双非": 82,
+          "海本/中外合作": 72
+        },
+        "ielts": {
+          "overall": 6.0,
+          "sub": 5.5
+        },
+        "gre": null,
+        "background": "官方要求二等荣誉学位或同等学历（学位细则以官方课程页为准）",
+        "notes": "雅思总分 6.0、单项不低于 5.5（取自官方课程页，官方核实）；学位要求以官方课程页为准"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.bangor.ac.uk/courses/postgraduate/banking-and-finance-msc",
+        "searchUrl": "https://www.google.com/search?q=班戈大学+Banking+&+Finance+MSc+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-bangor-accfin",
+      "country": "英国",
+      "university": "班戈大学",
+      "qsRank": 601,
+      "program": "Accounting & Finance MSc",
+      "field": "会计与金融",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 76,
+          "211": 78,
+          "双一流": 80,
+          "双非": 82,
+          "海本/中外合作": 72
+        },
+        "ielts": {
+          "overall": 6.0,
+          "sub": 5.5
+        },
+        "gre": null,
+        "background": "官方要求二等荣誉学位或同等学历（学位细则以官方课程页为准）",
+        "notes": "雅思总分 6.0、单项不低于 5.5（取自官方课程页，官方核实）；学位要求以官方课程页为准"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.bangor.ac.uk/courses/postgraduate/accounting-and-finance-msc",
+        "searchUrl": "https://www.google.com/search?q=班戈大学+Accounting+&+Finance+MSc+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-bangor-fin",
+      "country": "英国",
+      "university": "班戈大学",
+      "qsRank": 601,
+      "program": "Finance MSc",
+      "field": "金融",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 76,
+          "211": 78,
+          "双一流": 80,
+          "双非": 82,
+          "海本/中外合作": 72
+        },
+        "ielts": {
+          "overall": 6.0,
+          "sub": 5.5
+        },
+        "gre": null,
+        "background": "官方要求二等荣誉学位或同等学历（学位细则以官方课程页为准）",
+        "notes": "雅思总分 6.0、单项不低于 5.5（取自官方课程页，官方核实）；学位要求以官方课程页为准"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.bangor.ac.uk/courses/postgraduate/finance-msc",
+        "searchUrl": "https://www.google.com/search?q=班戈大学+Finance+MSc+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-bangor-mgmtfin",
+      "country": "英国",
+      "university": "班戈大学",
+      "qsRank": 601,
+      "program": "Management & Finance MSc",
+      "field": "管理与金融",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 76,
+          "211": 78,
+          "双一流": 80,
+          "双非": 82,
+          "海本/中外合作": 72
+        },
+        "ielts": {
+          "overall": 6.0,
+          "sub": 5.5
+        },
+        "gre": null,
+        "background": "官方要求二等荣誉学位或同等学历（学位细则以官方课程页为准）",
+        "notes": "雅思总分 6.0、单项不低于 5.5（取自官方课程页，官方核实）；学位要求以官方课程页为准"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.bangor.ac.uk/courses/postgraduate/management-and-finance-msc",
+        "searchUrl": "https://www.google.com/search?q=班戈大学+Management+&+Finance+MSc+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-bangor-accbank",
+      "country": "英国",
+      "university": "班戈大学",
+      "qsRank": 601,
+      "program": "Accounting & Banking MSc",
+      "field": "会计与银行",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 76,
+          "211": 78,
+          "双一流": 80,
+          "双非": 82,
+          "海本/中外合作": 72
+        },
+        "ielts": {
+          "overall": 6.0,
+          "sub": 5.5
+        },
+        "gre": null,
+        "background": "官方要求二等荣誉学位或同等学历（学位细则以官方课程页为准）",
+        "notes": "雅思总分 6.0、单项不低于 5.5（取自官方课程页，官方核实）；学位要求以官方课程页为准"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.bangor.ac.uk/courses/postgraduate/accounting-and-banking-msc",
+        "searchUrl": "https://www.google.com/search?q=班戈大学+Accounting+&+Banking+MSc+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-stir-acai",
+      "country": "英国",
+      "university": "斯特林大学",
+      "qsRank": 431,
+      "program": "Advanced Computing with AI MSc",
+      "field": "数据科学/AI",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 76,
+          "211": 78,
+          "双一流": 80,
+          "双非": 82,
+          "海本/中外合作": 72
+        },
+        "ielts": {
+          "overall": 6.0,
+          "sub": 5.5
+        },
+        "gre": null,
+        "background": "minimum of a second class honours degree in computer science or a closely related subject such",
+        "notes": "官方入学要求：minimum of a second class honours degree in computer science or a closely related subject such；雅思总分 6.0、单项不低于 5.5（取自官方课程页）"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.stir.ac.uk/courses/pg-taught/advanced-computing-artificial-intelligence/",
+        "searchUrl": "https://www.google.com/search?q=斯特林大学+Advanced+Computing+with+AI+MSc+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-stir-dmbm",
+      "country": "英国",
+      "university": "斯特林大学",
+      "qsRank": 431,
+      "program": "Digital Marketing & Brand Management MSc",
+      "field": "数字营销",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 76,
+          "211": 78,
+          "双一流": 80,
+          "双非": 82,
+          "海本/中外合作": 72
+        },
+        "ielts": {
+          "overall": 6.0,
+          "sub": 5.5
+        },
+        "gre": null,
+        "background": "minimum of a second class honours degree or equivalent",
+        "notes": "官方入学要求：minimum of a second class honours degree or equivalent；雅思总分 6.0、单项不低于 5.5（取自官方课程页）"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.stir.ac.uk/courses/pg-taught/digital-marketing-brand-management/",
+        "searchUrl": "https://www.google.com/search?q=斯特林大学+Digital+Marketing+&+Brand+Management+MSc+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-stir-dmc",
+      "country": "英国",
+      "university": "斯特林大学",
+      "qsRank": 431,
+      "program": "Digital Media & Communication MSc",
+      "field": "数字媒体/传媒",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 76,
+          "211": 78,
+          "双一流": 80,
+          "双非": 82,
+          "海本/中外合作": 72
+        },
+        "ielts": {
+          "overall": 6.0,
+          "sub": 5.5
+        },
+        "gre": null,
+        "background": "Honours degree or international equivalent",
+        "notes": "官方入学要求：Honours degree or international equivalent；雅思总分 6.0、单项不低于 5.5（取自官方课程页）"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.stir.ac.uk/courses/pg-taught/digital-media-and-communication/",
+        "searchUrl": "https://www.google.com/search?q=斯特林大学+Digital+Media+&+Communication+MSc+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-stir-envmgmt",
+      "country": "英国",
+      "university": "斯特林大学",
+      "qsRank": 431,
+      "program": "Environmental Management MSc",
+      "field": "环境管理",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 76,
+          "211": 78,
+          "双一流": 80,
+          "双非": 82,
+          "海本/中外合作": 72
+        },
+        "ielts": {
+          "overall": 6.5,
+          "sub": 5.5
+        },
+        "gre": null,
+        "background": "minimum of a second class honours degree (2:1 preferred) or equivalent in a relevant subject, s",
+        "notes": "官方入学要求：minimum of a second class honours degree (2:1 preferred) or equivalent in a relevant subject, s；雅思总分 6.5、单项不低于 5.5（取自官方课程页）"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.stir.ac.uk/courses/pg-taught/environmental-management/",
+        "searchUrl": "https://www.google.com/search?q=斯特林大学+Environmental+Management+MSc+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-stir-healthpsy",
+      "country": "英国",
+      "university": "斯特林大学",
+      "qsRank": 431,
+      "program": "Health Psychology MSc",
+      "field": "心理学",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 78,
+          "211": 80,
+          "双一流": 82,
+          "双非": 84,
+          "海本/中外合作": 74
+        },
+        "ielts": {
+          "overall": 6.5,
+          "sub": 6.0
+        },
+        "gre": null,
+        "background": "2.1 honours degree in Psychology or related subject or a Psychology (Conv",
+        "notes": "官方入学要求：2.1 honours degree in Psychology or related subject or a Psychology (Conv；雅思总分 6.5、单项不低于 6.0（取自官方课程页）"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.stir.ac.uk/courses/pg-taught/health-psychology/",
+        "searchUrl": "https://www.google.com/search?q=斯特林大学+Health+Psychology+MSc+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-stir-icc",
+      "country": "英国",
+      "university": "斯特林大学",
+      "qsRank": 431,
+      "program": "International Conflict & Cooperation MSc",
+      "field": "国际关系/政治",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 76,
+          "211": 78,
+          "双一流": 80,
+          "双非": 82,
+          "海本/中外合作": 72
+        },
+        "ielts": {
+          "overall": 6.0,
+          "sub": 5.5
+        },
+        "gre": null,
+        "background": "minimum of a second class Honours degree (2",
+        "notes": "官方入学要求：minimum of a second class Honours degree (2；雅思总分 6.0、单项不低于 5.5（取自官方课程页）"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.stir.ac.uk/courses/pg-taught/international-conflict-cooperation/",
+        "searchUrl": "https://www.google.com/search?q=斯特林大学+International+Conflict+&+Cooperation+MSc+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-stir-ienvlaw",
+      "country": "英国",
+      "university": "斯特林大学",
+      "qsRank": 431,
+      "program": "International Environmental Law LLM",
+      "field": "环境法/法律",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 76,
+          "211": 78,
+          "双一流": 80,
+          "双非": 82,
+          "海本/中外合作": 72
+        },
+        "ielts": {
+          "overall": 6.0,
+          "sub": 5.5
+        },
+        "gre": null,
+        "background": "Honours degree or equivalent",
+        "notes": "官方入学要求：Honours degree or equivalent；雅思总分 6.0、单项不低于 5.5（取自官方课程页）"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.stir.ac.uk/courses/pg-taught/international-environmental-law/",
+        "searchUrl": "https://www.google.com/search?q=斯特林大学+International+Environmental+Law+LLM+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-stir-sportba",
+      "country": "英国",
+      "university": "斯特林大学",
+      "qsRank": 431,
+      "program": "Sport Business Analytics MSc",
+      "field": "体育商业分析",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 76,
+          "211": 78,
+          "双一流": 80,
+          "双非": 82,
+          "海本/中外合作": 72
+        },
+        "ielts": {
+          "overall": 6.0,
+          "sub": 5.5
+        },
+        "gre": null,
+        "background": "minimum of a second class honours degree (2",
+        "notes": "官方入学要求：minimum of a second class honours degree (2；雅思总分 6.0、单项不低于 5.5（取自官方课程页）"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.stir.ac.uk/courses/pg-taught/sport-business-analytics/",
+        "searchUrl": "https://www.google.com/search?q=斯特林大学+Sport+Business+Analytics+MSc+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-stir-prm",
+      "country": "英国",
+      "university": "斯特林大学",
+      "qsRank": 431,
+      "program": "Psychological Research Methods MSc",
+      "field": "心理学",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 76,
+          "211": 78,
+          "双一流": 80,
+          "双非": 82,
+          "海本/中外合作": 72
+        },
+        "ielts": {
+          "overall": 6.0,
+          "sub": 5.5
+        },
+        "gre": null,
+        "background": "minimum of a second class honours degree (2",
+        "notes": "官方入学要求：minimum of a second class honours degree (2；雅思总分 6.0、单项不低于 5.5（取自官方课程页）"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.stir.ac.uk/courses/pg-taught/psychological-research-methods-general/",
+        "searchUrl": "https://www.google.com/search?q=斯特林大学+Psychological+Research+Methods+MSc+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-stir-finda",
+      "country": "英国",
+      "university": "斯特林大学",
+      "qsRank": 431,
+      "program": "Finance & Data Analytics MSc",
+      "field": "金融/数据分析",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 76,
+          "211": 78,
+          "双一流": 80,
+          "双非": 82,
+          "海本/中外合作": 72
+        },
+        "ielts": {
+          "overall": 6.0,
+          "sub": 5.5
+        },
+        "gre": null,
+        "background": "minimum of a second class honours degree or equivalent",
+        "notes": "官方入学要求：minimum of a second class honours degree or equivalent；雅思总分 6.0、单项不低于 5.5（取自官方课程页）"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.stir.ac.uk/courses/pg-taught/finance-data-analytics/",
+        "searchUrl": "https://www.google.com/search?q=斯特林大学+Finance+&+Data+Analytics+MSc+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-stir-melt",
+      "country": "英国",
+      "university": "斯特林大学",
+      "qsRank": 431,
+      "program": "Management & English Language Teaching MSc",
+      "field": "管理/英语教学",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 78,
+          "211": 80,
+          "双一流": 82,
+          "双非": 84,
+          "海本/中外合作": 74
+        },
+        "ielts": {
+          "overall": 6.5,
+          "sub": 6.0
+        },
+        "gre": null,
+        "background": "minimum of a second class Honours degree (2:1 preferred) or equivalent",
+        "notes": "官方入学要求：minimum of a second class Honours degree (2:1 preferred) or equivalent；雅思总分 6.5、单项不低于 6.0（取自官方课程页）"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.stir.ac.uk/courses/pg-taught/management-english-language-teaching/",
+        "searchUrl": "https://www.google.com/search?q=斯特林大学+Management+&+English+Language+Teaching+MSc+entry+requirements"
       }
     }
   ]

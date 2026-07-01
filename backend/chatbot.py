@@ -9,13 +9,16 @@
   2) 本地大模型 Ollama —— 免费、无需 API Key、可离线自由对话
        需先安装 Ollama 并拉取模型,例如: ollama pull qwen2.5
   3) 通义千问云端 —— 需配置环境变量 DASHSCOPE_API_KEY
-  4) 内置关键词知识库 —— 以上都不可用时的兜底
+  4) 智谱 GLM 云端 —— 需配置环境变量 ZHIPU_API_KEY(GLM-4-Flash 永久免费)
+  5) 内置关键词知识库 —— 以上都不可用时的兜底
 
 可选环境变量:
   OLLAMA_URL        Ollama 服务地址,默认 http://127.0.0.1:11434
   OLLAMA_MODEL      本地模型名,默认 qwen2.5
   DASHSCOPE_API_KEY 通义千问 API Key(可选)
   QWEN_MODEL        云端模型名,默认 qwen-plus
+  ZHIPU_API_KEY     智谱 AI API Key(可选,免费模型 glm-4-flash)
+  ZHIPU_MODEL       智谱模型名,默认 glm-4-flash
 """
 import json
 import os
@@ -25,6 +28,9 @@ import httpx
 
 DASHSCOPE_URL = "https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions"
 MODEL = os.environ.get("QWEN_MODEL", "qwen-plus")
+
+ZHIPU_URL = "https://open.bigmodel.cn/api/paas/v4/chat/completions"
+ZHIPU_MODEL = os.environ.get("ZHIPU_MODEL", "glm-4-flash")
 
 OLLAMA_URL = os.environ.get("OLLAMA_URL", "http://127.0.0.1:11434").rstrip("/")
 OLLAMA_MODEL = os.environ.get("OLLAMA_MODEL", "qwen2.5")
@@ -228,13 +234,15 @@ def _ollama_model_ready() -> bool:
 
 
 def active_provider() -> str:
-    """返回当前生效的对话后端: 'azure' / 'ollama' / 'dashscope' / 'fallback'。"""
+    """返回当前生效的对话后端: 'azure' / 'ollama' / 'dashscope' / 'zhipu' / 'fallback'。"""
     if AZURE_ENDPOINT and AZURE_API_KEY and AZURE_DEPLOYMENT:
         return "azure"
     if _ollama_model_ready():
         return "ollama"
     if os.environ.get("DASHSCOPE_API_KEY"):
         return "dashscope"
+    if os.environ.get("ZHIPU_API_KEY"):
+        return "zhipu"
     return "fallback"
 
 
@@ -325,6 +333,42 @@ def _stream_dashscope(message: str, history: List[dict]) -> Iterator[str]:
         yield _fallback_answer(message)
 
 
+def _stream_zhipu(message: str, history: List[dict]) -> Iterator[str]:
+    api_key = os.environ.get("ZHIPU_API_KEY")
+    payload = {"model": ZHIPU_MODEL, "messages": _build_messages(message, history),
+               "stream": True, "temperature": 0.7}
+    headers = {"Authorization": f"Bearer {api_key}", "Content-Type": "application/json"}
+    got_any = False
+    try:
+        with httpx.stream("POST", ZHIPU_URL, json=payload, headers=headers,
+                          timeout=60.0) as resp:
+            if resp.status_code != 200:
+                resp.read()
+                yield _fallback_answer(message)
+                return
+            for line in resp.iter_lines():
+                if not line:
+                    continue
+                if line.startswith("data:"):
+                    data = line[len("data:"):].strip()
+                    if data == "[DONE]":
+                        break
+                    try:
+                        obj = json.loads(data)
+                        delta = obj["choices"][0]["delta"].get("content", "")
+                        if delta:
+                            got_any = True
+                            yield delta
+                    except (json.JSONDecodeError, KeyError, IndexError):
+                        continue
+    except Exception:
+        if not got_any:
+            yield _fallback_answer(message)
+        return
+    if not got_any:
+        yield _fallback_answer(message)
+
+
 def _stream_azure(message: str, history: List[dict]) -> Iterator[str]:
     url = (f"{AZURE_ENDPOINT}/openai/deployments/{AZURE_DEPLOYMENT}"
            f"/chat/completions?api-version={AZURE_API_VERSION}")
@@ -374,6 +418,8 @@ def stream_reply(message: str, history: List[dict]) -> Iterator[str]:
         yield from _stream_ollama(message, history)
     elif provider == "dashscope":
         yield from _stream_dashscope(message, history)
+    elif provider == "zhipu":
+        yield from _stream_zhipu(message, history)
     else:
         yield _fallback_answer(message)
 
@@ -401,12 +447,18 @@ def complete(prompt: str, system: str = "", max_tokens: int = 64) -> str:
             if resp.status_code == 200:
                 return (resp.json().get("message", {}).get("content", "") or "").strip()
             return ""
-        else:  # dashscope
+        elif provider == "dashscope":
             payload = {"model": MODEL, "messages": messages, "stream": False,
                        "temperature": 0, "max_tokens": max_tokens}
             headers = {"Authorization": f"Bearer {os.environ.get('DASHSCOPE_API_KEY')}",
                        "Content-Type": "application/json"}
             resp = httpx.post(DASHSCOPE_URL, json=payload, headers=headers, timeout=30.0)
+        else:  # zhipu
+            payload = {"model": ZHIPU_MODEL, "messages": messages, "stream": False,
+                       "temperature": 0, "max_tokens": max_tokens}
+            headers = {"Authorization": f"Bearer {os.environ.get('ZHIPU_API_KEY')}",
+                       "Content-Type": "application/json"}
+            resp = httpx.post(ZHIPU_URL, json=payload, headers=headers, timeout=30.0)
         if resp.status_code != 200:
             return ""
         obj = resp.json()

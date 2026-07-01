@@ -1,7 +1,7 @@
 {
   "meta": {
     "name": "留学选校匹配数据集",
-    "version": "0.3.7",
+    "version": "0.3.8",
     "updated": "2026-07",
     "disclaimer": "本数据为参考性示例数据，基于公开招生信息与往年中国大陆申请者录取经验整理，均分门槛为「建议达到」的参考线，并非官方保证。实际录取受名额、竞争、文书、科研实习、面试等多因素影响，请以学校官网为准。",
     "tiers": [
@@ -37,9 +37,9 @@
       "金融",
       "金融工程"
     ],
-    "count": 672,
+    "count": 687,
     "provenanceNote": "每个项目带 provenance 溯源：dataSource=参考估算/官方核实，verified 表示是否经官方页核实，lastVerified 为核实年月，sourceUrl 为官方项目页。参考估算分数线来自公开信息与往年经验，仅供参考；官方核实项由 scripts/ingest.py 从官方来源导入。",
-    "verifiedCount": 363
+    "verifiedCount": 378
   },
   "programs": [
     {
@@ -23641,6 +23641,531 @@
         "lastVerified": "2026-07",
         "sourceUrl": "https://www.gold.ac.uk/pg/ma-social-anthropology/",
         "searchUrl": "https://www.google.com/search?q=伦敦大学金史密斯学院+Social+Anthropology+MA+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-gold-psyconv",
+      "country": "英国",
+      "university": "伦敦大学金史密斯学院",
+      "qsRank": 561,
+      "program": "Psychology Conversion MSc",
+      "field": "心理学",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 74,
+          "211": 76,
+          "双一流": 78,
+          "双非": 80,
+          "海本/中外合作": 70
+        },
+        "ielts": {
+          "overall": 6.5,
+          "sub": 6.0
+        },
+        "gre": null,
+        "background": "second class standard You might also be considered for some programmes if you aren",
+        "notes": "官方入学要求：second class standard You might also be considered for some programmes if you aren；雅思总分 6.5、单项不低于 6.0（取自官方课程页）"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.gold.ac.uk/pg/msc-psychology-conversion/",
+        "searchUrl": "https://www.google.com/search?q=伦敦大学金史密斯学院+Psychology+Conversion+MSc+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-gold-cbt",
+      "country": "英国",
+      "university": "伦敦大学金史密斯学院",
+      "qsRank": 561,
+      "program": "Cognitive Behavioural Therapy MSc",
+      "field": "认知行为治疗",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 74,
+          "211": 76,
+          "双一流": 78,
+          "双非": 80,
+          "海本/中外合作": 70
+        },
+        "ielts": {
+          "overall": 6.5,
+          "sub": 6.0
+        },
+        "gre": null,
+        "background": "2:2) or equivalent, plus other requirements",
+        "notes": "官方入学要求：2:2) or equivalent, plus other requirements；雅思总分 6.5、单项不低于 6.0（取自官方课程页）"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.gold.ac.uk/pg/msc-cognitive-behavioural-therapy/",
+        "searchUrl": "https://www.google.com/search?q=伦敦大学金史密斯学院+Cognitive+Behavioural+Therapy+MSc+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-gold-clinpsy",
+      "country": "英国",
+      "university": "伦敦大学金史密斯学院",
+      "qsRank": 561,
+      "program": "Clinical Psychology & Health Services MSc",
+      "field": "临床心理学",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 74,
+          "211": 76,
+          "双一流": 78,
+          "双非": 80,
+          "海本/中外合作": 70
+        },
+        "ielts": {
+          "overall": 6.5,
+          "sub": 6.0
+        },
+        "gre": null,
+        "background": "second class standard in Psychology or a related subject (eg health studies, neuro",
+        "notes": "官方入学要求：second class standard in Psychology or a related subject (eg health studies, neuro；雅思总分 6.5、单项不低于 6.0（取自官方课程页）"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.gold.ac.uk/pg/msc-clinical-psychology-health-services/",
+        "searchUrl": "https://www.google.com/search?q=伦敦大学金史密斯学院+Clinical+Psychology+&+Health+Services+MSc+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-gold-musicmind",
+      "country": "英国",
+      "university": "伦敦大学金史密斯学院",
+      "qsRank": 561,
+      "program": "Music, Mind & Brain MSc",
+      "field": "音乐认知",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 74,
+          "211": 76,
+          "双一流": 78,
+          "双非": 80,
+          "海本/中外合作": 70
+        },
+        "ielts": {
+          "overall": 6.5,
+          "sub": 6.0
+        },
+        "gre": null,
+        "background": "second class standard in a relevant/related subject OR a background in music plus",
+        "notes": "官方入学要求：second class standard in a relevant/related subject OR a background in music plus；雅思总分 6.5、单项不低于 6.0（取自官方课程页）"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.gold.ac.uk/pg/msc-music-mind-brain/",
+        "searchUrl": "https://www.google.com/search?q=伦敦大学金史密斯学院+Music,+Mind+&+Brain+MSc+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-gold-neuroaes",
+      "country": "英国",
+      "university": "伦敦大学金史密斯学院",
+      "qsRank": 561,
+      "program": "Psychology of the Arts, Neuroaesthetics & Creativity MSc",
+      "field": "艺术心理学",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 74,
+          "211": 76,
+          "双一流": 78,
+          "双非": 80,
+          "海本/中外合作": 70
+        },
+        "ielts": {
+          "overall": 6.5,
+          "sub": 6.0
+        },
+        "gre": null,
+        "background": "second class standard in psychology or a related subject (cognitive science, neuro",
+        "notes": "官方入学要求：second class standard in psychology or a related subject (cognitive science, neuro；雅思总分 6.5、单项不低于 6.0（取自官方课程页）"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.gold.ac.uk/pg/msc-psychology-arts-neuroaesthetics-creativity/",
+        "searchUrl": "https://www.google.com/search?q=伦敦大学金史密斯学院+Psychology+of+the+Arts,+Neuroaesthetics+&+Creativity+MSc+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-gold-digpol",
+      "country": "英国",
+      "university": "伦敦大学金史密斯学院",
+      "qsRank": 561,
+      "program": "Digital Political Communications MA",
+      "field": "政治传播",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 74,
+          "211": 76,
+          "双一流": 78,
+          "双非": 80,
+          "海本/中外合作": 70
+        },
+        "ielts": {
+          "overall": 6.5,
+          "sub": 6.0
+        },
+        "gre": null,
+        "background": "2:2 standard in a relevant/related subject",
+        "notes": "官方入学要求：2:2 standard in a relevant/related subject；雅思总分 6.5、单项不低于 6.0（取自官方课程页）"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.gold.ac.uk/pg/ma-digital-political-communications/",
+        "searchUrl": "https://www.google.com/search?q=伦敦大学金史密斯学院+Digital+Political+Communications+MA+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-gold-cultsj",
+      "country": "英国",
+      "university": "伦敦大学金史密斯学院",
+      "qsRank": 561,
+      "program": "Cultural Studies & Social Justice MA",
+      "field": "文化研究",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 74,
+          "211": 76,
+          "双一流": 78,
+          "双非": 80,
+          "海本/中外合作": 70
+        },
+        "ielts": {
+          "overall": 6.5,
+          "sub": 6.0
+        },
+        "gre": null,
+        "background": "2:2 standard in a relevant/related subject",
+        "notes": "官方入学要求：2:2 standard in a relevant/related subject；雅思总分 6.5、单项不低于 6.0（取自官方课程页）"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.gold.ac.uk/pg/ma-cultural-studies-social-justice/",
+        "searchUrl": "https://www.google.com/search?q=伦敦大学金史密斯学院+Cultural+Studies+&+Social+Justice+MA+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-gold-childlit",
+      "country": "英国",
+      "university": "伦敦大学金史密斯学院",
+      "qsRank": 561,
+      "program": "Children's Literature MA",
+      "field": "儿童文学",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 74,
+          "211": 76,
+          "双一流": 78,
+          "双非": 80,
+          "海本/中外合作": 70
+        },
+        "ielts": {
+          "overall": 6.5,
+          "sub": 6.0
+        },
+        "gre": null,
+        "background": "second class standard in a related field",
+        "notes": "官方入学要求：second class standard in a related field；雅思总分 6.5、单项不低于 6.0（取自官方课程页）"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.gold.ac.uk/pg/ma-childrens-literature/",
+        "searchUrl": "https://www.google.com/search?q=伦敦大学金史密斯学院+Children's+Literature+MA+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-gold-filmscreen",
+      "country": "英国",
+      "university": "伦敦大学金史密斯学院",
+      "qsRank": 561,
+      "program": "Film & Screen Studies MA",
+      "field": "电影研究",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 74,
+          "211": 76,
+          "双一流": 78,
+          "双非": 80,
+          "海本/中外合作": 70
+        },
+        "ielts": {
+          "overall": 6.5,
+          "sub": 6.0
+        },
+        "gre": null,
+        "background": "2:2 standard in a relevant/related subject",
+        "notes": "官方入学要求：2:2 standard in a relevant/related subject；雅思总分 6.5、单项不低于 6.0（取自官方课程页）"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.gold.ac.uk/pg/ma-film-screen-studies/",
+        "searchUrl": "https://www.google.com/search?q=伦敦大学金史密斯学院+Film+&+Screen+Studies+MA+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-gold-gamesart",
+      "country": "英国",
+      "university": "伦敦大学金史密斯学院",
+      "qsRank": 561,
+      "program": "Computer Games Art & Design MA",
+      "field": "游戏艺术设计",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 74,
+          "211": 76,
+          "双一流": 78,
+          "双非": 80,
+          "海本/中外合作": 70
+        },
+        "ielts": {
+          "overall": 6.5,
+          "sub": 6.0
+        },
+        "gre": null,
+        "background": "官方要求英国二等荣誉学位（2:2）或同等学历（详见官方课程页）",
+        "notes": "官方入学要求：官方要求英国二等荣誉学位（2:2）或同等学历（详见官方课程页）；雅思总分 6.5、单项不低于 6.0（取自官方课程页）"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.gold.ac.uk/pg/ma-computer-games-art-design/",
+        "searchUrl": "https://www.google.com/search?q=伦敦大学金史密斯学院+Computer+Games+Art+&+Design+MA+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-gold-contart",
+      "country": "英国",
+      "university": "伦敦大学金史密斯学院",
+      "qsRank": 561,
+      "program": "Contemporary Art Theory MA",
+      "field": "当代艺术理论",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 74,
+          "211": 76,
+          "双一流": 78,
+          "双非": 80,
+          "海本/中外合作": 70
+        },
+        "ielts": {
+          "overall": 6.5,
+          "sub": 6.0
+        },
+        "gre": null,
+        "background": "second class standard in art history, fine art, another studio-based practice, art",
+        "notes": "官方入学要求：second class standard in art history, fine art, another studio-based practice, art；雅思总分 6.5、单项不低于 6.0（取自官方课程页）"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.gold.ac.uk/pg/ma-contemporary-art-theory/",
+        "searchUrl": "https://www.google.com/search?q=伦敦大学金史密斯学院+Contemporary+Art+Theory+MA+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-gold-visanth",
+      "country": "英国",
+      "university": "伦敦大学金史密斯学院",
+      "qsRank": 561,
+      "program": "Visual Anthropology MA",
+      "field": "视觉人类学",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 74,
+          "211": 76,
+          "双一流": 78,
+          "双非": 80,
+          "海本/中外合作": 70
+        },
+        "ielts": {
+          "overall": 6.5,
+          "sub": 6.0
+        },
+        "gre": null,
+        "background": "second class standard in a relevant/related subject",
+        "notes": "官方入学要求：second class standard in a relevant/related subject；雅思总分 6.5、单项不低于 6.0（取自官方课程页）"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.gold.ac.uk/pg/ma-visual-anthropology/",
+        "searchUrl": "https://www.google.com/search?q=伦敦大学金史密斯学院+Visual+Anthropology+MA+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-gold-designexp",
+      "country": "英国",
+      "university": "伦敦大学金史密斯学院",
+      "qsRank": 561,
+      "program": "Design: Expanded Practice MA",
+      "field": "设计",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 74,
+          "211": 76,
+          "双一流": 78,
+          "双非": 80,
+          "海本/中外合作": 70
+        },
+        "ielts": {
+          "overall": 6.5,
+          "sub": 6.0
+        },
+        "gre": null,
+        "background": "second class standard in a relevant/related subject",
+        "notes": "官方入学要求：second class standard in a relevant/related subject；雅思总分 6.5、单项不低于 6.0（取自官方课程页）"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.gold.ac.uk/pg/ma-design-expanded-practice/",
+        "searchUrl": "https://www.google.com/search?q=伦敦大学金史密斯学院+Design:+Expanded+Practice+MA+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-gold-lifewriting",
+      "country": "英国",
+      "university": "伦敦大学金史密斯学院",
+      "qsRank": 561,
+      "program": "Creative & Life Writing MA",
+      "field": "创意写作",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 78,
+          "211": 80,
+          "双一流": 82,
+          "双非": 84,
+          "海本/中外合作": 74
+        },
+        "ielts": {
+          "overall": 7.0,
+          "sub": 6.5
+        },
+        "gre": null,
+        "background": "second class standard in a relevant/related subject",
+        "notes": "官方入学要求：second class standard in a relevant/related subject；雅思总分 7.0、单项不低于 6.5（取自官方课程页）"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.gold.ac.uk/pg/ma-creative-life-writing/",
+        "searchUrl": "https://www.google.com/search?q=伦敦大学金史密斯学院+Creative+&+Life+Writing+MA+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-gold-journ",
+      "country": "英国",
+      "university": "伦敦大学金史密斯学院",
+      "qsRank": 561,
+      "program": "Journalism (Digital, Broadcast, News, Features & Magazines) MA",
+      "field": "新闻",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 78,
+          "211": 80,
+          "双一流": 82,
+          "双非": 84,
+          "海本/中外合作": 74
+        },
+        "ielts": {
+          "overall": 7.0,
+          "sub": 6.5
+        },
+        "gre": null,
+        "background": "second class standard and have evidence of some journalism (or equivalent) experie",
+        "notes": "官方入学要求：second class standard and have evidence of some journalism (or equivalent) experie；雅思总分 7.0、单项不低于 6.5（取自官方课程页）"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.gold.ac.uk/pg/ma-journalism-digital-broadcast-news-features-magazines/",
+        "searchUrl": "https://www.google.com/search?q=伦敦大学金史密斯学院+Journalism+(Digital,+Broadcast,+News,+Features+&+Magazines)+MA+entry+requirements"
       }
     }
   ]

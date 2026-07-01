@@ -1031,10 +1031,7 @@ async function init() {
   try {
     const u = await loadJSON("data/universities.json");
     UNIVERSITIES = u.universities;
-    document.getElementById("uni-list").innerHTML = UNIVERSITIES.map((x) => {
-      UNI_MAP[x.name] = x;
-      return `<option value="${x.name}">${x.tier} · ${x.province}</option>`;
-    }).join("");
+    UNIVERSITIES.forEach((x) => { UNI_MAP[x.name] = x; });
   } catch {}
 
   // 专业 + 研究生方向
@@ -1071,9 +1068,12 @@ async function init() {
   // 院校 → 层次识别
   const schoolInput = document.getElementById("school");
   const hint = document.getElementById("school-hint");
-  schoolInput.addEventListener("input", () => {
+  const uniAc = document.getElementById("uni-ac");
+  let uniAcIndex = -1;
+
+  function refreshTierHint() {
     const tier = detectTier(schoolInput.value);
-    const uni = UNI_MAP[schoolInput.value];
+    const uni = UNI_MAP[schoolInput.value.trim()];
     if (tier) {
       document.getElementById("tier").value = tier;
       if (uni && uni.partner) {
@@ -1091,6 +1091,76 @@ async function init() {
     } else {
       hint.textContent = "选择院校后将自动识别院校层次";
       hint.className = "hint";
+    }
+  }
+
+  function closeUniAc() {
+    uniAc.hidden = true;
+    uniAc.innerHTML = "";
+    uniAcIndex = -1;
+  }
+
+  // 按院校名或省份过滤（如输入「北京」列出所有北京院校）
+  function renderUniAc() {
+    const q = schoolInput.value.trim().toLowerCase();
+    if (!q) { closeUniAc(); return; }
+    const matches = UNIVERSITIES.filter((x) => {
+      const name = x.name.toLowerCase();
+      const prov = (x.province || "").toLowerCase();
+      const tier = (x.tier || "").toLowerCase();
+      return name.includes(q) || prov.includes(q) || tier.includes(q);
+    }).slice(0, 60);
+
+    if (!matches.length) {
+      uniAc.innerHTML = `<div class="ac-empty">未找到匹配院校，可直接手动选择右侧院校层次</div>`;
+      uniAc.hidden = false;
+      uniAcIndex = -1;
+      return;
+    }
+    uniAc.innerHTML = matches
+      .map(
+        (x) =>
+          `<div class="ac-item" data-name="${x.name}">` +
+          `<span>${x.name}</span>` +
+          `<span class="ac-meta">${x.tier} · ${x.province}</span></div>`
+      )
+      .join("");
+    uniAc.hidden = false;
+    uniAcIndex = -1;
+    uniAc.querySelectorAll(".ac-item").forEach((el) => {
+      el.addEventListener("mousedown", (e) => {
+        e.preventDefault();
+        schoolInput.value = el.dataset.name;
+        closeUniAc();
+        refreshTierHint();
+      });
+    });
+  }
+
+  schoolInput.addEventListener("input", () => {
+    renderUniAc();
+    refreshTierHint();
+  });
+  schoolInput.addEventListener("focus", renderUniAc);
+  schoolInput.addEventListener("blur", () => setTimeout(closeUniAc, 120));
+  schoolInput.addEventListener("keydown", (e) => {
+    if (uniAc.hidden) return;
+    const items = [...uniAc.querySelectorAll(".ac-item")];
+    if (!items.length) return;
+    if (e.key === "ArrowDown" || e.key === "ArrowUp") {
+      e.preventDefault();
+      uniAcIndex += e.key === "ArrowDown" ? 1 : -1;
+      if (uniAcIndex < 0) uniAcIndex = items.length - 1;
+      if (uniAcIndex >= items.length) uniAcIndex = 0;
+      items.forEach((el, i) => el.classList.toggle("active", i === uniAcIndex));
+      items[uniAcIndex].scrollIntoView({ block: "nearest" });
+    } else if (e.key === "Enter" && uniAcIndex >= 0) {
+      e.preventDefault();
+      schoolInput.value = items[uniAcIndex].dataset.name;
+      closeUniAc();
+      refreshTierHint();
+    } else if (e.key === "Escape") {
+      closeUniAc();
     }
   });
 

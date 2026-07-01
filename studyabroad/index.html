@@ -45,9 +45,11 @@
       <form id="profile-form">
         <div class="grid">
           <div class="field">
-            <label for="school">本科院校（输入中文名搜索）</label>
-            <input list="uni-list" id="school" placeholder="如 武汉大学 / 深圳大学 / 西交利物浦大学" autocomplete="off" />
-            <datalist id="uni-list"></datalist>
+            <label for="school">本科院校（可输入院校名或省份，如「北京」）</label>
+            <div class="ac-wrap">
+              <input id="school" placeholder="如 北京 / 武汉大学 / 西交利物浦大学" autocomplete="off" />
+              <div class="ac-list" id="uni-ac" hidden></div>
+            </div>
             <div class="hint" id="school-hint">选择院校后将自动识别院校层次</div>
           </div>
 

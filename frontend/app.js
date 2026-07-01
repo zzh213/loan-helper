@@ -1716,13 +1716,19 @@ function closeModal() {
 }
 
 /* ===== 线下客户经理预约(入库) ===== */
-async function fetchBookings() {
-  try { return (await (await fetch("/api/leads")).json()).filter((l) => l.kind === "预约"); } catch (e) { return []; }
+function fetchBookings() {
+  // 仅展示本浏览器本地记录的预约,不再拉取全部线索(避免暴露他人手机号)
+  try { return JSON.parse(localStorage.getItem("my_bookings") || "[]"); } catch (e) { return []; }
 }
-async function openManagerBooking() {
+function saveBooking(b) {
+  const list = fetchBookings();
+  list.unshift({ ...b, created_at: new Date().toISOString().slice(0, 16).replace("T", " "), status: "待回访" });
+  localStorage.setItem("my_bookings", JSON.stringify(list.slice(0, 20)));
+}
+function openManagerBooking() {
   const today = new Date().toISOString().slice(0, 10);
-  const list = await fetchBookings();
-  const rows = list.length ? list.map((b) => `<li>📅 ${escapeHtml(b.created_at.slice(5))} · ${escapeHtml(b.bank)} · ${escapeHtml(b.slot)} · ${escapeHtml(b.phone)} <span class="bk-st">${escapeHtml(b.status)}</span></li>`).join("") : '<li class="empty">暂无预约</li>';
+  const list = fetchBookings();
+  const rows = list.length ? list.map((b) => `<li>📅 ${escapeHtml((b.created_at||"").slice(5))} · ${escapeHtml(b.bank)} · ${escapeHtml(b.slot)} · ${escapeHtml(b.phone)} <span class="bk-st">${escapeHtml(b.status)}</span></li>`).join("") : '<li class="empty">暂无预约</li>';
   const p = window.__lastProfile || {};
   document.getElementById("modal-content").innerHTML = `<h2>🤝 预约线下客户经理</h2>
     <p class="modal-sub">平台内直接预约,经理可提前查看你的预审报告,提高签约率。</p>
@@ -1741,10 +1747,13 @@ async function openManagerBooking() {
     const btn = document.getElementById("bk-submit");
     btn.disabled = true; btn.textContent = "提交中...";
     try {
+      const bank = document.getElementById("bk-bank").value;
+      const slot = document.getElementById("bk-slot").value;
+      const amt = parseFloat(document.getElementById("bk-amt").value) || 0;
       await fetch("/api/leads", { method: "POST", headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ kind: "预约", company_name: p.company_name || "", phone, industry: p.industry || "",
-          loan_amount: parseFloat(document.getElementById("bk-amt").value) || 0,
-          bank: document.getElementById("bk-bank").value, slot: document.getElementById("bk-slot").value }) });
+          loan_amount: amt, bank, slot }) });
+      saveBooking({ phone, bank, slot, loan_amount: amt });
       showToast("预约成功,客户经理将在1个工作日内回访", "success");
       openManagerBooking();
     } catch (e) { showToast("提交失败,请稍后重试", "error"); btn.disabled = false; btn.textContent = "确认预约"; }

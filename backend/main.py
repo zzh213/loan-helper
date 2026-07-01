@@ -85,6 +85,17 @@ storage.init_db()
 
 FRONTEND_DIR = os.path.join(os.path.dirname(os.path.dirname(__file__)), "frontend")
 
+# 管理后台口令:优先取环境变量 ADMIN_TOKEN,本地开发默认 admin888
+ADMIN_TOKEN = os.environ.get("ADMIN_TOKEN", "admin888").strip()
+
+
+def require_admin(request: Request):
+    """校验管理端口令(请求头 X-Admin-Token 或 ?token=)。"""
+    token = request.headers.get("x-admin-token") or request.query_params.get("token") or ""
+    if token != ADMIN_TOKEN:
+        raise HTTPException(status_code=401, detail="未授权:管理口令无效")
+    return True
+
 
 @app.post("/api/recommend", response_model=RecommendResponse)
 def api_recommend(profile: EnterpriseProfile) -> RecommendResponse:
@@ -422,9 +433,29 @@ def create_lead(payload: dict):
 
 
 @app.get("/api/leads")
-def list_leads():
-    """客户经理后台:查看全部预约/咨询线索。"""
+def list_leads(request: Request):
+    """客户经理后台:查看全部预约/咨询线索(含手机号,需管理口令)。"""
+    require_admin(request)
     return storage.list_leads()
+
+
+@app.get("/api/admin/overview")
+def admin_overview(request: Request):
+    """管理后台总览:申请、线索、数据资产统计汇总。"""
+    require_admin(request)
+    apps = storage.list_applications()
+    leads = storage.list_leads()
+    return {
+        "applications": apps,
+        "leads": leads,
+        "assets": storage.data_assets(),
+        "insights": storage.reject_insights(),
+        "counts": {
+            "applications": len(apps),
+            "leads": len(leads),
+            "bookings": sum(1 for l in leads if l.get("kind") == "预约"),
+        },
+    }
 
 
 @app.delete("/api/applications/{app_id}")
@@ -547,6 +578,13 @@ if os.path.isdir(FRONTEND_DIR):
         html = _re.sub(r"style\.css\?v=[\w]+", f"style.css?v={_asset_ver('style.css')}", html)
         html = _re.sub(r"app\.js\?v=[\w]+", f"app.js?v={_asset_ver('app.js')}", html)
         return Response(content=html, media_type="text/html")
+
+    @app.get("/admin")
+    def admin_page():
+        return FileResponse(
+            os.path.join(FRONTEND_DIR, "admin.html"),
+            media_type="text/html",
+        )
 
     @app.get("/sw.js")
     def service_worker():

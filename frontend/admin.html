@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>管理后台 · 小微贷管家</title>
+  <style>
+    :root { --blue:#8cacd2; --blue-d:#5f86bb; --ink:#1f2d3d; --muted:#6b7f96; --line:#e4ecf5; --bg:#eef4fb; }
+    * { box-sizing: border-box; }
+    body { margin:0; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif; background:var(--bg); color:var(--ink); }
+    header { background:linear-gradient(135deg,#7ea3d0,#5f86bb); color:#fff; padding:16px 22px; display:flex; align-items:center; justify-content:space-between; box-shadow:0 2px 12px rgba(0,0,0,.1); }
+    header h1 { font-size:18px; margin:0; font-weight:700; }
+    header .sub { font-size:12px; opacity:.85; margin-top:2px; }
+    #logout { background:rgba(255,255,255,.2); color:#fff; border:1px solid rgba(255,255,255,.4); border-radius:8px; padding:6px 14px; cursor:pointer; font-size:13px; }
+    #logout:hover { background:rgba(255,255,255,.32); }
+    .wrap { max-width:1080px; margin:0 auto; padding:20px 16px 60px; }
+
+    /* 登录 */
+    .login-card { max-width:380px; margin:80px auto; background:#fff; border-radius:16px; padding:32px 28px; box-shadow:0 10px 40px rgba(95,134,187,.18); text-align:center; }
+    .login-card .logo { font-size:44px; }
+    .login-card h2 { margin:10px 0 6px; font-size:20px; }
+    .login-card p { color:var(--muted); font-size:13px; margin:0 0 20px; }
+    .login-card input { width:100%; padding:12px 14px; border:1.5px solid var(--line); border-radius:10px; font-size:15px; margin-bottom:14px; }
+    .login-card input:focus { outline:none; border-color:var(--blue); }
+    .btn { background:linear-gradient(135deg,#7ea3d0,#5f86bb); color:#fff; border:none; border-radius:10px; padding:12px 18px; font-size:15px; font-weight:600; cursor:pointer; width:100%; }
+    .btn:hover { filter:brightness(1.05); }
+    .err { color:#d64545; font-size:13px; min-height:18px; margin-bottom:6px; }
+
+    /* 统计卡 */
+    .stats { display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:14px; margin-bottom:22px; }
+    .stat { background:#fff; border-radius:14px; padding:18px; box-shadow:0 4px 16px rgba(0,0,0,.05); border:1px solid var(--line); }
+    .stat .n { font-size:30px; font-weight:800; color:var(--blue-d); }
+    .stat .l { font-size:13px; color:var(--muted); margin-top:4px; }
+
+    .card { background:#fff; border-radius:14px; padding:20px; box-shadow:0 4px 16px rgba(0,0,0,.05); border:1px solid var(--line); margin-bottom:22px; }
+    .card-head { display:flex; align-items:center; justify-content:space-between; margin-bottom:14px; flex-wrap:wrap; gap:10px; }
+    .card-head h3 { margin:0; font-size:16px; }
+    .card-head .tools { display:flex; gap:8px; }
+    .mini { font-size:13px; border:1px solid var(--blue); color:var(--blue-d); background:#fff; border-radius:8px; padding:6px 12px; cursor:pointer; text-decoration:none; }
+    .mini:hover { background:#eef4fb; }
+    table { width:100%; border-collapse:collapse; font-size:13px; }
+    th,td { text-align:left; padding:10px 8px; border-bottom:1px solid var(--line); white-space:nowrap; }
+    th { color:var(--muted); font-weight:600; background:#f7fafd; position:sticky; top:0; }
+    td.wrap-cell { white-space:normal; max-width:220px; }
+    .table-scroll { overflow-x:auto; max-height:460px; overflow-y:auto; border-radius:10px; border:1px solid var(--line); }
+    .tag { display:inline-block; padding:2px 9px; border-radius:20px; font-size:12px; font-weight:600; }
+    .t-green { background:#dcfce7; color:#15803d; } .t-blue { background:#e0edfb; color:#3b6fb0; }
+    .t-amber { background:#fef9c3; color:#a16207; } .t-red { background:#fee2e2; color:#b91c1c; } .t-gray { background:#eef2f7; color:#64748b; }
+    .empty { text-align:center; color:var(--muted); padding:30px; }
+    .refresh-bar { display:flex; align-items:center; gap:12px; margin-bottom:16px; font-size:13px; color:var(--muted); }
+    a.phone { color:var(--blue-d); text-decoration:none; }
+    @media (max-width:600px){ .stat .n{font-size:24px;} }
+  </style>
+</head>
+<body>
+  <!-- 登录视图 -->
+  <div id="login-view">
+    <div class="login-card">
+      <div class="logo">🔐</div>
+      <h2>管理后台</h2>
+      <p>请输入管理口令以查看申请与线索</p>
+      <div class="err" id="login-err"></div>
+      <input type="password" id="token-input" placeholder="管理口令" autocomplete="current-password" />
+      <button class="btn" id="login-btn">进入后台</button>
+    </div>
+  </div>
+
+  <!-- 后台视图 -->
+  <div id="admin-view" style="display:none;">
+    <header>
+      <div>
+        <h1>🏦 小微贷管家 · 管理后台</h1>
+        <div class="sub">申请记录 · 客户线索 · 数据资产</div>
+      </div>
+      <button id="logout">退出</button>
+    </header>
+    <div class="wrap">
+      <div class="refresh-bar">
+        <button class="mini" id="refresh-btn">🔄 刷新</button>
+        <span id="updated-at"></span>
+      </div>
+
+      <div class="stats" id="stats"></div>
+
+      <div class="card">
+        <div class="card-head">
+          <h3>📁 申请记录</h3>
+          <div class="tools">
+            <a class="mini" id="export-apps" href="#" target="_blank">导出汇总 PDF</a>
+          </div>
+        </div>
+        <div class="table-scroll"><table id="apps-table"></table></div>
+      </div>
+
+      <div class="card">
+        <div class="card-head"><h3>📞 客户线索 / 预约(含手机号)</h3></div>
+        <div class="table-scroll"><table id="leads-table"></table></div>
+      </div>
+
+      <div class="card">
+        <div class="card-head"><h3>🏭 行业分布</h3></div>
+        <div id="industries"></div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const TOKEN_KEY = "admin_token";
+    let token = localStorage.getItem(TOKEN_KEY) || "";
+
+    function esc(s){ return String(s==null?"":s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c])); }
+    function statusTag(s){
+      const m={"已放款":"t-green","已通过":"t-green","审核中":"t-amber","已提交":"t-blue","待提交":"t-gray","待回访":"t-amber","已拒绝":"t-red"};
+      return `<span class="tag ${m[s]||"t-gray"}">${esc(s)}</span>`;
+    }
+
+    async function api(path){
+      const r = await fetch(path, { headers: { "X-Admin-Token": token } });
+      if (r.status === 401) throw new Error("401");
+      return r.json();
+    }
+
+    async function load(){
+      const err = document.getElementById("login-err");
+      try {
+        const d = await api("/api/admin/overview");
+        renderAll(d);
+        showAdmin();
+      } catch(e){
+        if (e.message === "401"){ err.textContent = "口令错误,请重试"; localStorage.removeItem(TOKEN_KEY); token=""; showLogin(); }
+        else { err.textContent = "加载失败,请稍后重试"; }
+      }
+    }
+
+    function renderAll(d){
+      const c = d.counts || {};
+      const a = d.assets || {};
+      document.getElementById("stats").innerHTML = [
+        ["申请总数", c.applications||0],
+        ["客户线索", c.leads||0],
+        ["预约到店", c.bookings||0],
+        ["通过率", (a.pass_rate||0)+"%"],
+        ["累计放款(万)", a.released_amount||0],
+        ["数据壁垒指数", a.moat_index||0],
+      ].map(([l,n])=>`<div class="stat"><div class="n">${esc(n)}</div><div class="l">${l}</div></div>`).join("");
+
+      // 申请表
+      const apps = d.applications||[];
+      document.getElementById("apps-table").innerHTML =
+        `<tr><th>时间</th><th>企业</th><th>行业</th><th>需求(万)</th><th>推荐产品</th><th>评级</th><th>状态</th></tr>` +
+        (apps.length ? apps.map(r=>`<tr>
+          <td>${esc((r.created_at||"").slice(5,16))}</td>
+          <td class="wrap-cell">${esc(r.company_name)}</td>
+          <td>${esc(r.industry)}</td>
+          <td>${esc(r.loan_amount)}</td>
+          <td class="wrap-cell">${esc(r.best_product)}</td>
+          <td><span class="tag ${({A:"t-green",B:"t-blue",C:"t-amber",D:"t-gray",E:"t-red"})[r.risk_grade]||"t-gray"}">${esc(r.risk_grade)}</span></td>
+          <td>${statusTag(r.status)}</td></tr>`).join("")
+          : `<tr><td colspan="7" class="empty">暂无申请记录</td></tr>`);
+
+      // 线索表
+      const leads = d.leads||[];
+      document.getElementById("leads-table").innerHTML =
+        `<tr><th>时间</th><th>类型</th><th>企业/联系人</th><th>手机</th><th>行业</th><th>需求(万)</th><th>意向银行</th><th>时段</th><th>状态</th></tr>` +
+        (leads.length ? leads.map(r=>`<tr>
+          <td>${esc((r.created_at||"").slice(5,16))}</td>
+          <td>${esc(r.kind)}</td>
+          <td class="wrap-cell">${esc(r.company_name)||"-"}</td>
+          <td><a class="phone" href="tel:${esc(r.phone)}">${esc(r.phone)||"-"}</a></td>
+          <td>${esc(r.industry)||"-"}</td>
+          <td>${esc(r.loan_amount)||"-"}</td>
+          <td>${esc(r.bank)||"-"}</td>
+          <td>${esc(r.slot)||"-"}</td>
+          <td>${statusTag(r.status)}</td></tr>`).join("")
+          : `<tr><td colspan="9" class="empty">暂无线索</td></tr>`);
+
+      // 行业分布
+      const inds = a.industries||[];
+      const max = Math.max(1, ...inds.map(i=>i.count));
+      document.getElementById("industries").innerHTML = inds.length ? inds.map(i=>`
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;font-size:13px;">
+          <span style="width:70px;">${esc(i.name)}</span>
+          <span style="flex:1;background:#eef4fb;border-radius:6px;overflow:hidden;height:16px;">
+            <span style="display:block;height:100%;width:${Math.round(i.count/max*100)}%;background:linear-gradient(90deg,#7ea3d0,#5f86bb);"></span>
+          </span>
+          <b style="width:30px;text-align:right;">${i.count}</b>
+        </div>`).join("") : `<div class="empty">暂无数据</div>`;
+
+      document.getElementById("export-apps").href = "/api/applications-summary/pdf";
+      document.getElementById("updated-at").textContent = "更新于 " + new Date().toLocaleString("zh-CN");
+    }
+
+    function showLogin(){ document.getElementById("login-view").style.display=""; document.getElementById("admin-view").style.display="none"; }
+    function showAdmin(){ document.getElementById("login-view").style.display="none"; document.getElementById("admin-view").style.display=""; }
+
+    document.getElementById("login-btn").addEventListener("click", ()=>{
+      token = document.getElementById("token-input").value.trim();
+      if(!token) return;
+      localStorage.setItem(TOKEN_KEY, token);
+      load();
+    });
+    document.getElementById("token-input").addEventListener("keydown", e=>{ if(e.key==="Enter") document.getElementById("login-btn").click(); });
+    document.getElementById("logout").addEventListener("click", ()=>{ localStorage.removeItem(TOKEN_KEY); token=""; showLogin(); document.getElementById("token-input").value=""; });
+    document.getElementById("refresh-btn").addEventListener("click", load);
+
+    if(token) load(); else showLogin();
+  </script>
+</body>
+</html>

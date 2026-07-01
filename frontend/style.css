@@ -2235,6 +2235,11 @@ body.dark .lb-empty-title, body.dark .side-tabs-title { color: #60a5fa; }
 body.dark .feature-ico, body.dark .hero-badge { color: #93c5fd; }
 body.dark .side-tabs .tab-btn { color: rgba(255,255,255,0.92); }
 body.dark .subsidy-box h3, body.dark .advice-box h3, body.dark .risk-box h3, body.dark .tips-box h3 { color: #6ee7b7; }
+/* 风控评估:因子框保持浅底,深色模式下文字改深色以保证可读 */
+body.dark .factor { color: #1f2937; }
+body.dark .factor b { color: #0f172a; }
+body.dark .risk-score { color: #1f2937; }
+body.dark .risk-score .rs-num { color: #0f172a; }
 body.dark .export-btn { background: #134e4a; color: #93c5fd; border-color: #0d9488; }
 body.dark .toast-info { border-left-color: #3b82f6; }
 body.dark .compare-table .cmp-best, body.dark .calc-stat { color: #60a5fa; }

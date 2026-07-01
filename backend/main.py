@@ -14,12 +14,13 @@ import storage
 import tts
 import quiz
 from excel_export import build_excel
-from models import (ApplicationCreate, EnterpriseProfile, RecommendResponse,
-                    StatusUpdate)
+from models import (ApplicationCreate, EnterpriseProfile, PersonalProfile,
+                    RecommendResponse, StatusUpdate)
 from pdf_export import build_pdf
 from bank_forms import build_bank_package
 from bank_forms_docx import build_bank_package_docx
 from recommender import recommend
+from personal_recommender import recommend_personal
 
 XLSX_MIME = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
 
@@ -41,6 +42,12 @@ FRONTEND_DIR = os.path.join(os.path.dirname(os.path.dirname(__file__)), "fronten
 def api_recommend(profile: EnterpriseProfile) -> RecommendResponse:
     """根据企业实际情况返回最优贷款方案。"""
     return recommend(profile)
+
+
+@app.post("/api/recommend-personal", response_model=RecommendResponse)
+def api_recommend_personal(profile: PersonalProfile) -> RecommendResponse:
+    """根据个人实际情况返回最优贷款方案。"""
+    return recommend_personal(profile)
 
 
 @app.post("/api/preaudit")
@@ -108,6 +115,19 @@ def api_export_pdf(profile: EnterpriseProfile):
         content=pdf_bytes,
         media_type="application/pdf",
         headers={"Content-Disposition": f'attachment; filename="{filename}"'},
+    )
+
+
+@app.post("/api/export/pdf-personal")
+def api_export_pdf_personal(profile: PersonalProfile):
+    """生成并下载个人贷款方案 PDF 报告。"""
+    from pdf_export_personal import build_personal_pdf
+    result = recommend_personal(profile)
+    pdf_bytes = build_personal_pdf(profile, result)
+    return Response(
+        content=pdf_bytes,
+        media_type="application/pdf",
+        headers={"Content-Disposition": 'attachment; filename="personal_loan_plan.pdf"'},
     )
 
 

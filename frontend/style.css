@@ -386,7 +386,7 @@ body {
   cursor: pointer;
 }
 
-#submit-btn {
+#submit-btn, #personal-submit-btn {
   margin-top: 18px;
   width: 100%;
   padding: 14px;
@@ -401,13 +401,13 @@ body {
   transition: transform 0.15s, box-shadow 0.15s, filter 0.15s;
 }
 
-#submit-btn:hover {
+#submit-btn:hover, #personal-submit-btn:hover {
   filter: brightness(1.06);
   transform: translateY(-1px);
   box-shadow: 0 10px 24px rgba(140, 172, 210, 0.36);
 }
 
-#submit-btn:disabled {
+#submit-btn:disabled, #personal-submit-btn:disabled {
   background: #c4d0de;
   box-shadow: none;
   cursor: not-allowed;
@@ -416,6 +416,45 @@ body {
 .result {
   margin-top: 24px;
 }
+
+/* 身份切换:企业 / 个人 */
+.identity-switch {
+  display: flex;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.55);
+  padding: 6px;
+  border-radius: 14px;
+  margin: 4px 0 16px;
+  box-shadow: 0 4px 14px rgba(76, 125, 182, 0.12);
+  max-width: 420px;
+}
+.identity-switch .id-btn {
+  flex: 1;
+  padding: 11px 10px;
+  border: none;
+  border-radius: 10px;
+  background: transparent;
+  color: #4d6a8c;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.18s, color 0.18s, box-shadow 0.18s;
+}
+.identity-switch .id-btn .id-ico { font-size: 17px; }
+.identity-switch .id-btn.active {
+  background: linear-gradient(135deg, #6c94c4, #8cacd2);
+  color: #fff;
+  box-shadow: 0 6px 16px rgba(108, 148, 196, 0.32);
+}
+.id-tags {
+  align-items: center;
+  gap: 14px !important;
+  flex-wrap: wrap;
+}
+.id-tags-label { color: #6b7f96; font-size: 13px; font-weight: 600; }
+body.dark .identity-switch { background: rgba(255, 255, 255, 0.06); }
+body.dark .identity-switch .id-btn { color: #9fb3cc; }
+body.dark .id-tags-label { color: #9fb3cc; }
 
 .hidden {
   display: none !important;

@@ -133,6 +133,7 @@ form.addEventListener("submit", async (e) => {
     if (!res.ok) throw new Error("请求失败:" + res.status);
     const data = await res.json();
     window.__lastProfile = profile;
+    window.__lastMode = "enterprise";
     render(data);
     showToast("已为你匹配最优方案", "success");
     resultEl.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -433,13 +434,11 @@ function render(data) {
     </div>`;
   }
 
-  html += `<div class="summary-box">
-    <h3>📊 匹配结果</h3>
-    <p>${escapeHtml(data.summary)}</p>
-    <ul class="highlights">
-      ${data.profile_highlights.map((h) => `<li>${escapeHtml(h)}</li>`).join("")}
-    </ul>
-    <button id="export-pdf" class="export-btn">📄 导出方案 PDF</button>
+  const isPersonal = window.__lastMode === "personal";
+  const actionBtns = isPersonal
+    ? `<button id="export-pdf-personal" class="export-btn">📄 导出方案 PDF</button>
+    <button class="export-btn" onclick="window.print()">🖨️ 打印 / 另存</button>`
+    : `<button id="export-pdf" class="export-btn">📄 导出方案 PDF</button>
     <button id="export-excel" class="export-btn excel-btn">📊 导出 Excel</button>
     <button id="export-bank" class="export-btn bank-btn">🏦 银行成品材料 PDF</button>
     <button id="export-bank-docx" class="export-btn bank-btn">📝 银行成品材料 Word</button>
@@ -448,7 +447,15 @@ function render(data) {
     <button id="growth-report" class="export-btn">📈 资质成长报告</button>
     <button id="combo-credit" class="export-btn">➕ 组合贷测算</button>
     <select id="bank-tpl-sel" class="bank-sel" title="选择银行专属申报模板"><option value="">通用模板</option></select>
-    <button id="save-application" class="export-btn save-btn">💾 保存为申请记录</button>
+    <button id="save-application" class="export-btn save-btn">💾 保存为申请记录</button>`;
+
+  html += `<div class="summary-box">
+    <h3>📊 匹配结果</h3>
+    <p>${escapeHtml(data.summary)}</p>
+    <ul class="highlights">
+      ${data.profile_highlights.map((h) => `<li>${escapeHtml(h)}</li>`).join("")}
+    </ul>
+    ${actionBtns}
   </div>`;
 
   // 风控评估
@@ -675,6 +682,9 @@ function render(data) {
   const saveBtn = document.getElementById("save-application");
   if (saveBtn) saveBtn.addEventListener("click", saveApplication);
 
+  const pdfPersonalBtn = document.getElementById("export-pdf-personal");
+  if (pdfPersonalBtn) pdfPersonalBtn.addEventListener("click", exportPersonalPdf);
+
   loadBankOptions();
   bindFavButtons();
   refreshFavBar();
@@ -778,6 +788,36 @@ async function exportPdf() {
   await exportReport("/api/export/pdf", "pdf", document.getElementById("export-pdf"));
 }
 
+async function exportPersonalPdf() {
+  const btn = document.getElementById("export-pdf-personal");
+  if (!window.__lastPersonalProfile || !btn) return;
+  const old = btn.textContent;
+  btn.disabled = true;
+  btn.textContent = "生成中...";
+  try {
+    const res = await fetch("/api/export/pdf-personal", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(window.__lastPersonalProfile),
+    });
+    if (!res.ok) throw new Error("导出失败:" + res.status);
+    const blob = await res.blob();
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = `${window.__lastPersonalProfile.name || "个人"}_贷款方案.pdf`;
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    URL.revokeObjectURL(url);
+  } catch (err) {
+    showToast(err.message, "error");
+  } finally {
+    btn.disabled = false;
+    btn.textContent = old;
+  }
+}
+
 async function exportExcel() {
   await exportReport("/api/export/excel", "xlsx", document.getElementById("export-excel"));
 }
@@ -868,6 +908,136 @@ function statusClass(s) {
 document.querySelectorAll(".tab-btn[data-tab]").forEach((btn) => {
   btn.addEventListener("click", () => activateTab(btn.dataset.tab));
 });
+
+/* ===================== 个人贷款:身份切换与匹配 ===================== */
+(function initPersonalLoan() {
+  const switchEl = document.getElementById("identity-switch");
+  const entView = document.getElementById("enterprise-view");
+  const perView = document.getElementById("personal-view");
+  const perForm = document.getElementById("personal-form");
+  if (!switchEl || !perForm) return;
+
+  function setIdentity(id) {
+    switchEl.querySelectorAll(".id-btn").forEach((b) =>
+      b.classList.toggle("active", b.dataset.identity === id)
+    );
+    const personal = id === "personal";
+    if (entView) entView.classList.toggle("hidden", personal);
+    if (perView) perView.classList.toggle("hidden", !personal);
+    // 切换身份清空上一次结果,避免混淆
+    resultEl.classList.add("hidden");
+    resultEl.innerHTML = "";
+    window.__lastMode = personal ? "personal" : "enterprise";
+  }
+  switchEl.querySelectorAll(".id-btn").forEach((b) =>
+    b.addEventListener("click", () => setIdentity(b.dataset.identity))
+  );
+
+  function collectPersonalProfile() {
+    const fd = new FormData(perForm);
+    const num = (k) => parseFloat(fd.get(k)) || 0;
+    const identities = Array.from(perForm.querySelectorAll(".pf-identity:checked")).map((c) => c.value);
+    const houseVal = num("house_value");
+    const carVal = num("car_value");
+    const fundMonthly = num("housing_fund_monthly");
+    return {
+      name: fd.get("name") || "",
+      age: parseInt(fd.get("age")) || 30,
+      occupation_type: fd.get("occupation_type"),
+      monthly_income: num("monthly_income"),
+      income_type: fd.get("income_type") || "salary",
+      work_years: num("work_years"),
+      has_social_security: fd.get("has_social_security") === "on",
+      has_housing_fund: fd.get("has_housing_fund") === "on" || fundMonthly > 0,
+      housing_fund_monthly: fundMonthly,
+      has_house: fd.get("has_house") === "on" || houseVal > 0,
+      house_value: houseVal,
+      has_car: fd.get("has_car") === "on" || carVal > 0,
+      car_value: carVal,
+      has_insurance_policy: fd.get("has_insurance_policy") === "on",
+      credit_level: fd.get("credit_level"),
+      has_overdue: fd.get("has_overdue") === "on",
+      monthly_debt_payment: num("monthly_debt_payment"),
+      is_entrepreneur: fd.get("is_entrepreneur") === "on",
+      special_identity: identities,
+      loan_amount: num("loan_amount"),
+      loan_purpose: fd.get("loan_purpose"),
+      preferred_term_months: parseInt(fd.get("preferred_term_months")) || 12,
+      urgent: fd.get("urgent") === "on",
+    };
+  }
+
+  function validatePersonal(p) {
+    const errs = [];
+    if (!p.monthly_income || p.monthly_income <= 0) errs.push("请填写月收入");
+    if (!p.loan_amount || p.loan_amount <= 0) errs.push("请填写贷款金额");
+    if (!p.preferred_term_months || p.preferred_term_months < 1) errs.push("请填写贷款期限");
+    return errs;
+  }
+
+  const perBtn = document.getElementById("personal-submit-btn");
+  perForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const profile = collectPersonalProfile();
+    const errors = validatePersonal(profile);
+    if (errors.length) {
+      showToast(`请检查:${errors.join("、")}`, "error");
+      return;
+    }
+    perBtn.disabled = true;
+    perBtn.textContent = "匹配中...";
+    renderSkeleton();
+    try {
+      const res = await fetch("/api/recommend-personal", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(profile),
+      });
+      if (!res.ok) throw new Error("请求失败:" + res.status);
+      const data = await res.json();
+      window.__lastPersonalProfile = profile;
+      window.__lastMode = "personal";
+      render(data);
+      showToast("已为你匹配最优方案", "success");
+      resultEl.scrollIntoView({ behavior: "smooth", block: "start" });
+    } catch (err) {
+      resultEl.innerHTML = `<div class="empty err-empty">😕 匹配遇到问题:${escapeHtml(err.message)}<br><button id="retry-personal" class="export-btn">🔄 重试一次</button></div>`;
+      resultEl.classList.remove("hidden");
+      const rb = document.getElementById("retry-personal");
+      if (rb) rb.addEventListener("click", () => perForm.requestSubmit());
+      showToast("匹配失败,请稍后重试", "error");
+    } finally {
+      perBtn.disabled = false;
+      perBtn.textContent = "🔍 智能匹配最优方案";
+    }
+  });
+
+  const fillSample = document.getElementById("fill-sample-personal");
+  if (fillSample) {
+    fillSample.addEventListener("click", (e) => {
+      e.preventDefault();
+      const set = (id, v) => { const el = document.getElementById(id); if (el) el.value = v; };
+      set("pf-name", "张先生");
+      set("pf-occupation", "salaried");
+      set("pf-age", 32);
+      set("pf-income", 12000);
+      set("pf-income-type", "salary");
+      set("pf-workyears", 4);
+      set("pf-fund", 1500);
+      set("pf-house", 0);
+      set("pf-car", 0);
+      set("pf-credit", "good");
+      set("pf-debt", 2000);
+      set("pf-amount", 15);
+      set("pf-purpose", "decoration");
+      set("pf-term", 36);
+      const chk = (name, on) => { const el = perForm.querySelector(`input[name="${name}"]`); if (el) el.checked = on; };
+      chk("has_social_security", true);
+      chk("has_housing_fund", true);
+      showToast("已填入示例,直接点匹配试试", "info");
+    });
+  }
+})();
 
 function activateTab(tab) {
   closeChatPanel();

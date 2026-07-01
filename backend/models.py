@@ -47,6 +47,64 @@ class EnterpriseProfile(BaseModel):
     industry_bonus: List[str] = Field(default_factory=list, description="已具备的行业专属增信项,如餐饮的外卖平台流水")
 
 
+class OccupationType(str, Enum):
+    salaried = "salaried"            # 上班族(企业职工)
+    civil_servant = "civil_servant"  # 公务员 / 事业编
+    self_employed = "self_employed"  # 个体工商户 / 小微业主
+    freelancer = "freelancer"        # 自由职业 / 灵活就业
+    professional = "professional"    # 医生/律师/教师等专业人士
+    retired = "retired"              # 退休
+    student = "student"              # 学生
+
+
+class PersonalLoanPurpose(str, Enum):
+    consumption = "consumption"      # 日常消费
+    decoration = "decoration"        # 装修
+    car = "car"                      # 购车
+    education = "education"          # 教育
+    medical = "medical"              # 医疗
+    marriage = "marriage"            # 婚庆
+    travel = "travel"                # 旅游
+    turnover = "turnover"            # 资金周转
+    startup = "startup"              # 创业 / 个体经营
+    debt_optimize = "debt_optimize"  # 债务优化 / 以低息换高息
+
+
+class PersonalProfile(BaseModel):
+    """个人借款人实际情况。金额单位:万元;收入单位:元/月。"""
+
+    name: Optional[str] = Field(default="", description="姓名(选填)")
+    age: int = Field(default=30, ge=18, le=70, description="年龄")
+    occupation_type: OccupationType = Field(description="职业身份")
+    occupation_detail: Optional[str] = Field(default="", description="具体职业描述,选填")
+
+    monthly_income: float = Field(ge=0, description="税后月收入(元/月)")
+    income_type: str = Field(default="salary", description="收入形式:salary 打卡工资 / cash 现金或混合 / business 经营流水")
+    work_years: float = Field(default=1, ge=0, description="现单位/当前职业持续年限(年)")
+
+    has_social_security: bool = Field(default=False, description="是否连续缴纳社保")
+    has_housing_fund: bool = Field(default=False, description="是否连续缴存公积金")
+    housing_fund_monthly: float = Field(default=0, ge=0, description="公积金月缴存额(元)")
+
+    has_house: bool = Field(default=False, description="是否有自有房产")
+    house_value: float = Field(default=0, ge=0, description="房产估值(万元)")
+    has_car: bool = Field(default=False, description="是否有自有车辆")
+    car_value: float = Field(default=0, ge=0, description="车辆估值(万元)")
+    has_insurance_policy: bool = Field(default=False, description="是否持有寿险/年金保单")
+
+    credit_level: CreditLevel = Field(description="个人征信状况")
+    has_overdue: bool = Field(default=False, description="当前是否存在逾期")
+    monthly_debt_payment: float = Field(default=0, ge=0, description="名下现有月还款额(房贷/车贷/信用卡等,元/月)")
+
+    is_entrepreneur: bool = Field(default=False, description="是否在创业或经营个体工商户")
+    special_identity: List[str] = Field(default_factory=list, description="特殊身份:高校毕业生/退役军人/返乡农民工等,解锁专项政策")
+
+    loan_amount: float = Field(gt=0, description="期望贷款金额(万元)")
+    loan_purpose: PersonalLoanPurpose = Field(description="贷款用途")
+    preferred_term_months: int = Field(default=12, ge=1, description="期望贷款期限(月)")
+    urgent: bool = Field(default=False, description="是否急需放款")
+
+
 class RecommendedPlan(BaseModel):
     product_id: str
     product_name: str

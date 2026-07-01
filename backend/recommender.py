@@ -36,6 +36,8 @@ def _eligible(p: dict, profile: EnterpriseProfile) -> (bool, List[str]):
         reasons.append("需连续纳税记录")
     if p.get("need_tax_or_invoice") and not (profile.has_tax_record or profile.has_invoice):
         reasons.append("需纳税记录或稳定开票流水")
+    if p.get("industry_fit") and profile.industry not in p["industry_fit"]:
+        reasons.append("该产品面向特定行业")
     return (len(reasons) == 0, reasons)
 
 

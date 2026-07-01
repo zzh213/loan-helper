@@ -37,9 +37,9 @@
    "金融",
    "金融工程"
   ],
-  "count": 328,
+  "count": 411,
   "provenanceNote": "每个项目带 provenance 溯源：dataSource=参考估算/官方核实，verified 表示是否经官方页核实，lastVerified 为核实年月，sourceUrl 为官方项目页。参考估算分数线来自公开信息与往年经验，仅供参考；官方核实项由 scripts/ingest.py 从官方来源导入。",
-  "verifiedCount": 56
+  "verifiedCount": 98
  },
  "programs": [
   {
@@ -8143,34 +8143,34 @@
    "country": "英国",
    "university": "谢菲尔德大学",
    "qsRank": 105,
-   "program": "Computer Science (Conversion) MSc",
+   "program": "Computer Science MSc",
    "field": "计算机/CS",
    "degree": "硕士",
    "requirements": {
     "avgByTier": {
-     "985": 76,
-     "211": 79,
-     "双一流": 81,
+     "985": 78,
+     "211": 80,
+     "双一流": 82,
      "双非": 84,
-     "海本/中外合作": 72
+     "海本/中外合作": 74
     },
     "ielts": {
      "overall": 6.5,
      "sub": 6.0
     },
     "gre": null,
-    "background": "转专业友好",
-    "notes": ""
+    "background": "2:1 undergraduate honours degree in a non-computing subject",
+    "notes": "官方入学要求：2:1 undergraduate honours degree in a non-computing subject"
    },
    "tuition": "约 25–38 万元 / 1年",
    "duration": "1 年",
-   "timeline": "每年 9–10 月开放，滚动录取先到先得，建议 10–12 月递交",
+   "timeline": "9 月入学；国际生名额有限、多轮滚动审理，招满即止，建议尽早递交（以官网 Deadlines 页为准）",
    "provenance": {
-    "dataSource": "参考估算",
-    "verified": false,
-    "lastVerified": null,
-    "sourceUrl": null,
-    "searchUrl": "https://www.google.com/search?q=谢菲尔德大学+Computer+Science+(Conversion)+MSc+entry+requirements"
+    "dataSource": "官方核实",
+    "verified": true,
+    "lastVerified": "2026-06",
+    "sourceUrl": "https://www.sheffield.ac.uk/postgraduate/taught/courses/2026/computer-science-msc",
+    "searchUrl": "https://www.google.com/search?q=谢菲尔德大学+Computer+Science+MSc+entry+requirements"
    }
   },
   {
@@ -11601,6 +11601,2911 @@
     "lastVerified": "2026-07",
     "sourceUrl": "https://www.nottingham.ac.uk/pgstudy/course/taught/economics-msc",
     "searchUrl": "https://www.google.com/search?q=诺丁汉大学+Economics+MSc+entry+requirements"
+   }
+  },
+  {
+   "id": "ca-toronto-ms",
+   "country": "加拿大",
+   "university": "多伦多大学",
+   "qsRank": 25,
+   "program": "Master of Management Analytics (MMA)",
+   "field": "商业分析",
+   "degree": "硕士",
+   "requirements": {
+    "avgByTier": {
+     "985": 84,
+     "211": 86,
+     "双一流": 87,
+     "双非": 88,
+     "海本/中外合作": 79
+    },
+    "ielts": {
+     "overall": 7.0,
+     "sub": 6.5
+    },
+    "gre": "GMAT/GRE 建议",
+    "background": "需数理/编程基础",
+    "notes": "Rotman 商学院，就业导向"
+   },
+   "tuition": "约 18–35 万元 / 1–2年",
+   "duration": "1–2 年",
+   "timeline": "每年 9–10 月开放，截止次年 1–3 月，名额有限建议早申",
+   "provenance": {
+    "dataSource": "参考估算",
+    "verified": false,
+    "lastVerified": null,
+    "sourceUrl": null,
+    "searchUrl": "https://www.google.com/search?q=多伦多大学+Master+of+Management+Analytics+(MMA)+entry+requirements"
+   }
+  },
+  {
+   "id": "ca-toronto-eng",
+   "country": "加拿大",
+   "university": "多伦多大学",
+   "qsRank": 25,
+   "program": "Master of Engineering (MEng) ECE",
+   "field": "电子/电气工程",
+   "degree": "硕士",
+   "requirements": {
+    "avgByTier": {
+     "985": 83,
+     "211": 85,
+     "双一流": 86,
+     "双非": 88,
+     "海本/中外合作": 78
+    },
+    "ielts": {
+     "overall": 6.5,
+     "sub": 6.0
+    },
+    "gre": null,
+    "background": "需工程/相关本科背景",
+    "notes": "可授课或含实习方向"
+   },
+   "tuition": "约 18–35 万元 / 1–2年",
+   "duration": "1–2 年",
+   "timeline": "每年 9–10 月开放，截止次年 1–3 月，名额有限建议早申",
+   "provenance": {
+    "dataSource": "参考估算",
+    "verified": false,
+    "lastVerified": null,
+    "sourceUrl": null,
+    "searchUrl": "https://www.google.com/search?q=多伦多大学+Master+of+Engineering+(MEng)+ECE+entry+requirements"
+   }
+  },
+  {
+   "id": "ca-ubc-ds",
+   "country": "加拿大",
+   "university": "英属哥伦比亚大学 UBC",
+   "qsRank": 38,
+   "program": "Master of Data Science (MDS)",
+   "field": "数据科学/AI",
+   "degree": "硕士",
+   "requirements": {
+    "avgByTier": {
+     "985": 84,
+     "211": 86,
+     "双一流": 87,
+     "双非": 89,
+     "海本/中外合作": 80
+    },
+    "ielts": {
+     "overall": 6.5,
+     "sub": 6.0
+    },
+    "gre": "GRE 可选",
+    "background": "需数理 + 编程背景",
+    "notes": "10 个月密集项目，需先修课"
+   },
+   "tuition": "约 18–35 万元 / 1–2年",
+   "duration": "1–2 年",
+   "timeline": "每年 9–10 月开放，截止次年 1–3 月，名额有限建议早申",
+   "provenance": {
+    "dataSource": "参考估算",
+    "verified": false,
+    "lastVerified": null,
+    "sourceUrl": null,
+    "searchUrl": "https://www.google.com/search?q=英属哥伦比亚大学+UBC+Master+of+Data+Science+(MDS)+entry+requirements"
+   }
+  },
+  {
+   "id": "ca-ubc-ba",
+   "country": "加拿大",
+   "university": "英属哥伦比亚大学 UBC",
+   "qsRank": 38,
+   "program": "Master of Business Analytics (MBAN)",
+   "field": "商业分析",
+   "degree": "硕士",
+   "requirements": {
+    "avgByTier": {
+     "985": 83,
+     "211": 85,
+     "双一流": 86,
+     "双非": 88,
+     "海本/中外合作": 79
+    },
+    "ielts": {
+     "overall": 6.5,
+     "sub": 6.0
+    },
+    "gre": "GMAT/GRE 建议",
+    "background": "需量化背景",
+    "notes": "Sauder 商学院"
+   },
+   "tuition": "约 18–35 万元 / 1–2年",
+   "duration": "1–2 年",
+   "timeline": "每年 9–10 月开放，截止次年 1–3 月，名额有限建议早申",
+   "provenance": {
+    "dataSource": "参考估算",
+    "verified": false,
+    "lastVerified": null,
+    "sourceUrl": null,
+    "searchUrl": "https://www.google.com/search?q=英属哥伦比亚大学+UBC+Master+of+Business+Analytics+(MBAN)+entry+requirements"
+   }
+  },
+  {
+   "id": "ca-mcgill-analytics",
+   "country": "加拿大",
+   "university": "麦吉尔大学",
+   "qsRank": 29,
+   "program": "Master of Management in Analytics (MMA)",
+   "field": "商业分析",
+   "degree": "硕士",
+   "requirements": {
+    "avgByTier": {
+     "985": 83,
+     "211": 85,
+     "双一流": 86,
+     "双非": 88,
+     "海本/中外合作": 79
+    },
+    "ielts": {
+     "overall": 6.5,
+     "sub": 6.0
+    },
+    "gre": "GMAT/GRE 建议",
+    "background": "需数理/编程基础",
+    "notes": ""
+   },
+   "tuition": "约 18–35 万元 / 1–2年",
+   "duration": "1–2 年",
+   "timeline": "每年 9–10 月开放，截止次年 1–3 月，名额有限建议早申",
+   "provenance": {
+    "dataSource": "参考估算",
+    "verified": false,
+    "lastVerified": null,
+    "sourceUrl": null,
+    "searchUrl": "https://www.google.com/search?q=麦吉尔大学+Master+of+Management+in+Analytics+(MMA)+entry+requirements"
+   }
+  },
+  {
+   "id": "ca-alberta-cs",
+   "country": "加拿大",
+   "university": "阿尔伯塔大学",
+   "qsRank": 96,
+   "program": "Master of Science in Computing Science",
+   "field": "计算机/CS",
+   "degree": "硕士",
+   "requirements": {
+    "avgByTier": {
+     "985": 82,
+     "211": 84,
+     "双一流": 85,
+     "双非": 87,
+     "海本/中外合作": 78
+    },
+    "ielts": {
+     "overall": 6.5,
+     "sub": 6.0
+    },
+    "gre": "GRE 可选",
+    "background": "需 CS 背景",
+    "notes": "AI/强化学习方向知名"
+   },
+   "tuition": "约 18–35 万元 / 1–2年",
+   "duration": "1–2 年",
+   "timeline": "每年 9–10 月开放，截止次年 1–3 月，名额有限建议早申",
+   "provenance": {
+    "dataSource": "参考估算",
+    "verified": false,
+    "lastVerified": null,
+    "sourceUrl": null,
+    "searchUrl": "https://www.google.com/search?q=阿尔伯塔大学+Master+of+Science+in+Computing+Science+entry+requirements"
+   }
+  },
+  {
+   "id": "ca-mcmaster-eng",
+   "country": "加拿大",
+   "university": "麦克马斯特大学",
+   "qsRank": 176,
+   "program": "Master of Engineering in Systems and Technology",
+   "field": "电子/电气工程",
+   "degree": "硕士",
+   "requirements": {
+    "avgByTier": {
+     "985": 80,
+     "211": 82,
+     "双一流": 84,
+     "双非": 86,
+     "海本/中外合作": 76
+    },
+    "ielts": {
+     "overall": 6.5,
+     "sub": 6.0
+    },
+    "gre": null,
+    "background": "需工程本科背景",
+    "notes": ""
+   },
+   "tuition": "约 18–35 万元 / 1–2年",
+   "duration": "1–2 年",
+   "timeline": "每年 9–10 月开放，截止次年 1–3 月，名额有限建议早申",
+   "provenance": {
+    "dataSource": "参考估算",
+    "verified": false,
+    "lastVerified": null,
+    "sourceUrl": null,
+    "searchUrl": "https://www.google.com/search?q=麦克马斯特大学+Master+of+Engineering+in+Systems+and+Technology+entry+requirements"
+   }
+  },
+  {
+   "id": "ca-queens-analytics",
+   "country": "加拿大",
+   "university": "女王大学",
+   "qsRank": 209,
+   "program": "Master of Management Analytics (MMA)",
+   "field": "商业分析",
+   "degree": "硕士",
+   "requirements": {
+    "avgByTier": {
+     "985": 80,
+     "211": 82,
+     "双一流": 84,
+     "双非": 86,
+     "海本/中外合作": 76
+    },
+    "ielts": {
+     "overall": 7.0,
+     "sub": 6.5
+    },
+    "gre": "GMAT/GRE 建议",
+    "background": "需量化基础",
+    "notes": "Smith 商学院"
+   },
+   "tuition": "约 18–35 万元 / 1–2年",
+   "duration": "1–2 年",
+   "timeline": "每年 9–10 月开放，截止次年 1–3 月，名额有限建议早申",
+   "provenance": {
+    "dataSource": "参考估算",
+    "verified": false,
+    "lastVerified": null,
+    "sourceUrl": null,
+    "searchUrl": "https://www.google.com/search?q=女王大学+Master+of+Management+Analytics+(MMA)+entry+requirements"
+   }
+  },
+  {
+   "id": "ca-western-fin",
+   "country": "加拿大",
+   "university": "西安大略大学",
+   "qsRank": 114,
+   "program": "MSc in Management (Finance)",
+   "field": "金融",
+   "degree": "硕士",
+   "requirements": {
+    "avgByTier": {
+     "985": 80,
+     "211": 82,
+     "双一流": 84,
+     "双非": 86,
+     "海本/中外合作": 76
+    },
+    "ielts": {
+     "overall": 6.5,
+     "sub": 6.0
+    },
+    "gre": "GMAT/GRE 建议",
+    "background": "需商科背景",
+    "notes": "Ivey/DAN 管理"
+   },
+   "tuition": "约 18–35 万元 / 1–2年",
+   "duration": "1–2 年",
+   "timeline": "每年 9–10 月开放，截止次年 1–3 月，名额有限建议早申",
+   "provenance": {
+    "dataSource": "参考估算",
+    "verified": false,
+    "lastVerified": null,
+    "sourceUrl": null,
+    "searchUrl": "https://www.google.com/search?q=西安大略大学+MSc+in+Management+(Finance)+entry+requirements"
+   }
+  },
+  {
+   "id": "ie-tcd-cs",
+   "country": "爱尔兰",
+   "university": "都柏林圣三一大学 TCD",
+   "qsRank": 75,
+   "program": "MSc in Computer Science (Intelligent Systems)",
+   "field": "计算机/CS",
+   "degree": "硕士",
+   "requirements": {
+    "avgByTier": {
+     "985": 80,
+     "211": 82,
+     "双一流": 84,
+     "双非": 86,
+     "海本/中外合作": 76
+    },
+    "ielts": {
+     "overall": 6.5,
+     "sub": 6.0
+    },
+    "gre": null,
+    "background": "需 CS/相关背景 + 编程",
+    "notes": "爱尔兰第一学府，2:1 荣誉学位"
+   },
+   "tuition": "约 16–28 万元 / 1年",
+   "duration": "1 年",
+   "timeline": "每年 10 月开放，滚动录取，建议次年 1–3 月前递交",
+   "provenance": {
+    "dataSource": "参考估算",
+    "verified": false,
+    "lastVerified": null,
+    "sourceUrl": null,
+    "searchUrl": "https://www.google.com/search?q=都柏林圣三一大学+TCD+MSc+in+Computer+Science+(Intelligent+Systems)+entry+requirements"
+   }
+  },
+  {
+   "id": "ie-tcd-fin",
+   "country": "爱尔兰",
+   "university": "都柏林圣三一大学 TCD",
+   "qsRank": 75,
+   "program": "MSc in Finance",
+   "field": "金融",
+   "degree": "硕士",
+   "requirements": {
+    "avgByTier": {
+     "985": 82,
+     "211": 84,
+     "双一流": 85,
+     "双非": 87,
+     "海本/中外合作": 78
+    },
+    "ielts": {
+     "overall": 6.5,
+     "sub": 6.0
+    },
+    "gre": "GMAT/GRE 建议",
+    "background": "需商科/量化背景",
+    "notes": "Trinity Business School"
+   },
+   "tuition": "约 16–28 万元 / 1年",
+   "duration": "1 年",
+   "timeline": "每年 10 月开放，滚动录取，建议次年 1–3 月前递交",
+   "provenance": {
+    "dataSource": "参考估算",
+    "verified": false,
+    "lastVerified": null,
+    "sourceUrl": null,
+    "searchUrl": "https://www.google.com/search?q=都柏林圣三一大学+TCD+MSc+in+Finance+entry+requirements"
+   }
+  },
+  {
+   "id": "ie-tcd-ba",
+   "country": "爱尔兰",
+   "university": "都柏林圣三一大学 TCD",
+   "qsRank": 75,
+   "program": "MSc in Business Analytics",
+   "field": "商业分析",
+   "degree": "硕士",
+   "requirements": {
+    "avgByTier": {
+     "985": 81,
+     "211": 83,
+     "双一流": 85,
+     "双非": 86,
+     "海本/中外合作": 77
+    },
+    "ielts": {
+     "overall": 6.5,
+     "sub": 6.0
+    },
+    "gre": null,
+    "background": "需数理/编程基础",
+    "notes": ""
+   },
+   "tuition": "约 16–28 万元 / 1年",
+   "duration": "1 年",
+   "timeline": "每年 10 月开放，滚动录取，建议次年 1–3 月前递交",
+   "provenance": {
+    "dataSource": "参考估算",
+    "verified": false,
+    "lastVerified": null,
+    "sourceUrl": null,
+    "searchUrl": "https://www.google.com/search?q=都柏林圣三一大学+TCD+MSc+in+Business+Analytics+entry+requirements"
+   }
+  },
+  {
+   "id": "ie-ucd-cs",
+   "country": "爱尔兰",
+   "university": "都柏林大学 UCD",
+   "qsRank": 126,
+   "program": "MSc in Computer Science (Negotiated Learning)",
+   "field": "计算机/CS",
+   "degree": "硕士",
+   "requirements": {
+    "avgByTier": {
+     "985": 78,
+     "211": 80,
+     "双一流": 82,
+     "双非": 84,
+     "海本/中外合作": 74
+    },
+    "ielts": {
+     "overall": 6.5,
+     "sub": 6.0
+    },
+    "gre": null,
+    "background": "需 CS 相关背景",
+    "notes": "UCD Smurfit 商学院享誉"
+   },
+   "tuition": "约 16–28 万元 / 1年",
+   "duration": "1 年",
+   "timeline": "每年 10 月开放，滚动录取，建议次年 1–3 月前递交",
+   "provenance": {
+    "dataSource": "参考估算",
+    "verified": false,
+    "lastVerified": null,
+    "sourceUrl": null,
+    "searchUrl": "https://www.google.com/search?q=都柏林大学+UCD+MSc+in+Computer+Science+(Negotiated+Learning)+entry+requirements"
+   }
+  },
+  {
+   "id": "ie-ucd-fin",
+   "country": "爱尔兰",
+   "university": "都柏林大学 UCD",
+   "qsRank": 126,
+   "program": "MSc in Finance",
+   "field": "金融",
+   "degree": "硕士",
+   "requirements": {
+    "avgByTier": {
+     "985": 80,
+     "211": 82,
+     "双一流": 84,
+     "双非": 86,
+     "海本/中外合作": 76
+    },
+    "ielts": {
+     "overall": 6.5,
+     "sub": 6.0
+    },
+    "gre": "GMAT/GRE 建议",
+    "background": "需商科/量化背景",
+    "notes": "Smurfit 商学院，三重认证"
+   },
+   "tuition": "约 16–28 万元 / 1年",
+   "duration": "1 年",
+   "timeline": "每年 10 月开放，滚动录取，建议次年 1–3 月前递交",
+   "provenance": {
+    "dataSource": "参考估算",
+    "verified": false,
+    "lastVerified": null,
+    "sourceUrl": null,
+    "searchUrl": "https://www.google.com/search?q=都柏林大学+UCD+MSc+in+Finance+entry+requirements"
+   }
+  },
+  {
+   "id": "ie-ucd-quant",
+   "country": "爱尔兰",
+   "university": "都柏林大学 UCD",
+   "qsRank": 126,
+   "program": "MSc in Quantitative Finance",
+   "field": "金融工程",
+   "degree": "硕士",
+   "requirements": {
+    "avgByTier": {
+     "985": 82,
+     "211": 84,
+     "双一流": 85,
+     "双非": 87,
+     "海本/中外合作": 78
+    },
+    "ielts": {
+     "overall": 6.5,
+     "sub": 6.0
+    },
+    "gre": "GRE 量化建议",
+    "background": "需强数理 + 编程",
+    "notes": ""
+   },
+   "tuition": "约 16–28 万元 / 1年",
+   "duration": "1 年",
+   "timeline": "每年 10 月开放，滚动录取，建议次年 1–3 月前递交",
+   "provenance": {
+    "dataSource": "参考估算",
+    "verified": false,
+    "lastVerified": null,
+    "sourceUrl": null,
+    "searchUrl": "https://www.google.com/search?q=都柏林大学+UCD+MSc+in+Quantitative+Finance+entry+requirements"
+   }
+  },
+  {
+   "id": "hk-ust-ba",
+   "country": "中国香港",
+   "university": "香港科技大学 HKUST",
+   "qsRank": 44,
+   "program": "MSc in Business Analytics",
+   "field": "商业分析",
+   "degree": "硕士",
+   "requirements": {
+    "avgByTier": {
+     "985": 85,
+     "211": 87,
+     "双一流": 88,
+     "双非": 89,
+     "海本/中外合作": 80
+    },
+    "ielts": {
+     "overall": 6.5,
+     "sub": 5.5
+    },
+    "gre": "GMAT/GRE 建议",
+    "background": "需数理/编程基础",
+    "notes": "科大商学院热门项目，竞争激烈"
+   },
+   "tuition": "约 14–28 万元 / 1年",
+   "duration": "1 年",
+   "timeline": "每年 9 月开放，多轮截止，建议首轮（10–12 月）递交",
+   "provenance": {
+    "dataSource": "参考估算",
+    "verified": false,
+    "lastVerified": null,
+    "sourceUrl": null,
+    "searchUrl": "https://www.google.com/search?q=香港科技大学+HKUST+MSc+in+Business+Analytics+entry+requirements"
+   }
+  },
+  {
+   "id": "hk-ust-fintech",
+   "country": "中国香港",
+   "university": "香港科技大学 HKUST",
+   "qsRank": 44,
+   "program": "MSc in Financial Technology (FinTech)",
+   "field": "金融工程",
+   "degree": "硕士",
+   "requirements": {
+    "avgByTier": {
+     "985": 85,
+     "211": 87,
+     "双一流": 88,
+     "双非": 89,
+     "海本/中外合作": 80
+    },
+    "ielts": {
+     "overall": 6.5,
+     "sub": 5.5
+    },
+    "gre": "GRE 建议",
+    "background": "需金融/CS/数理跨学科背景",
+    "notes": "工/商/理三院联合"
+   },
+   "tuition": "约 14–28 万元 / 1年",
+   "duration": "1 年",
+   "timeline": "每年 9 月开放，多轮截止，建议首轮（10–12 月）递交",
+   "provenance": {
+    "dataSource": "参考估算",
+    "verified": false,
+    "lastVerified": null,
+    "sourceUrl": null,
+    "searchUrl": "https://www.google.com/search?q=香港科技大学+HKUST+MSc+in+Financial+Technology+(FinTech)+entry+requirements"
+   }
+  },
+  {
+   "id": "hk-ust-it",
+   "country": "中国香港",
+   "university": "香港科技大学 HKUST",
+   "qsRank": 44,
+   "program": "MSc in Information Technology",
+   "field": "信息系统/IT",
+   "degree": "硕士",
+   "requirements": {
+    "avgByTier": {
+     "985": 82,
+     "211": 84,
+     "双一流": 85,
+     "双非": 87,
+     "海本/中外合作": 78
+    },
+    "ielts": {
+     "overall": 6.0,
+     "sub": 5.5
+    },
+    "gre": null,
+    "background": "需理工/计算背景",
+    "notes": ""
+   },
+   "tuition": "约 14–28 万元 / 1年",
+   "duration": "1 年",
+   "timeline": "每年 9 月开放，多轮截止，建议首轮（10–12 月）递交",
+   "provenance": {
+    "dataSource": "参考估算",
+    "verified": false,
+    "lastVerified": null,
+    "sourceUrl": null,
+    "searchUrl": "https://www.google.com/search?q=香港科技大学+HKUST+MSc+in+Information+Technology+entry+requirements"
+   }
+  },
+  {
+   "id": "hk-cuhk-ise",
+   "country": "中国香港",
+   "university": "香港中文大学 CUHK",
+   "qsRank": 36,
+   "program": "MSc in Information Engineering",
+   "field": "通信工程",
+   "degree": "硕士",
+   "requirements": {
+    "avgByTier": {
+     "985": 82,
+     "211": 84,
+     "双一流": 85,
+     "双非": 87,
+     "海本/中外合作": 78
+    },
+    "ielts": {
+     "overall": 6.5,
+     "sub": 6.0
+    },
+    "gre": null,
+    "background": "需 EE/通信/CS 背景",
+    "notes": ""
+   },
+   "tuition": "约 14–28 万元 / 1年",
+   "duration": "1 年",
+   "timeline": "每年 9 月开放，多轮截止，建议首轮（10–12 月）递交",
+   "provenance": {
+    "dataSource": "参考估算",
+    "verified": false,
+    "lastVerified": null,
+    "sourceUrl": null,
+    "searchUrl": "https://www.google.com/search?q=香港中文大学+CUHK+MSc+in+Information+Engineering+entry+requirements"
+   }
+  },
+  {
+   "id": "hk-cuhk-translation",
+   "country": "中国香港",
+   "university": "香港中文大学 CUHK",
+   "qsRank": 36,
+   "program": "MA in Translation",
+   "field": "翻译/语言",
+   "degree": "硕士",
+   "requirements": {
+    "avgByTier": {
+     "985": 82,
+     "211": 84,
+     "双一流": 85,
+     "双非": 87,
+     "海本/中外合作": 78
+    },
+    "ielts": {
+     "overall": 6.5,
+     "sub": 6.0
+    },
+    "gre": null,
+    "background": "需语言/翻译相关背景，或通过笔试",
+    "notes": "中大翻译学系久负盛名"
+   },
+   "tuition": "约 14–28 万元 / 1年",
+   "duration": "1 年",
+   "timeline": "每年 9 月开放，多轮截止，建议首轮（10–12 月）递交",
+   "provenance": {
+    "dataSource": "参考估算",
+    "verified": false,
+    "lastVerified": null,
+    "sourceUrl": null,
+    "searchUrl": "https://www.google.com/search?q=香港中文大学+CUHK+MA+in+Translation+entry+requirements"
+   }
+  },
+  {
+   "id": "hk-cityu-ee",
+   "country": "中国香港",
+   "university": "香港城市大学 CityU",
+   "qsRank": 62,
+   "program": "MSc in Electronic Information Engineering",
+   "field": "电子/电气工程",
+   "degree": "硕士",
+   "requirements": {
+    "avgByTier": {
+     "985": 80,
+     "211": 82,
+     "双一流": 83,
+     "双非": 85,
+     "海本/中外合作": 76
+    },
+    "ielts": {
+     "overall": 6.5,
+     "sub": 6.0
+    },
+    "gre": null,
+    "background": "需 EE/电子相关背景",
+    "notes": ""
+   },
+   "tuition": "约 14–28 万元 / 1年",
+   "duration": "1 年",
+   "timeline": "每年 9 月开放，多轮截止，建议首轮（10–12 月）递交",
+   "provenance": {
+    "dataSource": "参考估算",
+    "verified": false,
+    "lastVerified": null,
+    "sourceUrl": null,
+    "searchUrl": "https://www.google.com/search?q=香港城市大学+CityU+MSc+in+Electronic+Information+Engineering+entry+requirements"
+   }
+  },
+  {
+   "id": "hk-cityu-data",
+   "country": "中国香港",
+   "university": "香港城市大学 CityU",
+   "qsRank": 62,
+   "program": "MSc in Data Science",
+   "field": "数据科学/AI",
+   "degree": "硕士",
+   "requirements": {
+    "avgByTier": {
+     "985": 82,
+     "211": 84,
+     "双一流": 85,
+     "双非": 87,
+     "海本/中外合作": 78
+    },
+    "ielts": {
+     "overall": 6.5,
+     "sub": 6.0
+    },
+    "gre": null,
+    "background": "需数理/编程背景",
+    "notes": ""
+   },
+   "tuition": "约 14–28 万元 / 1年",
+   "duration": "1 年",
+   "timeline": "每年 9 月开放，多轮截止，建议首轮（10–12 月）递交",
+   "provenance": {
+    "dataSource": "参考估算",
+    "verified": false,
+    "lastVerified": null,
+    "sourceUrl": null,
+    "searchUrl": "https://www.google.com/search?q=香港城市大学+CityU+MSc+in+Data+Science+entry+requirements"
+   }
+  },
+  {
+   "id": "hk-polyu-aviation",
+   "country": "中国香港",
+   "university": "香港理工大学 PolyU",
+   "qsRank": 57,
+   "program": "MSc in Data Science and Analytics",
+   "field": "数据科学/AI",
+   "degree": "硕士",
+   "requirements": {
+    "avgByTier": {
+     "985": 81,
+     "211": 83,
+     "双一流": 84,
+     "双非": 86,
+     "海本/中外合作": 77
+    },
+    "ielts": {
+     "overall": 6.5,
+     "sub": 6.0
+    },
+    "gre": null,
+    "background": "需数理/编程基础",
+    "notes": "理大应用数学系"
+   },
+   "tuition": "约 14–28 万元 / 1年",
+   "duration": "1 年",
+   "timeline": "每年 9 月开放，多轮截止，建议首轮（10–12 月）递交",
+   "provenance": {
+    "dataSource": "参考估算",
+    "verified": false,
+    "lastVerified": null,
+    "sourceUrl": null,
+    "searchUrl": "https://www.google.com/search?q=香港理工大学+PolyU+MSc+in+Data+Science+and+Analytics+entry+requirements"
+   }
+  },
+  {
+   "id": "hk-polyu-design",
+   "country": "中国香港",
+   "university": "香港理工大学 PolyU",
+   "qsRank": 57,
+   "program": "Master of Design (Design Strategies)",
+   "field": "设计/艺术",
+   "degree": "硕士",
+   "requirements": {
+    "avgByTier": {
+     "985": 78,
+     "211": 80,
+     "双一流": 82,
+     "双非": 84,
+     "海本/中外合作": 74
+    },
+    "ielts": {
+     "overall": 6.5,
+     "sub": 6.0
+    },
+    "gre": null,
+    "background": "需设计相关背景 + 作品集",
+    "notes": "理大设计学院亚洲顶尖"
+   },
+   "tuition": "约 14–28 万元 / 1年",
+   "duration": "1 年",
+   "timeline": "每年 9 月开放，多轮截止，建议首轮（10–12 月）递交",
+   "provenance": {
+    "dataSource": "参考估算",
+    "verified": false,
+    "lastVerified": null,
+    "sourceUrl": null,
+    "searchUrl": "https://www.google.com/search?q=香港理工大学+PolyU+Master+of+Design+(Design+Strategies)+entry+requirements"
+   }
+  },
+  {
+   "id": "sg-smu-analytics",
+   "country": "新加坡",
+   "university": "新加坡管理大学 SMU",
+   "qsRank": 545,
+   "program": "Master of IT in Business (Analytics)",
+   "field": "商业分析",
+   "degree": "硕士",
+   "requirements": {
+    "avgByTier": {
+     "985": 83,
+     "211": 85,
+     "双一流": 86,
+     "双非": 87,
+     "海本/中外合作": 78
+    },
+    "ielts": {
+     "overall": 7.0,
+     "sub": 6.5
+    },
+    "gre": null,
+    "background": "需数理/编程基础",
+    "notes": ""
+   },
+   "tuition": "约 18–32 万元 / 1–1.5年",
+   "duration": "1–1.5 年",
+   "timeline": "每年 10–11 月开放，建议次年 1–2 月前递交",
+   "provenance": {
+    "dataSource": "参考估算",
+    "verified": false,
+    "lastVerified": null,
+    "sourceUrl": null,
+    "searchUrl": "https://www.google.com/search?q=新加坡管理大学+SMU+Master+of+IT+in+Business+(Analytics)+entry+requirements"
+   }
+  },
+  {
+   "id": "sg-nus-eco",
+   "country": "新加坡",
+   "university": "新加坡国立大学 NUS",
+   "qsRank": 8,
+   "program": "Master of Economics",
+   "field": "经济学",
+   "degree": "硕士",
+   "requirements": {
+    "avgByTier": {
+     "985": 87,
+     "211": 89,
+     "双一流": 90,
+     "双非": 91,
+     "海本/中外合作": 82
+    },
+    "ielts": {
+     "overall": 7.0,
+     "sub": 6.5
+    },
+    "gre": "GRE 建议",
+    "background": "需经济/数理背景",
+    "notes": "NUS 经济系排名亚洲前列"
+   },
+   "tuition": "约 18–32 万元 / 1–1.5年",
+   "duration": "1–1.5 年",
+   "timeline": "每年 10–11 月开放，建议次年 1–2 月前递交",
+   "provenance": {
+    "dataSource": "参考估算",
+    "verified": false,
+    "lastVerified": null,
+    "sourceUrl": null,
+    "searchUrl": "https://www.google.com/search?q=新加坡国立大学+NUS+Master+of+Economics+entry+requirements"
+   }
+  },
+  {
+   "id": "sg-ntu-comm",
+   "country": "新加坡",
+   "university": "南洋理工大学 NTU",
+   "qsRank": 15,
+   "program": "MSc in Communication Studies",
+   "field": "传媒",
+   "degree": "硕士",
+   "requirements": {
+    "avgByTier": {
+     "985": 83,
+     "211": 85,
+     "双一流": 86,
+     "双非": 88,
+     "海本/中外合作": 79
+    },
+    "ielts": {
+     "overall": 7.0,
+     "sub": 6.5
+    },
+    "gre": null,
+    "background": "需传播/社科相关背景",
+    "notes": "黄金辉传播与信息学院"
+   },
+   "tuition": "约 18–32 万元 / 1–1.5年",
+   "duration": "1–1.5 年",
+   "timeline": "每年 10–11 月开放，建议次年 1–2 月前递交",
+   "provenance": {
+    "dataSource": "参考估算",
+    "verified": false,
+    "lastVerified": null,
+    "sourceUrl": null,
+    "searchUrl": "https://www.google.com/search?q=南洋理工大学+NTU+MSc+in+Communication+Studies+entry+requirements"
+   }
+  },
+  {
+   "id": "sg-ntu-supply",
+   "country": "新加坡",
+   "university": "南洋理工大学 NTU",
+   "qsRank": 15,
+   "program": "MSc in Supply Chain Engineering",
+   "field": "机械工程",
+   "degree": "硕士",
+   "requirements": {
+    "avgByTier": {
+     "985": 82,
+     "211": 84,
+     "双一流": 85,
+     "双非": 87,
+     "海本/中外合作": 78
+    },
+    "ielts": {
+     "overall": 6.5,
+     "sub": 6.0
+    },
+    "gre": null,
+    "background": "需工程/理科背景",
+    "notes": ""
+   },
+   "tuition": "约 18–32 万元 / 1–1.5年",
+   "duration": "1–1.5 年",
+   "timeline": "每年 10–11 月开放，建议次年 1–2 月前递交",
+   "provenance": {
+    "dataSource": "参考估算",
+    "verified": false,
+    "lastVerified": null,
+    "sourceUrl": null,
+    "searchUrl": "https://www.google.com/search?q=南洋理工大学+NTU+MSc+in+Supply+Chain+Engineering+entry+requirements"
+   }
+  },
+  {
+   "id": "uk-ucl-env",
+   "country": "英国",
+   "university": "伦敦大学学院 UCL",
+   "qsRank": 9,
+   "program": "Environmental Systems Engineering MSc",
+   "field": "环境科学",
+   "degree": "硕士",
+   "requirements": {
+    "avgByTier": {
+     "985": 83,
+     "211": 85,
+     "双一流": 86,
+     "双非": 88,
+     "海本/中外合作": 78
+    },
+    "ielts": {
+     "overall": 6.5,
+     "sub": 6.0
+    },
+    "gre": null,
+    "background": "需工程/环境/理科背景",
+    "notes": "UCL 2:1 荣誉学位"
+   },
+   "tuition": "约 25–38 万元 / 1年",
+   "duration": "1 年",
+   "timeline": "每年 9–10 月开放，滚动录取先到先得，建议 10–12 月递交",
+   "provenance": {
+    "dataSource": "参考估算",
+    "verified": false,
+    "lastVerified": null,
+    "sourceUrl": null,
+    "searchUrl": "https://www.google.com/search?q=伦敦大学学院+UCL+Environmental+Systems+Engineering+MSc+entry+requirements"
+   }
+  },
+  {
+   "id": "uk-imperial-materials",
+   "country": "英国",
+   "university": "帝国理工学院 IC",
+   "qsRank": 2,
+   "program": "Advanced Materials Science and Engineering MSc",
+   "field": "材料工程",
+   "degree": "硕士",
+   "requirements": {
+    "avgByTier": {
+     "985": 85,
+     "211": 87,
+     "双一流": 88,
+     "双非": 89,
+     "海本/中外合作": 80
+    },
+    "ielts": {
+     "overall": 6.5,
+     "sub": 6.0
+    },
+    "gre": null,
+    "background": "需材料/化学/物理/工程背景",
+    "notes": "IC 材料系全球顶尖，2:1 学位"
+   },
+   "tuition": "约 25–38 万元 / 1年",
+   "duration": "1 年",
+   "timeline": "每年 9–10 月开放，滚动录取先到先得，建议 10–12 月递交",
+   "provenance": {
+    "dataSource": "参考估算",
+    "verified": false,
+    "lastVerified": null,
+    "sourceUrl": null,
+    "searchUrl": "https://www.google.com/search?q=帝国理工学院+IC+Advanced+Materials+Science+and+Engineering+MSc+entry+requirements"
+   }
+  },
+  {
+   "id": "uk-manchester-materials",
+   "country": "英国",
+   "university": "曼彻斯特大学",
+   "qsRank": 34,
+   "program": "Advanced Materials MSc",
+   "field": "材料工程",
+   "degree": "硕士",
+   "requirements": {
+    "avgByTier": {
+     "985": 80,
+     "211": 82,
+     "双一流": 84,
+     "双非": 86,
+     "海本/中外合作": 76
+    },
+    "ielts": {
+     "overall": 6.5,
+     "sub": 6.0
+    },
+    "gre": null,
+    "background": "需材料/化学/工程背景",
+    "notes": ""
+   },
+   "tuition": "约 25–38 万元 / 1年",
+   "duration": "1 年",
+   "timeline": "每年 9–10 月开放，滚动录取先到先得，建议 10–12 月递交",
+   "provenance": {
+    "dataSource": "参考估算",
+    "verified": false,
+    "lastVerified": null,
+    "sourceUrl": null,
+    "searchUrl": "https://www.google.com/search?q=曼彻斯特大学+Advanced+Materials+MSc+entry+requirements"
+   }
+  },
+  {
+   "id": "uk-warwick-psych",
+   "country": "英国",
+   "university": "华威大学",
+   "qsRank": 69,
+   "program": "Behavioural and Data Science MSc",
+   "field": "心理学",
+   "degree": "硕士",
+   "requirements": {
+    "avgByTier": {
+     "985": 83,
+     "211": 85,
+     "双一流": 86,
+     "双非": 88,
+     "海本/中外合作": 78
+    },
+    "ielts": {
+     "overall": 7.0,
+     "sub": 6.5
+    },
+    "gre": null,
+    "background": "需心理/社科/数理背景",
+    "notes": "华威心理系交叉方向"
+   },
+   "tuition": "约 25–38 万元 / 1年",
+   "duration": "1 年",
+   "timeline": "每年 9–10 月开放，滚动录取先到先得，建议 10–12 月递交",
+   "provenance": {
+    "dataSource": "参考估算",
+    "verified": false,
+    "lastVerified": null,
+    "sourceUrl": null,
+    "searchUrl": "https://www.google.com/search?q=华威大学+Behavioural+and+Data+Science+MSc+entry+requirements"
+   }
+  },
+  {
+   "id": "uk-bristol-env",
+   "country": "英国",
+   "university": "布里斯托大学",
+   "qsRank": 54,
+   "program": "Environmental Policy and Management MSc",
+   "field": "环境科学",
+   "degree": "硕士",
+   "requirements": {
+    "avgByTier": {
+     "985": 80,
+     "211": 82,
+     "双一流": 84,
+     "双非": 86,
+     "海本/中外合作": 76
+    },
+    "ielts": {
+     "overall": 6.5,
+     "sub": 6.0
+    },
+    "gre": null,
+    "background": "需相关社科/理科背景",
+    "notes": ""
+   },
+   "tuition": "约 25–38 万元 / 1年",
+   "duration": "1 年",
+   "timeline": "每年 9–10 月开放，滚动录取先到先得，建议 10–12 月递交",
+   "provenance": {
+    "dataSource": "参考估算",
+    "verified": false,
+    "lastVerified": null,
+    "sourceUrl": null,
+    "searchUrl": "https://www.google.com/search?q=布里斯托大学+Environmental+Policy+and+Management+MSc+entry+requirements"
+   }
+  },
+  {
+   "id": "uk-edinburgh-translation",
+   "country": "英国",
+   "university": "爱丁堡大学",
+   "qsRank": 27,
+   "program": "Translation Studies MSc",
+   "field": "翻译/语言",
+   "degree": "硕士",
+   "requirements": {
+    "avgByTier": {
+     "985": 82,
+     "211": 84,
+     "双一流": 85,
+     "双非": 87,
+     "海本/中外合作": 78
+    },
+    "ielts": {
+     "overall": 7.0,
+     "sub": 6.5
+    },
+    "gre": null,
+    "background": "需语言/翻译相关背景",
+    "notes": "爱大 2:1 学位，语言测试"
+   },
+   "tuition": "约 25–38 万元 / 1年",
+   "duration": "1 年",
+   "timeline": "每年 9–10 月开放，滚动录取先到先得，建议 10–12 月递交",
+   "provenance": {
+    "dataSource": "参考估算",
+    "verified": false,
+    "lastVerified": null,
+    "sourceUrl": null,
+    "searchUrl": "https://www.google.com/search?q=爱丁堡大学+Translation+Studies+MSc+entry+requirements"
+   }
+  },
+  {
+   "id": "uk-durham-pp",
+   "country": "英国",
+   "university": "杜伦大学",
+   "qsRank": 89,
+   "program": "Public Policy MPP",
+   "field": "公共政策/管理",
+   "degree": "硕士",
+   "requirements": {
+    "avgByTier": {
+     "985": 82,
+     "211": 84,
+     "双一流": 85,
+     "双非": 87,
+     "海本/中外合作": 78
+    },
+    "ielts": {
+     "overall": 6.5,
+     "sub": 6.0
+    },
+    "gre": null,
+    "background": "需社科/政治/经济背景",
+    "notes": "杜伦政府学院"
+   },
+   "tuition": "约 25–38 万元 / 1年",
+   "duration": "1 年",
+   "timeline": "每年 9–10 月开放，滚动录取先到先得，建议 10–12 月递交",
+   "provenance": {
+    "dataSource": "参考估算",
+    "verified": false,
+    "lastVerified": null,
+    "sourceUrl": null,
+    "searchUrl": "https://www.google.com/search?q=杜伦大学+Public+Policy+MPP+entry+requirements"
+   }
+  },
+  {
+   "id": "uk-glasgow-design",
+   "country": "英国",
+   "university": "格拉斯哥大学",
+   "qsRank": 76,
+   "program": "Information Technology: Software & Systems MSc",
+   "field": "信息系统/IT",
+   "degree": "硕士",
+   "requirements": {
+    "avgByTier": {
+     "985": 80,
+     "211": 82,
+     "双一流": 84,
+     "双非": 85,
+     "海本/中外合作": 76
+    },
+    "ielts": {
+     "overall": 6.5,
+     "sub": 6.0
+    },
+    "gre": null,
+    "background": "适合非计算背景转 IT",
+    "notes": "格大 IT 转专业友好"
+   },
+   "tuition": "约 25–38 万元 / 1年",
+   "duration": "1 年",
+   "timeline": "每年 9–10 月开放，滚动录取先到先得，建议 10–12 月递交",
+   "provenance": {
+    "dataSource": "参考估算",
+    "verified": false,
+    "lastVerified": null,
+    "sourceUrl": null,
+    "searchUrl": "https://www.google.com/search?q=格拉斯哥大学+Information+Technology:+Software+&+Systems+MSc+entry+requirements"
+   }
+  },
+  {
+   "id": "us-cmu-si",
+   "country": "美国",
+   "university": "卡内基梅隆大学 CMU",
+   "qsRank": 52,
+   "program": "Master of Information Systems Management (MISM)",
+   "field": "信息系统/IT",
+   "degree": "硕士",
+   "requirements": {
+    "avgByTier": {
+     "985": 86,
+     "211": 88,
+     "双一流": 89,
+     "双非": 90,
+     "海本/中外合作": 82
+    },
+    "ielts": {
+     "overall": 7.0,
+     "sub": 6.5
+    },
+    "gre": "GRE 建议",
+    "background": "需一定编程/数理基础",
+    "notes": "CMU Heinz 学院，就业强"
+   },
+   "tuition": "约 35–60 万元 / 1–2年",
+   "duration": "1–2 年",
+   "timeline": "每年 9 月开放，截止 12 月–次年 1 月，部分有早申轮次",
+   "provenance": {
+    "dataSource": "参考估算",
+    "verified": false,
+    "lastVerified": null,
+    "sourceUrl": null,
+    "searchUrl": "https://www.google.com/search?q=卡内基梅隆大学+CMU+Master+of+Information+Systems+Management+(MISM)+entry+requirements"
+   }
+  },
+  {
+   "id": "us-nyu-comm",
+   "country": "美国",
+   "university": "纽约大学 NYU",
+   "qsRank": 39,
+   "program": "MA in Media, Culture, and Communication",
+   "field": "传媒",
+   "degree": "硕士",
+   "requirements": {
+    "avgByTier": {
+     "985": 84,
+     "211": 86,
+     "双一流": 87,
+     "双非": 88,
+     "海本/中外合作": 80
+    },
+    "ielts": {
+     "overall": 7.0,
+     "sub": 6.5
+    },
+    "gre": "GRE 可选",
+    "background": "需传播/社科相关背景",
+    "notes": "NYU Steinhardt"
+   },
+   "tuition": "约 35–60 万元 / 1–2年",
+   "duration": "1–2 年",
+   "timeline": "每年 9 月开放，截止 12 月–次年 1 月，部分有早申轮次",
+   "provenance": {
+    "dataSource": "参考估算",
+    "verified": false,
+    "lastVerified": null,
+    "sourceUrl": null,
+    "searchUrl": "https://www.google.com/search?q=纽约大学+NYU+MA+in+Media,+Culture,+and+Communication+entry+requirements"
+   }
+  },
+  {
+   "id": "us-umich-env",
+   "country": "美国",
+   "university": "密歇根大学安娜堡分校",
+   "qsRank": 44,
+   "program": "Master of Science in Environment and Sustainability",
+   "field": "环境科学",
+   "degree": "硕士",
+   "requirements": {
+    "avgByTier": {
+     "985": 83,
+     "211": 85,
+     "双一流": 86,
+     "双非": 88,
+     "海本/中外合作": 79
+    },
+    "ielts": {
+     "overall": 7.0,
+     "sub": 6.5
+    },
+    "gre": "GRE 可选",
+    "background": "需环境/理科背景",
+    "notes": ""
+   },
+   "tuition": "约 35–60 万元 / 1–2年",
+   "duration": "1–2 年",
+   "timeline": "每年 9 月开放，截止 12 月–次年 1 月，部分有早申轮次",
+   "provenance": {
+    "dataSource": "参考估算",
+    "verified": false,
+    "lastVerified": null,
+    "sourceUrl": null,
+    "searchUrl": "https://www.google.com/search?q=密歇根大学安娜堡分校+Master+of+Science+in+Environment+and+Sustainability+entry+requirements"
+   }
+  },
+  {
+   "id": "us-gatech-ece",
+   "country": "美国",
+   "university": "佐治亚理工学院",
+   "qsRank": 82,
+   "program": "MS in Electrical and Computer Engineering",
+   "field": "电子/电气工程",
+   "degree": "硕士",
+   "requirements": {
+    "avgByTier": {
+     "985": 85,
+     "211": 87,
+     "双一流": 88,
+     "双非": 89,
+     "海本/中外合作": 81
+    },
+    "ielts": {
+     "overall": 7.0,
+     "sub": 6.5
+    },
+    "gre": "GRE 强烈建议",
+    "background": "需 EE/ECE 强背景",
+    "notes": "GT 工科顶尖"
+   },
+   "tuition": "约 35–60 万元 / 1–2年",
+   "duration": "1–2 年",
+   "timeline": "每年 9 月开放，截止 12 月–次年 1 月，部分有早申轮次",
+   "provenance": {
+    "dataSource": "参考估算",
+    "verified": false,
+    "lastVerified": null,
+    "sourceUrl": null,
+    "searchUrl": "https://www.google.com/search?q=佐治亚理工学院+MS+in+Electrical+and+Computer+Engineering+entry+requirements"
+   }
+  },
+  {
+   "id": "au-sydney-ba",
+   "country": "澳大利亚",
+   "university": "悉尼大学",
+   "qsRank": 18,
+   "program": "Master of Data Science",
+   "field": "数据科学/AI",
+   "degree": "硕士",
+   "requirements": {
+    "avgByTier": {
+     "985": 80,
+     "211": 82,
+     "双一流": 84,
+     "双非": 86,
+     "海本/中外合作": 76
+    },
+    "ielts": {
+     "overall": 6.5,
+     "sub": 6.0
+    },
+    "gre": null,
+    "background": "需数理/编程背景",
+    "notes": ""
+   },
+   "tuition": "约 20–35 万元 / 1.5–2年",
+   "duration": "1.5–2 年",
+   "timeline": "多为两次入学（2 月 / 7 月），常年滚动审理",
+   "provenance": {
+    "dataSource": "参考估算",
+    "verified": false,
+    "lastVerified": null,
+    "sourceUrl": null,
+    "searchUrl": "https://www.google.com/search?q=悉尼大学+Master+of+Data+Science+entry+requirements"
+   }
+  },
+  {
+   "id": "au-monash-eng",
+   "country": "澳大利亚",
+   "university": "莫纳什大学",
+   "qsRank": 37,
+   "program": "Master of Advanced Engineering (Materials)",
+   "field": "材料工程",
+   "degree": "硕士",
+   "requirements": {
+    "avgByTier": {
+     "985": 78,
+     "211": 80,
+     "双一流": 82,
+     "双非": 84,
+     "海本/中外合作": 74
+    },
+    "ielts": {
+     "overall": 6.5,
+     "sub": 6.0
+    },
+    "gre": null,
+    "background": "需工程/材料本科背景",
+    "notes": ""
+   },
+   "tuition": "约 20–35 万元 / 1.5–2年",
+   "duration": "1.5–2 年",
+   "timeline": "多为两次入学（2 月 / 7 月），常年滚动审理",
+   "provenance": {
+    "dataSource": "参考估算",
+    "verified": false,
+    "lastVerified": null,
+    "sourceUrl": null,
+    "searchUrl": "https://www.google.com/search?q=莫纳什大学+Master+of+Advanced+Engineering+(Materials)+entry+requirements"
+   }
+  },
+  {
+   "id": "uk-sheffield-adv-cs",
+   "country": "英国",
+   "university": "谢菲尔德大学",
+   "qsRank": 105,
+   "program": "Advanced Computer Science MSc",
+   "field": "计算机/CS",
+   "degree": "硕士",
+   "requirements": {
+    "avgByTier": {
+     "985": 80,
+     "211": 82,
+     "双一流": 84,
+     "双非": 86,
+     "海本/中外合作": 76
+    },
+    "ielts": {
+     "overall": 6.5,
+     "sub": 6.0
+    },
+    "gre": null,
+    "background": "2:1 undergraduate honours degree in a relevant subject",
+    "notes": "官方入学要求：2:1 undergraduate honours degree in a relevant subject"
+   },
+   "tuition": "学费见官网",
+   "duration": "1 年",
+   "timeline": "9 月入学；国际生名额有限、多轮滚动审理，招满即止，建议尽早递交（以官网 Deadlines 页为准）",
+   "provenance": {
+    "dataSource": "官方核实",
+    "verified": true,
+    "lastVerified": "2026-06",
+    "sourceUrl": "https://www.sheffield.ac.uk/postgraduate/taught/courses/2026/advanced-computer-science-msc",
+    "searchUrl": "https://www.google.com/search?q=谢菲尔德大学+Advanced+Computer+Science+MSc+entry+requirements"
+   }
+  },
+  {
+   "id": "uk-sheffield-ai",
+   "country": "英国",
+   "university": "谢菲尔德大学",
+   "qsRank": 105,
+   "program": "Artificial Intelligence MSc",
+   "field": "数据科学/AI",
+   "degree": "硕士",
+   "requirements": {
+    "avgByTier": {
+     "985": 80,
+     "211": 82,
+     "双一流": 84,
+     "双非": 86,
+     "海本/中外合作": 76
+    },
+    "ielts": {
+     "overall": 6.5,
+     "sub": 6.0
+    },
+    "gre": null,
+    "background": "2:1 undergraduate honours degree in a relevant subject",
+    "notes": "官方入学要求：2:1 undergraduate honours degree in a relevant subject"
+   },
+   "tuition": "学费见官网",
+   "duration": "1 年",
+   "timeline": "9 月入学；国际生名额有限、多轮滚动审理，招满即止，建议尽早递交（以官网 Deadlines 页为准）",
+   "provenance": {
+    "dataSource": "官方核实",
+    "verified": true,
+    "lastVerified": "2026-06",
+    "sourceUrl": "https://www.sheffield.ac.uk/postgraduate/taught/courses/2026/artificial-intelligence-msc",
+    "searchUrl": "https://www.google.com/search?q=谢菲尔德大学+Artificial+Intelligence+MSc+entry+requirements"
+   }
+  },
+  {
+   "id": "uk-sheffield-cyber-ai",
+   "country": "英国",
+   "university": "谢菲尔德大学",
+   "qsRank": 105,
+   "program": "Cybersecurity and Artificial Intelligence MSc",
+   "field": "计算机/CS",
+   "degree": "硕士",
+   "requirements": {
+    "avgByTier": {
+     "985": 80,
+     "211": 82,
+     "双一流": 84,
+     "双非": 86,
+     "海本/中外合作": 76
+    },
+    "ielts": {
+     "overall": 6.5,
+     "sub": 6.0
+    },
+    "gre": null,
+    "background": "2:1 undergraduate honours degree in a relevant subject",
+    "notes": "官方入学要求：2:1 undergraduate honours degree in a relevant subject"
+   },
+   "tuition": "学费见官网",
+   "duration": "1 年",
+   "timeline": "9 月入学；国际生名额有限、多轮滚动审理，招满即止，建议尽早递交（以官网 Deadlines 页为准）",
+   "provenance": {
+    "dataSource": "官方核实",
+    "verified": true,
+    "lastVerified": "2026-06",
+    "sourceUrl": "https://www.sheffield.ac.uk/postgraduate/taught/courses/2026/cybersecurity-and-artificial-intelligence-msc",
+    "searchUrl": "https://www.google.com/search?q=谢菲尔德大学+Cybersecurity+and+Artificial+Intelligence+MSc+entry+requirements"
+   }
+  },
+  {
+   "id": "uk-sheffield-ba",
+   "country": "英国",
+   "university": "谢菲尔德大学",
+   "qsRank": 105,
+   "program": "Business Analytics MSc",
+   "field": "商业分析",
+   "degree": "硕士",
+   "requirements": {
+    "avgByTier": {
+     "985": 80,
+     "211": 82,
+     "双一流": 84,
+     "双非": 85,
+     "海本/中外合作": 76
+    },
+    "ielts": {
+     "overall": 6.5,
+     "sub": 6.0
+    },
+    "gre": null,
+    "background": "2:1 undergraduate honours degree in any subject",
+    "notes": "官方入学要求：2:1 undergraduate honours degree in any subject"
+   },
+   "tuition": "学费见官网",
+   "duration": "1 年",
+   "timeline": "9 月入学；国际生名额有限、多轮滚动审理，招满即止，建议尽早递交（以官网 Deadlines 页为准）",
+   "provenance": {
+    "dataSource": "官方核实",
+    "verified": true,
+    "lastVerified": "2026-06",
+    "sourceUrl": "https://www.sheffield.ac.uk/postgraduate/taught/courses/2026/business-analytics-msc",
+    "searchUrl": "https://www.google.com/search?q=谢菲尔德大学+Business+Analytics+MSc+entry+requirements"
+   }
+  },
+  {
+   "id": "uk-sheffield-fintech",
+   "country": "英国",
+   "university": "谢菲尔德大学",
+   "qsRank": 105,
+   "program": "Financial Technology and Innovation MSc",
+   "field": "金融工程",
+   "degree": "硕士",
+   "requirements": {
+    "avgByTier": {
+     "985": 81,
+     "211": 83,
+     "双一流": 85,
+     "双非": 86,
+     "海本/中外合作": 77
+    },
+    "ielts": {
+     "overall": 6.5,
+     "sub": 6.0
+    },
+    "gre": null,
+    "background": "2:1 undergraduate honours degree in any subject",
+    "notes": "官方入学要求：2:1 undergraduate honours degree in any subject"
+   },
+   "tuition": "学费见官网",
+   "duration": "1 年",
+   "timeline": "9 月入学；国际生名额有限、多轮滚动审理，招满即止，建议尽早递交（以官网 Deadlines 页为准）",
+   "provenance": {
+    "dataSource": "官方核实",
+    "verified": true,
+    "lastVerified": "2026-06",
+    "sourceUrl": "https://www.sheffield.ac.uk/postgraduate/taught/courses/2026/financial-technology-and-innovation-msc",
+    "searchUrl": "https://www.google.com/search?q=谢菲尔德大学+Financial+Technology+and+Innovation+MSc+entry+requirements"
+   }
+  },
+  {
+   "id": "uk-sheffield-facc",
+   "country": "英国",
+   "university": "谢菲尔德大学",
+   "qsRank": 105,
+   "program": "Finance and Accounting MSc",
+   "field": "会计",
+   "degree": "硕士",
+   "requirements": {
+    "avgByTier": {
+     "985": 80,
+     "211": 82,
+     "双一流": 84,
+     "双非": 85,
+     "海本/中外合作": 76
+    },
+    "ielts": {
+     "overall": 6.5,
+     "sub": 6.0
+    },
+    "gre": null,
+    "background": "2:1 undergraduate honours degree in any subject",
+    "notes": "官方入学要求：2:1 undergraduate honours degree in any subject"
+   },
+   "tuition": "学费见官网",
+   "duration": "1 年",
+   "timeline": "9 月入学；国际生名额有限、多轮滚动审理，招满即止，建议尽早递交（以官网 Deadlines 页为准）",
+   "provenance": {
+    "dataSource": "官方核实",
+    "verified": true,
+    "lastVerified": "2026-06",
+    "sourceUrl": "https://www.sheffield.ac.uk/postgraduate/taught/courses/2026/finance-and-accounting-msc",
+    "searchUrl": "https://www.google.com/search?q=谢菲尔德大学+Finance+and+Accounting+MSc+entry+requirements"
+   }
+  },
+  {
+   "id": "uk-sheffield-mbf",
+   "country": "英国",
+   "university": "谢菲尔德大学",
+   "qsRank": 105,
+   "program": "Money, Banking and Finance MSc",
+   "field": "金融",
+   "degree": "硕士",
+   "requirements": {
+    "avgByTier": {
+     "985": 80,
+     "211": 82,
+     "双一流": 84,
+     "双非": 85,
+     "海本/中外合作": 76
+    },
+    "ielts": {
+     "overall": 6.5,
+     "sub": 6.0
+    },
+    "gre": null,
+    "background": "2:1 undergraduate honours degree in economics or a degree which meets the module requirements below",
+    "notes": "官方入学要求：2:1 undergraduate honours degree in economics or a degree which meets the module requirements below"
+   },
+   "tuition": "学费见官网",
+   "duration": "1 年",
+   "timeline": "9 月入学；国际生名额有限、多轮滚动审理，招满即止，建议尽早递交（以官网 Deadlines 页为准）",
+   "provenance": {
+    "dataSource": "官方核实",
+    "verified": true,
+    "lastVerified": "2026-06",
+    "sourceUrl": "https://www.sheffield.ac.uk/postgraduate/taught/courses/2026/money-banking-and-finance-msc",
+    "searchUrl": "https://www.google.com/search?q=谢菲尔德大学+Money,+Banking+and+Finance+MSc+entry+requirements"
+   }
+  },
+  {
+   "id": "uk-sheffield-econ",
+   "country": "英国",
+   "university": "谢菲尔德大学",
+   "qsRank": 105,
+   "program": "Economics MSc",
+   "field": "经济学",
+   "degree": "硕士",
+   "requirements": {
+    "avgByTier": {
+     "985": 80,
+     "211": 82,
+     "双一流": 84,
+     "双非": 86,
+     "海本/中外合作": 76
+    },
+    "ielts": {
+     "overall": 6.5,
+     "sub": 6.0
+    },
+    "gre": null,
+    "background": "2:1 undergraduate honours degree in economics or a degree which meets the module requirements below",
+    "notes": "官方入学要求：2:1 undergraduate honours degree in economics or a degree which meets the module requirements below"
+   },
+   "tuition": "学费见官网",
+   "duration": "1 年",
+   "timeline": "9 月入学；国际生名额有限、多轮滚动审理，招满即止，建议尽早递交（以官网 Deadlines 页为准）",
+   "provenance": {
+    "dataSource": "官方核实",
+    "verified": true,
+    "lastVerified": "2026-06",
+    "sourceUrl": "https://www.sheffield.ac.uk/postgraduate/taught/courses/2026/economics-msc",
+    "searchUrl": "https://www.google.com/search?q=谢菲尔德大学+Economics+MSc+entry+requirements"
+   }
+  },
+  {
+   "id": "uk-sheffield-bfe",
+   "country": "英国",
+   "university": "谢菲尔德大学",
+   "qsRank": 105,
+   "program": "Business Finance and Economics MSc",
+   "field": "经济学",
+   "degree": "硕士",
+   "requirements": {
+    "avgByTier": {
+     "985": 79,
+     "211": 81,
+     "双一流": 83,
+     "双非": 85,
+     "海本/中外合作": 75
+    },
+    "ielts": {
+     "overall": 6.5,
+     "sub": 6.0
+    },
+    "gre": null,
+    "background": "2:1 undergraduate honours degree in economics, engineering, computer science or a minimum 2:1 Bachelor of Commerce or Bachelor of Business Administratio",
+    "notes": "官方入学要求：2:1 undergraduate honours degree in economics, engineering, computer science or a minimum 2:1 Bachelor of Commerce or Bachelor of Business Administratio"
+   },
+   "tuition": "学费见官网",
+   "duration": "1 年",
+   "timeline": "9 月入学；国际生名额有限、多轮滚动审理，招满即止，建议尽早递交（以官网 Deadlines 页为准）",
+   "provenance": {
+    "dataSource": "官方核实",
+    "verified": true,
+    "lastVerified": "2026-06",
+    "sourceUrl": "https://www.sheffield.ac.uk/postgraduate/taught/courses/2026/business-finance-and-economics-msc",
+    "searchUrl": "https://www.google.com/search?q=谢菲尔德大学+Business+Finance+and+Economics+MSc+entry+requirements"
+   }
+  },
+  {
+   "id": "uk-sheffield-eee",
+   "country": "英国",
+   "university": "谢菲尔德大学",
+   "qsRank": 105,
+   "program": "Electronic and Electrical Engineering MSc(Eng)",
+   "field": "电子/电气工程",
+   "degree": "硕士",
+   "requirements": {
+    "avgByTier": {
+     "985": 79,
+     "211": 81,
+     "双一流": 83,
+     "双非": 85,
+     "海本/中外合作": 75
+    },
+    "ielts": {
+     "overall": 6.5,
+     "sub": 6.0
+    },
+    "gre": null,
+    "background": "2:1 undergraduate honours degree in a relevant subject with relevant modules",
+    "notes": "官方入学要求：2:1 undergraduate honours degree in a relevant subject with relevant modules"
+   },
+   "tuition": "学费见官网",
+   "duration": "1 年",
+   "timeline": "9 月入学；国际生名额有限、多轮滚动审理，招满即止，建议尽早递交（以官网 Deadlines 页为准）",
+   "provenance": {
+    "dataSource": "官方核实",
+    "verified": true,
+    "lastVerified": "2026-06",
+    "sourceUrl": "https://www.sheffield.ac.uk/postgraduate/taught/courses/2026/electronic-and-electrical-engineering-msceng",
+    "searchUrl": "https://www.google.com/search?q=谢菲尔德大学+Electronic+and+Electrical+Engineering+MSc(Eng)+entry+requirements"
+   }
+  },
+  {
+   "id": "uk-sheffield-wireless",
+   "country": "英国",
+   "university": "谢菲尔德大学",
+   "qsRank": 105,
+   "program": "Wireless Communication Systems MSc",
+   "field": "通信工程",
+   "degree": "硕士",
+   "requirements": {
+    "avgByTier": {
+     "985": 79,
+     "211": 81,
+     "双一流": 83,
+     "双非": 85,
+     "海本/中外合作": 75
+    },
+    "ielts": {
+     "overall": 6.5,
+     "sub": 6.0
+    },
+    "gre": null,
+    "background": "2:1 undergraduate honours degree in a relevant subject with relevant modules",
+    "notes": "官方入学要求：2:1 undergraduate honours degree in a relevant subject with relevant modules"
+   },
+   "tuition": "学费见官网",
+   "duration": "1 年",
+   "timeline": "9 月入学；国际生名额有限、多轮滚动审理，招满即止，建议尽早递交（以官网 Deadlines 页为准）",
+   "provenance": {
+    "dataSource": "官方核实",
+    "verified": true,
+    "lastVerified": "2026-06",
+    "sourceUrl": "https://www.sheffield.ac.uk/postgraduate/taught/courses/2026/wireless-communication-systems-msc",
+    "searchUrl": "https://www.google.com/search?q=谢菲尔德大学+Wireless+Communication+Systems+MSc+entry+requirements"
+   }
+  },
+  {
+   "id": "uk-sheffield-robotics",
+   "country": "英国",
+   "university": "谢菲尔德大学",
+   "qsRank": 105,
+   "program": "Robotics MSc",
+   "field": "电子/电气工程",
+   "degree": "硕士",
+   "requirements": {
+    "avgByTier": {
+     "985": 80,
+     "211": 82,
+     "双一流": 84,
+     "双非": 86,
+     "海本/中外合作": 76
+    },
+    "ielts": {
+     "overall": 6.5,
+     "sub": 6.0
+    },
+    "gre": null,
+    "background": "2:1 undergraduate honours degree in a relevant subject with relevant modules",
+    "notes": "官方入学要求：2:1 undergraduate honours degree in a relevant subject with relevant modules"
+   },
+   "tuition": "学费见官网",
+   "duration": "1 年",
+   "timeline": "9 月入学；国际生名额有限、多轮滚动审理，招满即止，建议尽早递交（以官网 Deadlines 页为准）",
+   "provenance": {
+    "dataSource": "官方核实",
+    "verified": true,
+    "lastVerified": "2026-06",
+    "sourceUrl": "https://www.sheffield.ac.uk/postgraduate/taught/courses/2026/robotics-msc",
+    "searchUrl": "https://www.google.com/search?q=谢菲尔德大学+Robotics+MSc+entry+requirements"
+   }
+  },
+  {
+   "id": "uk-sheffield-materials",
+   "country": "英国",
+   "university": "谢菲尔德大学",
+   "qsRank": 105,
+   "program": "Materials Science and Engineering MSc",
+   "field": "材料工程",
+   "degree": "硕士",
+   "requirements": {
+    "avgByTier": {
+     "985": 78,
+     "211": 80,
+     "双一流": 82,
+     "双非": 84,
+     "海本/中外合作": 74
+    },
+    "ielts": {
+     "overall": 6.5,
+     "sub": 6.0
+    },
+    "gre": null,
+    "background": "2:1 undergraduate honours degree in a relevant subject with relevant modules",
+    "notes": "官方入学要求：2:1 undergraduate honours degree in a relevant subject with relevant modules"
+   },
+   "tuition": "学费见官网",
+   "duration": "1 年",
+   "timeline": "9 月入学；国际生名额有限、多轮滚动审理，招满即止，建议尽早递交（以官网 Deadlines 页为准）",
+   "provenance": {
+    "dataSource": "官方核实",
+    "verified": true,
+    "lastVerified": "2026-06",
+    "sourceUrl": "https://www.sheffield.ac.uk/postgraduate/taught/courses/2026/materials-science-and-engineering-msc",
+    "searchUrl": "https://www.google.com/search?q=谢菲尔德大学+Materials+Science+and+Engineering+MSc+entry+requirements"
+   }
+  },
+  {
+   "id": "uk-sheffield-civil",
+   "country": "英国",
+   "university": "谢菲尔德大学",
+   "qsRank": 105,
+   "program": "Civil and Structural Engineering MSc",
+   "field": "土木/建筑",
+   "degree": "硕士",
+   "requirements": {
+    "avgByTier": {
+     "985": 78,
+     "211": 80,
+     "双一流": 82,
+     "双非": 84,
+     "海本/中外合作": 74
+    },
+    "ielts": {
+     "overall": 6.5,
+     "sub": 6.0
+    },
+    "gre": null,
+    "background": "2:1 undergraduate honours degree in any engineering or science subject which meets the module requirement below",
+    "notes": "官方入学要求：2:1 undergraduate honours degree in any engineering or science subject which meets the module requirement below"
+   },
+   "tuition": "学费见官网",
+   "duration": "1 年",
+   "timeline": "9 月入学；国际生名额有限、多轮滚动审理，招满即止，建议尽早递交（以官网 Deadlines 页为准）",
+   "provenance": {
+    "dataSource": "官方核实",
+    "verified": true,
+    "lastVerified": "2026-06",
+    "sourceUrl": "https://www.sheffield.ac.uk/postgraduate/taught/courses/2026/civil-and-structural-engineering-msc",
+    "searchUrl": "https://www.google.com/search?q=谢菲尔德大学+Civil+and+Structural+Engineering+MSc+entry+requirements"
+   }
+  },
+  {
+   "id": "uk-sheffield-ism",
+   "country": "英国",
+   "university": "谢菲尔德大学",
+   "qsRank": 105,
+   "program": "Information Systems Management MSc",
+   "field": "信息系统/IT",
+   "degree": "硕士",
+   "requirements": {
+    "avgByTier": {
+     "985": 79,
+     "211": 81,
+     "双一流": 83,
+     "双非": 85,
+     "海本/中外合作": 75
+    },
+    "ielts": {
+     "overall": 6.5,
+     "sub": 6.0
+    },
+    "gre": null,
+    "background": "2:1 undergraduate honours degree in any subject",
+    "notes": "官方入学要求：2:1 undergraduate honours degree in any subject"
+   },
+   "tuition": "学费见官网",
+   "duration": "1 年",
+   "timeline": "9 月入学；国际生名额有限、多轮滚动审理，招满即止，建议尽早递交（以官网 Deadlines 页为准）",
+   "provenance": {
+    "dataSource": "官方核实",
+    "verified": true,
+    "lastVerified": "2026-06",
+    "sourceUrl": "https://www.sheffield.ac.uk/postgraduate/taught/courses/2026/information-systems-management-msc",
+    "searchUrl": "https://www.google.com/search?q=谢菲尔德大学+Information+Systems+Management+MSc+entry+requirements"
+   }
+  },
+  {
+   "id": "uk-sheffield-translation",
+   "country": "英国",
+   "university": "谢菲尔德大学",
+   "qsRank": 105,
+   "program": "Translation and Intercultural Studies MA",
+   "field": "翻译/语言",
+   "degree": "硕士",
+   "requirements": {
+    "avgByTier": {
+     "985": 80,
+     "211": 82,
+     "双一流": 84,
+     "双非": 86,
+     "海本/中外合作": 76
+    },
+    "ielts": {
+     "overall": 6.5,
+     "sub": 6.0
+    },
+    "gre": null,
+    "background": "2:1 undergraduate honours degree in a relevant subject",
+    "notes": "官方入学要求：2:1 undergraduate honours degree in a relevant subject"
+   },
+   "tuition": "学费见官网",
+   "duration": "1 年",
+   "timeline": "9 月入学；国际生名额有限、多轮滚动审理，招满即止，建议尽早递交（以官网 Deadlines 页为准）",
+   "provenance": {
+    "dataSource": "官方核实",
+    "verified": true,
+    "lastVerified": "2026-06",
+    "sourceUrl": "https://www.sheffield.ac.uk/postgraduate/taught/courses/2026/translation-and-intercultural-studies-ma",
+    "searchUrl": "https://www.google.com/search?q=谢菲尔德大学+Translation+and+Intercultural+Studies+MA+entry+requirements"
+   }
+  },
+  {
+   "id": "uk-sheffield-digmk",
+   "country": "英国",
+   "university": "谢菲尔德大学",
+   "qsRank": 105,
+   "program": "Digital Marketing and Communication MSc",
+   "field": "市场营销",
+   "degree": "硕士",
+   "requirements": {
+    "avgByTier": {
+     "985": 80,
+     "211": 82,
+     "双一流": 84,
+     "双非": 85,
+     "海本/中外合作": 76
+    },
+    "ielts": {
+     "overall": 6.5,
+     "sub": 6.0
+    },
+    "gre": null,
+    "background": "2:1 undergraduate honours degree in any subject",
+    "notes": "官方入学要求：2:1 undergraduate honours degree in any subject"
+   },
+   "tuition": "学费见官网",
+   "duration": "1 年",
+   "timeline": "9 月入学；国际生名额有限、多轮滚动审理，招满即止，建议尽早递交（以官网 Deadlines 页为准）",
+   "provenance": {
+    "dataSource": "官方核实",
+    "verified": true,
+    "lastVerified": "2026-06",
+    "sourceUrl": "https://www.sheffield.ac.uk/postgraduate/taught/courses/2026/digital-marketing-msc",
+    "searchUrl": "https://www.google.com/search?q=谢菲尔德大学+Digital+Marketing+and+Communication+MSc+entry+requirements"
+   }
+  },
+  {
+   "id": "uk-sheffield-smb",
+   "country": "英国",
+   "university": "谢菲尔德大学",
+   "qsRank": 105,
+   "program": "Strategic Marketing and Branding MSc",
+   "field": "市场营销",
+   "degree": "硕士",
+   "requirements": {
+    "avgByTier": {
+     "985": 80,
+     "211": 82,
+     "双一流": 84,
+     "双非": 85,
+     "海本/中外合作": 76
+    },
+    "ielts": {
+     "overall": 6.5,
+     "sub": 6.0
+    },
+    "gre": null,
+    "background": "2:1 undergraduate honours degree in any subject",
+    "notes": "官方入学要求：2:1 undergraduate honours degree in any subject"
+   },
+   "tuition": "学费见官网",
+   "duration": "1 年",
+   "timeline": "9 月入学；国际生名额有限、多轮滚动审理，招满即止，建议尽早递交（以官网 Deadlines 页为准）",
+   "provenance": {
+    "dataSource": "官方核实",
+    "verified": true,
+    "lastVerified": "2026-06",
+    "sourceUrl": "https://www.sheffield.ac.uk/postgraduate/taught/courses/2026/strategic-marketing-and-branding-msc",
+    "searchUrl": "https://www.google.com/search?q=谢菲尔德大学+Strategic+Marketing+and+Branding+MSc+entry+requirements"
+   }
+  },
+  {
+   "id": "uk-sheffield-hrm",
+   "country": "英国",
+   "university": "谢菲尔德大学",
+   "qsRank": 105,
+   "program": "Human Resource Management MSc",
+   "field": "管理学/商科",
+   "degree": "硕士",
+   "requirements": {
+    "avgByTier": {
+     "985": 80,
+     "211": 82,
+     "双一流": 84,
+     "双非": 86,
+     "海本/中外合作": 76
+    },
+    "ielts": {
+     "overall": 6.5,
+     "sub": 6.0
+    },
+    "gre": null,
+    "background": "2:1 undergraduate honours degree in any subject",
+    "notes": "官方入学要求：2:1 undergraduate honours degree in any subject"
+   },
+   "tuition": "学费见官网",
+   "duration": "1 年",
+   "timeline": "9 月入学；国际生名额有限、多轮滚动审理，招满即止，建议尽早递交（以官网 Deadlines 页为准）",
+   "provenance": {
+    "dataSource": "官方核实",
+    "verified": true,
+    "lastVerified": "2026-06",
+    "sourceUrl": "https://www.sheffield.ac.uk/postgraduate/taught/courses/2026/human-resource-management-msc",
+    "searchUrl": "https://www.google.com/search?q=谢菲尔德大学+Human+Resource+Management+MSc+entry+requirements"
+   }
+  },
+  {
+   "id": "uk-sheffield-mgmt",
+   "country": "英国",
+   "university": "谢菲尔德大学",
+   "qsRank": 105,
+   "program": "Management MSc",
+   "field": "管理学/商科",
+   "degree": "硕士",
+   "requirements": {
+    "avgByTier": {
+     "985": 80,
+     "211": 82,
+     "双一流": 84,
+     "双非": 86,
+     "海本/中外合作": 76
+    },
+    "ielts": {
+     "overall": 6.5,
+     "sub": 6.0
+    },
+    "gre": null,
+    "background": "2:1 undergraduate honours degree in any subject",
+    "notes": "官方入学要求：2:1 undergraduate honours degree in any subject"
+   },
+   "tuition": "学费见官网",
+   "duration": "1 年",
+   "timeline": "9 月入学；国际生名额有限、多轮滚动审理，招满即止，建议尽早递交（以官网 Deadlines 页为准）",
+   "provenance": {
+    "dataSource": "官方核实",
+    "verified": true,
+    "lastVerified": "2026-06",
+    "sourceUrl": "https://www.sheffield.ac.uk/postgraduate/taught/courses/2026/management-msc",
+    "searchUrl": "https://www.google.com/search?q=谢菲尔德大学+Management+MSc+entry+requirements"
+   }
+  },
+  {
+   "id": "uk-sheffield-scm",
+   "country": "英国",
+   "university": "谢菲尔德大学",
+   "qsRank": 105,
+   "program": "Logistics and Supply Chain Management MSc",
+   "field": "管理学/商科",
+   "degree": "硕士",
+   "requirements": {
+    "avgByTier": {
+     "985": 80,
+     "211": 82,
+     "双一流": 84,
+     "双非": 85,
+     "海本/中外合作": 76
+    },
+    "ielts": {
+     "overall": 6.5,
+     "sub": 6.0
+    },
+    "gre": null,
+    "background": "2:1 undergraduate honours degree in any subject",
+    "notes": "官方入学要求：2:1 undergraduate honours degree in any subject"
+   },
+   "tuition": "学费见官网",
+   "duration": "1 年",
+   "timeline": "9 月入学；国际生名额有限、多轮滚动审理，招满即止，建议尽早递交（以官网 Deadlines 页为准）",
+   "provenance": {
+    "dataSource": "官方核实",
+    "verified": true,
+    "lastVerified": "2026-06",
+    "sourceUrl": "https://www.sheffield.ac.uk/postgraduate/taught/courses/2026/logistics-and-supply-chain-management-msc",
+    "searchUrl": "https://www.google.com/search?q=谢菲尔德大学+Logistics+and+Supply+Chain+Management+MSc+entry+requirements"
+   }
+  },
+  {
+   "id": "uk-sheffield-llm-intl",
+   "country": "英国",
+   "university": "谢菲尔德大学",
+   "qsRank": 105,
+   "program": "LLM International Law and Global Justice",
+   "field": "法律(LLM)",
+   "degree": "硕士",
+   "requirements": {
+    "avgByTier": {
+     "985": 80,
+     "211": 82,
+     "双一流": 84,
+     "双非": 86,
+     "海本/中外合作": 76
+    },
+    "ielts": {
+     "overall": 6.5,
+     "sub": 6.0
+    },
+    "gre": null,
+    "background": "2:1 undergraduate honours degree in a relevant subject",
+    "notes": "官方入学要求：2:1 undergraduate honours degree in a relevant subject"
+   },
+   "tuition": "学费见官网",
+   "duration": "1 年",
+   "timeline": "9 月入学；国际生名额有限、多轮滚动审理，招满即止，建议尽早递交（以官网 Deadlines 页为准）",
+   "provenance": {
+    "dataSource": "官方核实",
+    "verified": true,
+    "lastVerified": "2026-06",
+    "sourceUrl": "https://www.sheffield.ac.uk/postgraduate/taught/courses/2026/llm-international-law-and-global-justice-llm",
+    "searchUrl": "https://www.google.com/search?q=谢菲尔德大学+LLM+International+Law+and+Global+Justice+entry+requirements"
+   }
+  },
+  {
+   "id": "uk-sheffield-edu",
+   "country": "英国",
+   "university": "谢菲尔德大学",
+   "qsRank": 105,
+   "program": "Education MA",
+   "field": "教育",
+   "degree": "硕士",
+   "requirements": {
+    "avgByTier": {
+     "985": 79,
+     "211": 81,
+     "双一流": 83,
+     "双非": 85,
+     "海本/中外合作": 75
+    },
+    "ielts": {
+     "overall": 6.5,
+     "sub": 6.0
+    },
+    "gre": null,
+    "background": "2:1 undergraduate honours degree in any subject",
+    "notes": "官方入学要求：2:1 undergraduate honours degree in any subject"
+   },
+   "tuition": "学费见官网",
+   "duration": "1 年",
+   "timeline": "9 月入学；国际生名额有限、多轮滚动审理，招满即止，建议尽早递交（以官网 Deadlines 页为准）",
+   "provenance": {
+    "dataSource": "官方核实",
+    "verified": true,
+    "lastVerified": "2026-06",
+    "sourceUrl": "https://www.sheffield.ac.uk/postgraduate/taught/courses/2026/education-ma",
+    "searchUrl": "https://www.google.com/search?q=谢菲尔德大学+Education+MA+entry+requirements"
+   }
+  },
+  {
+   "id": "uk-sheffield-media",
+   "country": "英国",
+   "university": "谢菲尔德大学",
+   "qsRank": 105,
+   "program": "Digital Media and Society MA",
+   "field": "传媒",
+   "degree": "硕士",
+   "requirements": {
+    "avgByTier": {
+     "985": 80,
+     "211": 82,
+     "双一流": 84,
+     "双非": 86,
+     "海本/中外合作": 76
+    },
+    "ielts": {
+     "overall": 6.5,
+     "sub": 6.0
+    },
+    "gre": null,
+    "background": "2:1 undergraduate honours degree in a relevant subject",
+    "notes": "官方入学要求：2:1 undergraduate honours degree in a relevant subject"
+   },
+   "tuition": "学费见官网",
+   "duration": "1 年",
+   "timeline": "9 月入学；国际生名额有限、多轮滚动审理，招满即止，建议尽早递交（以官网 Deadlines 页为准）",
+   "provenance": {
+    "dataSource": "官方核实",
+    "verified": true,
+    "lastVerified": "2026-06",
+    "sourceUrl": "https://www.sheffield.ac.uk/postgraduate/taught/courses/2026/digital-media-and-society-ma",
+    "searchUrl": "https://www.google.com/search?q=谢菲尔德大学+Digital+Media+and+Society+MA+entry+requirements"
+   }
+  },
+  {
+   "id": "uk-sheffield-urban",
+   "country": "英国",
+   "university": "谢菲尔德大学",
+   "qsRank": 105,
+   "program": "Urban and Regional Planning MSc",
+   "field": "土木/建筑",
+   "degree": "硕士",
+   "requirements": {
+    "avgByTier": {
+     "985": 78,
+     "211": 80,
+     "双一流": 82,
+     "双非": 84,
+     "海本/中外合作": 74
+    },
+    "ielts": {
+     "overall": 6.5,
+     "sub": 6.0
+    },
+    "gre": null,
+    "background": "2:1 undergraduate honours degree in any subject",
+    "notes": "官方入学要求：2:1 undergraduate honours degree in any subject"
+   },
+   "tuition": "学费见官网",
+   "duration": "1 年",
+   "timeline": "9 月入学；国际生名额有限、多轮滚动审理，招满即止，建议尽早递交（以官网 Deadlines 页为准）",
+   "provenance": {
+    "dataSource": "官方核实",
+    "verified": true,
+    "lastVerified": "2026-06",
+    "sourceUrl": "https://www.sheffield.ac.uk/postgraduate/taught/courses/2026/urban-and-regional-planning-msc",
+    "searchUrl": "https://www.google.com/search?q=谢菲尔德大学+Urban+and+Regional+Planning+MSc+entry+requirements"
+   }
+  },
+  {
+   "id": "uk-nottingham-ds",
+   "country": "英国",
+   "university": "诺丁汉大学",
+   "qsRank": 97,
+   "program": "Data Science MSc",
+   "field": "数据科学/AI",
+   "degree": "硕士",
+   "requirements": {
+    "avgByTier": {
+     "985": 79,
+     "211": 81,
+     "双一流": 83,
+     "双非": 85,
+     "海本/中外合作": 75
+    },
+    "ielts": {
+     "overall": 6.5,
+     "sub": 6.0
+    },
+    "gre": null,
+    "background": "2:1 (or international equivalent) with an affinity for programming and/or advanced statistics evidenced through prior study or practical experience detailed in the",
+    "notes": "官方入学要求：2:1 (or international equivalent) with an affinity for programming and/or advanced statistics evidenced through prior study or practical experience detailed in the"
+   },
+   "tuition": "学费见官网",
+   "duration": "1 年",
+   "timeline": "多为 9 月入学；国际生滚动审理、招满即止，建议尽早递交（以官网 How to apply 为准）",
+   "provenance": {
+    "dataSource": "官方核实",
+    "verified": true,
+    "lastVerified": "2026-06",
+    "sourceUrl": "https://www.nottingham.ac.uk/pgstudy/course/taught/data-science-msc",
+    "searchUrl": "https://www.google.com/search?q=诺丁汉大学+Data+Science+MSc+entry+requirements"
+   }
+  },
+  {
+   "id": "uk-nottingham-mlsci",
+   "country": "英国",
+   "university": "诺丁汉大学",
+   "qsRank": 97,
+   "program": "Machine Learning in Science MSc",
+   "field": "数据科学/AI",
+   "degree": "硕士",
+   "requirements": {
+    "avgByTier": {
+     "985": 80,
+     "211": 82,
+     "双一流": 84,
+     "双非": 86,
+     "海本/中外合作": 76
+    },
+    "ielts": {
+     "overall": 6.5,
+     "sub": 6.0
+    },
+    "gre": null,
+    "notes": "入学要求见官方课程页",
+    "background": ""
+   },
+   "tuition": "学费见官网",
+   "duration": "1 年",
+   "timeline": "多为 9 月入学；国际生滚动审理、招满即止，建议尽早递交（以官网 How to apply 为准）",
+   "provenance": {
+    "dataSource": "官方核实",
+    "verified": true,
+    "lastVerified": "2026-06",
+    "sourceUrl": "https://www.nottingham.ac.uk/pgstudy/course/taught/machine-learning-in-science-msc",
+    "searchUrl": "https://www.google.com/search?q=诺丁汉大学+Machine+Learning+in+Science+MSc+entry+requirements"
+   }
+  },
+  {
+   "id": "uk-nottingham-hci",
+   "country": "英国",
+   "university": "诺丁汉大学",
+   "qsRank": 97,
+   "program": "Human-Computer Interaction MSc",
+   "field": "计算机/CS",
+   "degree": "硕士",
+   "requirements": {
+    "avgByTier": {
+     "985": 79,
+     "211": 81,
+     "双一流": 83,
+     "双非": 85,
+     "海本/中外合作": 75
+    },
+    "ielts": {
+     "overall": 6.5,
+     "sub": 6.0
+    },
+    "gre": null,
+    "background": "2:1 (or international equivalent) in a computer science, engineering, natural sciences, social sciences or art and design subject",
+    "notes": "官方入学要求：2:1 (or international equivalent) in a computer science, engineering, natural sciences, social sciences or art and design subject"
+   },
+   "tuition": "学费见官网",
+   "duration": "1 年",
+   "timeline": "多为 9 月入学；国际生滚动审理、招满即止，建议尽早递交（以官网 How to apply 为准）",
+   "provenance": {
+    "dataSource": "官方核实",
+    "verified": true,
+    "lastVerified": "2026-06",
+    "sourceUrl": "https://www.nottingham.ac.uk/pgstudy/course/taught/human-computer-interaction-msc",
+    "searchUrl": "https://www.google.com/search?q=诺丁汉大学+Human-Computer+Interaction+MSc+entry+requirements"
+   }
+  },
+  {
+   "id": "uk-nottingham-ba",
+   "country": "英国",
+   "university": "诺丁汉大学",
+   "qsRank": 97,
+   "program": "Business Analytics MSc",
+   "field": "商业分析",
+   "degree": "硕士",
+   "requirements": {
+    "avgByTier": {
+     "985": 80,
+     "211": 82,
+     "双一流": 84,
+     "双非": 85,
+     "海本/中外合作": 76
+    },
+    "ielts": {
+     "overall": 6.5,
+     "sub": 6.0
+    },
+    "gre": null,
+    "background": "2:1 (or international equivalent) in any discipline; applicants should not have previously studied a significant amount of business analytics, but must have a stro",
+    "notes": "官方入学要求：2:1 (or international equivalent) in any discipline; applicants should not have previously studied a significant amount of business analytics, but must have a stro"
+   },
+   "tuition": "学费见官网",
+   "duration": "1 年",
+   "timeline": "多为 9 月入学；国际生滚动审理、招满即止，建议尽早递交（以官网 How to apply 为准）",
+   "provenance": {
+    "dataSource": "官方核实",
+    "verified": true,
+    "lastVerified": "2026-06",
+    "sourceUrl": "https://www.nottingham.ac.uk/pgstudy/course/taught/business-analytics-msc",
+    "searchUrl": "https://www.google.com/search?q=诺丁汉大学+Business+Analytics+MSc+entry+requirements"
+   }
+  },
+  {
+   "id": "uk-nottingham-banking",
+   "country": "英国",
+   "university": "诺丁汉大学",
+   "qsRank": 97,
+   "program": "Banking and Finance MSc",
+   "field": "金融",
+   "degree": "硕士",
+   "requirements": {
+    "avgByTier": {
+     "985": 80,
+     "211": 82,
+     "双一流": 84,
+     "双非": 85,
+     "海本/中外合作": 76
+    },
+    "ielts": {
+     "overall": 6.5,
+     "sub": 6.0
+    },
+    "gre": null,
+    "background": "2:1 (or international equivalent) in accounting, business, economics, computing, engineering, mathematics, physics, science, or any other degree with a mathematics",
+    "notes": "官方入学要求：2:1 (or international equivalent) in accounting, business, economics, computing, engineering, mathematics, physics, science, or any other degree with a mathematics"
+   },
+   "tuition": "学费见官网",
+   "duration": "1 年",
+   "timeline": "多为 9 月入学；国际生滚动审理、招满即止，建议尽早递交（以官网 How to apply 为准）",
+   "provenance": {
+    "dataSource": "官方核实",
+    "verified": true,
+    "lastVerified": "2026-06",
+    "sourceUrl": "https://www.nottingham.ac.uk/pgstudy/course/taught/banking-and-finance-msc",
+    "searchUrl": "https://www.google.com/search?q=诺丁汉大学+Banking+and+Finance+MSc+entry+requirements"
+   }
+  },
+  {
+   "id": "uk-nottingham-acc",
+   "country": "英国",
+   "university": "诺丁汉大学",
+   "qsRank": 97,
+   "program": "Accounting and Finance MSc",
+   "field": "会计",
+   "degree": "硕士",
+   "requirements": {
+    "avgByTier": {
+     "985": 80,
+     "211": 82,
+     "双一流": 84,
+     "双非": 85,
+     "海本/中外合作": 76
+    },
+    "ielts": {
+     "overall": 6.5,
+     "sub": 6.0
+    },
+    "gre": null,
+    "background": "2:1 (or international equivalent) in accounting, auditing, financial management, or another subject with a substantial proportion of accounting study",
+    "notes": "官方入学要求：2:1 (or international equivalent) in accounting, auditing, financial management, or another subject with a substantial proportion of accounting study"
+   },
+   "tuition": "学费见官网",
+   "duration": "1 年",
+   "timeline": "多为 9 月入学；国际生滚动审理、招满即止，建议尽早递交（以官网 How to apply 为准）",
+   "provenance": {
+    "dataSource": "官方核实",
+    "verified": true,
+    "lastVerified": "2026-06",
+    "sourceUrl": "https://www.nottingham.ac.uk/pgstudy/course/taught/accounting-and-finance-msc",
+    "searchUrl": "https://www.google.com/search?q=诺丁汉大学+Accounting+and+Finance+MSc+entry+requirements"
+   }
+  },
+  {
+   "id": "uk-nottingham-mgmt",
+   "country": "英国",
+   "university": "诺丁汉大学",
+   "qsRank": 97,
+   "program": "Management MSc",
+   "field": "管理学/商科",
+   "degree": "硕士",
+   "requirements": {
+    "avgByTier": {
+     "985": 80,
+     "211": 82,
+     "双一流": 84,
+     "双非": 86,
+     "海本/中外合作": 76
+    },
+    "ielts": {
+     "overall": 6.5,
+     "sub": 6.0
+    },
+    "gre": null,
+    "background": "2:1 (or international equivalent) in any discipline, excluding business and/or management  2:1 (or international equivalent) in any discipline,",
+    "notes": "官方入学要求：2:1 (or international equivalent) in any discipline, excluding business and/or management  2:1 (or international equivalent) in any discipline,"
+   },
+   "tuition": "学费见官网",
+   "duration": "1 年",
+   "timeline": "多为 9 月入学；国际生滚动审理、招满即止，建议尽早递交（以官网 How to apply 为准）",
+   "provenance": {
+    "dataSource": "官方核实",
+    "verified": true,
+    "lastVerified": "2026-06",
+    "sourceUrl": "https://www.nottingham.ac.uk/pgstudy/course/taught/management-msc",
+    "searchUrl": "https://www.google.com/search?q=诺丁汉大学+Management+MSc+entry+requirements"
+   }
+  },
+  {
+   "id": "uk-nottingham-bm",
+   "country": "英国",
+   "university": "诺丁汉大学",
+   "qsRank": 97,
+   "program": "Business and Management MSc",
+   "field": "管理学/商科",
+   "degree": "硕士",
+   "requirements": {
+    "avgByTier": {
+     "985": 80,
+     "211": 82,
+     "双一流": 84,
+     "双非": 86,
+     "海本/中外合作": 76
+    },
+    "ielts": {
+     "overall": 6.5,
+     "sub": 6.0
+    },
+    "gre": null,
+    "background": "2:1 (or international equivalent) in business studies, economics or management  2:1 (or international equivalent) in business studies, economic",
+    "notes": "官方入学要求：2:1 (or international equivalent) in business studies, economics or management  2:1 (or international equivalent) in business studies, economic"
+   },
+   "tuition": "学费见官网",
+   "duration": "1 年",
+   "timeline": "多为 9 月入学；国际生滚动审理、招满即止，建议尽早递交（以官网 How to apply 为准）",
+   "provenance": {
+    "dataSource": "官方核实",
+    "verified": true,
+    "lastVerified": "2026-06",
+    "sourceUrl": "https://www.nottingham.ac.uk/pgstudy/course/taught/business-and-management-msc",
+    "searchUrl": "https://www.google.com/search?q=诺丁汉大学+Business+and+Management+MSc+entry+requirements"
+   }
+  },
+  {
+   "id": "uk-nottingham-ib",
+   "country": "英国",
+   "university": "诺丁汉大学",
+   "qsRank": 97,
+   "program": "International Business MSc",
+   "field": "管理学/商科",
+   "degree": "硕士",
+   "requirements": {
+    "avgByTier": {
+     "985": 80,
+     "211": 82,
+     "双一流": 84,
+     "双非": 86,
+     "海本/中外合作": 76
+    },
+    "ielts": {
+     "overall": 6.5,
+     "sub": 6.0
+    },
+    "gre": null,
+    "background": "2:1 (or international equivalent) in any discipline, excluding business and/or management  2:1 (or international equivalent) in any discipline,",
+    "notes": "官方入学要求：2:1 (or international equivalent) in any discipline, excluding business and/or management  2:1 (or international equivalent) in any discipline,"
+   },
+   "tuition": "学费见官网",
+   "duration": "1 年",
+   "timeline": "多为 9 月入学；国际生滚动审理、招满即止，建议尽早递交（以官网 How to apply 为准）",
+   "provenance": {
+    "dataSource": "官方核实",
+    "verified": true,
+    "lastVerified": "2026-06",
+    "sourceUrl": "https://www.nottingham.ac.uk/pgstudy/course/taught/international-business-msc",
+    "searchUrl": "https://www.google.com/search?q=诺丁汉大学+International+Business+MSc+entry+requirements"
+   }
+  },
+  {
+   "id": "uk-nottingham-mkt",
+   "country": "英国",
+   "university": "诺丁汉大学",
+   "qsRank": 97,
+   "program": "Marketing MSc",
+   "field": "市场营销",
+   "degree": "硕士",
+   "requirements": {
+    "avgByTier": {
+     "985": 80,
+     "211": 82,
+     "双一流": 84,
+     "双非": 86,
+     "海本/中外合作": 76
+    },
+    "ielts": {
+     "overall": 6.5,
+     "sub": 6.0
+    },
+    "gre": null,
+    "background": "2:1 (or international equivalent) in any discipline, excluding degrees with a substantial amount of marketing  2:1 (or international equivalent",
+    "notes": "官方入学要求：2:1 (or international equivalent) in any discipline, excluding degrees with a substantial amount of marketing  2:1 (or international equivalent"
+   },
+   "tuition": "学费见官网",
+   "duration": "1 年",
+   "timeline": "多为 9 月入学；国际生滚动审理、招满即止，建议尽早递交（以官网 How to apply 为准）",
+   "provenance": {
+    "dataSource": "官方核实",
+    "verified": true,
+    "lastVerified": "2026-06",
+    "sourceUrl": "https://www.nottingham.ac.uk/pgstudy/course/taught/marketing-msc",
+    "searchUrl": "https://www.google.com/search?q=诺丁汉大学+Marketing+MSc+entry+requirements"
+   }
+  },
+  {
+   "id": "uk-nottingham-eee",
+   "country": "英国",
+   "university": "诺丁汉大学",
+   "qsRank": 97,
+   "program": "Electrical and Electronic Engineering MSc",
+   "field": "电子/电气工程",
+   "degree": "硕士",
+   "requirements": {
+    "avgByTier": {
+     "985": 78,
+     "211": 80,
+     "双一流": 82,
+     "双非": 84,
+     "海本/中外合作": 74
+    },
+    "ielts": {
+     "overall": 6.0,
+     "sub": 5.5
+    },
+    "gre": null,
+    "background": "2:1 or equivalent grade in Electrical & Electronic Engineering or related discipline",
+    "notes": "官方入学要求：2:1 or equivalent grade in Electrical & Electronic Engineering or related discipline"
+   },
+   "tuition": "学费见官网",
+   "duration": "1 年",
+   "timeline": "多为 9 月入学；国际生滚动审理、招满即止，建议尽早递交（以官网 How to apply 为准）",
+   "provenance": {
+    "dataSource": "官方核实",
+    "verified": true,
+    "lastVerified": "2026-06",
+    "sourceUrl": "https://www.nottingham.ac.uk/pgstudy/course/taught/electrical-and-electronic-engineering-msc",
+    "searchUrl": "https://www.google.com/search?q=诺丁汉大学+Electrical+and+Electronic+Engineering+MSc+entry+requirements"
+   }
+  },
+  {
+   "id": "uk-nottingham-mech",
+   "country": "英国",
+   "university": "诺丁汉大学",
+   "qsRank": 97,
+   "program": "Mechanical Engineering MSc",
+   "field": "机械工程",
+   "degree": "硕士",
+   "requirements": {
+    "avgByTier": {
+     "985": 78,
+     "211": 80,
+     "双一流": 82,
+     "双非": 84,
+     "海本/中外合作": 74
+    },
+    "ielts": {
+     "overall": 6.0,
+     "sub": 5.5
+    },
+    "gre": null,
+    "background": "2:1 in a relevant subject (BEng, BSc, or international equivalent)  2:1 in a relevant subject (BEng, BSc, or international equivalent) Internat",
+    "notes": "官方入学要求：2:1 in a relevant subject (BEng, BSc, or international equivalent)  2:1 in a relevant subject (BEng, BSc, or international equivalent) Internat"
+   },
+   "tuition": "学费见官网",
+   "duration": "1 年",
+   "timeline": "多为 9 月入学；国际生滚动审理、招满即止，建议尽早递交（以官网 How to apply 为准）",
+   "provenance": {
+    "dataSource": "官方核实",
+    "verified": true,
+    "lastVerified": "2026-06",
+    "sourceUrl": "https://www.nottingham.ac.uk/pgstudy/course/taught/mechanical-engineering-msc",
+    "searchUrl": "https://www.google.com/search?q=诺丁汉大学+Mechanical+Engineering+MSc+entry+requirements"
+   }
+  },
+  {
+   "id": "uk-nottingham-energy",
+   "country": "英国",
+   "university": "诺丁汉大学",
+   "qsRank": 97,
+   "program": "Sustainable Energy Engineering MSc",
+   "field": "环境科学",
+   "degree": "硕士",
+   "requirements": {
+    "avgByTier": {
+     "985": 78,
+     "211": 80,
+     "双一流": 82,
+     "双非": 84,
+     "海本/中外合作": 74
+    },
+    "ielts": {
+     "overall": 6.0,
+     "sub": 5.5
+    },
+    "gre": null,
+    "background": "2:1 BEng or BSc in any relevant subject Additional information We will consider applicants with the following engineering degrees from University of Nottingham rec",
+    "notes": "官方入学要求：2:1 BEng or BSc in any relevant subject Additional information We will consider applicants with the following engineering degrees from University of Nottingham rec"
+   },
+   "tuition": "学费见官网",
+   "duration": "1 年",
+   "timeline": "多为 9 月入学；国际生滚动审理、招满即止，建议尽早递交（以官网 How to apply 为准）",
+   "provenance": {
+    "dataSource": "官方核实",
+    "verified": true,
+    "lastVerified": "2026-06",
+    "sourceUrl": "https://www.nottingham.ac.uk/pgstudy/course/taught/sustainable-energy-engineering-msc",
+    "searchUrl": "https://www.google.com/search?q=诺丁汉大学+Sustainable+Energy+Engineering+MSc+entry+requirements"
+   }
+  },
+  {
+   "id": "uk-nottingham-ir",
+   "country": "英国",
+   "university": "诺丁汉大学",
+   "qsRank": 97,
+   "program": "International Relations MA",
+   "field": "公共政策/管理",
+   "degree": "硕士",
+   "requirements": {
+    "avgByTier": {
+     "985": 80,
+     "211": 82,
+     "双一流": 84,
+     "双非": 86,
+     "海本/中外合作": 76
+    },
+    "ielts": {
+     "overall": 6.5,
+     "sub": 6.0
+    },
+    "gre": null,
+    "background": "2:1 and/or 2:2 with two years of work experience in a graduate job  2:1 and/or 2:2 with two years of work experience in a graduate job Internat",
+    "notes": "官方入学要求：2:1 and/or 2:2 with two years of work experience in a graduate job  2:1 and/or 2:2 with two years of work experience in a graduate job Internat"
+   },
+   "tuition": "学费见官网",
+   "duration": "1 年",
+   "timeline": "多为 9 月入学；国际生滚动审理、招满即止，建议尽早递交（以官网 How to apply 为准）",
+   "provenance": {
+    "dataSource": "官方核实",
+    "verified": true,
+    "lastVerified": "2026-06",
+    "sourceUrl": "https://www.nottingham.ac.uk/pgstudy/course/taught/international-relations-ma",
+    "searchUrl": "https://www.google.com/search?q=诺丁汉大学+International+Relations+MA+entry+requirements"
+   }
+  },
+  {
+   "id": "uk-nottingham-security",
+   "country": "英国",
+   "university": "诺丁汉大学",
+   "qsRank": 97,
+   "program": "International Security and Terrorism MA",
+   "field": "公共政策/管理",
+   "degree": "硕士",
+   "requirements": {
+    "avgByTier": {
+     "985": 80,
+     "211": 82,
+     "双一流": 84,
+     "双非": 86,
+     "海本/中外合作": 76
+    },
+    "ielts": {
+     "overall": 6.5,
+     "sub": 6.0
+    },
+    "gre": null,
+    "background": "2:1 and/or 2:2 with two years of work experience in a graduate job  2:1 and/or 2:2 with two years of work experience in a graduate job Internat",
+    "notes": "官方入学要求：2:1 and/or 2:2 with two years of work experience in a graduate job  2:1 and/or 2:2 with two years of work experience in a graduate job Internat"
+   },
+   "tuition": "学费见官网",
+   "duration": "1 年",
+   "timeline": "多为 9 月入学；国际生滚动审理、招满即止，建议尽早递交（以官网 How to apply 为准）",
+   "provenance": {
+    "dataSource": "官方核实",
+    "verified": true,
+    "lastVerified": "2026-06",
+    "sourceUrl": "https://www.nottingham.ac.uk/pgstudy/course/taught/international-security-and-terrorism-ma",
+    "searchUrl": "https://www.google.com/search?q=诺丁汉大学+International+Security+and+Terrorism+MA+entry+requirements"
+   }
+  },
+  {
+   "id": "uk-nottingham-devdis",
+   "country": "英国",
+   "university": "诺丁汉大学",
+   "qsRank": 97,
+   "program": "Developmental Disorders MSc",
+   "field": "心理学",
+   "degree": "硕士",
+   "requirements": {
+    "avgByTier": {
+     "985": 80,
+     "211": 82,
+     "双一流": 84,
+     "双非": 86,
+     "海本/中外合作": 76
+    },
+    "ielts": {
+     "overall": 6.5,
+     "sub": 6.0
+    },
+    "gre": null,
+    "background": "2:1 (or international equivalent) in a BPS accredited psychology degree",
+    "notes": "官方入学要求：2:1 (or international equivalent) in a BPS accredited psychology degree"
+   },
+   "tuition": "学费见官网",
+   "duration": "1 年",
+   "timeline": "多为 9 月入学；国际生滚动审理、招满即止，建议尽早递交（以官网 How to apply 为准）",
+   "provenance": {
+    "dataSource": "官方核实",
+    "verified": true,
+    "lastVerified": "2026-06",
+    "sourceUrl": "https://www.nottingham.ac.uk/pgstudy/course/taught/developmental-disorders-msc",
+    "searchUrl": "https://www.google.com/search?q=诺丁汉大学+Developmental+Disorders+MSc+entry+requirements"
    }
   }
  ]

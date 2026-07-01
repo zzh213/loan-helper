@@ -76,6 +76,11 @@
     </aside>
     <div class="container">
     <div id="tab-apply">
+    <div class="identity-switch" id="identity-switch">
+      <button type="button" class="id-btn active" data-identity="enterprise"><span class="id-ico">🏢</span> 企业贷款</button>
+      <button type="button" class="id-btn" data-identity="personal"><span class="id-ico">👤</span> 个人贷款</button>
+    </div>
+    <div id="enterprise-view">
     <section class="feature-strip">
       <div class="feature-item">
         <span class="feature-ico">🎯</span>
@@ -305,6 +310,124 @@
     </section>
 
     <section id="preaudit-result" class="result hidden"></section>
+    </div><!-- /enterprise-view -->
+
+    <div id="personal-view" class="hidden">
+    <section class="card form-card">
+      <h2>👤 个人情况</h2>
+      <p class="card-sub">个人有资金需求也能用!如实填写以下信息,系统将为你测算最合适的贷款方案。带 * 为必填项。<a href="#" id="fill-sample-personal" class="sample-link">🧪 填入示例看看</a></p>
+      <form id="personal-form">
+        <div class="grid">
+          <div class="field">
+            <label for="pf-name">姓名</label>
+            <input id="pf-name" type="text" name="name" placeholder="选填" />
+          </div>
+          <div class="field">
+            <label for="pf-occupation">职业身份 *</label>
+            <select id="pf-occupation" name="occupation_type" required>
+              <option value="salaried" selected>上班族(企业职工)</option>
+              <option value="civil_servant">公务员 / 事业编</option>
+              <option value="professional">专业人士(医生/律师/教师等)</option>
+              <option value="self_employed">个体工商户 / 小微业主</option>
+              <option value="freelancer">自由职业 / 灵活就业</option>
+              <option value="retired">退休</option>
+              <option value="student">学生</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="pf-age">年龄 *</label>
+            <input id="pf-age" type="number" name="age" min="18" max="70" step="1" value="30" required />
+          </div>
+          <div class="field">
+            <label for="pf-income">税后月收入(元) *</label>
+            <input id="pf-income" type="number" name="monthly_income" min="0" step="500" value="10000" required />
+          </div>
+          <div class="field">
+            <label for="pf-income-type">收入形式 *<span class="hint" title="打卡工资最易被银行认可,现金/混合收入建议留存流水凭证。">?</span></label>
+            <select id="pf-income-type" name="income_type" required>
+              <option value="salary" selected>银行代发打卡工资</option>
+              <option value="business">经营性收入(有流水)</option>
+              <option value="cash">现金 / 混合收入</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="pf-workyears">现职业 / 经营年限(年)</label>
+            <input id="pf-workyears" type="number" name="work_years" min="0" step="0.5" value="3" />
+          </div>
+          <div class="field">
+            <label for="pf-fund">公积金月缴存额(元,选填)<span class="hint" title="连续缴存公积金可解锁利率更低的公积金信用贷,缴存基数越高额度越大。">?</span></label>
+            <input id="pf-fund" type="number" name="housing_fund_monthly" min="0" step="100" value="0" />
+          </div>
+          <div class="field">
+            <label for="pf-house">房产估值(万元,选填)<span class="hint" title="有房可申请大额低息房抵贷,额度约为评估价的七成。">?</span></label>
+            <input id="pf-house" type="number" name="house_value" min="0" step="1" value="0" />
+          </div>
+          <div class="field">
+            <label for="pf-car">车辆估值(万元,选填)</label>
+            <input id="pf-car" type="number" name="car_value" min="0" step="1" value="0" />
+          </div>
+          <div class="field">
+            <label for="pf-credit">征信状况 *<span class="hint" title="个人在央行征信系统的信用记录,逾期越少等级越高,直接影响通过率与利率。">?</span></label>
+            <select id="pf-credit" name="credit_level" required>
+              <option value="excellent">优秀(无逾期,征信良好)</option>
+              <option value="good" selected>良好(偶有轻微逾期)</option>
+              <option value="fair">一般(有少量逾期)</option>
+              <option value="poor">较差(较多逾期)</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="pf-debt">名下现有月还款(元)<span class="hint" title="房贷/车贷/信用卡等每月还款额,用于计算负债率,越低越好。">?</span></label>
+            <input id="pf-debt" type="number" name="monthly_debt_payment" min="0" step="500" value="0" />
+          </div>
+          <div class="field">
+            <label for="pf-amount">期望贷款金额(万元) *</label>
+            <input id="pf-amount" type="number" name="loan_amount" min="1" step="1" value="10" required />
+          </div>
+          <div class="field">
+            <label for="pf-purpose">贷款用途 *</label>
+            <select id="pf-purpose" name="loan_purpose" required>
+              <option value="consumption">日常消费</option>
+              <option value="decoration">装修</option>
+              <option value="car">购车</option>
+              <option value="education">教育</option>
+              <option value="medical">医疗</option>
+              <option value="marriage">婚庆</option>
+              <option value="travel">旅游</option>
+              <option value="turnover">资金周转</option>
+              <option value="startup">创业 / 个体经营</option>
+              <option value="debt_optimize">债务优化(以低息换高息)</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="pf-term">期望期限(月) *</label>
+            <input id="pf-term" type="number" name="preferred_term_months" min="1" step="1" value="24" required />
+          </div>
+        </div>
+
+        <div class="checks">
+          <label><input type="checkbox" name="has_social_security" checked /> 连续缴纳社保</label>
+          <label><input type="checkbox" name="has_housing_fund" /> 连续缴存公积金</label>
+          <label><input type="checkbox" name="has_house" /> 名下有房产</label>
+          <label><input type="checkbox" name="has_car" /> 名下有车辆</label>
+          <label><input type="checkbox" name="has_insurance_policy" /> 持有寿险/年金保单</label>
+          <label><input type="checkbox" name="is_entrepreneur" /> 正在创业/经营个体</label>
+          <label><input type="checkbox" name="has_overdue" /> 当前存在逾期</label>
+          <label><input type="checkbox" name="urgent" /> 急需放款</label>
+        </div>
+
+        <div class="checks id-tags">
+          <span class="id-tags-label">特殊身份(可多选,解锁专项政策):</span>
+          <label><input type="checkbox" class="pf-identity" value="高校毕业生" /> 高校毕业生</label>
+          <label><input type="checkbox" class="pf-identity" value="退役军人" /> 退役军人</label>
+          <label><input type="checkbox" class="pf-identity" value="返乡农民工" /> 返乡农民工</label>
+        </div>
+
+        <div class="form-btns">
+          <button type="submit" id="personal-submit-btn">🔍 智能匹配最优方案</button>
+        </div>
+      </form>
+    </section>
+    </div><!-- /personal-view -->
 
     <section id="result" class="result hidden"></section>
     </div>

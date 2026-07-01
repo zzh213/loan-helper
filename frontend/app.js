@@ -909,6 +909,21 @@ document.querySelectorAll(".tab-btn[data-tab]").forEach((btn) => {
   btn.addEventListener("click", () => activateTab(btn.dataset.tab));
 });
 
+/* ===================== 数据保鲜标注:动态拉取更新日期 ===================== */
+(function initDataNote() {
+  const el = document.getElementById("data-note");
+  if (!el) return;
+  fetch("/api/data-info")
+    .then((r) => (r.ok ? r.json() : null))
+    .then((d) => {
+      if (!d) return;
+      el.textContent =
+        `📌 利率基准参考 LPR(一年期 ${d.lpr_1y}%、五年期以上 ${d.lpr_5y}%,${d.lpr_updated} 起);` +
+        `产品与政策依据国家公开信息整理,数据核对于 ${d.lpr_updated},具体以金融机构审批及主管部门最新文件为准。`;
+    })
+    .catch(() => {});
+})();
+
 /* ===================== 个人贷款:身份切换与匹配 ===================== */
 (function initPersonalLoan() {
   const switchEl = document.getElementById("identity-switch");

@@ -237,6 +237,19 @@ def health():
     return {"status": "ok"}
 
 
+@app.get("/api/data-info")
+def data_info():
+    """数据口径与更新日期,供前端展示"数据保鲜"标注。"""
+    import lpr_reference as lp
+    return {
+        "lpr_1y": lp.LPR_1Y,
+        "lpr_5y": lp.LPR_5Y,
+        "lpr_updated": lp.LPR_UPDATED,
+        "private_lending_cap": lp.PRIVATE_LENDING_CAP,
+        "source_note": lp.DATA_SOURCE_NOTE,
+    }
+
+
 @app.get("/api/qr")
 def api_qr(text: str = "http://127.0.0.1:8000/"):
     """生成二维码 PNG,用于海报扫码体验。"""

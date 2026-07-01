@@ -1,11 +1,13 @@
 """FastAPI 应用入口:中小微企业贷款服务小助手。"""
 import json
 import os
+import time
 import uuid
+from collections import defaultdict, deque
 
 from fastapi import FastAPI, HTTPException, Request
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import FileResponse, Response, StreamingResponse
+from fastapi.responses import FileResponse, JSONResponse, Response, StreamingResponse
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
 
@@ -26,12 +28,58 @@ XLSX_MIME = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
 
 app = FastAPI(title="中小微企业贷款服务小助手", version="1.0.0")
 
+# CORS:默认仅放行本站与本地开发,可用环境变量 ALLOWED_ORIGINS 覆盖(逗号分隔)
+_default_origins = (
+    "https://loan-helper-665l.onrender.com,"
+    "http://localhost:8000,http://127.0.0.1:8000"
+)
+ALLOWED_ORIGINS = [
+    o.strip() for o in os.environ.get("ALLOWED_ORIGINS", _default_origins).split(",")
+    if o.strip()
+]
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
-    allow_methods=["*"],
+    allow_origins=ALLOWED_ORIGINS,
+    allow_methods=["GET", "POST", "DELETE", "OPTIONS"],
     allow_headers=["*"],
 )
+
+# 轻量内存限流:防止接口被刷、导出/对话被滥用(Render 免费档单进程,内存计数即可)
+_RATE_BUCKETS: dict = defaultdict(deque)
+_RATE_WINDOW = 60.0  # 秒
+_RATE_DEFAULT = int(os.environ.get("RATE_LIMIT_DEFAULT", "120"))   # 每分钟每 IP 通用上限
+_RATE_HEAVY = int(os.environ.get("RATE_LIMIT_HEAVY", "24"))        # 昂贵接口(对话/导出/语音)上限
+_HEAVY_PREFIXES = ("/api/chat", "/api/tts", "/api/export", "/api/recommend")
+
+
+def _client_ip(request: Request) -> str:
+    fwd = request.headers.get("x-forwarded-for")
+    if fwd:
+        return fwd.split(",")[0].strip()
+    return request.client.host if request.client else "unknown"
+
+
+@app.middleware("http")
+async def rate_limit(request: Request, call_next):
+    path = request.url.path
+    if request.method == "OPTIONS" or not path.startswith("/api/"):
+        return await call_next(request)
+    heavy = any(path.startswith(p) for p in _HEAVY_PREFIXES)
+    limit = _RATE_HEAVY if heavy else _RATE_DEFAULT
+    key = f"{_client_ip(request)}|{'heavy' if heavy else 'std'}"
+    now = time.monotonic()
+    bucket = _RATE_BUCKETS[key]
+    while bucket and now - bucket[0] > _RATE_WINDOW:
+        bucket.popleft()
+    if len(bucket) >= limit:
+        return JSONResponse(
+            status_code=429,
+            content={"detail": "请求过于频繁,请稍后再试(每分钟请求已达上限)。"},
+            headers={"Retry-After": "30"},
+        )
+    bucket.append(now)
+    return await call_next(request)
+
 
 storage.init_db()
 

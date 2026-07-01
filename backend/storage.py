@@ -1,17 +1,116 @@
-"""申请记录持久化:使用 SQLite 存储企业的贷款方案申请记录。"""
+"""申请记录持久化。
+
+支持双后端:
+- 默认使用本地 SQLite(开发/演示,文件在 APP_DB_PATH)。
+- 若配置环境变量 DATABASE_URL(postgres://...),则使用云端 Postgres 持久化,
+  避免 Render 等免费容器重启后数据丢失。
+
+Postgres 通过一个轻量兼容层模拟 sqlite3 连接接口(execute / 上下文管理 /
+字典与下标混合取值),因此上层业务代码与 SQL 基本无需改动。
+"""
 import json
 import os
+import re
 import sqlite3
 import uuid
 from datetime import datetime
 from typing import List, Optional
 
+DATABASE_URL = os.environ.get("DATABASE_URL", "").strip()
+_USE_PG = DATABASE_URL.startswith("postgres")
+
 DB_PATH = os.environ.get(
     "APP_DB_PATH", os.path.join(os.path.dirname(__file__), "applications.db")
 )
 
+# 自增主键 DDL 片段(方言差异)
+_AUTO_PK = "BIGSERIAL PRIMARY KEY" if _USE_PG else "INTEGER PRIMARY KEY AUTOINCREMENT"
+
+_NAMED_PARAM = re.compile(r":(\w+)")
+
+
+def _translate(sql: str) -> str:
+    """把 sqlite 占位符转成 psycopg2 风格:':name' -> '%(name)s',  '?' -> '%s'。"""
+    sql = _NAMED_PARAM.sub(r"%(\1)s", sql)
+    sql = sql.replace("?", "%s")
+    return sql
+
+
+class _PGRow:
+    """兼容 sqlite3.Row:支持 row[int]、row['col']、row.keys()、dict(row)、row.get()。"""
+    __slots__ = ("_cols", "_vals", "_map")
+
+    def __init__(self, cols, vals):
+        self._cols = cols
+        self._vals = vals
+        self._map = {c: v for c, v in zip(cols, vals)}
+
+    def __getitem__(self, k):
+        if isinstance(k, int):
+            return self._vals[k]
+        return self._map[k]
+
+    def keys(self):
+        return list(self._cols)
+
+    def get(self, k, default=None):
+        return self._map.get(k, default)
+
+    def __iter__(self):
+        return iter(self._vals)
+
+
+class _PGCursor:
+    def __init__(self, cur):
+        self._cur = cur
+
+    @property
+    def rowcount(self):
+        return self._cur.rowcount
+
+    def _cols(self):
+        return [d[0] for d in self._cur.description] if self._cur.description else []
+
+    def fetchone(self):
+        row = self._cur.fetchone()
+        return _PGRow(self._cols(), row) if row is not None else None
+
+    def fetchall(self):
+        cols = self._cols()
+        return [_PGRow(cols, r) for r in self._cur.fetchall()]
+
+
+class _PGConn:
+    """psycopg2 连接的 sqlite3 兼容包装。每次进入 with 时新建连接,退出时提交并关闭。"""
+
+    def __init__(self):
+        import psycopg2
+        self._conn = psycopg2.connect(DATABASE_URL)
+
+    def execute(self, sql, params=None):
+        cur = self._conn.cursor()
+        if params is None:
+            cur.execute(_translate(sql))
+        else:
+            cur.execute(_translate(sql), params)
+        return _PGCursor(cur)
+
+    def __enter__(self):
+        return self
+
+    def __exit__(self, exc_type, exc, tb):
+        try:
+            if exc_type is None:
+                self._conn.commit()
+            else:
+                self._conn.rollback()
+        finally:
+            self._conn.close()
+
 
 def _conn():
+    if _USE_PG:
+        return _PGConn()
     conn = sqlite3.connect(DB_PATH)
     conn.row_factory = sqlite3.Row
     return conn
@@ -37,11 +136,15 @@ def init_db():
             )
             """
         )
-        cols = [r[1] for r in conn.execute("PRAGMA table_info(applications)").fetchall()]
-        if "reject_reason" not in cols:
-            conn.execute("ALTER TABLE applications ADD COLUMN reject_reason TEXT DEFAULT ''")
-        if "manual_override" not in cols:
-            conn.execute("ALTER TABLE applications ADD COLUMN manual_override INTEGER DEFAULT 0")
+        if _USE_PG:
+            conn.execute("ALTER TABLE applications ADD COLUMN IF NOT EXISTS reject_reason TEXT DEFAULT ''")
+            conn.execute("ALTER TABLE applications ADD COLUMN IF NOT EXISTS manual_override INTEGER DEFAULT 0")
+        else:
+            cols = [r[1] for r in conn.execute("PRAGMA table_info(applications)").fetchall()]
+            if "reject_reason" not in cols:
+                conn.execute("ALTER TABLE applications ADD COLUMN reject_reason TEXT DEFAULT ''")
+            if "manual_override" not in cols:
+                conn.execute("ALTER TABLE applications ADD COLUMN manual_override INTEGER DEFAULT 0")
         conn.execute(
             """
             CREATE TABLE IF NOT EXISTS settings (
@@ -51,9 +154,9 @@ def init_db():
             """
         )
         conn.execute(
-            """
+            f"""
             CREATE TABLE IF NOT EXISTS chat_messages (
-                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                id {_AUTO_PK},
                 session_id TEXT NOT NULL,
                 role TEXT NOT NULL,
                 content TEXT NOT NULL,

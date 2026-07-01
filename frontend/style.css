@@ -455,6 +455,17 @@ body {
   flex-wrap: wrap;
 }
 .id-tags-label { color: #6b7f96; font-size: 13px; font-weight: 600; }
+.data-note {
+  font-size: 12.5px;
+  color: #5f7793;
+  background: #eef4fb;
+  border: 1px solid #dce8f6;
+  border-radius: 10px;
+  padding: 9px 13px;
+  margin: 0 0 16px;
+  line-height: 1.6;
+}
+body.dark .data-note { background: #14202f; border-color: #23364e; color: #8ea6c2; }
 body.dark .identity-switch { background: #16202f; border-color: #24344a; }
 body.dark .identity-switch .id-btn { color: #9fb3cc; }
 body.dark .id-tags-label { color: #9fb3cc; }

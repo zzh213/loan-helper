@@ -19,7 +19,7 @@ PRODUCTS = [
         "min_annual_revenue": 50,        # 万元
         "max_amount": 300,               # 万元
         "base_amount_ratio": 0.30,       # 可贷额度 ≈ 年营业额 * 比例
-        "annual_rate_min": 3.45,
+        "annual_rate_min": 3.0,
         "annual_rate_max": 5.5,
         "max_term_months": 36,
         "min_credit": "good",            # 至少需要 good
@@ -66,7 +66,7 @@ PRODUCTS = [
         "need_tax_strict": True,         # 必须有连续纳税记录
         "release_days": "5-10 个工作日",
         "highlights": "以纳税信用换贷款额度,纳税越规范额度越高",
-        "hidden_criteria": "支行偏好:纳税信用 B 级以上、近 2 年无欠税;法人征信查询近 3 月≤4 次,优先批制造/批发零售",
+        "hidden_criteria": "支行偏好:纳税信用 B 级以上(现行 A/B/M/C/D 五级,M 级部分银行可受理、C/D 级不可参与)、近 2 年无欠税;法人征信查询近 3 月≤4 次,优先批制造/批发零售",
         "local_approval_rate": 81,
     },
     {
@@ -79,7 +79,7 @@ PRODUCTS = [
         "max_amount": 2000,
         "base_amount_ratio": 0.50,       # 信用部分参考
         "collateral_ratio": 0.7,         # 抵押物估值 * 比例
-        "annual_rate_min": 3.2,
+        "annual_rate_min": 3.0,
         "annual_rate_max": 5.0,
         "max_term_months": 120,
         "min_credit": "fair",
@@ -138,7 +138,7 @@ PRODUCTS = [
         "min_annual_revenue": 30,
         "max_amount": 500,
         "base_amount_ratio": 0.30,
-        "annual_rate_min": 3.1,
+        "annual_rate_min": 3.0,
         "annual_rate_max": 4.5,
         "max_term_months": 36,
         "min_credit": "fair",
@@ -227,7 +227,7 @@ PRODUCTS = [
         "min_annual_revenue": 10,
         "max_amount": 300,
         "base_amount_ratio": 0.35,
-        "annual_rate_min": 3.45,
+        "annual_rate_min": 3.0,
         "annual_rate_max": 5.5,
         "max_term_months": 36,
         "min_credit": "fair",
@@ -235,7 +235,7 @@ PRODUCTS = [
         "release_days": "7-15 个工作日",
         "highlights": "农业农村部门贴息+农担增信,面向种养大户、家庭农场、合作社,利率低、门槛友好",
         "subsidy_linked": True,
-        "hidden_criteria": "需从事实际农业生产经营;可用土地经营权、农机、活体畜禽等作补充增信,受季节性授信窗口影响",
+        "hidden_criteria": "需从事实际农业生产经营;可用土地经营权、农机、活体畜禽等作补充增信。农担单户额度多在 100 万以内(家庭农场/合作社),规模经营主体可至 300 万,受季节性授信窗口影响",
         "local_approval_rate": 85,
     },
     {
@@ -248,7 +248,7 @@ PRODUCTS = [
         "min_annual_revenue": 0,
         "max_amount": 400,
         "base_amount_ratio": 0.20,
-        "annual_rate_min": 3.1,
+        "annual_rate_min": 3.0,
         "annual_rate_max": 3.85,
         "max_term_months": 24,
         "min_credit": "fair",

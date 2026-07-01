@@ -55,7 +55,7 @@ def match_personal_policies(p: PersonalProfile) -> List[SubsidyPolicy]:
             name="退役军人创业就业专项扶持",
             category="创业扶持",
             authority="退役军人事务局 / 人社局",
-            benefit="创业担保贷款优先支持、税费减免、免费创业培训与场地扶持",
+            benefit="创业担保贷款个人最高 50 万元(高于普通个人的 30 万)、税费减免、免费创业培训与场地扶持",
             apply_points="凭退役证向退役军人事务部门申报",
             apply_window="常年可申报",
         ))
@@ -67,9 +67,9 @@ def match_personal_policies(p: PersonalProfile) -> List[SubsidyPolicy]:
             name="灵活就业人员社保补贴",
             category="社保补贴",
             authority="人社局",
-            benefit="就业困难人员/离校未就业毕业生以灵活就业身份缴纳社保,可申请一定比例的社保补贴(多为缴费额的 2/3)",
+            benefit="就业困难人员/离校未就业毕业生以灵活就业身份缴纳社保,可申请社保补贴(多为缴费额的 2/3),一般不超过 3 年,'4050'人员可延长至 5 年",
             apply_points="办理灵活就业登记并按时缴纳社保后,向社区/人社部门申报",
-            apply_window="按年申报,补贴期限一般不超过 3 年",
+            apply_window="按年申报,补贴期限一般不超过 3 年('4050'人员可延至 5 年)",
         ))
 
     # 返乡农民工

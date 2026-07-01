@@ -37,9 +37,9 @@
    "金融",
    "金融工程"
   ],
-  "count": 423,
+  "count": 440,
   "provenanceNote": "每个项目带 provenance 溯源：dataSource=参考估算/官方核实，verified 表示是否经官方页核实，lastVerified 为核实年月，sourceUrl 为官方项目页。参考估算分数线来自公开信息与往年经验，仅供参考；官方核实项由 scripts/ingest.py 从官方来源导入。",
-  "verifiedCount": 112
+  "verifiedCount": 131
  },
  "programs": [
   {
@@ -7728,11 +7728,11 @@
    "degree": "硕士",
    "requirements": {
     "avgByTier": {
-     "985": 80,
-     "211": 83,
-     "双一流": 85,
+     "985": 82,
+     "211": 84,
+     "双一流": 86,
      "双非": 87,
-     "海本/中外合作": 76
+     "海本/中外合作": 78
     },
     "ielts": {
      "overall": 6.5,
@@ -7763,28 +7763,28 @@
    "degree": "硕士",
    "requirements": {
     "avgByTier": {
-     "985": 79,
-     "211": 82,
-     "双一流": 84,
-     "双非": 86,
-     "海本/中外合作": 75
+     "985": 82,
+     "211": 84,
+     "双一流": 86,
+     "双非": 87,
+     "海本/中外合作": 78
     },
     "ielts": {
      "overall": 6.5,
      "sub": 6.0
     },
     "gre": null,
-    "background": "需数理基础",
-    "notes": ""
+    "background": "2:2 to 2:1 or above depending on the institution attended",
+    "notes": "官方入学要求：2:2 to 2:1 or above depending on the institution attended"
    },
    "tuition": "约 25–38 万元 / 1年",
    "duration": "1 年",
-   "timeline": "每年 9–10 月开放，滚动录取先到先得，建议 10–12 月递交",
+   "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
    "provenance": {
-    "dataSource": "参考估算",
-    "verified": false,
-    "lastVerified": null,
-    "sourceUrl": null,
+    "dataSource": "官方核实",
+    "verified": true,
+    "lastVerified": "2026-06",
+    "sourceUrl": "https://www.bath.ac.uk/courses/postgraduate-2026/taught-postgraduate-courses/msc-business-analytics/",
     "searchUrl": "https://www.google.com/search?q=巴斯大学+Business+Analytics+MSc+entry+requirements"
    }
   },
@@ -7798,11 +7798,11 @@
    "degree": "硕士",
    "requirements": {
     "avgByTier": {
-     "985": 78,
-     "211": 81,
-     "双一流": 83,
-     "双非": 85,
-     "海本/中外合作": 74
+     "985": 82,
+     "211": 84,
+     "双一流": 86,
+     "双非": 87,
+     "海本/中外合作": 78
     },
     "ielts": {
      "overall": 6.5,
@@ -8078,28 +8078,28 @@
    "degree": "硕士",
    "requirements": {
     "avgByTier": {
-     "985": 78,
-     "211": 81,
-     "双一流": 83,
+     "985": 80,
+     "211": 82,
+     "双一流": 84,
      "双非": 85,
-     "海本/中外合作": 74
+     "海本/中外合作": 76
     },
     "ielts": {
-     "overall": 7.0,
+     "overall": 6.5,
      "sub": 6.0
     },
     "gre": null,
-    "background": "需量化背景",
-    "notes": "兰卡管理学院 list 明确"
+    "background": "需 2:1 degree（国际等效）",
+    "notes": "官方入学要求：2:1 degree（英国 2:1 荣誉学位或国际等效）"
    },
-   "tuition": "约 25–38 万元 / 1年",
+   "tuition": "国际 £30,000 / 1年",
    "duration": "1 年",
-   "timeline": "每年 9–10 月开放，滚动录取先到先得，建议 10–12 月递交",
+   "timeline": "9 月/10 月入学；国际生滚动审理、招满即止，建议尽早递交（以官网为准）",
    "provenance": {
-    "dataSource": "参考估算",
-    "verified": false,
-    "lastVerified": null,
-    "sourceUrl": null,
+    "dataSource": "官方核实",
+    "verified": true,
+    "lastVerified": "2026-06",
+    "sourceUrl": "https://www.lancaster.ac.uk/study/postgraduate/postgraduate-courses/finance-msc/",
     "searchUrl": "https://www.google.com/search?q=兰卡斯特大学+Finance+MSc+entry+requirements"
    }
   },
@@ -14926,6 +14926,601 @@
     "lastVerified": "2026-06",
     "sourceUrl": "https://www.liverpool.ac.uk/courses/2026/environmental-sciences-msc",
     "searchUrl": "https://www.google.com/search?q=利物浦大学+Environmental+Sciences+MSc+entry+requirements"
+   }
+  },
+  {
+   "id": "uk-lancaster-ds",
+   "country": "英国",
+   "university": "兰卡斯特大学",
+   "qsRank": 132,
+   "program": "Data Science MSc",
+   "field": "数据科学/AI",
+   "degree": "硕士",
+   "requirements": {
+    "avgByTier": {
+     "985": 78,
+     "211": 80,
+     "双一流": 82,
+     "双非": 84,
+     "海本/中外合作": 74
+    },
+    "ielts": {
+     "overall": 6.5,
+     "sub": 6.0
+    },
+    "gre": null,
+    "background": "需 2:1 degree（国际等效）",
+    "notes": "官方入学要求：2:1 degree（英国 2:1 荣誉学位或国际等效）"
+   },
+   "tuition": "国际 £30,000 / 1年",
+   "duration": "1 年",
+   "timeline": "9 月/10 月入学；国际生滚动审理、招满即止，建议尽早递交（以官网为准）",
+   "provenance": {
+    "dataSource": "官方核实",
+    "verified": true,
+    "lastVerified": "2026-06",
+    "sourceUrl": "https://www.lancaster.ac.uk/study/postgraduate/postgraduate-courses/data-science-msc/",
+    "searchUrl": "https://www.google.com/search?q=兰卡斯特大学+Data+Science+MSc+entry+requirements"
+   }
+  },
+  {
+   "id": "uk-lancaster-ai",
+   "country": "英国",
+   "university": "兰卡斯特大学",
+   "qsRank": 132,
+   "program": "Artificial Intelligence MSc",
+   "field": "数据科学/AI",
+   "degree": "硕士",
+   "requirements": {
+    "avgByTier": {
+     "985": 79,
+     "211": 81,
+     "双一流": 83,
+     "双非": 85,
+     "海本/中外合作": 75
+    },
+    "ielts": {
+     "overall": 6.5,
+     "sub": 6.0
+    },
+    "gre": null,
+    "background": "需 2:1 degree（国际等效）",
+    "notes": "官方入学要求：2:1 degree（英国 2:1 荣誉学位或国际等效）"
+   },
+   "tuition": "国际 £30,000 / 1年",
+   "duration": "1 年",
+   "timeline": "9 月/10 月入学；国际生滚动审理、招满即止，建议尽早递交（以官网为准）",
+   "provenance": {
+    "dataSource": "官方核实",
+    "verified": true,
+    "lastVerified": "2026-06",
+    "sourceUrl": "https://www.lancaster.ac.uk/study/postgraduate/postgraduate-courses/artificial-intelligence-msc/",
+    "searchUrl": "https://www.google.com/search?q=兰卡斯特大学+Artificial+Intelligence+MSc+entry+requirements"
+   }
+  },
+  {
+   "id": "uk-lancaster-afm",
+   "country": "英国",
+   "university": "兰卡斯特大学",
+   "qsRank": 132,
+   "program": "Accounting and Financial Management MSc",
+   "field": "会计",
+   "degree": "硕士",
+   "requirements": {
+    "avgByTier": {
+     "985": 80,
+     "211": 82,
+     "双一流": 84,
+     "双非": 85,
+     "海本/中外合作": 76
+    },
+    "ielts": {
+     "overall": 6.5,
+     "sub": 6.0
+    },
+    "gre": null,
+    "background": "需 2:1 degree（国际等效）",
+    "notes": "官方入学要求：2:1 degree（英国 2:1 荣誉学位或国际等效）"
+   },
+   "tuition": "国际 £30,000 / 1年",
+   "duration": "1 年",
+   "timeline": "9 月/10 月入学；国际生滚动审理、招满即止，建议尽早递交（以官网为准）",
+   "provenance": {
+    "dataSource": "官方核实",
+    "verified": true,
+    "lastVerified": "2026-06",
+    "sourceUrl": "https://www.lancaster.ac.uk/study/postgraduate/postgraduate-courses/accounting-and-financial-management-msc/",
+    "searchUrl": "https://www.google.com/search?q=兰卡斯特大学+Accounting+and+Financial+Management+MSc+entry+requirements"
+   }
+  },
+  {
+   "id": "uk-lancaster-mbf",
+   "country": "英国",
+   "university": "兰卡斯特大学",
+   "qsRank": 132,
+   "program": "Money, Banking and Finance MSc",
+   "field": "金融",
+   "degree": "硕士",
+   "requirements": {
+    "avgByTier": {
+     "985": 80,
+     "211": 82,
+     "双一流": 84,
+     "双非": 85,
+     "海本/中外合作": 76
+    },
+    "ielts": {
+     "overall": 6.5,
+     "sub": 6.0
+    },
+    "gre": null,
+    "background": "需 2:1 degree（国际等效）",
+    "notes": "官方入学要求：2:1 degree（英国 2:1 荣誉学位或国际等效）"
+   },
+   "tuition": "国际 £30,000 / 1年",
+   "duration": "1 年",
+   "timeline": "9 月/10 月入学；国际生滚动审理、招满即止，建议尽早递交（以官网为准）",
+   "provenance": {
+    "dataSource": "官方核实",
+    "verified": true,
+    "lastVerified": "2026-06",
+    "sourceUrl": "https://www.lancaster.ac.uk/study/postgraduate/postgraduate-courses/money-banking-and-finance-msc/",
+    "searchUrl": "https://www.google.com/search?q=兰卡斯特大学+Money,+Banking+and+Finance+MSc+entry+requirements"
+   }
+  },
+  {
+   "id": "uk-lancaster-qf",
+   "country": "英国",
+   "university": "兰卡斯特大学",
+   "qsRank": 132,
+   "program": "Quantitative Finance MSc",
+   "field": "金融工程",
+   "degree": "硕士",
+   "requirements": {
+    "avgByTier": {
+     "985": 81,
+     "211": 83,
+     "双一流": 85,
+     "双非": 86,
+     "海本/中外合作": 77
+    },
+    "ielts": {
+     "overall": 6.5,
+     "sub": 6.0
+    },
+    "gre": null,
+    "background": "需 2:1 degree（国际等效）",
+    "notes": "官方入学要求：2:1 degree（英国 2:1 荣誉学位或国际等效）"
+   },
+   "tuition": "国际 £30,000 / 1年",
+   "duration": "1 年",
+   "timeline": "9 月/10 月入学；国际生滚动审理、招满即止，建议尽早递交（以官网为准）",
+   "provenance": {
+    "dataSource": "官方核实",
+    "verified": true,
+    "lastVerified": "2026-06",
+    "sourceUrl": "https://www.lancaster.ac.uk/study/postgraduate/postgraduate-courses/quantitative-finance-msc/",
+    "searchUrl": "https://www.google.com/search?q=兰卡斯特大学+Quantitative+Finance+MSc+entry+requirements"
+   }
+  },
+  {
+   "id": "uk-lancaster-mgmt",
+   "country": "英国",
+   "university": "兰卡斯特大学",
+   "qsRank": 132,
+   "program": "Management MSc",
+   "field": "管理学/商科",
+   "degree": "硕士",
+   "requirements": {
+    "avgByTier": {
+     "985": 80,
+     "211": 82,
+     "双一流": 84,
+     "双非": 86,
+     "海本/中外合作": 76
+    },
+    "ielts": {
+     "overall": 6.5,
+     "sub": 6.0
+    },
+    "gre": null,
+    "background": "需 2:1 degree（国际等效）",
+    "notes": "官方入学要求：2:1 degree（英国 2:1 荣誉学位或国际等效）"
+   },
+   "tuition": "国际 £30,000 / 1年",
+   "duration": "1 年",
+   "timeline": "9 月/10 月入学；国际生滚动审理、招满即止，建议尽早递交（以官网为准）",
+   "provenance": {
+    "dataSource": "官方核实",
+    "verified": true,
+    "lastVerified": "2026-06",
+    "sourceUrl": "https://www.lancaster.ac.uk/study/postgraduate/postgraduate-courses/management-msc/",
+    "searchUrl": "https://www.google.com/search?q=兰卡斯特大学+Management+MSc+entry+requirements"
+   }
+  },
+  {
+   "id": "uk-lancaster-mkt",
+   "country": "英国",
+   "university": "兰卡斯特大学",
+   "qsRank": 132,
+   "program": "Marketing MSc",
+   "field": "市场营销",
+   "degree": "硕士",
+   "requirements": {
+    "avgByTier": {
+     "985": 80,
+     "211": 82,
+     "双一流": 84,
+     "双非": 86,
+     "海本/中外合作": 76
+    },
+    "ielts": {
+     "overall": 6.5,
+     "sub": 6.0
+    },
+    "gre": null,
+    "background": "需 2:1 degree（国际等效）",
+    "notes": "官方入学要求：2:1 degree（英国 2:1 荣誉学位或国际等效）"
+   },
+   "tuition": "国际 £30,000 / 1年",
+   "duration": "1 年",
+   "timeline": "9 月/10 月入学；国际生滚动审理、招满即止，建议尽早递交（以官网为准）",
+   "provenance": {
+    "dataSource": "官方核实",
+    "verified": true,
+    "lastVerified": "2026-06",
+    "sourceUrl": "https://www.lancaster.ac.uk/study/postgraduate/postgraduate-courses/marketing-msc/",
+    "searchUrl": "https://www.google.com/search?q=兰卡斯特大学+Marketing+MSc+entry+requirements"
+   }
+  },
+  {
+   "id": "uk-lancaster-hrm",
+   "country": "英国",
+   "university": "兰卡斯特大学",
+   "qsRank": 132,
+   "program": "Human Resource Management MSc",
+   "field": "管理学/商科",
+   "degree": "硕士",
+   "requirements": {
+    "avgByTier": {
+     "985": 80,
+     "211": 82,
+     "双一流": 84,
+     "双非": 86,
+     "海本/中外合作": 76
+    },
+    "ielts": {
+     "overall": 6.5,
+     "sub": 6.0
+    },
+    "gre": null,
+    "background": "需 2:1 degree（国际等效）",
+    "notes": "官方入学要求：2:1 degree（英国 2:1 荣誉学位或国际等效）"
+   },
+   "tuition": "学费见官网",
+   "duration": "1 年",
+   "timeline": "9 月/10 月入学；国际生滚动审理、招满即止，建议尽早递交（以官网为准）",
+   "provenance": {
+    "dataSource": "官方核实",
+    "verified": true,
+    "lastVerified": "2026-06",
+    "sourceUrl": "https://www.lancaster.ac.uk/study/postgraduate/postgraduate-courses/human-resource-management-msc/",
+    "searchUrl": "https://www.google.com/search?q=兰卡斯特大学+Human+Resource+Management+MSc+entry+requirements"
+   }
+  },
+  {
+   "id": "uk-lancaster-pm",
+   "country": "英国",
+   "university": "兰卡斯特大学",
+   "qsRank": 132,
+   "program": "Project Management MSc",
+   "field": "管理学/商科",
+   "degree": "硕士",
+   "requirements": {
+    "avgByTier": {
+     "985": 79,
+     "211": 81,
+     "双一流": 83,
+     "双非": 85,
+     "海本/中外合作": 75
+    },
+    "ielts": {
+     "overall": 6.5,
+     "sub": 6.0
+    },
+    "gre": null,
+    "background": "需 2:1 degree（国际等效）",
+    "notes": "官方入学要求：2:1 degree（英国 2:1 荣誉学位或国际等效）"
+   },
+   "tuition": "国际 £30,000 / 1年",
+   "duration": "1 年",
+   "timeline": "9 月/10 月入学；国际生滚动审理、招满即止，建议尽早递交（以官网为准）",
+   "provenance": {
+    "dataSource": "官方核实",
+    "verified": true,
+    "lastVerified": "2026-06",
+    "sourceUrl": "https://www.lancaster.ac.uk/study/postgraduate/postgraduate-courses/project-management-msc/",
+    "searchUrl": "https://www.google.com/search?q=兰卡斯特大学+Project+Management+MSc+entry+requirements"
+   }
+  },
+  {
+   "id": "uk-lancaster-scm",
+   "country": "英国",
+   "university": "兰卡斯特大学",
+   "qsRank": 132,
+   "program": "Logistics and Supply Chain Management MSc",
+   "field": "管理学/商科",
+   "degree": "硕士",
+   "requirements": {
+    "avgByTier": {
+     "985": 79,
+     "211": 81,
+     "双一流": 83,
+     "双非": 85,
+     "海本/中外合作": 75
+    },
+    "ielts": {
+     "overall": 6.5,
+     "sub": 6.0
+    },
+    "gre": null,
+    "background": "需 2:1 degree（国际等效）",
+    "notes": "官方入学要求：2:1 degree（英国 2:1 荣誉学位或国际等效）"
+   },
+   "tuition": "学费见官网",
+   "duration": "1 年",
+   "timeline": "9 月/10 月入学；国际生滚动审理、招满即止，建议尽早递交（以官网为准）",
+   "provenance": {
+    "dataSource": "官方核实",
+    "verified": true,
+    "lastVerified": "2026-06",
+    "sourceUrl": "https://www.lancaster.ac.uk/study/postgraduate/postgraduate-courses/logistics-and-supply-chain-management-msc/",
+    "searchUrl": "https://www.google.com/search?q=兰卡斯特大学+Logistics+and+Supply+Chain+Management+MSc+entry+requirements"
+   }
+  },
+  {
+   "id": "uk-bath-ai",
+   "country": "英国",
+   "university": "巴斯大学",
+   "qsRank": 150,
+   "program": "Artificial Intelligence MSc",
+   "field": "数据科学/AI",
+   "degree": "硕士",
+   "requirements": {
+    "avgByTier": {
+     "985": 81,
+     "211": 83,
+     "双一流": 85,
+     "双非": 87,
+     "海本/中外合作": 77
+    },
+    "ielts": {
+     "overall": 6.5,
+     "sub": 6.0
+    },
+    "gre": null,
+    "background": "2:2 or above",
+    "notes": "官方入学要求：2:2 or above"
+   },
+   "tuition": "学费见官网",
+   "duration": "1 年",
+   "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+   "provenance": {
+    "dataSource": "官方核实",
+    "verified": true,
+    "lastVerified": "2026-06",
+    "sourceUrl": "https://www.bath.ac.uk/courses/postgraduate-2026/taught-postgraduate-courses/msc-artificial-intelligence/",
+    "searchUrl": "https://www.google.com/search?q=巴斯大学+Artificial+Intelligence+MSc+entry+requirements"
+   }
+  },
+  {
+   "id": "uk-bath-ds",
+   "country": "英国",
+   "university": "巴斯大学",
+   "qsRank": 150,
+   "program": "Data Science MSc",
+   "field": "数据科学/AI",
+   "degree": "硕士",
+   "requirements": {
+    "avgByTier": {
+     "985": 81,
+     "211": 83,
+     "双一流": 85,
+     "双非": 87,
+     "海本/中外合作": 77
+    },
+    "ielts": {
+     "overall": 6.5,
+     "sub": 6.0
+    },
+    "gre": null,
+    "background": "2:2 or above",
+    "notes": "官方入学要求：2:2 or above"
+   },
+   "tuition": "学费见官网",
+   "duration": "1 年",
+   "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+   "provenance": {
+    "dataSource": "官方核实",
+    "verified": true,
+    "lastVerified": "2026-06",
+    "sourceUrl": "https://www.bath.ac.uk/courses/postgraduate-2026/taught-postgraduate-courses/msc-data-science/",
+    "searchUrl": "https://www.google.com/search?q=巴斯大学+Data+Science+MSc+entry+requirements"
+   }
+  },
+  {
+   "id": "uk-bath-finbank",
+   "country": "英国",
+   "university": "巴斯大学",
+   "qsRank": 150,
+   "program": "Finance with Banking MSc",
+   "field": "金融",
+   "degree": "硕士",
+   "requirements": {
+    "avgByTier": {
+     "985": 82,
+     "211": 84,
+     "双一流": 86,
+     "双非": 87,
+     "海本/中外合作": 78
+    },
+    "ielts": {
+     "overall": 6.5,
+     "sub": 6.0
+    },
+    "gre": null,
+    "background": "2:2 to 2:1 or above (or its international equivalent) undergraduate degree depending on the institution attended",
+    "notes": "官方入学要求：2:2 to 2:1 or above (or its international equivalent) undergraduate degree depending on the institution attended"
+   },
+   "tuition": "学费见官网",
+   "duration": "1 年",
+   "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+   "provenance": {
+    "dataSource": "官方核实",
+    "verified": true,
+    "lastVerified": "2026-06",
+    "sourceUrl": "https://www.bath.ac.uk/courses/postgraduate-2026/taught-postgraduate-courses/msc-finance-with-banking/",
+    "searchUrl": "https://www.google.com/search?q=巴斯大学+Finance+with+Banking+MSc+entry+requirements"
+   }
+  },
+  {
+   "id": "uk-bath-finrisk",
+   "country": "英国",
+   "university": "巴斯大学",
+   "qsRank": 150,
+   "program": "Finance with Risk Management MSc",
+   "field": "金融工程",
+   "degree": "硕士",
+   "requirements": {
+    "avgByTier": {
+     "985": 82,
+     "211": 84,
+     "双一流": 86,
+     "双非": 87,
+     "海本/中外合作": 78
+    },
+    "ielts": {
+     "overall": 6.5,
+     "sub": 6.0
+    },
+    "gre": null,
+    "background": "2:1 or above (or its international equivalent) undergraduate degree depending on the institution attended",
+    "notes": "官方入学要求：2:1 or above (or its international equivalent) undergraduate degree depending on the institution attended"
+   },
+   "tuition": "学费见官网",
+   "duration": "1 年",
+   "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+   "provenance": {
+    "dataSource": "官方核实",
+    "verified": true,
+    "lastVerified": "2026-06",
+    "sourceUrl": "https://www.bath.ac.uk/courses/postgraduate-2026/taught-postgraduate-courses/msc-finance-with-risk-management/",
+    "searchUrl": "https://www.google.com/search?q=巴斯大学+Finance+with+Risk+Management+MSc+entry+requirements"
+   }
+  },
+  {
+   "id": "uk-bath-im",
+   "country": "英国",
+   "university": "巴斯大学",
+   "qsRank": 150,
+   "program": "International Management MSc",
+   "field": "管理学/商科",
+   "degree": "硕士",
+   "requirements": {
+    "avgByTier": {
+     "985": 82,
+     "211": 84,
+     "双一流": 86,
+     "双非": 87,
+     "海本/中外合作": 78
+    },
+    "ielts": {
+     "overall": 6.5,
+     "sub": 6.0
+    },
+    "gre": null,
+    "background": "2:2 to 2:1 or above (or its international equivalent) undergraduate degree depending on the institution attended",
+    "notes": "官方入学要求：2:2 to 2:1 or above (or its international equivalent) undergraduate degree depending on the institution attended"
+   },
+   "tuition": "学费见官网",
+   "duration": "1 年",
+   "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+   "provenance": {
+    "dataSource": "官方核实",
+    "verified": true,
+    "lastVerified": "2026-06",
+    "sourceUrl": "https://www.bath.ac.uk/courses/postgraduate-2026/taught-postgraduate-courses/msc-international-management/",
+    "searchUrl": "https://www.google.com/search?q=巴斯大学+International+Management+MSc+entry+requirements"
+   }
+  },
+  {
+   "id": "uk-bath-entre",
+   "country": "英国",
+   "university": "巴斯大学",
+   "qsRank": 150,
+   "program": "Entrepreneurship and Management MSc",
+   "field": "管理学/商科",
+   "degree": "硕士",
+   "requirements": {
+    "avgByTier": {
+     "985": 80,
+     "211": 82,
+     "双一流": 84,
+     "双非": 86,
+     "海本/中外合作": 76
+    },
+    "ielts": {
+     "overall": 6.5,
+     "sub": 6.0
+    },
+    "gre": null,
+    "background": "2:2 to 2:1 or above depending on the institution attended",
+    "notes": "官方入学要求：2:2 to 2:1 or above depending on the institution attended"
+   },
+   "tuition": "学费见官网",
+   "duration": "1 年",
+   "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+   "provenance": {
+    "dataSource": "官方核实",
+    "verified": true,
+    "lastVerified": "2026-06",
+    "sourceUrl": "https://www.bath.ac.uk/courses/postgraduate-2026/taught-postgraduate-courses/msc-entrepreneurship-and-management/",
+    "searchUrl": "https://www.google.com/search?q=巴斯大学+Entrepreneurship+and+Management+MSc+entry+requirements"
+   }
+  },
+  {
+   "id": "uk-bath-itm",
+   "country": "英国",
+   "university": "巴斯大学",
+   "qsRank": 150,
+   "program": "Innovation and Technology Management MSc",
+   "field": "管理学/商科",
+   "degree": "硕士",
+   "requirements": {
+    "avgByTier": {
+     "985": 80,
+     "211": 82,
+     "双一流": 84,
+     "双非": 86,
+     "海本/中外合作": 76
+    },
+    "ielts": {
+     "overall": 6.5,
+     "sub": 6.0
+    },
+    "gre": null,
+    "background": "2:2 or above in engineering, management or another relevant subject",
+    "notes": "官方入学要求：2:2 or above in engineering, management or another relevant subject"
+   },
+   "tuition": "学费见官网",
+   "duration": "1 年",
+   "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+   "provenance": {
+    "dataSource": "官方核实",
+    "verified": true,
+    "lastVerified": "2026-06",
+    "sourceUrl": "https://www.bath.ac.uk/courses/postgraduate-2026/taught-postgraduate-courses/msc-innovation-and-technology-management/",
+    "searchUrl": "https://www.google.com/search?q=巴斯大学+Innovation+and+Technology+Management+MSc+entry+requirements"
    }
   }
  ]

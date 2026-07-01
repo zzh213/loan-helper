@@ -134,7 +134,8 @@ def build_pdf(profile: EnterpriseProfile, result: RecommendResponse) -> bytes:
 
     el.append(Spacer(1, 12))
     el.append(Paragraph(
-        "免责声明:本报告中的额度、利率、月供及政策匹配均为基于公开规则的估算与示意,"
+        "免责声明:本报告利率基准参考 LPR(一年期 3.0%、五年期以上 3.5%,2025-05-20 起),"
+        "其中的额度、利率、月供及政策匹配均为基于公开规则的估算与示意,"
         "仅供参考,实际以金融机构审批结果及主管部门最新政策为准。", sub))
 
     doc.build(el)

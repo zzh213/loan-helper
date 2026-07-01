@@ -419,13 +419,16 @@ body {
 
 /* 身份切换:企业 / 个人 */
 .identity-switch {
+  position: relative;
+  z-index: 1;
   display: flex;
   gap: 8px;
-  background: rgba(255, 255, 255, 0.55);
+  background: #fff;
   padding: 6px;
   border-radius: 14px;
-  margin: 4px 0 16px;
-  box-shadow: 0 4px 14px rgba(76, 125, 182, 0.12);
+  margin: 34px 0 18px;
+  box-shadow: 0 6px 20px rgba(76, 125, 182, 0.16);
+  border: 1px solid #eef3fa;
   max-width: 420px;
 }
 .identity-switch .id-btn {
@@ -452,7 +455,7 @@ body {
   flex-wrap: wrap;
 }
 .id-tags-label { color: #6b7f96; font-size: 13px; font-weight: 600; }
-body.dark .identity-switch { background: rgba(255, 255, 255, 0.06); }
+body.dark .identity-switch { background: #16202f; border-color: #24344a; }
 body.dark .identity-switch .id-btn { color: #9fb3cc; }
 body.dark .id-tags-label { color: #9fb3cc; }
 

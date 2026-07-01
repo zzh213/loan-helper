@@ -1,8 +1,8 @@
 {
  "meta": {
   "name": "留学选校匹配数据集",
-  "version": "0.1.0",
-  "updated": "2026-06",
+  "version": "0.2.0",
+  "updated": "2026-07",
   "disclaimer": "本数据为参考性示例数据，基于公开招生信息与往年中国大陆申请者录取经验整理，均分门槛为「建议达到」的参考线，并非官方保证。实际录取受名额、竞争、文书、科研实习、面试等多因素影响，请以学校官网为准。",
   "tiers": [
    "985",
@@ -37,9 +37,9 @@
    "金融",
    "金融工程"
   ],
-  "count": 411,
+  "count": 423,
   "provenanceNote": "每个项目带 provenance 溯源：dataSource=参考估算/官方核实，verified 表示是否经官方页核实，lastVerified 为核实年月，sourceUrl 为官方项目页。参考估算分数线来自公开信息与往年经验，仅供参考；官方核实项由 scripts/ingest.py 从官方来源导入。",
-  "verifiedCount": 98
+  "verifiedCount": 112
  },
  "programs": [
   {
@@ -7903,28 +7903,28 @@
    "degree": "硕士",
    "requirements": {
     "avgByTier": {
-     "985": 75,
-     "211": 78,
-     "双一流": 80,
-     "双非": 83,
-     "海本/中外合作": 71
+     "985": 78,
+     "211": 80,
+     "双一流": 82,
+     "双非": 84,
+     "海本/中外合作": 74
     },
     "ielts": {
      "overall": 6.5,
-     "sub": 6.0
+     "sub": 5.5
     },
     "gre": null,
-    "background": "需相关背景",
-    "notes": ""
+    "background": "2:2 honours degree from a UK university, or an equivalent academic qualification from a similar non-UK institution",
+    "notes": "官方入学要求：2:2 honours degree from a UK university, or an equivalent academic qualification from a similar non-UK institution"
    },
    "tuition": "约 25–38 万元 / 1年",
    "duration": "1 年",
-   "timeline": "每年 9–10 月开放，滚动录取先到先得，建议 10–12 月递交",
+   "timeline": "9 月入学；国际生滚动审理、招满即止，建议尽早递交（以官网 How to apply 为准）",
    "provenance": {
-    "dataSource": "参考估算",
-    "verified": false,
-    "lastVerified": null,
-    "sourceUrl": null,
+    "dataSource": "官方核实",
+    "verified": true,
+    "lastVerified": "2026-06",
+    "sourceUrl": "https://www.liverpool.ac.uk/courses/2026/computer-science-msc",
     "searchUrl": "https://www.google.com/search?q=利物浦大学+Computer+Science+MSc+entry+requirements"
    }
   },
@@ -7938,28 +7938,28 @@
    "degree": "硕士",
    "requirements": {
     "avgByTier": {
-     "985": 75,
-     "211": 78,
-     "双一流": 80,
-     "双非": 83,
-     "海本/中外合作": 71
+     "985": 79,
+     "211": 81,
+     "双一流": 83,
+     "双非": 85,
+     "海本/中外合作": 75
     },
     "ielts": {
      "overall": 6.5,
      "sub": 6.0
     },
     "gre": null,
-    "background": "需金融/商科背景",
-    "notes": ""
+    "background": "2:2 honours degree from a UK university, or an equivalent academic qualification from a similar non-UK institution",
+    "notes": "官方入学要求：2:2 honours degree from a UK university, or an equivalent academic qualification from a similar non-UK institution"
    },
    "tuition": "约 25–38 万元 / 1年",
    "duration": "1 年",
-   "timeline": "每年 9–10 月开放，滚动录取先到先得，建议 10–12 月递交",
+   "timeline": "9 月入学；国际生滚动审理、招满即止，建议尽早递交（以官网 How to apply 为准）",
    "provenance": {
-    "dataSource": "参考估算",
-    "verified": false,
-    "lastVerified": null,
-    "sourceUrl": null,
+    "dataSource": "官方核实",
+    "verified": true,
+    "lastVerified": "2026-06",
+    "sourceUrl": "https://www.liverpool.ac.uk/courses/2026/finance-msc",
     "searchUrl": "https://www.google.com/search?q=利物浦大学+Finance+MSc+entry+requirements"
    }
   },
@@ -14506,6 +14506,426 @@
     "lastVerified": "2026-06",
     "sourceUrl": "https://www.nottingham.ac.uk/pgstudy/course/taught/developmental-disorders-msc",
     "searchUrl": "https://www.google.com/search?q=诺丁汉大学+Developmental+Disorders+MSc+entry+requirements"
+   }
+  },
+  {
+   "id": "uk-liverpool-ds-ai",
+   "country": "英国",
+   "university": "利物浦大学",
+   "qsRank": 165,
+   "program": "Data Science and Artificial Intelligence MSc",
+   "field": "数据科学/AI",
+   "degree": "硕士",
+   "requirements": {
+    "avgByTier": {
+     "985": 78,
+     "211": 80,
+     "双一流": 82,
+     "双非": 84,
+     "海本/中外合作": 74
+    },
+    "ielts": {
+     "overall": 6.5,
+     "sub": 5.5
+    },
+    "gre": null,
+    "background": "2:2 honours degree from a UK university, or an equivalent academic qualification from a similar non-UK institution",
+    "notes": "官方入学要求：2:2 honours degree from a UK university, or an equivalent academic qualification from a similar non-UK institution"
+   },
+   "tuition": "学费见官网",
+   "duration": "1 年",
+   "timeline": "9 月入学；国际生滚动审理、招满即止，建议尽早递交（以官网 How to apply 为准）",
+   "provenance": {
+    "dataSource": "官方核实",
+    "verified": true,
+    "lastVerified": "2026-06",
+    "sourceUrl": "https://www.liverpool.ac.uk/courses/2026/data-science-and-artificial-intelligence-msc",
+    "searchUrl": "https://www.google.com/search?q=利物浦大学+Data+Science+and+Artificial+Intelligence+MSc+entry+requirements"
+   }
+  },
+  {
+   "id": "uk-liverpool-ds-comm",
+   "country": "英国",
+   "university": "利物浦大学",
+   "qsRank": 165,
+   "program": "Data Science and Communication MSc",
+   "field": "数据科学/AI",
+   "degree": "硕士",
+   "requirements": {
+    "avgByTier": {
+     "985": 78,
+     "211": 80,
+     "双一流": 82,
+     "双非": 84,
+     "海本/中外合作": 74
+    },
+    "ielts": {
+     "overall": 6.5,
+     "sub": 6.0
+    },
+    "gre": null,
+    "background": "2:2 honours degree from a UK university, or an equivalent academic qualification from a similar non-UK institution",
+    "notes": "官方入学要求：2:2 honours degree from a UK university, or an equivalent academic qualification from a similar non-UK institution"
+   },
+   "tuition": "学费见官网",
+   "duration": "1 年",
+   "timeline": "9 月入学；国际生滚动审理、招满即止，建议尽早递交（以官网 How to apply 为准）",
+   "provenance": {
+    "dataSource": "官方核实",
+    "verified": true,
+    "lastVerified": "2026-06",
+    "sourceUrl": "https://www.liverpool.ac.uk/courses/2026/data-science-and-communication-msc",
+    "searchUrl": "https://www.google.com/search?q=利物浦大学+Data+Science+and+Communication+MSc+entry+requirements"
+   }
+  },
+  {
+   "id": "uk-liverpool-acs",
+   "country": "英国",
+   "university": "利物浦大学",
+   "qsRank": 165,
+   "program": "Advanced Computer Science MSc",
+   "field": "计算机/CS",
+   "degree": "硕士",
+   "requirements": {
+    "avgByTier": {
+     "985": 79,
+     "211": 81,
+     "双一流": 83,
+     "双非": 85,
+     "海本/中外合作": 75
+    },
+    "ielts": {
+     "overall": 6.5,
+     "sub": 5.5
+    },
+    "gre": null,
+    "background": "2:2 honours degree from a UK university, or an equivalent academic qualification from a similar non-UK institution",
+    "notes": "官方入学要求：2:2 honours degree from a UK university, or an equivalent academic qualification from a similar non-UK institution"
+   },
+   "tuition": "学费见官网",
+   "duration": "1 年",
+   "timeline": "9 月入学；国际生滚动审理、招满即止，建议尽早递交（以官网 How to apply 为准）",
+   "provenance": {
+    "dataSource": "官方核实",
+    "verified": true,
+    "lastVerified": "2026-06",
+    "sourceUrl": "https://www.liverpool.ac.uk/courses/2026/advanced-computer-science-msc",
+    "searchUrl": "https://www.google.com/search?q=利物浦大学+Advanced+Computer+Science+MSc+entry+requirements"
+   }
+  },
+  {
+   "id": "uk-liverpool-fintech",
+   "country": "英国",
+   "university": "利物浦大学",
+   "qsRank": 165,
+   "program": "Financial Technology MSc",
+   "field": "金融工程",
+   "degree": "硕士",
+   "requirements": {
+    "avgByTier": {
+     "985": 79,
+     "211": 81,
+     "双一流": 83,
+     "双非": 85,
+     "海本/中外合作": 75
+    },
+    "ielts": {
+     "overall": 6.5,
+     "sub": 6.0
+    },
+    "gre": null,
+    "background": "2:2 honours degree from a UK university, or an equivalent academic qualification from a similar non-UK institution",
+    "notes": "官方入学要求：2:2 honours degree from a UK university, or an equivalent academic qualification from a similar non-UK institution"
+   },
+   "tuition": "学费见官网",
+   "duration": "1 年",
+   "timeline": "9 月入学；国际生滚动审理、招满即止，建议尽早递交（以官网 How to apply 为准）",
+   "provenance": {
+    "dataSource": "官方核实",
+    "verified": true,
+    "lastVerified": "2026-06",
+    "sourceUrl": "https://www.liverpool.ac.uk/courses/2026/financial-technology-msc",
+    "searchUrl": "https://www.google.com/search?q=利物浦大学+Financial+Technology+MSc+entry+requirements"
+   }
+  },
+  {
+   "id": "uk-liverpool-econ",
+   "country": "英国",
+   "university": "利物浦大学",
+   "qsRank": 165,
+   "program": "Economics MSc",
+   "field": "经济学",
+   "degree": "硕士",
+   "requirements": {
+    "avgByTier": {
+     "985": 79,
+     "211": 81,
+     "双一流": 83,
+     "双非": 85,
+     "海本/中外合作": 75
+    },
+    "ielts": {
+     "overall": 6.5,
+     "sub": 6.0
+    },
+    "gre": null,
+    "background": "2:2 honours degree from a UK university, or an equivalent academic qualification from a similar non-UK institution",
+    "notes": "官方入学要求：2:2 honours degree from a UK university, or an equivalent academic qualification from a similar non-UK institution"
+   },
+   "tuition": "学费见官网",
+   "duration": "1 年",
+   "timeline": "9 月入学；国际生滚动审理、招满即止，建议尽早递交（以官网 How to apply 为准）",
+   "provenance": {
+    "dataSource": "官方核实",
+    "verified": true,
+    "lastVerified": "2026-06",
+    "sourceUrl": "https://www.liverpool.ac.uk/courses/2026/economics-msc",
+    "searchUrl": "https://www.google.com/search?q=利物浦大学+Economics+MSc+entry+requirements"
+   }
+  },
+  {
+   "id": "uk-liverpool-acc",
+   "country": "英国",
+   "university": "利物浦大学",
+   "qsRank": 165,
+   "program": "Accounting and Finance MSc",
+   "field": "会计",
+   "degree": "硕士",
+   "requirements": {
+    "avgByTier": {
+     "985": 79,
+     "211": 81,
+     "双一流": 83,
+     "双非": 85,
+     "海本/中外合作": 75
+    },
+    "ielts": {
+     "overall": 6.5,
+     "sub": 6.0
+    },
+    "gre": null,
+    "background": "2:2 honours degree from a UK university, or an equivalent academic qualification from a similar non-UK institution",
+    "notes": "官方入学要求：2:2 honours degree from a UK university, or an equivalent academic qualification from a similar non-UK institution"
+   },
+   "tuition": "学费见官网",
+   "duration": "1 年",
+   "timeline": "9 月入学；国际生滚动审理、招满即止，建议尽早递交（以官网 How to apply 为准）",
+   "provenance": {
+    "dataSource": "官方核实",
+    "verified": true,
+    "lastVerified": "2026-06",
+    "sourceUrl": "https://www.liverpool.ac.uk/courses/2026/accounting-and-finance-msc",
+    "searchUrl": "https://www.google.com/search?q=利物浦大学+Accounting+and+Finance+MSc+entry+requirements"
+   }
+  },
+  {
+   "id": "uk-liverpool-ba",
+   "country": "英国",
+   "university": "利物浦大学",
+   "qsRank": 165,
+   "program": "Business Analytics and Big Data MSc",
+   "field": "商业分析",
+   "degree": "硕士",
+   "requirements": {
+    "avgByTier": {
+     "985": 79,
+     "211": 81,
+     "双一流": 83,
+     "双非": 85,
+     "海本/中外合作": 75
+    },
+    "ielts": {
+     "overall": 6.5,
+     "sub": 6.0
+    },
+    "gre": null,
+    "background": "2:2 honours degree from a UK university, or an equivalent academic qualification from a similar non-UK institution",
+    "notes": "官方入学要求：2:2 honours degree from a UK university, or an equivalent academic qualification from a similar non-UK institution"
+   },
+   "tuition": "学费见官网",
+   "duration": "1 年",
+   "timeline": "9 月入学；国际生滚动审理、招满即止，建议尽早递交（以官网 How to apply 为准）",
+   "provenance": {
+    "dataSource": "官方核实",
+    "verified": true,
+    "lastVerified": "2026-06",
+    "sourceUrl": "https://www.liverpool.ac.uk/courses/2026/business-analytics-and-big-data-msc",
+    "searchUrl": "https://www.google.com/search?q=利物浦大学+Business+Analytics+and+Big+Data+MSc+entry+requirements"
+   }
+  },
+  {
+   "id": "uk-liverpool-mkt",
+   "country": "英国",
+   "university": "利物浦大学",
+   "qsRank": 165,
+   "program": "Marketing MSc",
+   "field": "市场营销",
+   "degree": "硕士",
+   "requirements": {
+    "avgByTier": {
+     "985": 79,
+     "211": 81,
+     "双一流": 83,
+     "双非": 85,
+     "海本/中外合作": 75
+    },
+    "ielts": {
+     "overall": 6.5,
+     "sub": 6.0
+    },
+    "gre": null,
+    "background": "2:2 honours degree from a UK university, or an equivalent academic qualification from a similar non-UK institution",
+    "notes": "官方入学要求：2:2 honours degree from a UK university, or an equivalent academic qualification from a similar non-UK institution"
+   },
+   "tuition": "学费见官网",
+   "duration": "1 年",
+   "timeline": "9 月入学；国际生滚动审理、招满即止，建议尽早递交（以官网 How to apply 为准）",
+   "provenance": {
+    "dataSource": "官方核实",
+    "verified": true,
+    "lastVerified": "2026-06",
+    "sourceUrl": "https://www.liverpool.ac.uk/courses/2026/marketing-msc",
+    "searchUrl": "https://www.google.com/search?q=利物浦大学+Marketing+MSc+entry+requirements"
+   }
+  },
+  {
+   "id": "uk-liverpool-hrm",
+   "country": "英国",
+   "university": "利物浦大学",
+   "qsRank": 165,
+   "program": "Human Resource Management MSc",
+   "field": "管理学/商科",
+   "degree": "硕士",
+   "requirements": {
+    "avgByTier": {
+     "985": 79,
+     "211": 81,
+     "双一流": 83,
+     "双非": 85,
+     "海本/中外合作": 75
+    },
+    "ielts": {
+     "overall": 6.5,
+     "sub": 6.0
+    },
+    "gre": null,
+    "background": "2:2 honours degree from a UK university, or an equivalent academic qualification from a similar non-UK institution",
+    "notes": "官方入学要求：2:2 honours degree from a UK university, or an equivalent academic qualification from a similar non-UK institution"
+   },
+   "tuition": "学费见官网",
+   "duration": "1 年",
+   "timeline": "9 月入学；国际生滚动审理、招满即止，建议尽早递交（以官网 How to apply 为准）",
+   "provenance": {
+    "dataSource": "官方核实",
+    "verified": true,
+    "lastVerified": "2026-06",
+    "sourceUrl": "https://www.liverpool.ac.uk/courses/2026/human-resource-management-msc",
+    "searchUrl": "https://www.google.com/search?q=利物浦大学+Human+Resource+Management+MSc+entry+requirements"
+   }
+  },
+  {
+   "id": "uk-liverpool-ib",
+   "country": "英国",
+   "university": "利物浦大学",
+   "qsRank": 165,
+   "program": "International Business MSc",
+   "field": "管理学/商科",
+   "degree": "硕士",
+   "requirements": {
+    "avgByTier": {
+     "985": 79,
+     "211": 81,
+     "双一流": 83,
+     "双非": 85,
+     "海本/中外合作": 75
+    },
+    "ielts": {
+     "overall": 6.5,
+     "sub": 6.0
+    },
+    "gre": null,
+    "background": "2:2 honours degree from a UK university, or an equivalent academic qualification from a similar non-UK institution",
+    "notes": "官方入学要求：2:2 honours degree from a UK university, or an equivalent academic qualification from a similar non-UK institution"
+   },
+   "tuition": "学费见官网",
+   "duration": "1 年",
+   "timeline": "9 月入学；国际生滚动审理、招满即止，建议尽早递交（以官网 How to apply 为准）",
+   "provenance": {
+    "dataSource": "官方核实",
+    "verified": true,
+    "lastVerified": "2026-06",
+    "sourceUrl": "https://www.liverpool.ac.uk/courses/2026/international-business-msc",
+    "searchUrl": "https://www.google.com/search?q=利物浦大学+International+Business+MSc+entry+requirements"
+   }
+  },
+  {
+   "id": "uk-liverpool-scm",
+   "country": "英国",
+   "university": "利物浦大学",
+   "qsRank": 165,
+   "program": "Operations and Supply Chain Management MSc",
+   "field": "管理学/商科",
+   "degree": "硕士",
+   "requirements": {
+    "avgByTier": {
+     "985": 79,
+     "211": 81,
+     "双一流": 83,
+     "双非": 85,
+     "海本/中外合作": 75
+    },
+    "ielts": {
+     "overall": 6.5,
+     "sub": 6.0
+    },
+    "gre": null,
+    "background": "2:2 honours degree from a UK university, or an equivalent academic qualification from a similar non-UK institution",
+    "notes": "官方入学要求：2:2 honours degree from a UK university, or an equivalent academic qualification from a similar non-UK institution"
+   },
+   "tuition": "学费见官网",
+   "duration": "1 年",
+   "timeline": "9 月入学；国际生滚动审理、招满即止，建议尽早递交（以官网 How to apply 为准）",
+   "provenance": {
+    "dataSource": "官方核实",
+    "verified": true,
+    "lastVerified": "2026-06",
+    "sourceUrl": "https://www.liverpool.ac.uk/courses/2026/operations-and-supply-chain-management-msc",
+    "searchUrl": "https://www.google.com/search?q=利物浦大学+Operations+and+Supply+Chain+Management+MSc+entry+requirements"
+   }
+  },
+  {
+   "id": "uk-liverpool-env",
+   "country": "英国",
+   "university": "利物浦大学",
+   "qsRank": 165,
+   "program": "Environmental Sciences MSc",
+   "field": "环境科学",
+   "degree": "硕士",
+   "requirements": {
+    "avgByTier": {
+     "985": 78,
+     "211": 80,
+     "双一流": 82,
+     "双非": 84,
+     "海本/中外合作": 74
+    },
+    "ielts": {
+     "overall": 6.5,
+     "sub": 6.0
+    },
+    "gre": null,
+    "background": "2:2 honours degree from a UK university, or an equivalent academic qualification from a similar non-UK institution",
+    "notes": "官方入学要求：2:2 honours degree from a UK university, or an equivalent academic qualification from a similar non-UK institution"
+   },
+   "tuition": "学费见官网",
+   "duration": "1 年",
+   "timeline": "9 月入学；国际生滚动审理、招满即止，建议尽早递交（以官网 How to apply 为准）",
+   "provenance": {
+    "dataSource": "官方核实",
+    "verified": true,
+    "lastVerified": "2026-06",
+    "sourceUrl": "https://www.liverpool.ac.uk/courses/2026/environmental-sciences-msc",
+    "searchUrl": "https://www.google.com/search?q=利物浦大学+Environmental+Sciences+MSc+entry+requirements"
    }
   }
  ]

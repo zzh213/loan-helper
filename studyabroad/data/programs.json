@@ -1,7 +1,7 @@
 {
   "meta": {
     "name": "留学选校匹配数据集",
-    "version": "0.3.4",
+    "version": "0.3.5",
     "updated": "2026-07",
     "disclaimer": "本数据为参考性示例数据，基于公开招生信息与往年中国大陆申请者录取经验整理，均分门槛为「建议达到」的参考线，并非官方保证。实际录取受名额、竞争、文书、科研实习、面试等多因素影响，请以学校官网为准。",
     "tiers": [
@@ -37,9 +37,9 @@
       "金融",
       "金融工程"
     ],
-    "count": 639,
+    "count": 646,
     "provenanceNote": "每个项目带 provenance 溯源：dataSource=参考估算/官方核实，verified 表示是否经官方页核实，lastVerified 为核实年月，sourceUrl 为官方项目页。参考估算分数线来自公开信息与往年经验，仅供参考；官方核实项由 scripts/ingest.py 从官方来源导入。",
-    "verifiedCount": 330
+    "verifiedCount": 337
   },
   "programs": [
     {
@@ -22486,6 +22486,251 @@
         "lastVerified": "2026-07",
         "sourceUrl": "https://www.plymouth.ac.uk/courses/postgraduate/msc-sustainable-environmental-management",
         "searchUrl": "https://www.google.com/search?q=普利茅斯大学+Sustainable+Environmental+Management+MSc+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-shef-ds",
+      "country": "英国",
+      "university": "谢菲尔德大学",
+      "qsRank": 105,
+      "program": "Data Science MSc",
+      "field": "数据科学/AI",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 80,
+          "211": 82,
+          "双一流": 84,
+          "双非": 86,
+          "海本/中外合作": 76
+        },
+        "ielts": {
+          "overall": 6.5,
+          "sub": 6.0
+        },
+        "gre": null,
+        "background": "2:1 undergraduate honours degree in any subject",
+        "notes": "官方入学要求：2:1 undergraduate honours degree in any subject"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.sheffield.ac.uk/postgraduate/taught/courses/2026/data-science-msc",
+        "searchUrl": "https://www.google.com/search?q=谢菲尔德大学+Data+Science+MSc+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-shef-intmgmt",
+      "country": "英国",
+      "university": "谢菲尔德大学",
+      "qsRank": 105,
+      "program": "International Management MSc",
+      "field": "管理学/商科",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 80,
+          "211": 82,
+          "双一流": 84,
+          "双非": 86,
+          "海本/中外合作": 76
+        },
+        "ielts": {
+          "overall": 6.5,
+          "sub": 6.0
+        },
+        "gre": null,
+        "background": "2:1 undergraduate honours degree in any subject",
+        "notes": "官方入学要求：2:1 undergraduate honours degree in any subject"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.sheffield.ac.uk/postgraduate/taught/courses/2026/international-management-msc",
+        "searchUrl": "https://www.google.com/search?q=谢菲尔德大学+International+Management+MSc+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-shef-ecid",
+      "country": "英国",
+      "university": "谢菲尔德大学",
+      "qsRank": 105,
+      "program": "Environmental Change & International Development MSc",
+      "field": "环境/国际发展",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 78,
+          "211": 80,
+          "双一流": 82,
+          "双非": 84,
+          "海本/中外合作": 74
+        },
+        "ielts": {
+          "overall": 6.5,
+          "sub": 6.0
+        },
+        "gre": null,
+        "background": "2:1 undergraduate honours degree in a relevant subject",
+        "notes": "官方入学要求：2:1 undergraduate honours degree in a relevant subject"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.sheffield.ac.uk/postgraduate/taught/courses/2026/environmental-change-and-international-development-msc",
+        "searchUrl": "https://www.google.com/search?q=谢菲尔德大学+Environmental+Change+&+International+Development+MSc+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-shef-archdes",
+      "country": "英国",
+      "university": "谢菲尔德大学",
+      "qsRank": 105,
+      "program": "Architectural Design MA",
+      "field": "建筑设计",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 78,
+          "211": 80,
+          "双一流": 82,
+          "双非": 84,
+          "海本/中外合作": 74
+        },
+        "ielts": {
+          "overall": 6.5,
+          "sub": 6.0
+        },
+        "gre": null,
+        "background": "2:1 undergraduate honours degree in a relevant subject",
+        "notes": "官方入学要求：2:1 undergraduate honours degree in a relevant subject"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.sheffield.ac.uk/postgraduate/taught/courses/2026/architectural-design-ma",
+        "searchUrl": "https://www.google.com/search?q=谢菲尔德大学+Architectural+Design+MA+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-shef-ccn",
+      "country": "英国",
+      "university": "谢菲尔德大学",
+      "qsRank": 105,
+      "program": "Cognitive & Computational Neuroscience MSc",
+      "field": "神经科学",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 79,
+          "211": 81,
+          "双一流": 83,
+          "双非": 85,
+          "海本/中外合作": 75
+        },
+        "ielts": {
+          "overall": 6.5,
+          "sub": 6.0
+        },
+        "gre": null,
+        "background": "2:1 undergraduate honours degree in a relevant subject with relevant modules",
+        "notes": "官方入学要求：2:1 undergraduate honours degree in a relevant subject with relevant modules"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.sheffield.ac.uk/postgraduate/taught/courses/2026/cognitive-and-computational-neuroscience-msc",
+        "searchUrl": "https://www.google.com/search?q=谢菲尔德大学+Cognitive+&+Computational+Neuroscience+MSc+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-shef-biopro",
+      "country": "英国",
+      "university": "谢菲尔德大学",
+      "qsRank": 105,
+      "program": "Biological & Bioprocess Engineering MSc",
+      "field": "生物工程",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 78,
+          "211": 80,
+          "双一流": 82,
+          "双非": 84,
+          "海本/中外合作": 74
+        },
+        "ielts": {
+          "overall": 6.5,
+          "sub": 6.0
+        },
+        "gre": null,
+        "background": "2:2 undergraduate honours degree in a relevant subject",
+        "notes": "官方入学要求：2:2 undergraduate honours degree in a relevant subject"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.sheffield.ac.uk/postgraduate/taught/courses/2026/biological-and-bioprocess-engineering-msc",
+        "searchUrl": "https://www.google.com/search?q=谢菲尔德大学+Biological+&+Bioprocess+Engineering+MSc+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-shef-clinneuro",
+      "country": "英国",
+      "university": "谢菲尔德大学",
+      "qsRank": 105,
+      "program": "Clinical Neurology MSc",
+      "field": "临床神经科学",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 79,
+          "211": 81,
+          "双一流": 83,
+          "双非": 85,
+          "海本/中外合作": 75
+        },
+        "ielts": {
+          "overall": 6.5,
+          "sub": 6.0
+        },
+        "gre": null,
+        "background": "2:1 undergraduate honours degree in a relevant subject",
+        "notes": "官方入学要求：2:1 undergraduate honours degree in a relevant subject"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.sheffield.ac.uk/postgraduate/taught/courses/2026/clinical-neurology-msc",
+        "searchUrl": "https://www.google.com/search?q=谢菲尔德大学+Clinical+Neurology+MSc+entry+requirements"
       }
     }
   ]

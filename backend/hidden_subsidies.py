@@ -40,7 +40,7 @@ HIDDEN_SUBSIDIES: List[Dict] = [
     },
     {
         "id": "cd-gx-mfg", "region": "成都·高新区",
-        "keywords": ["成都", "天府"],
+        "keywords": ["成都", "天府", "高新"],
         "name": "成都高新区智能制造技改隐性奖补",
         "category": "区县奖补", "exclusive": True,
         "benefit": "设备投资 200 万以上按 10% 事后奖补,贷款再贴息 1.5%",
@@ -50,7 +50,7 @@ HIDDEN_SUBSIDIES: List[Dict] = [
     },
     {
         "id": "sz-county-agri", "region": "县域·乡村振兴园",
-        "keywords": ["县", "镇", "乡", "农业园"],
+        "keywords": ["县", "农业园", "合作社", "家庭农场", "乡村振兴"],
         "name": "县域农业经营主体贷款全额贴息",
         "category": "县域专项", "exclusive": True,
         "benefit": "纳入名录的家庭农场/合作社 50 万内贷款财政全额贴息",
@@ -110,7 +110,7 @@ HIDDEN_SUBSIDIES: List[Dict] = [
     },
     {
         "id": "xa-hightech", "region": "西安·高新区",
-        "keywords": ["西安", "雁塔"],
+        "keywords": ["西安", "雁塔", "高新"],
         "name": "西安高新区硬科技专项贴息",
         "category": "园区贴息", "exclusive": True,
         "benefit": "硬科技企业研发贷贴息 2%,最高 30 万,叠加流片补助",
@@ -151,7 +151,7 @@ HIDDEN_SUBSIDIES: List[Dict] = [
         "apply_points": "崂山区科技局白名单", "amount_max": 30, "rate_subsidy": 2.0,
     },
     {
-        "id": "hf-gaoxin", "region": "安徽·合肥高新", "keywords": ["合肥", "蜀山"],
+        "id": "hf-gaoxin", "region": "安徽·合肥高新", "keywords": ["合肥", "蜀山", "高新"],
         "name": "合肥高新区芯屏汽合贴息", "category": "园区贴息", "exclusive": True,
         "benefit": "集成电路/新能源汽车研发贷贴息 2.5%,最高 40 万", "industries": ["科技", "制造业"],
         "apply_points": "高新区管委会定向申报", "amount_max": 40, "rate_subsidy": 2.5,
@@ -260,6 +260,23 @@ HIDDEN_SUBSIDIES: List[Dict] = [
     },
 ]
 
+# 城市/省级“广义”关键词:只能证明“在这个市/省”,不足以证明“在某个具体区/园区”。
+# 命中它们不会单独解锁区县专属贴息,必须再命中具体的区县/园区名。
+CITY_LEVEL = {
+    # 直辖市
+    "北京", "上海", "天津", "重庆",
+    # 省/自治区
+    "广东", "江苏", "浙江", "山东", "四川", "湖北", "湖南", "河南", "河北", "福建",
+    "安徽", "陕西", "辽宁", "江西", "山西", "云南", "广西", "贵州", "黑龙江", "吉林",
+    "甘肃", "海南", "内蒙古", "新疆", "宁夏", "青海", "西藏",
+    # 数据中出现过的地级市名(作为“城市级”)
+    "深圳", "广州", "杭州", "成都", "苏州", "武汉", "西安", "东莞", "佛山", "南京",
+    "宁波", "青岛", "济南", "合肥", "长沙", "郑州", "南阳", "洛阳", "厦门", "泉州",
+    "福州", "沈阳", "大连", "昆明", "曲靖", "南宁", "柳州", "桂林", "绵阳", "宜昌",
+    "襄阳", "唐山", "保定", "石家庄", "宝鸡", "咸阳", "赣州", "南昌", "九江", "太原",
+    "大同", "贵阳", "遵义", "哈尔滨", "大庆", "长春", "海口", "三亚", "兰州", "天水",
+}
+
 # 省级通用兜底:任一省/直辖市/自治区命中即解锁,确保全国覆盖
 PROVINCE_KEYWORDS = [
     "北京", "天津", "上海", "重庆", "广东", "深圳", "广州", "江苏", "苏州", "南京",
@@ -282,12 +299,30 @@ PROVINCE_FALLBACK = {
 }
 
 
+def _entry_matched(keywords: List[str], addr: str) -> bool:
+    """城市级 + 区县级双重命中判定,避免同市异区的错配。
+
+    - 关键词里同时含“城市级”和“具体级”:必须两者都命中(在这个市 且 在这个区/园区);
+    - 只有城市级:命中城市级即可(整市/整省通用政策);
+    - 只有具体级(如“园区”“县”等通用词):命中具体级即可(全国通用类)。
+    """
+    broad = [k for k in keywords if k in CITY_LEVEL]
+    local = [k for k in keywords if k not in CITY_LEVEL]
+    hit_broad = any(k in addr for k in broad)
+    hit_local = any(k in addr for k in local)
+    if broad and local:
+        return hit_broad and hit_local
+    if broad:
+        return hit_broad
+    return hit_local
+
+
 def match_hidden(address: str, industry: str = "") -> List[Dict]:
     """按地址关键词解锁隐藏贴息;行业不限或匹配时返回。无具体命中则给省级兜底。"""
     addr = (address or "").strip()
     out = []
     for s in HIDDEN_SUBSIDIES:
-        if not any(k in addr for k in s["keywords"]):
+        if not _entry_matched(s["keywords"], addr):
             continue
         if s["industries"] and industry and industry not in s["industries"]:
             continue

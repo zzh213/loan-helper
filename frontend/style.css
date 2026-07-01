@@ -2361,6 +2361,14 @@ body.dark .pa-fix { color: #6ee7a8; }
 .hs-benefit { font-size: 0.88rem; margin-top: 6px; color: #a16207; }
 .hs-apply { font-size: 0.82rem; margin-top: 4px; opacity: 0.85; }
 body.dark .hs-benefit { color: #e0b35a; }
+.hs-disclaimer {
+  font-size: 0.78rem; line-height: 1.6; color: #92670a;
+  background: rgba(234,179,8,0.1); border: 1px dashed rgba(161,98,7,0.35);
+  border-radius: 10px; padding: 9px 12px; margin-top: 10px;
+}
+.hs-disclaimer b { color: #a16207; }
+body.dark .hs-disclaimer { color: #e0b35a; background: rgba(234,179,8,0.08); }
+body.dark .hs-disclaimer b { color: #f0c860; }
 
 /* 隐藏贴息级联下拉 */
 .hs-sel {

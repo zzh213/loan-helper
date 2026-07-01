@@ -41,13 +41,14 @@ PUSH_URL="https://${GITHUB_USER}:${GITHUB_TOKEN}@github.com/${GITHUB_USER}/${GIT
 git -c credential.helper= push "$PUSH_URL" main:main 2>&1 | sed "s/${GITHUB_TOKEN}/***/g"
 echo "    ✅ 代码已推送"
 
-# 3) 触发 Render 部署
+# 3) 触发 Render 部署（明确指定刚推送的 commit，避免 Render 用到旧快照）
 echo "🏗️  [3/4] 触发 Render 重新部署…"
+HEAD_SHA=$(git rev-parse HEAD)
 DEPLOY_ID=$(curl -s -X POST \
   "https://api.render.com/v1/services/${SA_SERVICE_ID}/deploys" \
   -H "Authorization: Bearer ${RENDER_API_KEY}" \
   -H "Content-Type: application/json" -H "Accept: application/json" \
-  -d '{"clearCache":"do_not_clear"}' \
+  -d "{\"clearCache\":\"do_not_clear\",\"commitId\":\"${HEAD_SHA}\"}" \
   | python3 -c "import sys,json;print(json.load(sys.stdin).get('id',''))")
 
 if [ -z "$DEPLOY_ID" ]; then

@@ -415,150 +415,8 @@ async function showChecklist() {
   document.getElementById("detail-modal").classList.remove("hidden");
 }
 
-function render(data) {
-  window.__lastProfile = window.__lastProfile || null;
-  let html = "";
-
-  // 首屏结论卡:三句话直给,详情下方展开
-  if (data.plans && data.plans.length) {
-    const byAmt = [...data.plans].sort((a, b) => b.estimated_amount - a.estimated_amount)[0];
-    const byCost = [...data.plans].sort((a, b) => (a.annual_rate_min + a.annual_rate_max) - (b.annual_rate_min + b.annual_rate_max))[0];
-    const bySafe = data.tiers && data.tiers.find((t) => t.key === "steady");
-    html += `<div class="verdict-box">
-      <h3>✅ 一句话结论</h3>
-      <div class="verdict-grid">
-        <div class="verdict-card"><span class="vc-tag">额度最高</span><b>${byAmt.estimated_amount} 万</b><small>${escapeHtml(byAmt.product_name)}</small></div>
-        <div class="verdict-card"><span class="vc-tag">成本最低</span><b>${byCost.annual_rate_min}%-${byCost.annual_rate_max}%</b><small>${escapeHtml(byCost.product_name)}</small></div>
-        <div class="verdict-card"><span class="vc-tag">最稳通过</span><b>${data.plans[0].approval_probability}</b><small>${escapeHtml(bySafe ? bySafe.product_name : data.plans[0].product_name)}</small></div>
-      </div>
-    </div>`;
-  }
-
-  const isPersonal = window.__lastMode === "personal";
-  const actionBtns = isPersonal
-    ? `<button id="export-pdf-personal" class="export-btn">📄 导出方案 PDF</button>
-    <button class="export-btn" onclick="window.print()">🖨️ 打印 / 另存</button>`
-    : `<button id="export-pdf" class="export-btn">📄 导出方案 PDF</button>
-    <button id="export-excel" class="export-btn excel-btn">📊 导出 Excel</button>
-    <button id="export-bank" class="export-btn bank-btn">🏦 银行成品材料 PDF</button>
-    <button id="export-bank-docx" class="export-btn bank-btn">📝 银行成品材料 Word</button>
-    <button id="export-checklist" class="export-btn">📋 材料清单</button>
-    <button id="share-poster" class="export-btn">📱 生成分享海报</button>
-    <button id="growth-report" class="export-btn">📈 资质成长报告</button>
-    <button id="combo-credit" class="export-btn">➕ 组合贷测算</button>
-    <select id="bank-tpl-sel" class="bank-sel" title="选择银行专属申报模板"><option value="">通用模板</option></select>
-    <button id="save-application" class="export-btn save-btn">💾 保存为申请记录</button>`;
-
-  html += `<div class="summary-box">
-    <h3>📊 匹配结果</h3>
-    <p>${escapeHtml(data.summary)}</p>
-    <ul class="highlights">
-      ${data.profile_highlights.map((h) => `<li>${escapeHtml(h)}</li>`).join("")}
-    </ul>
-    ${actionBtns}
-  </div>`;
-
-  // 风控评估
-  if (data.risk) {
-    const r = data.risk;
-    html += `<div class="risk-box">
-      <div class="risk-head">
-        <h3>🛡️ 风控评估</h3>
-        <div class="risk-score grade-${r.grade}" title="风控等级 A≥85 / B 70-84 / C 55-69 / D<55,综合8维度评分">
-          <span class="rs-num">${r.score}</span>
-          <span class="rs-grade">等级 ${r.grade} · ${escapeHtml(r.grade_label)}</span>
-        </div>
-      </div>
-      ${
-        r.debt_ratio != null
-          ? `<p class="risk-meta">负债杠杆(贷款/年营收):约 ${Math.round(r.debt_ratio * 100)}%</p>`
-          : ""
-      }
-      <div class="factors">
-        ${r.factors
-          .map(
-            (f) =>
-              `<div class="factor factor-${f.impact}"><b>${escapeHtml(f.name)}</b> ${escapeHtml(
-                f.detail
-              )}</div>`
-          )
-          .join("")}
-      </div>
-    </div>`;
-  }
-
-  if (data.plans.length === 0) {
-    html += `<div class="plan"><div class="empty">暂无匹配方案,请参考下方建议提升资质。</div></div>`;
-  }
-
-  // 政府性融资担保增信方案(抵押不足补满额度)
-  if (data.guarantee) {
-    const g = data.guarantee;
-    html += `<div class="guar-box">
-      <h3>🤝 ${escapeHtml(g.title)} <span class="guar-tag">${escapeHtml(g.tagline)}</span></h3>
-      <div class="guar-amt"><span>${g.base_amount}万</span> → <b>${g.boosted_amount}万</b> <small>补缺口 +${g.fill_gap}万</small></div>
-      <p class="guar-reason">${escapeHtml(g.reason)}</p>
-      <div class="guar-steps">${g.steps.map((s, i) => `<span>${i + 1}.${escapeHtml(s)}</span>`).join("")}</div>
-      <p class="guar-note">📌 ${escapeHtml(g.note)}</p>
-    </div>`;
-  }
-
-  // 差异化:三层方案推荐
-  if (data.tiers && data.tiers.length) {
-    const tierIco = { steady: "🛡️", sprint: "🚀", subsidy: "💰" };
-    html += `<div class="tiers-box">
-      <h3>🎯 分层智能推荐 · 三套方案任你选</h3>
-      <div class="tiers-grid">
-        ${data.tiers
-          .map(
-            (t) => `<div class="tier-card tier-${t.key}">
-              <div class="tier-name">${tierIco[t.key] || "★"} ${escapeHtml(t.name)}</div>
-              <div class="tier-tag">${escapeHtml(t.tagline)}</div>
-              <div class="tier-prod">${escapeHtml(t.product_name)}</div>
-              <div class="tier-headline">${escapeHtml(t.headline)}</div>
-              <div class="tier-reason">${escapeHtml(t.reason)}</div>
-              ${t.after_subsidy ? `<div class="tier-after">💰 ${escapeHtml(t.after_subsidy)}</div>` : ""}
-              <div class="tier-risk">⚠ ${escapeHtml(t.risk_note)}</div>
-            </div>`
-          )
-          .join("")}
-      </div>
-    </div>`;
-  }
-
-  // 方案对比表(2 个及以上方案时)
-  if (data.plans.length >= 2) {
-    const ps = data.plans;
-    const row = (label, fn) =>
-      `<tr><th>${label}</th>${ps
-        .map((p, i) => `<td class="${i === 0 ? "cmp-best" : ""}">${fn(p)}</td>`)
-        .join("")}</tr>`;
-    html += `<div class="compare-box">
-      <h3>📊 方案对比</h3>
-      <div class="compare-scroll">
-      <table class="compare-table">
-        <thead><tr><th>对比项</th>${ps
-          .map((p, i) => `<th class="${i === 0 ? "cmp-best" : ""}">${i === 0 ? "⭐ " : ""}${escapeHtml(p.product_name)}</th>`)
-          .join("")}</tr></thead>
-        <tbody>
-          ${row("预估额度", (p) => p.estimated_amount + " 万")}
-          ${row("年化利率", (p) => p.annual_rate_min + "%-" + p.annual_rate_max + "%")}
-          ${row("建议期限", (p) => p.suggested_term_months + " 月")}
-          ${row("预估月供", (p) => p.monthly_payment_estimate + " 万")}
-          ${row("预估总利息", (p) => p.total_interest_estimate + " 万")}
-          ${row("通过率", (p) => p.approval_probability)}
-          ${row("放款时效", (p) => escapeHtml(p.expected_release_days))}
-          ${row("是否需抵押", (p) => (p.requires_collateral ? "需要" : "免抵押"))}
-          ${row("材料复杂度", (p) => (p.requires_collateral ? "较高(含抵押评估)" : (p.provider_type === "小额贷款公司" ? "简单" : "中等")))}
-          ${row("匹配分", (p) => p.score)}
-        </tbody>
-      </table>
-      </div>
-    </div>`;
-  }
-
-  data.plans.forEach((p, i) => {
-    html += `<div class="plan ${i === 0 ? "best" : ""}">
+function planCard(p, i) {
+  return `<div class="plan ${i === 0 ? "best" : ""}">
       ${i === 0 ? '<span class="best-badge">⭐ 最优推荐</span>' : ""}
       <div class="plan-head">
         <div>
@@ -615,11 +473,168 @@ function render(data) {
           : ""
       }
     </div>`;
-  });
+}
+
+function render(data) {
+  window.__lastProfile = window.__lastProfile || null;
+  let html = "";
+
+  // 首屏结论卡:三句话直给,详情下方展开
+  if (data.plans && data.plans.length) {
+    const byAmt = [...data.plans].sort((a, b) => b.estimated_amount - a.estimated_amount)[0];
+    const byCost = [...data.plans].sort((a, b) => (a.annual_rate_min + a.annual_rate_max) - (b.annual_rate_min + b.annual_rate_max))[0];
+    const bySafe = data.tiers && data.tiers.find((t) => t.key === "steady");
+    html += `<div class="verdict-box">
+      <h3>✅ 一句话结论</h3>
+      <div class="verdict-grid">
+        <div class="verdict-card"><span class="vc-tag">额度最高</span><b>${byAmt.estimated_amount} 万</b><small>${escapeHtml(byAmt.product_name)}</small></div>
+        <div class="verdict-card"><span class="vc-tag">成本最低</span><b>${byCost.annual_rate_min}%-${byCost.annual_rate_max}%</b><small>${escapeHtml(byCost.product_name)}</small></div>
+        <div class="verdict-card"><span class="vc-tag">最稳通过</span><b>${data.plans[0].approval_probability}</b><small>${escapeHtml(bySafe ? bySafe.product_name : data.plans[0].product_name)}</small></div>
+      </div>
+    </div>`;
+  }
+
+  const isPersonal = window.__lastMode === "personal";
+  const actionBtns = isPersonal
+    ? `<button id="export-pdf-personal" class="export-btn">📄 导出方案 PDF</button>
+    <button class="export-btn" onclick="window.print()">🖨️ 打印 / 另存</button>`
+    : `<button id="export-pdf" class="export-btn">📄 导出方案 PDF</button>
+    <button id="export-excel" class="export-btn excel-btn">📊 导出 Excel</button>
+    <button id="export-bank" class="export-btn bank-btn">🏦 银行成品材料 PDF</button>
+    <button id="export-bank-docx" class="export-btn bank-btn">📝 银行成品材料 Word</button>
+    <button id="export-checklist" class="export-btn">📋 材料清单</button>
+    <button id="share-poster" class="export-btn">📱 生成分享海报</button>
+    <button id="growth-report" class="export-btn">📈 资质成长报告</button>
+    <button id="combo-credit" class="export-btn">➕ 组合贷测算</button>
+    <select id="bank-tpl-sel" class="bank-sel" title="选择银行专属申报模板"><option value="">通用模板</option></select>
+    <button id="save-application" class="export-btn save-btn">💾 保存为申请记录</button>`;
+
+  html += `<div class="summary-box">
+    <h3>📊 匹配结果</h3>
+    <p>${escapeHtml(data.summary)}</p>
+    <ul class="highlights">
+      ${data.profile_highlights.map((h) => `<li>${escapeHtml(h)}</li>`).join("")}
+    </ul>
+    ${actionBtns}
+  </div>`;
+
+  // ===== 精简版:先只展示「最优推荐」,其余详情收进「查看更多」 =====
+  let moreHtml = "";
+
+  if (data.plans.length) {
+    html += planCard(data.plans[0], 0);
+  } else {
+    html += `<div class="plan"><div class="empty">暂无匹配方案,请参考下方建议提升资质。</div></div>`;
+  }
+
+  // ---- 以下为详细内容,默认折叠 ----
+
+  // 风控评估
+  if (data.risk) {
+    const r = data.risk;
+    moreHtml += `<div class="risk-box">
+      <div class="risk-head">
+        <h3>🛡️ 风控评估</h3>
+        <div class="risk-score grade-${r.grade}" title="风控等级 A≥85 / B 70-84 / C 55-69 / D<55,综合8维度评分">
+          <span class="rs-num">${r.score}</span>
+          <span class="rs-grade">等级 ${r.grade} · ${escapeHtml(r.grade_label)}</span>
+        </div>
+      </div>
+      ${
+        r.debt_ratio != null
+          ? `<p class="risk-meta">负债杠杆(贷款/年营收):约 ${Math.round(r.debt_ratio * 100)}%</p>`
+          : ""
+      }
+      <div class="factors">
+        ${r.factors
+          .map(
+            (f) =>
+              `<div class="factor factor-${f.impact}"><b>${escapeHtml(f.name)}</b> ${escapeHtml(
+                f.detail
+              )}</div>`
+          )
+          .join("")}
+      </div>
+    </div>`;
+  }
+
+  // 政府性融资担保增信方案(抵押不足补满额度)
+  if (data.guarantee) {
+    const g = data.guarantee;
+    moreHtml += `<div class="guar-box">
+      <h3>🤝 ${escapeHtml(g.title)} <span class="guar-tag">${escapeHtml(g.tagline)}</span></h3>
+      <div class="guar-amt"><span>${g.base_amount}万</span> → <b>${g.boosted_amount}万</b> <small>补缺口 +${g.fill_gap}万</small></div>
+      <p class="guar-reason">${escapeHtml(g.reason)}</p>
+      <div class="guar-steps">${g.steps.map((s, i) => `<span>${i + 1}.${escapeHtml(s)}</span>`).join("")}</div>
+      <p class="guar-note">📌 ${escapeHtml(g.note)}</p>
+    </div>`;
+  }
+
+  // 差异化:三层方案推荐
+  if (data.tiers && data.tiers.length) {
+    const tierIco = { steady: "🛡️", sprint: "🚀", subsidy: "💰" };
+    moreHtml += `<div class="tiers-box">
+      <h3>🎯 分层智能推荐 · 三套方案任你选</h3>
+      <div class="tiers-grid">
+        ${data.tiers
+          .map(
+            (t) => `<div class="tier-card tier-${t.key}">
+              <div class="tier-name">${tierIco[t.key] || "★"} ${escapeHtml(t.name)}</div>
+              <div class="tier-tag">${escapeHtml(t.tagline)}</div>
+              <div class="tier-prod">${escapeHtml(t.product_name)}</div>
+              <div class="tier-headline">${escapeHtml(t.headline)}</div>
+              <div class="tier-reason">${escapeHtml(t.reason)}</div>
+              ${t.after_subsidy ? `<div class="tier-after">💰 ${escapeHtml(t.after_subsidy)}</div>` : ""}
+              <div class="tier-risk">⚠ ${escapeHtml(t.risk_note)}</div>
+            </div>`
+          )
+          .join("")}
+      </div>
+    </div>`;
+  }
+
+  // 方案对比表(2 个及以上方案时)
+  if (data.plans.length >= 2) {
+    const ps = data.plans;
+    const row = (label, fn) =>
+      `<tr><th>${label}</th>${ps
+        .map((p, i) => `<td class="${i === 0 ? "cmp-best" : ""}">${fn(p)}</td>`)
+        .join("")}</tr>`;
+    moreHtml += `<div class="compare-box">
+      <h3>📊 方案对比</h3>
+      <div class="compare-scroll">
+      <table class="compare-table">
+        <thead><tr><th>对比项</th>${ps
+          .map((p, i) => `<th class="${i === 0 ? "cmp-best" : ""}">${i === 0 ? "⭐ " : ""}${escapeHtml(p.product_name)}</th>`)
+          .join("")}</tr></thead>
+        <tbody>
+          ${row("预估额度", (p) => p.estimated_amount + " 万")}
+          ${row("年化利率", (p) => p.annual_rate_min + "%-" + p.annual_rate_max + "%")}
+          ${row("建议期限", (p) => p.suggested_term_months + " 月")}
+          ${row("预估月供", (p) => p.monthly_payment_estimate + " 万")}
+          ${row("预估总利息", (p) => p.total_interest_estimate + " 万")}
+          ${row("通过率", (p) => p.approval_probability)}
+          ${row("放款时效", (p) => escapeHtml(p.expected_release_days))}
+          ${row("是否需抵押", (p) => (p.requires_collateral ? "需要" : "免抵押"))}
+          ${row("材料复杂度", (p) => (p.requires_collateral ? "较高(含抵押评估)" : (p.provider_type === "小额贷款公司" ? "简单" : "中等")))}
+          ${row("匹配分", (p) => p.score)}
+        </tbody>
+      </table>
+      </div>
+    </div>`;
+  }
+
+  // 其余备选方案(第 2 个起)
+  if (data.plans.length > 1) {
+    moreHtml += `<div class="more-plans-head">📋 其他备选方案(${data.plans.length - 1})</div>`;
+    data.plans.slice(1).forEach((p, idx) => {
+      moreHtml += planCard(p, idx + 1);
+    });
+  }
 
   // 个性化建议
   if (data.personalized_advice && data.personalized_advice.length) {
-    html += `<div class="advice-box">
+    moreHtml += `<div class="advice-box">
       <h3>🎯 个性化融资建议</h3>
       <ul>${data.personalized_advice.map((a) => `<li>${escapeHtml(a)}</li>`).join("")}</ul>
     </div>`;
@@ -627,7 +642,7 @@ function render(data) {
 
   // 补贴政策
   if (data.subsidies && data.subsidies.length) {
-    html += `<div class="subsidy-box">
+    moreHtml += `<div class="subsidy-box">
       <h3>🏛️ 可申报扶持政策(${data.subsidies.length})</h3>
       ${data.subsidies
         .map(
@@ -645,10 +660,21 @@ function render(data) {
   }
 
   if (data.improvement_tips.length) {
-    html += `<div class="tips-box">
+    moreHtml += `<div class="tips-box">
       <h3>提升资质 · 获得更优方案</h3>
       <ul>${data.improvement_tips.map((t) => `<li>${escapeHtml(t)}</li>`).join("")}</ul>
     </div>`;
+  }
+
+  // 折叠详情:一键展开/收起
+  if (moreHtml) {
+    html += `<div class="more-toggle-wrap">
+      <button id="toggle-more" class="more-toggle-btn" aria-expanded="false">
+        <span class="mt-txt">查看完整方案详情</span><span class="mt-ico">▾</span>
+      </button>
+      <p class="more-hint">含风控评估、三套方案对比、补贴政策、提升建议等</p>
+    </div>
+    <div id="result-more" class="result-more hidden">${moreHtml}</div>`;
   }
 
   resultEl.innerHTML = html;
@@ -688,6 +714,19 @@ function render(data) {
   loadBankOptions();
   bindFavButtons();
   refreshFavBar();
+
+  const toggleMoreBtn = document.getElementById("toggle-more");
+  if (toggleMoreBtn) {
+    toggleMoreBtn.addEventListener("click", () => {
+      const more = document.getElementById("result-more");
+      if (!more) return;
+      const open = more.classList.toggle("hidden") === false;
+      toggleMoreBtn.setAttribute("aria-expanded", open ? "true" : "false");
+      toggleMoreBtn.classList.toggle("open", open);
+      toggleMoreBtn.querySelector(".mt-txt").textContent = open ? "收起方案详情" : "查看完整方案详情";
+      if (open) more.scrollIntoView({ behavior: "smooth", block: "nearest" });
+    });
+  }
 }
 
 /* ===================== 产品收藏对比 ===================== */

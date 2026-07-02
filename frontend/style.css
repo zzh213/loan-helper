@@ -509,6 +509,30 @@ body.dark .id-tags-label { color: #9fb3cc; }
   border: 1px solid #eff4fa;
 }
 
+/* 查看更多:折叠详情 */
+.more-toggle-wrap { text-align: center; margin: 6px 0 18px; }
+.more-toggle-btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: #eef4fb; color: #2f6bb0; border: 1px solid #d3e2f2;
+  font-size: 15px; font-weight: 600; padding: 11px 26px;
+  border-radius: 26px; cursor: pointer; transition: all 0.18s;
+}
+.more-toggle-btn:hover { background: #e2edf9; box-shadow: 0 4px 14px rgba(60,109,167,.18); }
+.more-toggle-btn .mt-ico { transition: transform 0.2s; font-size: 13px; }
+.more-toggle-btn.open .mt-ico { transform: rotate(180deg); }
+.more-hint { font-size: 12px; color: #9ca3af; margin: 7px 0 0; }
+.result-more { animation: moreFade 0.28s ease; }
+@keyframes moreFade { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: none; } }
+.more-plans-head {
+  font-size: 15px; font-weight: 700; color: #4b5563;
+  margin: 6px 0 12px; padding-left: 4px;
+}
+body.dark .more-toggle-btn { background: #1e293b; color: #93c5fd; border-color: #334155; }
+body.dark .more-toggle-btn:hover { background: #263449; }
+body.dark .more-plans-head { color: #cbd5e1; }
+body.dark .more-hint { color: #64748b; }
+
+
 .plan.best {
   border: 2px solid #f59e0b;
   position: relative;

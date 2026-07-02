@@ -496,18 +496,25 @@ function render(data) {
 
   const isPersonal = window.__lastMode === "personal";
   const actionBtns = isPersonal
-    ? `<button id="export-pdf-personal" class="export-btn">📄 导出方案 PDF</button>
-    <button class="export-btn" onclick="window.print()">🖨️ 打印 / 另存</button>`
-    : `<button id="export-pdf" class="export-btn">📄 导出方案 PDF</button>
-    <button id="export-excel" class="export-btn excel-btn">📊 导出 Excel</button>
-    <button id="export-bank" class="export-btn bank-btn">🏦 银行成品材料 PDF</button>
-    <button id="export-bank-docx" class="export-btn bank-btn">📝 银行成品材料 Word</button>
-    <button id="export-checklist" class="export-btn">📋 材料清单</button>
-    <button id="share-poster" class="export-btn">📱 生成分享海报</button>
-    <button id="growth-report" class="export-btn">📈 资质成长报告</button>
-    <button id="combo-credit" class="export-btn">➕ 组合贷测算</button>
-    <select id="bank-tpl-sel" class="bank-sel" title="选择银行专属申报模板"><option value="">通用模板</option></select>
-    <button id="save-application" class="export-btn save-btn">💾 保存为申请记录</button>`;
+    ? `<div class="action-bar">
+      <button id="export-pdf-personal" class="export-btn">📄 导出方案 PDF</button>
+      <button class="export-btn" onclick="window.print()">🖨️ 打印 / 另存</button>
+    </div>`
+    : `<div class="action-bar">
+      <button id="export-pdf" class="export-btn">📄 导出方案 PDF</button>
+      <button id="export-checklist" class="export-btn">📋 材料清单</button>
+      <button id="save-application" class="export-btn save-btn">💾 保存为申请记录</button>
+      <button id="toggle-tools" class="export-btn more-tools-btn" aria-expanded="false">➕ 更多功能</button>
+    </div>
+    <div id="more-tools" class="more-tools hidden">
+      <button id="export-excel" class="export-btn excel-btn">📊 导出 Excel</button>
+      <button id="export-bank" class="export-btn bank-btn">🏦 银行成品材料 PDF</button>
+      <button id="export-bank-docx" class="export-btn bank-btn">📝 银行成品材料 Word</button>
+      <button id="share-poster" class="export-btn">📱 生成分享海报</button>
+      <button id="growth-report" class="export-btn">📈 资质成长报告</button>
+      <button id="combo-credit" class="export-btn">➕ 组合贷测算</button>
+      <select id="bank-tpl-sel" class="bank-sel" title="选择银行专属申报模板"><option value="">通用模板</option></select>
+    </div>`;
 
   html += `<div class="summary-box">
     <h3>📊 匹配结果</h3>
@@ -714,6 +721,18 @@ function render(data) {
   loadBankOptions();
   bindFavButtons();
   refreshFavBar();
+
+  const toggleToolsBtn = document.getElementById("toggle-tools");
+  if (toggleToolsBtn) {
+    toggleToolsBtn.addEventListener("click", () => {
+      const tools = document.getElementById("more-tools");
+      if (!tools) return;
+      const open = tools.classList.toggle("hidden") === false;
+      toggleToolsBtn.setAttribute("aria-expanded", open ? "true" : "false");
+      toggleToolsBtn.classList.toggle("open", open);
+      toggleToolsBtn.textContent = open ? "➖ 收起功能" : "➕ 更多功能";
+    });
+  }
 
   const toggleMoreBtn = document.getElementById("toggle-more");
   if (toggleMoreBtn) {

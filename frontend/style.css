@@ -728,6 +728,19 @@ footer {
   cursor: not-allowed;
 }
 
+/* 操作按钮栏:常用按钮 + 更多功能 */
+.action-bar { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin-top: 14px; }
+.action-bar .export-btn { margin-top: 0; }
+.more-tools-btn { border-style: dashed; }
+.more-tools-btn.open { background: #9cb6d7; color: #fff; }
+.more-tools {
+  display: flex; flex-wrap: wrap; gap: 10px; align-items: center;
+  margin-top: 12px; padding-top: 12px; border-top: 1px dashed #e2e8f0;
+  animation: moreFade 0.24s ease;
+}
+.more-tools .export-btn { margin-top: 0; }
+body.dark .more-tools { border-top-color: #334155; }
+
 /* ============ 差异化:分层方案 + 独家数据 ============ */
 .tiers-box {
   background: #fff;

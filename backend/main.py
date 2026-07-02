@@ -81,6 +81,44 @@ async def rate_limit(request: Request, call_next):
     return await call_next(request)
 
 
+# 安全响应头 + 静态资源缓存:所有响应加固,/static 资源按是否带版本号分级缓存
+_SECURITY_HEADERS = {
+    "X-Content-Type-Options": "nosniff",
+    "X-Frame-Options": "SAMEORIGIN",
+    "Referrer-Policy": "strict-origin-when-cross-origin",
+    "Permissions-Policy": "geolocation=(), microphone=(), camera=()",
+    "Content-Security-Policy": (
+        "default-src 'self'; "
+        "script-src 'self' 'unsafe-inline'; "
+        "style-src 'self' 'unsafe-inline'; "
+        "img-src 'self' data: blob:; "
+        "media-src 'self' data: blob:; "
+        "font-src 'self' data:; "
+        "connect-src 'self'; "
+        "frame-ancestors 'self'; "
+        "base-uri 'self'; "
+        "form-action 'self'"
+    ),
+}
+
+
+@app.middleware("http")
+async def security_headers(request: Request, call_next):
+    response = await call_next(request)
+    for k, v in _SECURITY_HEADERS.items():
+        response.headers.setdefault(k, v)
+    path = request.url.path
+    if path.startswith("/static/") and "cache-control" not in (
+        h.lower() for h in response.headers.keys()
+    ):
+        # 带版本号(?v=)的资源可长期强缓存;其余给较短缓存并要求校验
+        if "v=" in (request.url.query or ""):
+            response.headers["Cache-Control"] = "public, max-age=31536000, immutable"
+        else:
+            response.headers["Cache-Control"] = "public, max-age=86400"
+    return response
+
+
 storage.init_db()
 
 FRONTEND_DIR = os.path.join(os.path.dirname(os.path.dirname(__file__)), "frontend")
@@ -577,6 +615,7 @@ if os.path.isdir(FRONTEND_DIR):
             html = f.read()
         html = _re.sub(r"style\.css\?v=[\w]+", f"style.css?v={_asset_ver('style.css')}", html)
         html = _re.sub(r"app\.js\?v=[\w]+", f"app.js?v={_asset_ver('app.js')}", html)
+        html = _re.sub(r"avatars\.js\?v=[\w]+", f"avatars.js?v={_asset_ver('avatars.js')}", html)
         return Response(content=html, media_type="text/html")
 
     @app.get("/admin")

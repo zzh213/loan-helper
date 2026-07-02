@@ -322,6 +322,16 @@ footer {
   padding: 24px 0 40px;
   border-top: 1px solid var(--border);
 }
+.footer-blessing {
+  margin-top: 10px;
+  font-size: 15px;
+  font-weight: 600;
+  background: linear-gradient(90deg, #5c7cfa, #a56cf5, #f0729a);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
 
 /* ============ 账号区 ============ */
 .hero-inner { display: flex; justify-content: space-between; align-items: flex-start; gap: 20px; text-align: left; }

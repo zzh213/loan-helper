@@ -174,6 +174,7 @@ class RecommendResponse(BaseModel):
     plans: List[RecommendedPlan]
     tiers: List[PlanTier] = []
     guarantee: Optional[dict] = None
+    plain_language: Optional[dict] = None
 
 
 class ApplicationCreate(BaseModel):

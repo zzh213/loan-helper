@@ -7,6 +7,7 @@ from products import CREDIT_RANK, PRODUCTS
 from risk import amount_multiplier, assess, rate_adjustment
 from subsidies import match_policies
 from guarantee import build_guarantee
+from plain_language import build_plain_language
 import storage
 
 
@@ -374,4 +375,8 @@ def recommend(profile: EnterpriseProfile) -> RecommendResponse:
         plans=plans,
         tiers=tiers,
         guarantee=guarantee,
+        plain_language=build_plain_language(
+            plans=plans, risk=risk, subsidies=subsidies,
+            requested_amount=profile.loan_amount, is_personal=False,
+        ),
     )

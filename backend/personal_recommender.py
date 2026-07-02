@@ -10,6 +10,7 @@ from models import (PersonalProfile, PlanTier, RecommendedPlan,
 from personal_products import INCOME_TYPE_FACTOR, PERSONAL_PRODUCTS
 from personal_policies import match_personal_policies
 from products import CREDIT_RANK
+from plain_language import build_plain_language
 
 CREDIT_CN = {"excellent": "优秀", "good": "良好", "fair": "一般", "poor": "较差"}
 OCC_CN = {
@@ -456,4 +457,8 @@ def recommend_personal(p: PersonalProfile) -> RecommendResponse:
         plans=plans,
         tiers=tiers,
         guarantee=None,
+        plain_language=build_plain_language(
+            plans=plans, risk=risk, subsidies=subsidies,
+            requested_amount=p.loan_amount, is_personal=True,
+        ),
     )

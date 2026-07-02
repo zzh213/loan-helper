@@ -500,6 +500,59 @@ body.dark .id-tags-label { color: #9fb3cc; }
   margin-right: 8px;
 }
 
+/* 大白话解读卡片 */
+.plain-box {
+  background: linear-gradient(135deg, #fff8ec 0%, #fef3e2 100%);
+  border: 1.5px solid #f6d9a8;
+  border-radius: 12px;
+  padding: 20px 22px;
+  margin-bottom: 18px;
+  box-shadow: 0 4px 16px rgba(245, 158, 11, 0.08);
+}
+.plain-box h3 { font-size: 17px; margin-bottom: 6px; color: #b45309; }
+.plain-box .pl-intro { font-size: 13px; color: #92764b; margin-bottom: 12px; }
+.plain-box .pl-body p {
+  font-size: 15px; line-height: 1.75; color: #4b3f2a; margin-bottom: 10px;
+}
+.plain-box .pl-body p:last-child { margin-bottom: 0; }
+.pl-steps {
+  margin-top: 14px; padding: 12px 14px;
+  background: rgba(255, 255, 255, 0.6); border-radius: 8px;
+}
+.pl-steps b { font-size: 14px; color: #b45309; }
+.pl-steps ol { margin: 8px 0 0; padding-left: 22px; }
+.pl-steps li { font-size: 14px; line-height: 1.7; color: #5b4a2f; }
+.pl-glossary { margin-top: 14px; }
+.pl-gloss-btn {
+  background: #fff; color: #b45309; border: 1.5px dashed #f6c877;
+  border-radius: 8px; padding: 9px 16px; font-size: 14px; font-weight: 600;
+  cursor: pointer; transition: all 0.15s; width: 100%;
+}
+.pl-gloss-btn:hover { background: #fffaf0; }
+.pl-gloss-btn.open { background: #f6c877; color: #7c4a03; }
+.pl-gloss-body {
+  margin-top: 10px; display: flex; flex-direction: column; gap: 10px;
+  animation: moreFade 0.24s ease;
+}
+.gloss-item {
+  background: rgba(255, 255, 255, 0.7); border-radius: 8px; padding: 10px 12px;
+}
+.gloss-term {
+  display: inline-block; font-weight: 700; color: #b45309; font-size: 14px;
+  margin-right: 8px;
+}
+.gloss-plain { font-size: 13.5px; color: #5b4a2f; line-height: 1.6; }
+body.dark .plain-box {
+  background: linear-gradient(135deg, #2a2416 0%, #241f13 100%);
+  border-color: #4a3f26;
+}
+body.dark .plain-box h3, body.dark .pl-steps b, body.dark .gloss-term { color: #f0c674; }
+body.dark .plain-box .pl-intro { color: #b8a276; }
+body.dark .plain-box .pl-body p, body.dark .pl-steps li, body.dark .gloss-plain { color: #d8cba8; }
+body.dark .pl-steps, body.dark .gloss-item { background: rgba(0, 0, 0, 0.25); }
+body.dark .pl-gloss-btn { background: #2a2416; color: #f0c674; border-color: #4a3f26; }
+body.dark .pl-gloss-btn.open { background: #4a3f26; color: #f8e3b0; }
+
 .plan {
   background: #fff;
   border-radius: 12px;

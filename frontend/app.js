@@ -525,6 +525,37 @@ function render(data) {
     ${actionBtns}
   </div>`;
 
+  // 大白话解读:用通俗语言给看不懂专业术语的用户讲清楚
+  if (data.plain_language) {
+    const pl = data.plain_language;
+    const paras = (pl.paragraphs || []).map((t) => `<p>${escapeHtml(t)}</p>`).join("");
+    const steps = (pl.next_steps || []).length
+      ? `<div class="pl-steps"><b>👉 接下来您可以这么做:</b><ol>${pl.next_steps
+          .map((s) => `<li>${escapeHtml(s)}</li>`)
+          .join("")}</ol></div>`
+      : "";
+    const glossary = (pl.glossary || []).length
+      ? `<div class="pl-glossary">
+          <button id="toggle-glossary" class="pl-gloss-btn" aria-expanded="false">📖 名词小课堂 · 点我看专业词啥意思</button>
+          <div id="pl-glossary-body" class="pl-gloss-body hidden">
+            ${pl.glossary
+              .map(
+                (g) =>
+                  `<div class="gloss-item"><span class="gloss-term">${escapeHtml(g.term)}</span><span class="gloss-plain">${escapeHtml(g.plain)}</span></div>`
+              )
+              .join("")}
+          </div>
+        </div>`
+      : "";
+    html += `<div class="plain-box">
+      <h3>${escapeHtml(pl.title || "说人话版解读")}</h3>
+      <p class="pl-intro">${escapeHtml(pl.intro || "")}</p>
+      <div class="pl-body">${paras}</div>
+      ${steps}
+      ${glossary}
+    </div>`;
+  }
+
   // ===== 精简版:先只展示「最优推荐」,其余详情收进「查看更多」 =====
   let moreHtml = "";
 
@@ -731,6 +762,17 @@ function render(data) {
       toggleToolsBtn.setAttribute("aria-expanded", open ? "true" : "false");
       toggleToolsBtn.classList.toggle("open", open);
       toggleToolsBtn.textContent = open ? "➖ 收起功能" : "➕ 更多功能";
+    });
+  }
+
+  const toggleGlossaryBtn = document.getElementById("toggle-glossary");
+  if (toggleGlossaryBtn) {
+    toggleGlossaryBtn.addEventListener("click", () => {
+      const body = document.getElementById("pl-glossary-body");
+      if (!body) return;
+      const open = body.classList.toggle("hidden") === false;
+      toggleGlossaryBtn.setAttribute("aria-expanded", open ? "true" : "false");
+      toggleGlossaryBtn.classList.toggle("open", open);
     });
   }
 

@@ -282,7 +282,13 @@ def recommend(profile: EnterpriseProfile) -> RecommendResponse:
 
     plans: List[RecommendedPlan] = []
 
-    for p in PRODUCTS:
+    try:
+        import admin_config
+        active_products = admin_config.apply_product_overrides(PRODUCTS)
+    except Exception:
+        active_products = PRODUCTS
+
+    for p in active_products:
         ok, fail_reasons = _eligible(p, profile)
         if not ok:
             continue

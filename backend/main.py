@@ -634,6 +634,163 @@ def admin_overview(request: Request):
     }
 
 
+def _client_ip(request: Request) -> str:
+    xff = request.headers.get("x-forwarded-for", "")
+    if xff:
+        return xff.split(",")[0].strip()
+    return request.client.host if request.client else ""
+
+
+# ---------------- 风控规则后台配置 ----------------
+@app.get("/api/admin/risk-config")
+def admin_get_risk_config(request: Request):
+    """管理后台:读取当前风控评分卡配置(权重/等级门槛/额度利率表)。"""
+    require_admin(request)
+    import admin_config
+    return {"config": admin_config.get_risk_config(), "default": admin_config.DEFAULT_RISK_CONFIG}
+
+
+@app.post("/api/admin/risk-config")
+def admin_save_risk_config(request: Request, payload: dict):
+    """管理后台:保存风控配置(无需改代码、即时生效)。"""
+    require_admin(request)
+    import admin_config
+    cfg = admin_config.save_risk_config(payload)
+    storage.add_audit_log("update_risk_config", target="risk", detail=json.dumps(payload, ensure_ascii=False)[:400], ip=_client_ip(request))
+    return {"ok": True, "config": cfg}
+
+
+@app.post("/api/admin/risk-config/reset")
+def admin_reset_risk_config(request: Request):
+    """管理后台:恢复风控配置默认值。"""
+    require_admin(request)
+    import admin_config
+    cfg = admin_config.reset_risk_config()
+    storage.add_audit_log("reset_risk_config", target="risk", ip=_client_ip(request))
+    return {"ok": True, "config": cfg}
+
+
+# ---------------- 产品库后台管理 ----------------
+@app.get("/api/admin/products")
+def admin_list_products(request: Request):
+    """管理后台:查看全部贷款产品(含后台覆盖后的生效值)。"""
+    require_admin(request)
+    import admin_config
+    return {"products": admin_config.list_products_admin()}
+
+
+@app.post("/api/admin/products/{pid}")
+def admin_save_product(request: Request, pid: str, payload: dict):
+    """管理后台:调整产品利率/准入门槛/启停(无需改代码)。"""
+    require_admin(request)
+    import admin_config
+    res = admin_config.save_product_override(pid, payload)
+    if not res.get("ok"):
+        raise HTTPException(status_code=400, detail=res.get("error", "保存失败"))
+    storage.add_audit_log("update_product", target=pid, detail=json.dumps(payload, ensure_ascii=False)[:400], ip=_client_ip(request))
+    return res
+
+
+# ---------------- 政策库后台管理 ----------------
+@app.get("/api/admin/policies")
+def admin_list_policies(request: Request):
+    """管理后台:查看内置政策 + 自定义新增政策。"""
+    require_admin(request)
+    import admin_config
+    from subsidies import POLICIES
+    return {"builtin": POLICIES, "extra": admin_config.list_extra_policies()}
+
+
+@app.post("/api/admin/policies")
+def admin_add_policy(request: Request, payload: dict):
+    """管理后台:新增一条自定义贴息/补贴政策。"""
+    require_admin(request)
+    import admin_config
+    res = admin_config.add_extra_policy(payload)
+    if not res.get("ok"):
+        raise HTTPException(status_code=400, detail=res.get("error", "新增失败"))
+    storage.add_audit_log("add_policy", target=res["policy"]["id"], detail=res["policy"]["name"], ip=_client_ip(request))
+    return res
+
+
+@app.delete("/api/admin/policies/{pid}")
+def admin_delete_policy(request: Request, pid: str):
+    """管理后台:删除一条自定义政策。"""
+    require_admin(request)
+    import admin_config
+    storage.add_audit_log("delete_policy", target=pid, ip=_client_ip(request))
+    return admin_config.delete_extra_policy(pid)
+
+
+# ---------------- 工单/客户经理管理 ----------------
+@app.get("/api/admin/tickets")
+def admin_tickets(request: Request):
+    """管理后台:工单列表 + 成单统计。"""
+    require_admin(request)
+    return {"leads": storage.list_leads(), "stats": storage.lead_stats()}
+
+
+@app.post("/api/admin/tickets/{lead_id}")
+def admin_update_ticket(request: Request, lead_id: str, payload: dict):
+    """管理后台:分配客户经理、更新工单状态、追加跟进记录。"""
+    require_admin(request)
+    row = storage.update_lead(lead_id, payload)
+    if not row:
+        raise HTTPException(status_code=404, detail="工单不存在或无可更新字段")
+    storage.add_audit_log("update_ticket", target=lead_id, detail=json.dumps(payload, ensure_ascii=False)[:300], ip=_client_ip(request))
+    return {"ok": True, "lead": row}
+
+
+# ---------------- 审计日志 ----------------
+@app.get("/api/admin/audit-logs")
+def admin_audit_logs(request: Request, limit: int = 200):
+    """管理后台:审计日志(操作留痕,金融审计留存)。"""
+    require_admin(request)
+    return {"logs": storage.list_audit_logs(limit=max(1, min(1000, limit)))}
+
+
+# ---------------- 全量数据导出 CSV ----------------
+def _csv_response(rows: list, headers: list, filename: str) -> StreamingResponse:
+    import csv
+    import io
+    buf = io.StringIO()
+    buf.write("\ufeff")  # BOM,Excel 正确识别 UTF-8
+    w = csv.writer(buf)
+    w.writerow([h[1] for h in headers])
+    for r in rows:
+        w.writerow([r.get(h[0], "") for h in headers])
+    buf.seek(0)
+    return StreamingResponse(
+        iter([buf.getvalue()]),
+        media_type="text/csv; charset=utf-8",
+        headers={"Content-Disposition": f"attachment; filename*=UTF-8''{quote(filename)}"},
+    )
+
+
+@app.get("/api/admin/export/{dataset}")
+def admin_export_csv(request: Request, dataset: str):
+    """管理后台:导出全量数据(applications/leads/audit)为 CSV。"""
+    require_admin(request)
+    storage.add_audit_log("export_data", target=dataset, ip=_client_ip(request))
+    if dataset == "applications":
+        headers = [("id", "编号"), ("company_name", "企业名称"), ("industry", "行业"),
+                   ("loan_amount", "需求金额(万)"), ("best_product", "推荐产品"),
+                   ("best_amount", "预估额度(万)"), ("risk_score", "风控分"),
+                   ("risk_grade", "风控等级"), ("status", "状态"), ("created_at", "创建时间")]
+        return _csv_response(storage.list_applications(), headers, "全量申请记录.csv")
+    if dataset == "leads":
+        headers = [("id", "工单号"), ("kind", "类型"), ("company_name", "企业名称"),
+                   ("phone", "手机号"), ("industry", "行业"), ("loan_amount", "金额(万)"),
+                   ("bank", "意向银行"), ("manager", "客户经理"), ("status", "状态"),
+                   ("follow_up", "跟进记录"), ("created_at", "创建时间")]
+        return _csv_response(storage.list_leads(), headers, "全量客户线索.csv")
+    if dataset == "audit":
+        headers = [("created_at", "时间"), ("actor", "操作人"), ("action", "操作"),
+                   ("target", "对象"), ("detail", "详情"), ("ip", "IP")]
+        return _csv_response(storage.list_audit_logs(1000), headers, "审计日志.csv")
+    raise HTTPException(status_code=404, detail="未知数据集")
+
+
 @app.delete("/api/applications/{app_id}")
 def delete_application(app_id: str):
     """删除一条申请记录。"""

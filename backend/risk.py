@@ -41,6 +41,7 @@ DIM_MAX = {
 }
 
 DIM_ORDER = ["credit", "revenue", "years", "tax", "collateral", "orders", "debt", "industry"]
+
 DIM_NAME = {
     "credit": "征信状况",
     "revenue": "营收规模",
@@ -51,6 +52,20 @@ DIM_NAME = {
     "debt": "负债杠杆",
     "industry": "行业风险",
 }
+
+
+def _get_config():
+    """读取后台可配置的风控参数(默认 + 后台覆盖)。函数内导入避免循环依赖。"""
+    try:
+        import admin_config
+        return admin_config.get_risk_config()
+    except Exception:
+        return {
+            "dim_max": dict(DIM_MAX),
+            "grade_thresholds": {"A": 85, "B": 70, "C": 55, "D": 40},
+            "amount_multiplier": [[85, 1.15], [70, 1.0], [55, 0.85], [40, 0.7], [0, 0.55]],
+            "rate_adjustment": [[85, -0.5], [70, 0.0], [55, 0.6], [40, 1.5], [0, 3.0]],
+        }
 
 
 def credit_label(v: str) -> str:
@@ -185,7 +200,19 @@ def assess(profile: EnterpriseProfile) -> dict:
     ie, ireason, iadvice, coef = _score_industry(profile)
     scorecard.append(("industry", ie, ireason, iadvice))
 
-    base_score = sum(item[1] for item in scorecard)
+    # 读取后台可配置的维度权重(默认 + 后台覆盖),按比例重标定各维得分
+    cfg = _get_config()
+    cfg_dim = cfg["dim_max"]
+    total_max = sum(cfg_dim.values()) or 100
+
+    scaled = []
+    for key, earned, reason, advice in scorecard:
+        default_mx = DIM_MAX[key] or 1
+        eff_mx = cfg_dim.get(key, DIM_MAX[key])
+        eff_earned = earned / default_mx * eff_mx
+        scaled.append((key, eff_earned, eff_mx, reason, advice))
+
+    base_score = sum(item[1] for item in scaled) / total_max * 100
 
     # 行业专属增信项(垂直模板加分):每命中一项 +3,最高 +10(附加分,不占 8 维满分)
     bonus_hit = [b for b in (profile.industry_bonus or []) if b]
@@ -195,13 +222,12 @@ def assess(profile: EnterpriseProfile) -> dict:
 
     # 组装维度明细
     dims = []
-    for key, earned, reason, advice in scorecard:
-        mx = DIM_MAX[key]
+    for key, earned, mx, reason, advice in scaled:
         dims.append({
             "key": key,
             "name": DIM_NAME[key],
             "score": round(earned),
-            "max": mx,
+            "max": round(mx),
             "level": _level(earned, mx),   # good / mid / weak
             "reason": reason,
             "advice": advice,
@@ -227,13 +253,14 @@ def assess(profile: EnterpriseProfile) -> dict:
         factors.append({"name": "行业增信", "impact": "positive",
                         "detail": f"具备 {profile.industry} 专属加分项:{'、'.join(bonus_hit[:4])}(+{bonus_add}分)"})
 
-    if score >= 85:
+    gt = cfg["grade_thresholds"]
+    if score >= gt["A"]:
         grade, grade_label = "A", "优质低风险"
-    elif score >= 70:
+    elif score >= gt["B"]:
         grade, grade_label = "B", "良好可控"
-    elif score >= 55:
+    elif score >= gt["C"]:
         grade, grade_label = "C", "中等风险"
-    elif score >= 40:
+    elif score >= gt["D"]:
         grade, grade_label = "D", "较高风险"
     else:
         grade, grade_label = "E", "高风险"
@@ -252,26 +279,16 @@ def assess(profile: EnterpriseProfile) -> dict:
 
 
 def amount_multiplier(score: int) -> float:
-    """风险评分对可贷额度的整体调节系数。"""
-    if score >= 85:
-        return 1.15
-    if score >= 70:
-        return 1.0
-    if score >= 55:
-        return 0.85
-    if score >= 40:
-        return 0.7
+    """风险评分对可贷额度的整体调节系数(后台可配置)。"""
+    for threshold, mult in _get_config()["amount_multiplier"]:
+        if score >= threshold:
+            return mult
     return 0.55
 
 
 def rate_adjustment(score: int) -> float:
-    """风险评分对利率的调整(百分点)。分高减息,分低加息。"""
-    if score >= 85:
-        return -0.5
-    if score >= 70:
-        return 0.0
-    if score >= 55:
-        return 0.6
-    if score >= 40:
-        return 1.5
+    """风险评分对利率的调整(百分点),后台可配置。分高减息,分低加息。"""
+    for threshold, adj in _get_config()["rate_adjustment"]:
+        if score >= threshold:
+            return adj
     return 3.0

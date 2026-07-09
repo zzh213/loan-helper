@@ -234,6 +234,79 @@ def init_db():
         )
         conn.execute("CREATE INDEX IF NOT EXISTS idx_sess_phone ON account_sessions(phone)")
 
+        # 工单/客户经理字段(对旧库补列)
+        for col, ddl in (
+            ("manager", "ALTER TABLE leads ADD COLUMN manager TEXT DEFAULT ''"),
+            ("follow_up", "ALTER TABLE leads ADD COLUMN follow_up TEXT DEFAULT ''"),
+            ("updated_at", "ALTER TABLE leads ADD COLUMN updated_at TEXT DEFAULT ''"),
+        ):
+            try:
+                conn.execute(ddl)
+            except Exception:
+                pass
+
+        # 审计日志(满足金融审计留存要求,建议留存 ≥5 年)
+        conn.execute(
+            f"""
+            CREATE TABLE IF NOT EXISTS audit_logs (
+                id {_AUTO_PK},
+                actor TEXT,
+                action TEXT NOT NULL,
+                target TEXT,
+                detail TEXT,
+                ip TEXT,
+                created_at TEXT
+            )
+            """
+        )
+        conn.execute("CREATE INDEX IF NOT EXISTS idx_audit_action ON audit_logs(action)")
+
+
+def add_audit_log(action: str, actor: str = "admin", target: str = "", detail: str = "", ip: str = "") -> None:
+    created_at = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    with _conn() as conn:
+        conn.execute(
+            "INSERT INTO audit_logs (actor, action, target, detail, ip, created_at) VALUES (?,?,?,?,?,?)",
+            (actor, action, target, detail, ip, created_at),
+        )
+
+
+def list_audit_logs(limit: int = 200) -> List[dict]:
+    with _conn() as conn:
+        rows = conn.execute(
+            "SELECT * FROM audit_logs ORDER BY id DESC LIMIT ?", (int(limit),)
+        ).fetchall()
+        return [dict(r) for r in rows]
+
+
+def update_lead(lead_id: str, fields: dict) -> Optional[dict]:
+    allowed = {"status", "manager", "follow_up", "note"}
+    sets = {k: v for k, v in fields.items() if k in allowed}
+    if not sets:
+        return None
+    sets["updated_at"] = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    cols = ", ".join(f"{k} = :{k}" for k in sets)
+    sets["_id"] = lead_id
+    with _conn() as conn:
+        conn.execute(f"UPDATE leads SET {cols} WHERE id = :_id", sets)
+        row = conn.execute("SELECT * FROM leads WHERE id = ?", (lead_id,)).fetchone()
+        return dict(row) if row else None
+
+
+def lead_stats() -> dict:
+    """成单/工单统计。"""
+    with _conn() as conn:
+        rows = conn.execute("SELECT status, COUNT(*) c FROM leads GROUP BY status").fetchall()
+        by_status = {r["status"] or "未知": r["c"] for r in rows}
+        total = sum(by_status.values())
+        won = by_status.get("已放款", 0) + by_status.get("已通过", 0)
+        mrows = conn.execute(
+            "SELECT manager, COUNT(*) c FROM leads WHERE manager != '' AND manager IS NOT NULL GROUP BY manager"
+        ).fetchall()
+        by_manager = [{"manager": r["manager"], "count": r["c"]} for r in mrows]
+    win_rate = round(won / total * 100, 1) if total else 0.0
+    return {"total": total, "won": won, "win_rate": win_rate, "by_status": by_status, "by_manager": by_manager}
+
 
 def save_chat_message(session_id: str, role: str, content: str) -> None:
     created_at = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
@@ -460,6 +533,20 @@ def analytics_summary(days: int = 30) -> dict:
         len(sess_by_event.get("personal_submit", set()))
     n_lead = len(sess_by_event.get("lead_submit", set()))
 
+    # 流失预警:漏斗中单步相对流失 >40% 的环节自动告警
+    churn_alerts = []
+    for i, step in enumerate(funnel):
+        if i == 0:
+            continue
+        drop = round(100 - step["pct_of_prev"], 1)
+        if drop > 40 and funnel[i - 1]["count"] > 0:
+            churn_alerts.append({
+                "from": funnel[i - 1]["label"],
+                "to": step["label"],
+                "drop": drop,
+                "level": "high" if drop > 60 else "warn",
+            })
+
     return {
         "range_days": days,
         "totals": {
@@ -469,6 +556,7 @@ def analytics_summary(days: int = 30) -> dict:
             "lead_conversion": round(n_lead / n_visit * 100, 1),
         },
         "funnel": funnel,
+        "churn_alerts": churn_alerts,
         "feature_usage": feature_usage,
         "daily": daily_list,
     }

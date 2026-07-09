@@ -1,7 +1,7 @@
 {
   "meta": {
     "name": "留学选校匹配数据集",
-    "version": "0.3.9",
+    "version": "0.4.0",
     "updated": "2026-07",
     "disclaimer": "本数据为参考性示例数据，基于公开招生信息与往年中国大陆申请者录取经验整理，均分门槛为「建议达到」的参考线，并非官方保证。实际录取受名额、竞争、文书、科研实习、面试等多因素影响，请以学校官网为准。",
     "tiers": [
@@ -37,9 +37,9 @@
       "金融",
       "金融工程"
     ],
-    "count": 705,
+    "count": 722,
     "provenanceNote": "每个项目带 provenance 溯源：dataSource=参考估算/官方核实，verified 表示是否经官方页核实，lastVerified 为核实年月，sourceUrl 为官方项目页。参考估算分数线来自公开信息与往年经验，仅供参考；官方核实项由 scripts/ingest.py 从官方来源导入。",
-    "verifiedCount": 396
+    "verifiedCount": 413
   },
   "programs": [
     {
@@ -24796,6 +24796,601 @@
         "lastVerified": "2026-07",
         "sourceUrl": "https://www.uwa.edu.au/study/courses/master-of-international-relations",
         "searchUrl": "https://www.google.com/search?q=西澳大学+UWA+Master+of+International+Relations+entry+requirements"
+      }
+    },
+    {
+      "id": "au-rmit-it",
+      "country": "澳大利亚",
+      "university": "皇家墨尔本理工大学 RMIT",
+      "qsRank": 140,
+      "program": "Master of Information Technology",
+      "field": "信息技术",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 71,
+          "211": 74,
+          "双一流": 77,
+          "双非": 79,
+          "海本/中外合作": 67
+        },
+        "ielts": {
+          "overall": 6.5,
+          "sub": 6.0
+        },
+        "gre": null,
+        "background": "本科相关专业背景（以官网为准）",
+        "notes": "雅思总分 6.5、单项不低于 6.0（取自官方课程页）；通常要求本科相关背景，具体入学要求以官网为准"
+      },
+      "tuition": "学费见官网",
+      "duration": "1.5–2 年",
+      "timeline": "多为 2/7 月两次入学；分轮次滚动审理，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.rmit.edu.au/study-with-us/levels-of-study/postgraduate-study/masters-by-coursework/master-of-information-technology-mc208",
+        "searchUrl": "https://www.google.com/search?q=皇家墨尔本理工大学+RMIT+Master+of+Information+Technology+entry+requirements"
+      }
+    },
+    {
+      "id": "au-rmit-ds",
+      "country": "澳大利亚",
+      "university": "皇家墨尔本理工大学 RMIT",
+      "qsRank": 140,
+      "program": "Master of Data Science",
+      "field": "数据科学",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 71,
+          "211": 74,
+          "双一流": 77,
+          "双非": 79,
+          "海本/中外合作": 67
+        },
+        "ielts": {
+          "overall": 6.5,
+          "sub": 6.0
+        },
+        "gre": null,
+        "background": "本科相关专业背景（以官网为准）",
+        "notes": "雅思总分 6.5、单项不低于 6.0（取自官方课程页）；通常要求本科相关背景，具体入学要求以官网为准"
+      },
+      "tuition": "学费见官网",
+      "duration": "1.5–2 年",
+      "timeline": "多为 2/7 月两次入学；分轮次滚动审理，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.rmit.edu.au/study-with-us/levels-of-study/postgraduate-study/masters-by-coursework/master-of-data-science-mc267",
+        "searchUrl": "https://www.google.com/search?q=皇家墨尔本理工大学+RMIT+Master+of+Data+Science+entry+requirements"
+      }
+    },
+    {
+      "id": "au-rmit-ai",
+      "country": "澳大利亚",
+      "university": "皇家墨尔本理工大学 RMIT",
+      "qsRank": 140,
+      "program": "Master of Artificial Intelligence",
+      "field": "人工智能",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 71,
+          "211": 74,
+          "双一流": 77,
+          "双非": 79,
+          "海本/中外合作": 67
+        },
+        "ielts": {
+          "overall": 6.5,
+          "sub": 6.0
+        },
+        "gre": null,
+        "background": "本科相关专业背景（以官网为准）",
+        "notes": "雅思总分 6.5、单项不低于 6.0（取自官方课程页）；通常要求本科相关背景，具体入学要求以官网为准"
+      },
+      "tuition": "学费见官网",
+      "duration": "1.5–2 年",
+      "timeline": "多为 2/7 月两次入学；分轮次滚动审理，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.rmit.edu.au/study-with-us/levels-of-study/postgraduate-study/masters-by-coursework/master-of-artificial-intelligence-mc271",
+        "searchUrl": "https://www.google.com/search?q=皇家墨尔本理工大学+RMIT+Master+of+Artificial+Intelligence+entry+requirements"
+      }
+    },
+    {
+      "id": "au-rmit-analytics",
+      "country": "澳大利亚",
+      "university": "皇家墨尔本理工大学 RMIT",
+      "qsRank": 140,
+      "program": "Master of Analytics",
+      "field": "数据分析",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 71,
+          "211": 74,
+          "双一流": 77,
+          "双非": 79,
+          "海本/中外合作": 67
+        },
+        "ielts": {
+          "overall": 6.5,
+          "sub": 6.0
+        },
+        "gre": null,
+        "background": "本科相关专业背景（以官网为准）",
+        "notes": "雅思总分 6.5、单项不低于 6.0（取自官方课程页）；通常要求本科相关背景，具体入学要求以官网为准"
+      },
+      "tuition": "学费见官网",
+      "duration": "1.5–2 年",
+      "timeline": "多为 2/7 月两次入学；分轮次滚动审理，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.rmit.edu.au/study-with-us/levels-of-study/postgraduate-study/masters-by-coursework/master-of-analytics-mc242",
+        "searchUrl": "https://www.google.com/search?q=皇家墨尔本理工大学+RMIT+Master+of+Analytics+entry+requirements"
+      }
+    },
+    {
+      "id": "au-rmit-baai",
+      "country": "澳大利亚",
+      "university": "皇家墨尔本理工大学 RMIT",
+      "qsRank": 140,
+      "program": "Master of Business Analytics & AI Strategy",
+      "field": "商业分析",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 71,
+          "211": 74,
+          "双一流": 77,
+          "双非": 79,
+          "海本/中外合作": 67
+        },
+        "ielts": {
+          "overall": 6.5,
+          "sub": 6.0
+        },
+        "gre": null,
+        "background": "本科相关专业背景（以官网为准）",
+        "notes": "雅思总分 6.5、单项不低于 6.0（取自官方课程页）；通常要求本科相关背景，具体入学要求以官网为准"
+      },
+      "tuition": "学费见官网",
+      "duration": "1.5–2 年",
+      "timeline": "多为 2/7 月两次入学；分轮次滚动审理，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.rmit.edu.au/study-with-us/levels-of-study/postgraduate-study/masters-by-coursework/master-of-business-analytics-and-ai-strategy-mc274",
+        "searchUrl": "https://www.google.com/search?q=皇家墨尔本理工大学+RMIT+Master+of+Business+Analytics+&+AI+Strategy+entry+requirements"
+      }
+    },
+    {
+      "id": "au-rmit-com",
+      "country": "澳大利亚",
+      "university": "皇家墨尔本理工大学 RMIT",
+      "qsRank": 140,
+      "program": "Master of Commerce",
+      "field": "商科",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 71,
+          "211": 74,
+          "双一流": 77,
+          "双非": 79,
+          "海本/中外合作": 67
+        },
+        "ielts": {
+          "overall": 6.5,
+          "sub": 6.0
+        },
+        "gre": null,
+        "background": "本科相关专业背景（以官网为准）",
+        "notes": "雅思总分 6.5、单项不低于 6.0（取自官方课程页）；通常要求本科相关背景，具体入学要求以官网为准"
+      },
+      "tuition": "学费见官网",
+      "duration": "1.5–2 年",
+      "timeline": "多为 2/7 月两次入学；分轮次滚动审理，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.rmit.edu.au/study-with-us/levels-of-study/postgraduate-study/masters-by-coursework/master-of-commerce-mc288",
+        "searchUrl": "https://www.google.com/search?q=皇家墨尔本理工大学+RMIT+Master+of+Commerce+entry+requirements"
+      }
+    },
+    {
+      "id": "au-rmit-bit",
+      "country": "澳大利亚",
+      "university": "皇家墨尔本理工大学 RMIT",
+      "qsRank": 140,
+      "program": "Master of Business Information Technology",
+      "field": "商业信息技术",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 71,
+          "211": 74,
+          "双一流": 77,
+          "双非": 79,
+          "海本/中外合作": 67
+        },
+        "ielts": {
+          "overall": 6.5,
+          "sub": 6.0
+        },
+        "gre": null,
+        "background": "本科相关专业背景（以官网为准）",
+        "notes": "雅思总分 6.5、单项不低于 6.0（取自官方课程页）；通常要求本科相关背景，具体入学要求以官网为准"
+      },
+      "tuition": "学费见官网",
+      "duration": "1.5–2 年",
+      "timeline": "多为 2/7 月两次入学；分轮次滚动审理，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.rmit.edu.au/study-with-us/levels-of-study/postgraduate-study/masters-by-coursework/master-of-business-information-technology-mc200",
+        "searchUrl": "https://www.google.com/search?q=皇家墨尔本理工大学+RMIT+Master+of+Business+Information+Technology+entry+requirements"
+      }
+    },
+    {
+      "id": "au-rmit-cyber",
+      "country": "澳大利亚",
+      "university": "皇家墨尔本理工大学 RMIT",
+      "qsRank": 140,
+      "program": "Master of Cyber Security",
+      "field": "网络安全",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 71,
+          "211": 74,
+          "双一流": 77,
+          "双非": 79,
+          "海本/中外合作": 67
+        },
+        "ielts": {
+          "overall": 6.5,
+          "sub": 6.0
+        },
+        "gre": null,
+        "background": "本科相关专业背景（以官网为准）",
+        "notes": "雅思总分 6.5、单项不低于 6.0（取自官方课程页）；通常要求本科相关背景，具体入学要求以官网为准"
+      },
+      "tuition": "学费见官网",
+      "duration": "1.5–2 年",
+      "timeline": "多为 2/7 月两次入学；分轮次滚动审理，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.rmit.edu.au/study-with-us/levels-of-study/postgraduate-study/masters-by-coursework/master-of-cyber-security-mc159",
+        "searchUrl": "https://www.google.com/search?q=皇家墨尔本理工大学+RMIT+Master+of+Cyber+Security+entry+requirements"
+      }
+    },
+    {
+      "id": "au-rmit-engmgmt",
+      "country": "澳大利亚",
+      "university": "皇家墨尔本理工大学 RMIT",
+      "qsRank": 140,
+      "program": "Master of Engineering Management",
+      "field": "工程管理",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 71,
+          "211": 74,
+          "双一流": 77,
+          "双非": 79,
+          "海本/中外合作": 67
+        },
+        "ielts": {
+          "overall": 6.5,
+          "sub": 6.0
+        },
+        "gre": null,
+        "background": "本科相关专业背景（以官网为准）",
+        "notes": "雅思总分 6.5、单项不低于 6.0（取自官方课程页）；通常要求本科相关背景，具体入学要求以官网为准"
+      },
+      "tuition": "学费见官网",
+      "duration": "1.5–2 年",
+      "timeline": "多为 2/7 月两次入学；分轮次滚动审理，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.rmit.edu.au/study-with-us/levels-of-study/postgraduate-study/masters-by-coursework/master-of-engineering-management-mc226",
+        "searchUrl": "https://www.google.com/search?q=皇家墨尔本理工大学+RMIT+Master+of+Engineering+Management+entry+requirements"
+      }
+    },
+    {
+      "id": "au-uow-cs",
+      "country": "澳大利亚",
+      "university": "卧龙岗大学 UOW",
+      "qsRank": 167,
+      "program": "Master of Computer Science",
+      "field": "计算机科学",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 70,
+          "211": 73,
+          "双一流": 76,
+          "双非": 78,
+          "海本/中外合作": 66
+        },
+        "ielts": {
+          "overall": 6.5,
+          "sub": 6.0
+        },
+        "gre": null,
+        "background": "本科相关专业背景（以官网为准）",
+        "notes": "雅思总分 6.5、单项不低于 6.0（取自官方课程页）；通常要求本科相关背景，具体入学要求以官网为准"
+      },
+      "tuition": "学费见官网",
+      "duration": "1.5–2 年",
+      "timeline": "多为 2/7 月两次入学；分轮次滚动审理，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.uow.edu.au/study/courses/master-of-computer-science/",
+        "searchUrl": "https://www.google.com/search?q=卧龙岗大学+UOW+Master+of+Computer+Science+entry+requirements"
+      }
+    },
+    {
+      "id": "au-uow-it",
+      "country": "澳大利亚",
+      "university": "卧龙岗大学 UOW",
+      "qsRank": 167,
+      "program": "Master of Information Technology",
+      "field": "信息技术",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 70,
+          "211": 73,
+          "双一流": 76,
+          "双非": 78,
+          "海本/中外合作": 66
+        },
+        "ielts": {
+          "overall": 6.5,
+          "sub": 6.0
+        },
+        "gre": null,
+        "background": "本科相关专业背景（以官网为准）",
+        "notes": "雅思总分 6.5、单项不低于 6.0（取自官方课程页）；通常要求本科相关背景，具体入学要求以官网为准"
+      },
+      "tuition": "学费见官网",
+      "duration": "1.5–2 年",
+      "timeline": "多为 2/7 月两次入学；分轮次滚动审理，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.uow.edu.au/study/courses/master-of-information-technology/",
+        "searchUrl": "https://www.google.com/search?q=卧龙岗大学+UOW+Master+of+Information+Technology+entry+requirements"
+      }
+    },
+    {
+      "id": "au-uow-ba",
+      "country": "澳大利亚",
+      "university": "卧龙岗大学 UOW",
+      "qsRank": 167,
+      "program": "Master of Business Analytics",
+      "field": "商业分析",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 70,
+          "211": 73,
+          "双一流": 76,
+          "双非": 78,
+          "海本/中外合作": 66
+        },
+        "ielts": {
+          "overall": 6.5,
+          "sub": 6.0
+        },
+        "gre": null,
+        "background": "本科相关专业背景（以官网为准）",
+        "notes": "雅思总分 6.5、单项不低于 6.0（取自官方课程页）；通常要求本科相关背景，具体入学要求以官网为准"
+      },
+      "tuition": "学费见官网",
+      "duration": "1.5–2 年",
+      "timeline": "多为 2/7 月两次入学；分轮次滚动审理，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.uow.edu.au/study/courses/master-of-business-analytics/",
+        "searchUrl": "https://www.google.com/search?q=卧龙岗大学+UOW+Master+of+Business+Analytics+entry+requirements"
+      }
+    },
+    {
+      "id": "au-uow-fintech",
+      "country": "澳大利亚",
+      "university": "卧龙岗大学 UOW",
+      "qsRank": 167,
+      "program": "Master of Financial Technology",
+      "field": "金融科技",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 70,
+          "211": 73,
+          "双一流": 76,
+          "双非": 78,
+          "海本/中外合作": 66
+        },
+        "ielts": {
+          "overall": 6.5,
+          "sub": 6.0
+        },
+        "gre": null,
+        "background": "本科相关专业背景（以官网为准）",
+        "notes": "雅思总分 6.5、单项不低于 6.0（取自官方课程页）；通常要求本科相关背景，具体入学要求以官网为准"
+      },
+      "tuition": "学费见官网",
+      "duration": "1.5–2 年",
+      "timeline": "多为 2/7 月两次入学；分轮次滚动审理，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.uow.edu.au/study/courses/master-of-financial-technology/",
+        "searchUrl": "https://www.google.com/search?q=卧龙岗大学+UOW+Master+of+Financial+Technology+entry+requirements"
+      }
+    },
+    {
+      "id": "au-uow-ib",
+      "country": "澳大利亚",
+      "university": "卧龙岗大学 UOW",
+      "qsRank": 167,
+      "program": "Master of International Business",
+      "field": "国际商务",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 70,
+          "211": 73,
+          "双一流": 76,
+          "双非": 78,
+          "海本/中外合作": 66
+        },
+        "ielts": {
+          "overall": 6.5,
+          "sub": 6.0
+        },
+        "gre": null,
+        "background": "本科相关专业背景（以官网为准）",
+        "notes": "雅思总分 6.5、单项不低于 6.0（取自官方课程页）；通常要求本科相关背景，具体入学要求以官网为准"
+      },
+      "tuition": "学费见官网",
+      "duration": "1.5–2 年",
+      "timeline": "多为 2/7 月两次入学；分轮次滚动审理，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.uow.edu.au/study/courses/master-of-international-business/",
+        "searchUrl": "https://www.google.com/search?q=卧龙岗大学+UOW+Master+of+International+Business+entry+requirements"
+      }
+    },
+    {
+      "id": "au-uow-eng",
+      "country": "澳大利亚",
+      "university": "卧龙岗大学 UOW",
+      "qsRank": 167,
+      "program": "Master of Engineering",
+      "field": "工程",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 70,
+          "211": 73,
+          "双一流": 76,
+          "双非": 78,
+          "海本/中外合作": 66
+        },
+        "ielts": {
+          "overall": 6.5,
+          "sub": 6.0
+        },
+        "gre": null,
+        "background": "本科相关专业背景（以官网为准）",
+        "notes": "雅思总分 6.5、单项不低于 6.0（取自官方课程页）；通常要求本科相关背景，具体入学要求以官网为准"
+      },
+      "tuition": "学费见官网",
+      "duration": "1.5–2 年",
+      "timeline": "多为 2/7 月两次入学；分轮次滚动审理，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.uow.edu.au/study/courses/master-of-engineering/",
+        "searchUrl": "https://www.google.com/search?q=卧龙岗大学+UOW+Master+of+Engineering+entry+requirements"
+      }
+    },
+    {
+      "id": "au-uow-mkt",
+      "country": "澳大利亚",
+      "university": "卧龙岗大学 UOW",
+      "qsRank": 167,
+      "program": "Master of Marketing",
+      "field": "市场营销",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 70,
+          "211": 73,
+          "双一流": 76,
+          "双非": 78,
+          "海本/中外合作": 66
+        },
+        "ielts": {
+          "overall": 6.5,
+          "sub": 6.0
+        },
+        "gre": null,
+        "background": "本科相关专业背景（以官网为准）",
+        "notes": "雅思总分 6.5、单项不低于 6.0（取自官方课程页）；通常要求本科相关背景，具体入学要求以官网为准"
+      },
+      "tuition": "学费见官网",
+      "duration": "1.5–2 年",
+      "timeline": "多为 2/7 月两次入学；分轮次滚动审理，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.uow.edu.au/study/courses/master-of-marketing/",
+        "searchUrl": "https://www.google.com/search?q=卧龙岗大学+UOW+Master+of+Marketing+entry+requirements"
+      }
+    },
+    {
+      "id": "au-uow-acc",
+      "country": "澳大利亚",
+      "university": "卧龙岗大学 UOW",
+      "qsRank": 167,
+      "program": "Master of Professional Accounting",
+      "field": "会计",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 70,
+          "211": 73,
+          "双一流": 76,
+          "双非": 78,
+          "海本/中外合作": 66
+        },
+        "ielts": {
+          "overall": 6.5,
+          "sub": 6.0
+        },
+        "gre": null,
+        "background": "本科相关专业背景（以官网为准）",
+        "notes": "雅思总分 6.5、单项不低于 6.0（取自官方课程页）；通常要求本科相关背景，具体入学要求以官网为准"
+      },
+      "tuition": "学费见官网",
+      "duration": "1.5–2 年",
+      "timeline": "多为 2/7 月两次入学；分轮次滚动审理，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.uow.edu.au/study/courses/master-of-professional-accounting/",
+        "searchUrl": "https://www.google.com/search?q=卧龙岗大学+UOW+Master+of+Professional+Accounting+entry+requirements"
       }
     }
   ]

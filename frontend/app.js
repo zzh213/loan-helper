@@ -2,6 +2,40 @@ const form = document.getElementById("loan-form");
 const resultEl = document.getElementById("result");
 const submitBtn = document.getElementById("submit-btn");
 
+/* ===================== 产品埋点 ===================== */
+function _visitorId() {
+  let id = localStorage.getItem("vid");
+  if (!id) {
+    id = "v" + Date.now().toString(36) + Math.random().toString(36).slice(2, 8);
+    localStorage.setItem("vid", id);
+  }
+  return id;
+}
+function track(name, props) {
+  try {
+    const body = JSON.stringify({
+      sid: _visitorId(),
+      name,
+      props: props || null,
+      page: location.pathname,
+    });
+    if (navigator.sendBeacon) {
+      navigator.sendBeacon("/api/track", new Blob([body], { type: "application/json" }));
+    } else {
+      fetch("/api/track", { method: "POST", headers: { "Content-Type": "application/json" }, body, keepalive: true }).catch(() => {});
+    }
+  } catch (e) { /* 埋点失败不影响业务 */ }
+}
+// 首次与表单交互时上报一次「开始填表」
+let _formStarted = false;
+if (form) {
+  form.addEventListener("focusin", () => {
+    if (!_formStarted) { _formStarted = true; track("form_start"); }
+  }, { once: false });
+}
+// 页面访问
+track("page_view");
+
 /* ===================== 轻提示 Toast ===================== */
 function showToast(message, type = "info") {
   let host = document.getElementById("toast-host");
@@ -123,6 +157,7 @@ form.addEventListener("submit", async (e) => {
   submitBtn.disabled = true;
   submitBtn.textContent = "匹配中...";
   renderSkeleton();
+  track("recommend_submit", { industry: profile.industry, amount: profile.loan_amount });
 
   try {
     const res = await fetch("/api/recommend", {
@@ -135,6 +170,8 @@ form.addEventListener("submit", async (e) => {
     window.__lastProfile = profile;
     window.__lastMode = "enterprise";
     render(data);
+    track((data.plans && data.plans.length) ? "recommend_success" : "recommend_empty",
+      { plans: (data.plans || []).length });
     showToast("已为你匹配最优方案", "success");
     resultEl.scrollIntoView({ behavior: "smooth", block: "start" });
   } catch (err) {
@@ -163,6 +200,7 @@ if (preauditBtn) {
     }
     preauditBtn.disabled = true;
     preauditBtn.textContent = "预审中...";
+    track("preaudit");
     try {
       const res = await fetch("/api/preaudit", {
         method: "POST",
@@ -273,6 +311,7 @@ async function queryHiddenSubsidies() {
   }
   const industry = currentCanonicalIndustry();
   hiddenSubList.innerHTML = '<div class="empty">解锁中...</div>';
+  track("hidden_subsidy");
   try {
     const res = await fetch("/api/hidden-subsidies", {
       method: "POST",
@@ -720,34 +759,34 @@ function render(data) {
   resultEl.scrollIntoView({ behavior: "smooth", block: "start" });
 
   const exportBtn = document.getElementById("export-pdf");
-  if (exportBtn) exportBtn.addEventListener("click", exportPdf);
+  if (exportBtn) exportBtn.addEventListener("click", () => { track("export_pdf"); exportPdf(); });
 
   const excelBtn = document.getElementById("export-excel");
-  if (excelBtn) excelBtn.addEventListener("click", exportExcel);
+  if (excelBtn) excelBtn.addEventListener("click", () => { track("export_excel"); exportExcel(); });
 
   const bankBtn = document.getElementById("export-bank");
-  if (bankBtn) bankBtn.addEventListener("click", exportBankPackage);
+  if (bankBtn) bankBtn.addEventListener("click", () => { track("export_bank"); exportBankPackage(); });
 
   const bankDocxBtn = document.getElementById("export-bank-docx");
-  if (bankDocxBtn) bankDocxBtn.addEventListener("click", exportBankPackageDocx);
+  if (bankDocxBtn) bankDocxBtn.addEventListener("click", () => { track("export_bank"); exportBankPackageDocx(); });
 
   const checklistBtn = document.getElementById("export-checklist");
   if (checklistBtn) checklistBtn.addEventListener("click", showChecklist);
 
   const posterBtn = document.getElementById("share-poster");
-  if (posterBtn) posterBtn.addEventListener("click", () => makePoster(data));
+  if (posterBtn) posterBtn.addEventListener("click", () => { track("share_poster"); makePoster(data); });
 
   const growthBtn = document.getElementById("growth-report");
-  if (growthBtn) growthBtn.addEventListener("click", () => showGrowthReport(data));
+  if (growthBtn) growthBtn.addEventListener("click", () => { track("growth_report"); showGrowthReport(data); });
 
   const comboBtn = document.getElementById("combo-credit");
-  if (comboBtn) comboBtn.addEventListener("click", () => showCombo(data));
+  if (comboBtn) comboBtn.addEventListener("click", () => { track("combo_credit"); showCombo(data); });
 
   const saveBtn = document.getElementById("save-application");
   if (saveBtn) saveBtn.addEventListener("click", saveApplication);
 
   const pdfPersonalBtn = document.getElementById("export-pdf-personal");
-  if (pdfPersonalBtn) pdfPersonalBtn.addEventListener("click", exportPersonalPdf);
+  if (pdfPersonalBtn) pdfPersonalBtn.addEventListener("click", () => { track("export_pdf"); exportPersonalPdf(); });
 
   loadBankOptions();
   bindFavButtons();
@@ -762,6 +801,7 @@ function render(data) {
       toggleToolsBtn.setAttribute("aria-expanded", open ? "true" : "false");
       toggleToolsBtn.classList.toggle("open", open);
       toggleToolsBtn.textContent = open ? "➖ 收起功能" : "➕ 更多功能";
+      if (open) track("more_tools");
     });
   }
 
@@ -773,6 +813,7 @@ function render(data) {
       const open = body.classList.toggle("hidden") === false;
       toggleGlossaryBtn.setAttribute("aria-expanded", open ? "true" : "false");
       toggleGlossaryBtn.classList.toggle("open", open);
+      if (open) track("view_glossary");
     });
   }
 
@@ -785,7 +826,7 @@ function render(data) {
       toggleMoreBtn.setAttribute("aria-expanded", open ? "true" : "false");
       toggleMoreBtn.classList.toggle("open", open);
       toggleMoreBtn.querySelector(".mt-txt").textContent = open ? "收起方案详情" : "查看完整方案详情";
-      if (open) more.scrollIntoView({ behavior: "smooth", block: "nearest" });
+      if (open) { track("view_more"); more.scrollIntoView({ behavior: "smooth", block: "nearest" }); }
     });
   }
 }
@@ -872,6 +913,7 @@ async function saveApplication() {
       body: JSON.stringify({ profile: window.__lastProfile }),
     });
     if (!res.ok) throw new Error("保存失败:" + res.status);
+    track("save_application");
     btn.textContent = "✅ 已保存";
     setTimeout(() => {
       btn.disabled = false;
@@ -1102,6 +1144,7 @@ document.querySelectorAll(".tab-btn[data-tab]").forEach((btn) => {
     perBtn.disabled = true;
     perBtn.textContent = "匹配中...";
     renderSkeleton();
+    track("personal_submit", { amount: profile.loan_amount });
     try {
       const res = await fetch("/api/recommend-personal", {
         method: "POST",
@@ -1113,6 +1156,8 @@ document.querySelectorAll(".tab-btn[data-tab]").forEach((btn) => {
       window.__lastPersonalProfile = profile;
       window.__lastMode = "personal";
       render(data);
+      track((data.plans && data.plans.length) ? "personal_success" : "recommend_empty",
+        { plans: (data.plans || []).length });
       showToast("已为你匹配最优方案", "success");
       resultEl.scrollIntoView({ behavior: "smooth", block: "start" });
     } catch (err) {
@@ -1854,6 +1899,7 @@ function openManagerBooking() {
         body: JSON.stringify({ kind: "预约", company_name: p.company_name || "", phone, industry: p.industry || "",
           loan_amount: amt, bank, slot }) });
       saveBooking({ phone, bank, slot, loan_amount: amt });
+      track("lead_submit", { bank });
       showToast("预约成功,客户经理将在1个工作日内回访", "success");
       openManagerBooking();
     } catch (e) { showToast("提交失败,请稍后重试", "error"); btn.disabled = false; btn.textContent = "确认预约"; }
@@ -2109,6 +2155,7 @@ chatMic.addEventListener("click", toggleMic);
 async function openChat() {
   chatWindow.classList.remove("hidden");
   chatLauncher.classList.add("hidden");
+  if (!chatInited) track("chat_open");
   if (navChatBtn) {
     document.querySelectorAll(".tab-btn").forEach((b) => b.classList.remove("active"));
     navChatBtn.classList.add("active");
@@ -2187,6 +2234,7 @@ async function sendChat() {
   chatHistoryPanel.classList.add("hidden");
   stopSpeak();
   addMessage("user", msg);
+  track("chat_send");
 
   const bubble = addMessage("assistant", "");
   bubble.innerHTML = '<span class="typing"><i></i><i></i><i></i></span>';

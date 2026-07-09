@@ -50,6 +50,21 @@
     .empty { text-align:center; color:var(--muted); padding:30px; }
     .refresh-bar { display:flex; align-items:center; gap:12px; margin-bottom:16px; font-size:13px; color:var(--muted); }
     a.phone { color:var(--blue-d); text-decoration:none; }
+    /* 数据分析 */
+    .funnel { display:flex; flex-direction:column; gap:8px; }
+    .fn-row { display:flex; align-items:center; gap:12px; }
+    .fn-label { width:88px; font-size:13px; color:var(--ink); flex-shrink:0; }
+    .fn-bar-wrap { flex:1; background:#eef4fb; border-radius:8px; overflow:hidden; height:30px; position:relative; }
+    .fn-bar { height:100%; background:linear-gradient(90deg,#7ea3d0,#5f86bb); display:flex; align-items:center; padding-left:10px; color:#fff; font-size:13px; font-weight:700; min-width:2px; transition:width .5s; }
+    .fn-drop { width:70px; font-size:12px; color:var(--muted); text-align:right; flex-shrink:0; }
+    .fn-drop b { color:#d9822b; }
+    .feat-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:10px; }
+    .feat { display:flex; align-items:center; gap:10px; }
+    .feat-name { width:96px; font-size:12.5px; flex-shrink:0; }
+    .feat-bar-wrap { flex:1; background:#f1f5fa; border-radius:6px; overflow:hidden; height:14px; }
+    .feat-bar { height:100%; background:linear-gradient(90deg,#9ac0a0,#6fae8e); }
+    .feat-n { width:34px; text-align:right; font-size:12px; font-weight:700; color:var(--blue-d); }
+    .insight { background:#fff8ec; border:1px solid #f6d9a8; border-radius:10px; padding:12px 14px; font-size:13.5px; color:#7a5a1e; line-height:1.7; margin-top:14px; }
     @media (max-width:600px){ .stat .n{font-size:24px;} }
   </style>
 </head>
@@ -82,6 +97,20 @@
       </div>
 
       <div class="stats" id="stats"></div>
+
+      <div class="card">
+        <div class="card-head">
+          <h3>📈 转化漏斗 · 用户从访问到留资的每一步</h3>
+          <span class="mini" id="analytics-range">近 30 天</span>
+        </div>
+        <div class="funnel" id="funnel"></div>
+        <div class="insight" id="funnel-insight"></div>
+      </div>
+
+      <div class="card">
+        <div class="card-head"><h3>🔧 功能使用排行 · 哪些功能真的有人用</h3></div>
+        <div class="feat-grid" id="feature-usage"></div>
+      </div>
 
       <div class="card">
         <div class="card-head">
@@ -127,10 +156,51 @@
         const d = await api("/api/admin/overview");
         renderAll(d);
         showAdmin();
+        try { renderAnalytics(await api("/api/admin/analytics?days=30")); } catch(_) {}
       } catch(e){
         if (e.message === "401"){ err.textContent = "口令错误,请重试"; localStorage.removeItem(TOKEN_KEY); token=""; showLogin(); }
         else { err.textContent = "加载失败,请稍后重试"; }
       }
+    }
+
+    function renderAnalytics(a){
+      const t = a.totals || {};
+      // 转化漏斗
+      const steps = a.funnel || [];
+      const top = steps.length ? (steps[0].count || 1) : 1;
+      document.getElementById("funnel").innerHTML = steps.map((s, i) => {
+        const w = Math.max(2, Math.round((s.count/ (top||1)) * 100));
+        const drop = i === 0 ? "" : `转化 <b>${s.pct_of_prev}%</b>`;
+        return `<div class="fn-row">
+          <span class="fn-label">${esc(s.label)}</span>
+          <span class="fn-bar-wrap"><span class="fn-bar" style="width:${w}%">${s.count}</span></span>
+          <span class="fn-drop">${drop}</span>
+        </div>`;
+      }).join("") || `<div class="empty">暂无数据,去前台走一遍流程就会有埋点</div>`;
+
+      // 漏斗洞察:自动找出流失最严重的一环
+      let worst = null;
+      for (let i = 1; i < steps.length; i++){
+        if (steps[i-1].count > 0 && (worst === null || steps[i].pct_of_prev < worst.pct)){
+          worst = { from: steps[i-1].label, to: steps[i].label, pct: steps[i].pct_of_prev };
+        }
+      }
+      const ins = document.getElementById("funnel-insight");
+      if (worst && steps[0].count > 0){
+        ins.style.display = "";
+        ins.innerHTML = `💡 <b>数据洞察:</b>从「${esc(worst.from)}」到「${esc(worst.to)}」只剩 ${worst.pct}%,是当前流失最严重的一环——这里最值得做优化实验。`
+          + `　整体表单转化率 <b>${t.form_conversion||0}%</b>,留资转化率 <b>${t.lead_conversion||0}%</b>(共 ${t.sessions||0} 个访客)。`;
+      } else { ins.style.display = "none"; }
+
+      // 功能使用排行
+      const feats = a.feature_usage || [];
+      const fmax = Math.max(1, ...feats.map(f=>f.count));
+      document.getElementById("feature-usage").innerHTML = feats.length ? feats.map(f=>`
+        <div class="feat">
+          <span class="feat-name">${esc(f.label)}</span>
+          <span class="feat-bar-wrap"><span class="feat-bar" style="width:${Math.round(f.count/fmax*100)}%"></span></span>
+          <span class="feat-n">${f.count}</span>
+        </div>`).join("") : `<div class="empty">暂无功能使用数据</div>`;
     }
 
     function renderAll(d){

@@ -477,6 +477,29 @@ def list_leads(request: Request):
     return storage.list_leads()
 
 
+@app.post("/api/track")
+async def track_event(request: Request):
+    """接收前端埋点事件(公开,轻量,失败静默)。"""
+    try:
+        payload = await request.json()
+    except Exception:
+        return {"ok": False}
+    ok = storage.record_event(
+        session_id=str(payload.get("sid", "")),
+        name=str(payload.get("name", "")),
+        props=payload.get("props"),
+        page=str(payload.get("page", "")),
+    )
+    return {"ok": ok}
+
+
+@app.get("/api/admin/analytics")
+def admin_analytics(request: Request, days: int = 30):
+    """管理后台:产品使用数据分析(转化漏斗、功能使用、趋势)。"""
+    require_admin(request)
+    return storage.analytics_summary(days=max(1, min(365, days)))
+
+
 @app.get("/api/admin/overview")
 def admin_overview(request: Request):
     """管理后台总览:申请、线索、数据资产统计汇总。"""

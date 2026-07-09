@@ -198,6 +198,20 @@ def init_db():
             )
             """
         )
+        conn.execute(
+            f"""
+            CREATE TABLE IF NOT EXISTS events (
+                id {_AUTO_PK},
+                session_id TEXT,
+                name TEXT NOT NULL,
+                props TEXT,
+                page TEXT,
+                created_at TEXT
+            )
+            """
+        )
+        conn.execute("CREATE INDEX IF NOT EXISTS idx_events_name ON events(name)")
+        conn.execute("CREATE INDEX IF NOT EXISTS idx_events_session ON events(session_id)")
 
 
 def save_chat_message(session_id: str, role: str, content: str) -> None:
@@ -284,6 +298,152 @@ def list_leads() -> List[dict]:
     with _conn() as conn:
         rows = conn.execute("SELECT * FROM leads ORDER BY created_at DESC").fetchall()
         return [dict(r) for r in rows]
+
+
+# ------------------------- 产品埋点分析 -------------------------
+# 允许上报的事件白名单(防止被灌垃圾数据),值为看板展示用中文名。
+EVENT_LABELS = {
+    "page_view": "访问首页",
+    "form_start": "开始填表",
+    "recommend_submit": "提交企业测算",
+    "recommend_success": "得到企业方案",
+    "recommend_empty": "企业未匹配",
+    "personal_submit": "提交个人测算",
+    "personal_success": "得到个人方案",
+    "view_more": "展开完整方案",
+    "view_glossary": "看名词小课堂",
+    "more_tools": "打开更多功能",
+    "export_pdf": "导出方案PDF",
+    "export_excel": "导出Excel",
+    "export_bank": "导银行材料",
+    "share_poster": "生成分享海报",
+    "growth_report": "查资质成长报告",
+    "combo_credit": "用组合贷测算",
+    "save_application": "保存申请记录",
+    "lead_submit": "留资/预约",
+    "chat_open": "打开AI助手",
+    "chat_send": "向AI提问",
+    "preaudit": "使用预审",
+    "hidden_subsidy": "查隐藏贴息",
+}
+
+# 转化漏斗定义:(事件名, 展示名)。按此顺序计算逐级转化。
+FUNNEL_STEPS = [
+    ("page_view", "访问"),
+    ("form_start", "开始填表"),
+    ("recommend_submit", "提交测算"),
+    ("recommend_success", "看到方案"),
+    ("view_more", "展开详情"),
+    ("lead_submit", "留资/预约"),
+]
+
+
+def record_event(session_id: str, name: str, props=None, page: str = "") -> bool:
+    """记录一个前端埋点事件。仅接受白名单内事件,失败静默返回 False。"""
+    if name not in EVENT_LABELS:
+        return False
+    created_at = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    try:
+        props_json = json.dumps(props, ensure_ascii=False) if props else ""
+    except Exception:
+        props_json = ""
+    row = {
+        "session_id": (session_id or "")[:64],
+        "name": name,
+        "props": props_json[:500],
+        "page": (page or "")[:64],
+        "created_at": created_at,
+    }
+    with _conn() as conn:
+        conn.execute(
+            "INSERT INTO events (session_id, name, props, page, created_at) "
+            "VALUES (:session_id, :name, :props, :page, :created_at)",
+            row,
+        )
+    return True
+
+
+def analytics_summary(days: int = 30) -> dict:
+    """聚合埋点数据:总览、转化漏斗、功能使用、每日趋势。"""
+    since = datetime.now().replace(hour=0, minute=0, second=0, microsecond=0)
+    from datetime import timedelta
+    since_str = (since - timedelta(days=max(0, days - 1))).strftime("%Y-%m-%d %H:%M:%S")
+
+    with _conn() as conn:
+        rows = conn.execute(
+            "SELECT session_id, name, created_at FROM events WHERE created_at >= ?",
+            (since_str,),
+        ).fetchall()
+    rows = [dict(r) for r in rows]
+
+    total_events = len(rows)
+    sessions = set(r["session_id"] for r in rows if r["session_id"])
+    # 每个事件命中的独立会话集合
+    sess_by_event = {}
+    count_by_event = {}
+    for r in rows:
+        count_by_event[r["name"]] = count_by_event.get(r["name"], 0) + 1
+        sess_by_event.setdefault(r["name"], set()).add(r["session_id"])
+
+    # 转化漏斗:按独立会话数逐级计算
+    funnel = []
+    base = None
+    prev = None
+    for name, label in FUNNEL_STEPS:
+        n = len(sess_by_event.get(name, set()))
+        if base is None:
+            base = n or 1
+        step = {
+            "name": name,
+            "label": label,
+            "count": n,
+            "pct_of_top": round(n / base * 100, 1) if base else 0.0,
+            "pct_of_prev": round(n / prev * 100, 1) if prev else 100.0,
+        }
+        funnel.append(step)
+        prev = n if n else prev
+
+    # 功能使用排行(排除漏斗基础事件)
+    funnel_names = {n for n, _ in FUNNEL_STEPS}
+    feature_usage = sorted(
+        [
+            {"name": k, "label": EVENT_LABELS.get(k, k), "count": v,
+             "sessions": len(sess_by_event.get(k, set()))}
+            for k, v in count_by_event.items()
+            if k not in funnel_names or k in ("view_more",)
+        ],
+        key=lambda x: x["count"], reverse=True,
+    )
+
+    # 每日趋势(访问 & 提交)
+    daily = {}
+    for r in rows:
+        day = (r["created_at"] or "")[:10]
+        if not day:
+            continue
+        d = daily.setdefault(day, {"page_view": 0, "recommend_submit": 0, "personal_submit": 0})
+        if r["name"] in d:
+            d[r["name"]] += 1
+    daily_list = [{"date": k, **v} for k, v in sorted(daily.items())]
+
+    # 关键转化率
+    n_visit = len(sess_by_event.get("page_view", set())) or 1
+    n_submit = len(sess_by_event.get("recommend_submit", set())) + \
+        len(sess_by_event.get("personal_submit", set()))
+    n_lead = len(sess_by_event.get("lead_submit", set()))
+
+    return {
+        "range_days": days,
+        "totals": {
+            "events": total_events,
+            "sessions": len(sessions),
+            "form_conversion": round(n_submit / n_visit * 100, 1),
+            "lead_conversion": round(n_lead / n_visit * 100, 1),
+        },
+        "funnel": funnel,
+        "feature_usage": feature_usage,
+        "daily": daily_list,
+    }
 
 
 # 申请状态流转

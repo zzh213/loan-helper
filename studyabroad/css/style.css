@@ -699,4 +699,19 @@ footer {
 #fb-submit:disabled { opacity: 0.6; cursor: default; }
 @media (max-width: 600px) {
   #fb-fab { right: 14px; bottom: 16px; padding: 10px 15px; font-size: 13px; }
+  .container { padding: 0 14px; }
+  .hero { padding: 34px 0 28px; }
+  .hero h1 { font-size: 24px; }
+  .subtitle { font-size: 14px; }
+  .card { padding: 18px 15px; margin-top: 16px; border-radius: 12px; }
+  .hero-nav { gap: 6px; }
+  .nav-btn { flex: 1 1 auto; text-align: center; padding: 8px 6px; font-size: 13px; }
+  .program { padding: 14px; }
+  .program-head { flex-direction: column; gap: 8px; }
+  .head-right { align-self: flex-start; }
+  .meta-row { gap: 10px; font-size: 13px; }
+  .counts { gap: 10px; font-size: 14px; }
+  .auth-form { justify-content: stretch; }
+  .auth-form input { flex: 1 1 100%; }
+  .fb-box { padding: 18px 16px; }
 }

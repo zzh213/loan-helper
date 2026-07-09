@@ -429,6 +429,17 @@ function programCard(result) {
       encodeURIComponent(p.university + " " + p.program + " entry requirements");
   const verifyText = prov.sourceUrl ? "🔗 查看官方项目页" : "🔗 去官网核实最新要求";
 
+  // 学费可信度：官方币种金额直接显示；「约..万元」为估算区间需标注
+  let tuitionDisplay;
+  const tui = (p.tuition || "").trim();
+  if (!tui || /官网/.test(tui)) {
+    tuitionDisplay = "学费以官网为准";
+  } else if (/万元|约/.test(tui)) {
+    tuitionDisplay = `${tui}（估算区间，以官网为准）`;
+  } else {
+    tuitionDisplay = tui;
+  }
+
   return `
     <div class="program">
       <div class="program-head">
@@ -447,7 +458,7 @@ function programCard(result) {
         <div><strong>语言：</strong>${ielts}</div>
         <div><strong>标化：</strong>${gre}</div>
         <div><strong>背景要求：</strong>${req.background || "见官网"}</div>
-        <div class="meta-row"><span>💰 ${p.tuition || "学费见官网"}</span><span>⏳ ${p.duration || ""}</span></div>
+        <div class="meta-row"><span>💰 ${tuitionDisplay}</span><span>⏳ ${p.duration || ""}</span></div>
         <div class="timeline">🗓️ ${p.timeline || "申请时间见官网"}</div>
         ${req.notes ? `<div class="notes">💡 ${req.notes}</div>` : ""}
         ${wesNote}

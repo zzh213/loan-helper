@@ -94,6 +94,18 @@
     .export-btns { display:flex; gap:12px; flex-wrap:wrap; }
     .pol-form { display:grid; grid-template-columns:repeat(auto-fill,minmax(180px,1fr)); gap:10px; margin-bottom:14px; padding:14px; background:#f7fafd; border-radius:10px; }
     .pol-form input { padding:7px 10px; border:1px solid var(--line); border-radius:8px; font-size:13px; }
+    .ticket-kpi { display:grid; grid-template-columns:repeat(auto-fit,minmax(110px,1fr)); gap:10px; margin-bottom:14px; }
+    .kpi { background:#f7fafd; border:1px solid var(--line); border-radius:10px; padding:12px; text-align:center; }
+    .kpi-n { font-size:22px; font-weight:800; color:var(--blue-d); }
+    .kpi-l { font-size:12px; color:var(--muted); margin-top:2px; }
+    .perf-title { font-size:13px; font-weight:700; margin:8px 0; color:var(--ink); }
+    .perf-table { font-size:12.5px; }
+    .assign-row { display:flex; gap:20px; flex-wrap:wrap; align-items:center; font-size:13px; }
+    .assign-row label { display:flex; flex-direction:column; gap:5px; color:var(--muted); }
+    .sop-box { background:#f7fafd; border:1px solid var(--line); border-radius:10px; padding:12px 14px; font-size:12.5px; line-height:1.7; }
+    .sop-line { margin-bottom:6px; color:var(--ink); }
+    .sop-line b { color:var(--blue-d); }
+    .sop-cadence { color:#d9822b; margin-left:6px; }
   </style>
 </head>
 <body>
@@ -172,9 +184,17 @@
       <div class="card">
         <div class="card-head">
           <h3>🎯 工单 / 客户经理管理</h3>
-          <span id="ticket-stats" class="sub"></span>
+          <div class="tools">
+            <button class="mini" id="seed-leads" title="生成演示工单,便于答辩展示">✨ 演示工单</button>
+            <button class="mini" id="clear-leads" title="清除演示工单">🧹 清除</button>
+          </div>
         </div>
-        <div class="table-scroll"><table id="tickets-table"></table></div>
+        <div id="ticket-stats" class="ticket-kpi"></div>
+        <div id="manager-perf"></div>
+        <div class="card-head" style="margin-top:14px;"><h3 style="font-size:14px;">👔 客户分配规则</h3>
+          <button class="mini primary" id="assign-save">💾 保存规则</button></div>
+        <div id="assign-rule"></div>
+        <div class="table-scroll" style="margin-top:12px;"><table id="tickets-table"></table></div>
       </div>
 
       <div class="card">
@@ -398,6 +418,7 @@
       renderProducts((await api("/api/admin/products")).products);
       renderPolicies(await api("/api/admin/policies"));
       renderTickets(await api("/api/admin/tickets"));
+      renderAssignRule(await api("/api/admin/assign-rule"));
       renderAudit((await api("/api/admin/audit-logs?limit=200")).logs);
       document.getElementById("exp-apps").href = "/api/admin/export/applications?token=" + encodeURIComponent(token);
       document.getElementById("exp-leads").href = "/api/admin/export/leads?token=" + encodeURIComponent(token);
@@ -516,25 +537,35 @@
     const TICKET_STATUS = ["待回访","已联系","材料待补充","银行审核中","已放款","已拒绝"];
     function renderTickets(d){
       const s = d.stats||{};
-      document.getElementById("ticket-stats").textContent =
-        `共 ${s.total||0} 单 · 成单 ${s.won||0} · 成单率 ${s.win_rate||0}%`;
+      document.getElementById("ticket-stats").innerHTML = [
+        ["总工单", s.total||0], ["成单", s.won||0], ["成单率", (s.win_rate||0)+"%"],
+        ["放款额(万)", s.won_amount||0], ["预估返佣(万)", s.est_commission||0],
+      ].map(([l,n])=>`<div class="kpi"><div class="kpi-n">${esc(n)}</div><div class="kpi-l">${l}</div></div>`).join("");
+
+      const mgr = s.by_manager||[];
+      document.getElementById("manager-perf").innerHTML = mgr.length ? `
+        <div class="perf-title">客户经理业绩排行</div>
+        <table class="perf-table"><tr><th>客户经理</th><th>负责</th><th>成单</th><th>成单率</th><th>放款额(万)</th><th>返佣(万)</th></tr>
+        ${mgr.map(m=>`<tr><td>${esc(m.manager)}</td><td>${m.count}</td><td>${m.won}</td><td>${m.win_rate}%</td><td>${m.won_amount}</td><td>${m.commission}</td></tr>`).join("")}</table>` : "";
+
       const leads = d.leads||[];
       document.getElementById("tickets-table").innerHTML =
-        `<tr><th>时间</th><th>企业/联系人</th><th>手机</th><th>需求(万)</th><th>客户经理</th><th>状态</th><th>跟进记录</th><th></th></tr>` +
+        `<tr><th>时间</th><th>企业/联系人</th><th>手机</th><th>需求(万)</th><th>标签/意向</th><th>客户经理</th><th>状态</th><th>跟进记录</th><th>操作</th></tr>` +
         (leads.length ? leads.map(r=>`<tr data-id="${r.id}">
           <td>${esc((r.created_at||"").slice(5,16))}</td>
           <td class="wrap-cell">${esc(r.company_name)||"-"}</td>
           <td><a class="phone" href="tel:${esc(r.phone)}">${esc(r.phone)||"-"}</a></td>
           <td>${esc(r.loan_amount)||"-"}</td>
+          <td class="wrap-cell">${(r.tags?String(r.tags).split("、"):[]).map(t=>`<span class="tag t-blue">${esc(t)}</span>`).join(" ")}${r.service_tier?`<span class="tag t-green">${esc(r.service_tier)}</span>`:""}</td>
           <td><select class="cell-in tk-mgr">
             <option value="">未分配</option>
             ${MANAGERS.map(m=>`<option ${r.manager===m?"selected":""}>${m}</option>`).join("")}</select></td>
           <td><select class="cell-in tk-status">
             ${TICKET_STATUS.map(st=>`<option ${r.status===st?"selected":""}>${st}</option>`).join("")}</select></td>
           <td><input class="cell-in tk-note" value="${esc(r.follow_up||"")}" placeholder="跟进备注"></td>
-          <td><button class="mini tk-save">保存</button></td>
-        </tr>`).join("")
-        : `<tr><td colspan="8" class="empty">暂无工单</td></tr>`);
+          <td><button class="mini tk-save">保存</button> <button class="mini tk-sop">SOP</button></td>
+        </tr><tr class="sop-row" data-sop="${r.id}" style="display:none;"><td colspan="9"></td></tr>`).join("")
+        : `<tr><td colspan="9" class="empty">暂无工单</td></tr>`);
       document.querySelectorAll(".tk-save").forEach(b=>b.addEventListener("click", async ()=>{
         const tr=b.closest("tr");
         await apiPost("/api/admin/tickets/"+tr.dataset.id, {
@@ -544,7 +575,50 @@
         });
         renderTickets(await api("/api/admin/tickets"));
       }));
+      document.querySelectorAll(".tk-sop").forEach(b=>b.addEventListener("click", async ()=>{
+        const id=b.closest("tr").dataset.id;
+        const row=document.querySelector(`.sop-row[data-sop="${id}"]`);
+        if(row.style.display!=="none"){ row.style.display="none"; return; }
+        const sop=await api("/api/admin/tickets/"+id+"/sop");
+        row.querySelector("td").innerHTML = `<div class="sop-box">
+          <div class="sop-line"><b>下一步:</b>${esc(sop.next_action)} <span class="sop-cadence">${esc(sop.cadence)}</span></div>
+          <div class="sop-line"><b>初次话术:</b>${esc(sop.opening_script)}</div>
+          <div class="sop-line"><b>建议产品:</b>${esc(sop.recommend_product)}</div>
+          ${sop.focus&&sop.focus.length?`<div class="sop-line"><b>重点:</b>${sop.focus.map(f=>esc(f)).join("；")}</div>`:""}
+          <div class="sop-line"><b>材料清单:</b>${(sop.materials||[]).map(m=>`<span class="tag t-gray">${esc(m)}</span>`).join(" ")}</div>
+        </div>`;
+        row.style.display="";
+      }));
     }
+
+    function renderAssignRule(rule){
+      const modes=[["manual","手动分配"],["round_robin","轮询均分"],["by_amount","大额优先资深经理"]];
+      document.getElementById("assign-rule").innerHTML = `
+        <div class="assign-row">
+          <label>分配模式
+            <select id="assign-mode" class="cell-in" style="width:auto;">
+              ${modes.map(([v,l])=>`<option value="${v}" ${rule.mode===v?"selected":""}>${l}</option>`).join("")}</select>
+          </label>
+          <label>参与分配的客户经理(逗号分隔)
+            <input id="assign-mgrs" class="cell-in" style="width:280px;" value="${esc((rule.managers||[]).join(","))}">
+          </label>
+        </div>`;
+    }
+    document.getElementById("assign-save").addEventListener("click", async ()=>{
+      const mode=document.getElementById("assign-mode").value;
+      const managers=document.getElementById("assign-mgrs").value.split(",").map(s=>s.trim()).filter(Boolean);
+      await apiPost("/api/admin/assign-rule", {mode, managers});
+      alert("分配规则已保存");
+    });
+    document.getElementById("seed-leads").addEventListener("click", async ()=>{
+      await apiPost("/api/admin/tickets/seed-demo");
+      renderTickets(await api("/api/admin/tickets"));
+    });
+    document.getElementById("clear-leads").addEventListener("click", async ()=>{
+      if(!confirm("确认清除全部演示工单?")) return;
+      await apiPost("/api/admin/tickets/clear-demo");
+      renderTickets(await api("/api/admin/tickets"));
+    });
 
     function renderAudit(logs){
       document.getElementById("audit-table").innerHTML =

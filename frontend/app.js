@@ -1297,6 +1297,7 @@ function render(data) {
 
   resultEl.innerHTML = html;
   resultEl.classList.remove("hidden");
+  renderCommerceCTA(data);
   resultEl.scrollIntoView({ behavior: "smooth", block: "start" });
 
   const exportBtn = document.getElementById("export-pdf");
@@ -2502,6 +2503,142 @@ function openManagerBooking() {
 }
 const _cm = document.getElementById("chain-manager");
 if (_cm) _cm.addEventListener("click", openManagerBooking);
+
+/* ===== 商业化 & 私域转化 CTA(测算完成后) ===== */
+let _PRICING = null;
+async function fetchPricing() {
+  if (_PRICING) return _PRICING;
+  try {
+    const r = await fetch("/api/pricing");
+    _PRICING = await r.json();
+  } catch (e) { _PRICING = null; }
+  return _PRICING;
+}
+
+function buildAutoTags(data) {
+  const p = window.__lastProfile || {};
+  const tags = [];
+  if (p.industry) tags.push(p.industry);
+  const amt = p.loan_amount || 0;
+  if (amt >= 150) tags.push("大额抵押客户");
+  else if (amt) tags.push("短期周转客户");
+  if (data && ((data.subsidies && data.subsidies.length) || p.wants_subsidy)) tags.push("想申请贴息");
+  if (p.urgency === "urgent" || p.urgency === "紧急") tags.push("急需资金");
+  const score = data && data.risk ? data.risk.score : null;
+  if (score != null && score < 55) tags.push("待增信客户");
+  return tags;
+}
+
+function getReferralCode() {
+  let code = localStorage.getItem("referral_code");
+  if (!code) {
+    code = "LH" + Math.random().toString(36).slice(2, 8).toUpperCase();
+    localStorage.setItem("referral_code", code);
+  }
+  return code;
+}
+
+async function renderCommerceCTA(data) {
+  const el = document.getElementById("commerce-cta");
+  if (!el) return;
+  const pricing = await fetchPricing();
+  const tags = buildAutoTags(data);
+  const code = getReferralCode();
+  const refLink = location.origin + "/?ref=" + code;
+
+  const pkgHtml = pricing && pricing.packages ? pricing.packages.map((pk) => `
+    <div class="pkg-card ${pk.highlight ? "pkg-hot" : ""}">
+      ${pk.highlight ? '<span class="pkg-badge">推荐</span>' : ""}
+      <div class="pkg-name">${escapeHtml(pk.name)}</div>
+      <div class="pkg-price">${escapeHtml(pk.price)}<small>${escapeHtml(pk.price_note || "")}</small></div>
+      <ul class="pkg-feats">${pk.features.map((f) => `<li>${escapeHtml(f)}</li>`).join("")}</ul>
+      <button class="pkg-cta ${pk.id === "free" ? "pkg-cta-ghost" : ""}" data-tier="${escapeHtml(pk.tier)}" data-pkg="${escapeHtml(pk.name)}">${escapeHtml(pk.cta)}</button>
+    </div>`).join("") : "";
+
+  const modelNote = pricing && pricing.business_model ? `
+    <p class="commerce-model">💡 <b>${escapeHtml(pricing.business_model.primary)}</b>:${escapeHtml(pricing.business_model.desc)}</p>` : "";
+
+  el.innerHTML = `
+    <div class="commerce-box">
+      <h2 class="commerce-h">🚀 让方案落地:选择适合你的服务</h2>
+      ${modelNote}
+      <div class="pkg-grid">${pkgHtml}</div>
+    </div>
+    <div class="private-box">
+      <div class="pv-left">
+        <h3>📲 加专属融资顾问,1 对 1 跟进</h3>
+        <p class="pv-sub">添加企业微信,顾问将根据你的情况持续推送最优方案与政策提醒。</p>
+        ${tags.length ? `<div class="pv-tags">已为你打标签:${tags.map((t) => `<span class="pv-tag">${escapeHtml(t)}</span>`).join("")}</div>` : ""}
+        <button id="pv-wecom-btn" class="pv-wecom">➕ 添加企业微信</button>
+      </div>
+      <div class="pv-right">
+        <div class="pv-qr" id="pv-qr">扫码添加<br>企业微信</div>
+      </div>
+    </div>
+    <div class="referral-box">
+      <h3>🎁 推荐同行,双方各得一份免费深度报告</h3>
+      <p class="ref-sub">把你的专属邀请链接发给同行企业,对方完成测算后,你们都将获赠一次免费深度诊断。</p>
+      <div class="ref-row">
+        <input id="ref-link" class="ref-input" readonly value="${escapeHtml(refLink)}">
+        <button id="ref-copy" class="ref-copy">复制邀请链接</button>
+      </div>
+      <div class="ref-code">你的邀请码:<b>${escapeHtml(code)}</b></div>
+    </div>`;
+  el.classList.remove("hidden");
+  track("pricing_view");
+
+  el.querySelectorAll(".pkg-cta").forEach((b) => b.addEventListener("click", () => {
+    const tier = b.dataset.tier;
+    if (!tier) { // 免费版:滚动到表单
+      document.getElementById("loan-form")?.scrollIntoView({ behavior: "smooth" });
+      return;
+    }
+    openUpgradeModal(b.dataset.pkg, tier, tags);
+  }));
+
+  const wecomBtn = document.getElementById("pv-wecom-btn");
+  if (wecomBtn) wecomBtn.addEventListener("click", () => {
+    track("wecom_add");
+    document.getElementById("pv-qr")?.classList.add("pv-qr-active");
+    showToast("请用微信扫描右侧二维码添加顾问", "info");
+  });
+
+  const refCopy = document.getElementById("ref-copy");
+  if (refCopy) refCopy.addEventListener("click", () => {
+    const inp = document.getElementById("ref-link");
+    inp.select();
+    try { navigator.clipboard.writeText(inp.value); } catch (e) { document.execCommand("copy"); }
+    track("referral_copy");
+    showToast("邀请链接已复制,发给同行即可", "success");
+  });
+}
+
+function openUpgradeModal(pkgName, tier, tags) {
+  const p = window.__lastProfile || {};
+  document.getElementById("modal-content").innerHTML = `<h2>升级「${escapeHtml(pkgName)}」</h2>
+    <p class="modal-sub">留下联系方式,专属顾问将在 1 个工作日内联系你,确认服务细节。平台不收取任何前置费用。</p>
+    <div class="bk-grid">
+      <label>联系电话<input type="tel" id="up-phone" placeholder="手机号" maxlength="11"></label>
+      <label>融资需求(万)<input type="number" id="up-amt" value="${p.loan_amount || 100}"></label>
+    </div>
+    <button id="up-submit" class="export-btn save-btn">提交升级意向</button>`;
+  document.getElementById("detail-modal").classList.remove("hidden");
+  document.getElementById("up-submit").addEventListener("click", async () => {
+    const phone = document.getElementById("up-phone").value.trim();
+    if (!/^1\d{10}$/.test(phone)) return showToast("请填写正确的11位手机号", "error");
+    const btn = document.getElementById("up-submit");
+    btn.disabled = true; btn.textContent = "提交中...";
+    try {
+      const amt = parseFloat(document.getElementById("up-amt").value) || 0;
+      await fetch("/api/leads", { method: "POST", headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ kind: "增值意向", company_name: p.company_name || "", phone, industry: p.industry || "",
+          loan_amount: amt, service_tier: tier, tags, note: "升级:" + pkgName }) });
+      track("upgrade_intent", { tier });
+      showToast("已收到,顾问将尽快联系你", "success");
+      closeModal();
+    } catch (e) { showToast("提交失败,请稍后重试", "error"); btn.disabled = false; btn.textContent = "提交升级意向"; }
+  });
+}
 
 /* ===================== 虚拟金融顾问 ===================== */
 const chatLauncher = document.getElementById("chat-launcher");

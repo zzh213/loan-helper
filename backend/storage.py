@@ -239,6 +239,9 @@ def init_db():
             ("manager", "ALTER TABLE leads ADD COLUMN manager TEXT DEFAULT ''"),
             ("follow_up", "ALTER TABLE leads ADD COLUMN follow_up TEXT DEFAULT ''"),
             ("updated_at", "ALTER TABLE leads ADD COLUMN updated_at TEXT DEFAULT ''"),
+            ("tags", "ALTER TABLE leads ADD COLUMN tags TEXT DEFAULT ''"),
+            ("service_tier", "ALTER TABLE leads ADD COLUMN service_tier TEXT DEFAULT ''"),
+            ("referrer", "ALTER TABLE leads ADD COLUMN referrer TEXT DEFAULT ''"),
         ):
             try:
                 conn.execute(ddl)
@@ -294,18 +297,101 @@ def update_lead(lead_id: str, fields: dict) -> Optional[dict]:
 
 
 def lead_stats() -> dict:
-    """成单/工单统计。"""
+    """成单/工单统计(含金额、佣金预估、按经理业绩)。"""
+    COMMISSION_RATE = 0.01  # 渠道返佣预估:放款额 1%
     with _conn() as conn:
         rows = conn.execute("SELECT status, COUNT(*) c FROM leads GROUP BY status").fetchall()
         by_status = {r["status"] or "未知": r["c"] for r in rows}
         total = sum(by_status.values())
         won = by_status.get("已放款", 0) + by_status.get("已通过", 0)
+        won_amount = conn.execute(
+            "SELECT COALESCE(SUM(loan_amount),0) s FROM leads WHERE status IN ('已放款','已通过')"
+        ).fetchone()["s"] or 0
         mrows = conn.execute(
-            "SELECT manager, COUNT(*) c FROM leads WHERE manager != '' AND manager IS NOT NULL GROUP BY manager"
+            """SELECT manager,
+                      COUNT(*) c,
+                      SUM(CASE WHEN status IN ('已放款','已通过') THEN 1 ELSE 0 END) won,
+                      SUM(CASE WHEN status IN ('已放款','已通过') THEN loan_amount ELSE 0 END) won_amt
+               FROM leads WHERE manager != '' AND manager IS NOT NULL GROUP BY manager"""
         ).fetchall()
-        by_manager = [{"manager": r["manager"], "count": r["c"]} for r in mrows]
+        by_manager = []
+        for r in mrows:
+            c = r["c"] or 0
+            w = r["won"] or 0
+            by_manager.append({
+                "manager": r["manager"],
+                "count": c,
+                "won": w,
+                "won_amount": round(r["won_amt"] or 0, 1),
+                "win_rate": round(w / c * 100, 1) if c else 0.0,
+                "commission": round((r["won_amt"] or 0) * COMMISSION_RATE, 2),
+            })
+        by_manager.sort(key=lambda x: x["won_amount"], reverse=True)
     win_rate = round(won / total * 100, 1) if total else 0.0
-    return {"total": total, "won": won, "win_rate": win_rate, "by_status": by_status, "by_manager": by_manager}
+    return {
+        "total": total, "won": won, "win_rate": win_rate,
+        "won_amount": round(won_amount, 1),
+        "est_commission": round(won_amount * COMMISSION_RATE, 2),
+        "by_status": by_status, "by_manager": by_manager,
+    }
+
+
+def seed_demo_leads() -> dict:
+    """生成一批演示用工单/客户线索(带 demo 标记,可清除),让后台看板与业绩统计丰满。"""
+    import random
+    from datetime import timedelta
+    industries = ["制造", "商贸", "餐饮", "建筑", "科技", "物流"]
+    banks = ["工商银行", "建设银行", "招商银行", "网商银行", "地方农商行"]
+    managers = ["李经理", "王经理", "张经理", "刘经理"]
+    statuses = ["待回访", "已联系", "材料待补充", "银行审核中", "已放款", "已拒绝"]
+    tiers = ["", "深度诊断版", "银行申报代办", "政策代办"]
+    companies = ["顺发", "鑫隆", "恒通", "德盛", "宏图", "永泰", "金鼎", "华瑞", "利丰", "盛世"]
+    suffix = ["贸易", "科技", "食品", "建材", "制造", "物流"]
+    now = datetime.now()
+    created = 0
+    with _conn() as conn:
+        for _ in range(28):
+            days_ago = random.randint(0, 20)
+            dt = (now - timedelta(days=days_ago)).strftime("%Y-%m-%d %H:%M:%S")
+            ind = random.choice(industries)
+            amt = random.choice([20, 30, 50, 80, 100, 150, 200, 300])
+            st = random.choices(statuses, weights=[18, 20, 14, 16, 22, 10])[0]
+            mgr = random.choice(managers) if st != "待回访" else random.choice(["", *managers])
+            tags = [ind, ("大额抵押客户" if amt >= 150 else "短期周转客户")]
+            if random.random() < 0.4:
+                tags.append("想申请贴息")
+            row = {
+                "id": "demo-" + uuid.uuid4().hex[:10],
+                "kind": random.choice(["预约", "咨询", "增值意向"]),
+                "company_name": random.choice(companies) + random.choice(suffix) + "有限公司",
+                "phone": "138" + "".join(str(random.randint(0, 9)) for _ in range(8)),
+                "industry": ind,
+                "loan_amount": amt,
+                "bank": random.choice(banks),
+                "slot": "",
+                "note": "[demo]",
+                "status": st,
+                "created_at": dt,
+                "manager": mgr,
+                "follow_up": random.choice(["", "已电联,待补充流水", "客户考虑中", "已提交银行", "已放款完成"]),
+                "updated_at": dt,
+                "tags": "、".join(tags),
+                "service_tier": random.choice(tiers),
+                "referrer": random.choice(["", "", "老客推荐"]),
+            }
+            conn.execute(
+                """INSERT INTO leads (id,kind,company_name,phone,industry,loan_amount,bank,slot,note,status,created_at,manager,follow_up,updated_at,tags,service_tier,referrer)
+                   VALUES (:id,:kind,:company_name,:phone,:industry,:loan_amount,:bank,:slot,:note,:status,:created_at,:manager,:follow_up,:updated_at,:tags,:service_tier,:referrer)""",
+                row,
+            )
+            created += 1
+    return {"created": created}
+
+
+def clear_demo_leads() -> dict:
+    with _conn() as conn:
+        cur = conn.execute("DELETE FROM leads WHERE id LIKE 'demo-%' OR note = '[demo]'")
+        return {"deleted": cur.rowcount}
 
 
 def save_chat_message(session_id: str, role: str, content: str) -> None:
@@ -378,11 +464,17 @@ def create_lead(data: dict) -> dict:
         "note": data.get("note", ""),
         "status": "待回访",
         "created_at": created_at,
+        "manager": "",
+        "follow_up": "",
+        "updated_at": created_at,
+        "tags": "、".join(data.get("tags") or []) if isinstance(data.get("tags"), list) else (data.get("tags") or ""),
+        "service_tier": data.get("service_tier", "") or "",
+        "referrer": data.get("referrer", "") or "",
     }
     with _conn() as conn:
         conn.execute(
-            """INSERT INTO leads (id,kind,company_name,phone,industry,loan_amount,bank,slot,note,status,created_at)
-               VALUES (:id,:kind,:company_name,:phone,:industry,:loan_amount,:bank,:slot,:note,:status,:created_at)""",
+            """INSERT INTO leads (id,kind,company_name,phone,industry,loan_amount,bank,slot,note,status,created_at,manager,follow_up,updated_at,tags,service_tier,referrer)
+               VALUES (:id,:kind,:company_name,:phone,:industry,:loan_amount,:bank,:slot,:note,:status,:created_at,:manager,:follow_up,:updated_at,:tags,:service_tier,:referrer)""",
             row,
         )
     return row
@@ -426,6 +518,10 @@ EVENT_LABELS = {
     "credit_check": "征信自查",
     "msg_center": "打开消息中心",
     "account_login": "手机号登录",
+    "pricing_view": "查看服务套餐",
+    "upgrade_intent": "升级增值意向",
+    "wecom_add": "加企微引导",
+    "referral_copy": "复制裂变邀请码",
 }
 
 # 转化漏斗定义:(事件名, 展示名)。按此顺序计算逐级转化。

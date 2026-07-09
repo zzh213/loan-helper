@@ -136,6 +136,13 @@ def require_admin(request: Request):
     return True
 
 
+@app.get("/api/pricing")
+def api_pricing():
+    """商业化服务套餐与商业模式说明(公开)。"""
+    import pricing
+    return pricing.get_pricing()
+
+
 @app.post("/api/recommend", response_model=RecommendResponse)
 def api_recommend(profile: EnterpriseProfile) -> RecommendResponse:
     """根据企业实际情况返回最优贷款方案。"""
@@ -730,6 +737,31 @@ def admin_tickets(request: Request):
     return {"leads": storage.list_leads(), "stats": storage.lead_stats()}
 
 
+@app.post("/api/admin/tickets/seed-demo")
+def admin_seed_demo_leads(request: Request):
+    """管理后台:一键生成演示工单/线索(答辩演示用,可一键清除)。"""
+    require_admin(request)
+    return storage.seed_demo_leads()
+
+
+@app.post("/api/admin/tickets/clear-demo")
+def admin_clear_demo_leads(request: Request):
+    """管理后台:清除演示工单/线索。"""
+    require_admin(request)
+    return storage.clear_demo_leads()
+
+
+@app.get("/api/admin/tickets/{lead_id}/sop")
+def admin_ticket_sop(request: Request, lead_id: str):
+    """管理后台:为某工单生成标准化跟进 SOP(话术/材料/跟进节奏)。"""
+    require_admin(request)
+    lead = next((l for l in storage.list_leads() if l["id"] == lead_id), None)
+    if not lead:
+        raise HTTPException(status_code=404, detail="工单不存在")
+    import sop
+    return sop.build_sop(lead)
+
+
 @app.post("/api/admin/tickets/{lead_id}")
 def admin_update_ticket(request: Request, lead_id: str, payload: dict):
     """管理后台:分配客户经理、更新工单状态、追加跟进记录。"""
@@ -739,6 +771,34 @@ def admin_update_ticket(request: Request, lead_id: str, payload: dict):
         raise HTTPException(status_code=404, detail="工单不存在或无可更新字段")
     storage.add_audit_log("update_ticket", target=lead_id, detail=json.dumps(payload, ensure_ascii=False)[:300], ip=_client_ip(request))
     return {"ok": True, "lead": row}
+
+
+@app.get("/api/admin/assign-rule")
+def admin_get_assign_rule(request: Request):
+    """管理后台:读取客户分配规则。"""
+    require_admin(request)
+    raw = storage.get_setting("assign_rule", "")
+    default = {"mode": "manual", "managers": ["李经理", "王经理", "张经理", "刘经理"]}
+    if raw:
+        try:
+            default.update(json.loads(raw))
+        except Exception:
+            pass
+    return default
+
+
+@app.post("/api/admin/assign-rule")
+def admin_save_assign_rule(request: Request, payload: dict):
+    """管理后台:保存客户分配规则(手动/轮询/按行业)。"""
+    require_admin(request)
+    mode = payload.get("mode", "manual")
+    if mode not in ("manual", "round_robin", "by_amount"):
+        mode = "manual"
+    managers = [m for m in (payload.get("managers") or []) if str(m).strip()][:12]
+    rule = {"mode": mode, "managers": managers or ["李经理", "王经理", "张经理", "刘经理"]}
+    storage.set_setting("assign_rule", json.dumps(rule, ensure_ascii=False))
+    storage.add_audit_log("update_assign_rule", target="assign", detail=json.dumps(rule, ensure_ascii=False), ip=_client_ip(request))
+    return {"ok": True, "rule": rule}
 
 
 # ---------------- 审计日志 ----------------

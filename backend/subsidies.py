@@ -103,3 +103,59 @@ def match_policies(profile: EnterpriseProfile) -> List[Dict]:
         except Exception:
             continue
     return matched
+
+
+# 政策库浏览标签:适用行业、企业规模(用于「政策补贴库」独立筛选,与是否命中 cond 无关)
+POLICY_TAGS: Dict[str, Dict] = {
+    "puhui-interest-subsidy": {"industries": ["通用"], "scale": ["小微", "个体"]},
+    "tech-sme-grant": {"industries": ["科技", "制造业"], "scale": ["小微", "中小"]},
+    "startup-guarantee-loan": {"industries": ["通用"], "scale": ["小微", "个体"]},
+    "stabilize-employment": {"industries": ["通用"], "scale": ["小微", "中小"]},
+    "manufacturing-upgrade": {"industries": ["制造业"], "scale": ["中小", "小微"]},
+    "agri-support": {"industries": ["农业"], "scale": ["小微", "个体"]},
+    "tax-relief-small": {"industries": ["通用"], "scale": ["小微", "个体"]},
+    "rent-subsidy": {"industries": ["科技", "商贸", "通用"], "scale": ["小微", "个体"]},
+}
+
+
+def list_policies(region: str = "", industry: str = "", scale: str = "") -> List[Dict]:
+    """浏览政策库,可按行业 / 规模筛选(地区为提示性字段,政策为全国通用示意)。"""
+    out = []
+    for pol in POLICIES:
+        tags = POLICY_TAGS.get(pol["id"], {"industries": ["通用"], "scale": ["小微", "个体", "中小"]})
+        inds = tags.get("industries", ["通用"])
+        scales = tags.get("scale", ["小微"])
+        if industry and industry not in inds and "通用" not in inds:
+            continue
+        if scale and scale not in scales:
+            continue
+        out.append({
+            "id": pol["id"],
+            "name": pol["name"],
+            "category": pol["category"],
+            "authority": pol["authority"],
+            "benefit": pol["benefit"],
+            "apply_points": pol["apply_points"],
+            "apply_window": pol.get("apply_window", "常年可申报"),
+            "updated": pol.get("updated", "2026-06"),
+            "industries": inds,
+            "scale": scales,
+            "region": region or "全国通用",
+        })
+    return out
+
+
+def get_policy(pid: str) -> Dict:
+    for pol in POLICIES:
+        if pol["id"] == pid:
+            tags = POLICY_TAGS.get(pid, {})
+            return {
+                "id": pol["id"], "name": pol["name"], "category": pol["category"],
+                "authority": pol["authority"], "benefit": pol["benefit"],
+                "apply_points": pol["apply_points"],
+                "apply_window": pol.get("apply_window", "常年可申报"),
+                "updated": pol.get("updated", "2026-06"),
+                "industries": tags.get("industries", ["通用"]),
+                "scale": tags.get("scale", ["小微"]),
+            }
+    return {}

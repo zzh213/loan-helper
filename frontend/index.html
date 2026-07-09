@@ -82,6 +82,21 @@
     </div>
   </header>
 
+  <button id="msg-bell" class="msg-bell" type="button" title="消息中心" aria-label="消息中心">
+    🔔<span id="msg-badge" class="msg-badge hidden">0</span>
+  </button>
+  <div id="msg-panel" class="msg-panel hidden">
+    <div class="msg-panel-head">
+      <b>🔔 消息中心</b>
+      <div class="msg-panel-actions">
+        <button id="msg-read-all" class="msg-mini-btn" type="button">全部已读</button>
+        <button id="msg-clear" class="msg-mini-btn" type="button">清空</button>
+        <button id="msg-close" class="msg-mini-btn" type="button">✕</button>
+      </div>
+    </div>
+    <div id="msg-list" class="msg-list"></div>
+  </div>
+
   <main class="layout">
     <aside class="sidebar">
       <nav class="side-tabs">
@@ -483,6 +498,29 @@
         <small>中关村等园区贴息不定期开放,开启后窗口期将提醒你及时申报。</small>
       </div>
     </section>
+
+    <section class="card policy-lib-card">
+      <h2>📚 政策补贴库(可筛选)</h2>
+      <p class="card-sub">按地区、行业、企业规模浏览可申报的贴息、稳岗、创业与财税政策,一键下载申报指南。</p>
+      <div class="policy-lib-filters">
+        <select id="pl-prov" class="hs-sel"><option value="">全部省/直辖市</option></select>
+        <select id="pl-industry" class="hs-sel">
+          <option value="">全部行业</option>
+          <option value="制造业">制造业</option>
+          <option value="科技">科技</option>
+          <option value="商贸">商贸</option>
+          <option value="农业">农业</option>
+        </select>
+        <select id="pl-scale" class="hs-sel">
+          <option value="">全部规模</option>
+          <option value="个体">个体工商户</option>
+          <option value="小微">小微企业</option>
+          <option value="中小">中小企业</option>
+        </select>
+        <button id="pl-search" class="export-btn">🔍 筛选</button>
+      </div>
+      <div id="policy-lib-list"></div>
+    </section>
     </div>
 
     <div id="tab-calc" class="hidden">
@@ -549,6 +587,59 @@
         </div>
       </div>
       <div id="credit-health" class="credit-health"></div>
+    </section>
+
+    <section class="card credit-guide-card">
+      <h2>📖 征信自查与修复指引</h2>
+      <p class="card-sub">用通俗的话讲清楚:怎么查自己的征信、逾期了怎么补救、纳税信用怎么提升。看不懂专业术语也没关系。</p>
+      <div class="cg-accordion">
+        <details class="cg-item" open>
+          <summary>🔍 第一步:如何免费查自己的征信</summary>
+          <div class="cg-body">
+            <ol>
+              <li><b>个人征信</b>:登录「中国人民银行征信中心」官网(www.pbccrc.org.cn),或用手机银行 App 的「查征信」入口,每年有 2 次免费查询机会。</li>
+              <li><b>企业征信</b>:通过开户银行或人民银行分支机构查询「企业信用报告」,了解贷款、担保、欠税等记录。</li>
+              <li>重点看三处:<b>逾期记录</b>(有没有还款晚了)、<b>查询记录</b>(近期被查了多少次)、<b>负债情况</b>(总共欠了多少)。</li>
+            </ol>
+          </div>
+        </details>
+        <details class="cg-item">
+          <summary>🩹 第二步:逾期了怎么修复</summary>
+          <div class="cg-body">
+            <ol>
+              <li><b>先还清欠款</b>:发现逾期立即结清,越早越好,拖得越久影响越大。</li>
+              <li><b>保持后续不再逾期</b>:征信看的是最近表现,连续 24 个月按时还款,新记录会逐渐覆盖旧记录的影响。</li>
+              <li><b>不良记录 5 年自动消除</b>:结清欠款后,不良记录自结清之日起保留 5 年后自动删除,不用花钱找人"洗白"。</li>
+              <li><b>非本人原因的逾期可申诉</b>:如银行系统错误、被冒名贷款,可向银行或征信中心提交「异议申请」要求更正。</li>
+              <li class="cg-warn">⚠️ 警惕"征信修复""征信洗白"骗局——凡是收费承诺删除真实逾期记录的都是诈骗。</li>
+            </ol>
+          </div>
+        </details>
+        <details class="cg-item">
+          <summary>📈 第三步:如何提升纳税信用</summary>
+          <div class="cg-body">
+            <ol>
+              <li><b>按时申报、按时缴税</b>:不漏报、不迟报,这是纳税信用评级(A/B/M/C/D)最基础的加分项。</li>
+              <li><b>如实开票、规范经营</b>:避免虚开发票、账目混乱,保持进销项匹配。</li>
+              <li><b>争取 A 级 / B 级</b>:纳税信用 A、B 级企业在银行申贷时是隐性加分项,部分银行有"银税互动"专属信用贷。</li>
+              <li><b>修复纳税信用</b>:若因非主观原因被降级,纠正后可按税务局规定申请纳税信用修复。</li>
+            </ol>
+          </div>
+        </details>
+        <details class="cg-item">
+          <summary>💡 第四步:申贷前的自查清单</summary>
+          <div class="cg-body">
+            <ul class="cg-check">
+              <li>近 2 年无逾期,或逾期已结清满 2 年</li>
+              <li>近半年硬查询次数不超过 6 次(别到处点"测额度")</li>
+              <li>总负债控制在年营业额的 70% 以内</li>
+              <li>纳税信用达到 B 级及以上</li>
+              <li>营业执照、开户、纳税信息一致且真实</li>
+            </ul>
+            <p class="cg-tip">📌 对照上面用「上方的征信养护工具箱」测一下健康分,再去「智能匹配」做前置预审,通过率会更稳。</p>
+          </div>
+        </details>
+      </div>
     </section>
     </div>
 

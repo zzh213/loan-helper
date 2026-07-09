@@ -57,7 +57,90 @@ function showToast(message, type = "info") {
   }, 3200);
 }
 
-/* ===================== 表单校验 ===================== */
+/* ===================== 站内消息中心 ===================== */
+const MSG_KEY = "inbox_msgs";
+function _loadMsgs() {
+  try { return JSON.parse(localStorage.getItem(MSG_KEY) || "[]"); } catch (e) { return []; }
+}
+function _saveMsgs(list) {
+  try { localStorage.setItem(MSG_KEY, JSON.stringify(list.slice(0, 50))); } catch (e) {}
+}
+function pushMsg(title, body, type = "info") {
+  const list = _loadMsgs();
+  // 简单去重:同标题同正文 10 分钟内不重复推送
+  const now = Date.now();
+  if (list.some((m) => m.title === title && m.body === body && now - m.ts < 600000)) return;
+  list.unshift({ id: "m" + now.toString(36) + Math.random().toString(36).slice(2, 5), title, body, type, ts: now, read: false });
+  _saveMsgs(list);
+  renderMsgCenter();
+}
+function _timeAgo(ts) {
+  const s = Math.floor((Date.now() - ts) / 1000);
+  if (s < 60) return "刚刚";
+  if (s < 3600) return Math.floor(s / 60) + " 分钟前";
+  if (s < 86400) return Math.floor(s / 3600) + " 小时前";
+  return Math.floor(s / 86400) + " 天前";
+}
+function renderMsgCenter() {
+  const badge = document.getElementById("msg-badge");
+  const listEl = document.getElementById("msg-list");
+  const list = _loadMsgs();
+  const unread = list.filter((m) => !m.read).length;
+  if (badge) {
+    badge.textContent = unread > 99 ? "99+" : String(unread);
+    badge.classList.toggle("hidden", unread === 0);
+  }
+  if (!listEl) return;
+  if (!list.length) {
+    listEl.innerHTML = '<div class="msg-empty">暂无消息。完成匹配、保存记录或开启提醒后,节点通知会出现在这里。</div>';
+    return;
+  }
+  const icons = { info: "ℹ️", success: "✅", remind: "🔔", progress: "📶" };
+  listEl.innerHTML = list.map((m) => `
+    <div class="msg-item ${m.read ? "" : "unread"}" data-id="${m.id}">
+      <div class="msg-ico">${icons[m.type] || "ℹ️"}</div>
+      <div class="msg-main">
+        <div class="msg-title">${escapeHtml(m.title)}</div>
+        <div class="msg-body">${escapeHtml(m.body)}</div>
+        <div class="msg-time">${_timeAgo(m.ts)}</div>
+      </div>
+    </div>`).join("");
+}
+(function initMsgCenter() {
+  const bell = document.getElementById("msg-bell");
+  const panel = document.getElementById("msg-panel");
+  if (!bell || !panel) return;
+  bell.addEventListener("click", () => {
+    const show = panel.classList.contains("hidden");
+    panel.classList.toggle("hidden", !show);
+    if (show) { track("msg_center"); renderMsgCenter(); }
+  });
+  document.getElementById("msg-close")?.addEventListener("click", () => panel.classList.add("hidden"));
+  document.getElementById("msg-read-all")?.addEventListener("click", () => {
+    const list = _loadMsgs().map((m) => ({ ...m, read: true }));
+    _saveMsgs(list); renderMsgCenter();
+  });
+  document.getElementById("msg-clear")?.addEventListener("click", () => {
+    _saveMsgs([]); renderMsgCenter();
+  });
+  document.getElementById("msg-list")?.addEventListener("click", (e) => {
+    const item = e.target.closest(".msg-item");
+    if (!item) return;
+    const list = _loadMsgs().map((m) => m.id === item.dataset.id ? { ...m, read: true } : m);
+    _saveMsgs(list); renderMsgCenter();
+  });
+  document.addEventListener("click", (e) => {
+    if (!panel.contains(e.target) && !bell.contains(e.target)) panel.classList.add("hidden");
+  });
+  // 首次访问推送欢迎消息
+  if (!localStorage.getItem("msg_welcomed")) {
+    localStorage.setItem("msg_welcomed", "1");
+    pushMsg("👋 欢迎使用小微贷管家", "完成智能匹配后可保存申请记录,状态推进与政策窗口提醒都会在这里通知你。", "info");
+  }
+  renderMsgCenter();
+})();
+
+
 function clearFieldError(field) {
   field.classList.remove("invalid");
   const msg = field.parentElement.querySelector(".field-error");
@@ -179,6 +262,9 @@ form.addEventListener("submit", async (e) => {
     clearDraft();
     track((data.plans && data.plans.length) ? "recommend_success" : "recommend_empty",
       { plans: (data.plans || []).length });
+    if (data.plans && data.plans.length) {
+      pushMsg("✅ 方案匹配完成", `已为「${(profile.company_name || "你的企业")}」匹配 ${data.plans.length} 套方案,可导出 PDF 或保存为申请记录。`, "success");
+    }
     showToast("已为你匹配最优方案", "success");
     resultEl.scrollIntoView({ behavior: "smooth", block: "start" });
   } catch (err) {
@@ -403,6 +489,7 @@ if (_prBtn) {
     localStorage.setItem("policyRemind", on ? "off" : "on");
     refreshPolicyRemind();
     showToast(on ? "已关闭提醒" : "已开启,窗口期将第一时间通知你", "success");
+    if (!on) pushMsg("🔔 已开启贴息窗口提醒", "有明确申报窗口期的政策将在消息中心为你标记提示,记得及时申报。", "remind");
   });
 }
 async function queryHiddenSubsidies() {
@@ -443,6 +530,81 @@ function hiddenSubCard(s) {
     <div class="hs-apply">📝 申报:${escapeHtml(s.apply_points)}</div>
   </div>`;
 }
+
+/* ===== 政策补贴库(可筛选浏览 + 申报指南下载) ===== */
+const plProv = document.getElementById("pl-prov");
+const plIndustry = document.getElementById("pl-industry");
+const plScale = document.getElementById("pl-scale");
+const plSearchBtn = document.getElementById("pl-search");
+const policyLibList = document.getElementById("policy-lib-list");
+function initPolicyLibProv() {
+  if (!plProv) return;
+  const fill = () => {
+    if (!regionTree || !Object.keys(regionTree).length) return;
+    Object.keys(regionTree).forEach((p) => plProv.add(new Option(p, p)));
+  };
+  if (regionTree && Object.keys(regionTree).length) fill();
+  else setTimeout(fill, 800);
+}
+function windowStatus(win) {
+  const w = win || "";
+  if (/常年|滚动|受理/.test(w)) return { cls: "open", label: "🟢 常年可申报" };
+  if (/月|季|年|前|内|期/.test(w)) return { cls: "soon", label: "🟡 有窗口期,注意时间" };
+  return { cls: "open", label: "🟢 可申报" };
+}
+function policyLibCard(p) {
+  const remindOn = localStorage.getItem("policyRemind") === "on";
+  const ws = windowStatus(p.apply_window);
+  const winClass = ws.cls === "soon" && remindOn ? "pl-window remind" : "pl-window";
+  return `<div class="policy-lib-item">
+    <div class="pl-top"><b>${escapeHtml(p.name)}</b>
+      <span class="pl-cat">${escapeHtml(p.category)}</span></div>
+    <div class="pl-meta">🏛️ ${escapeHtml(p.authority)} · 适用:${escapeHtml((p.industries || []).join("/"))} · ${escapeHtml((p.scale || []).join("/"))}</div>
+    <div class="pl-benefit">💰 ${escapeHtml(p.benefit)}</div>
+    <div class="pl-apply">📝 ${escapeHtml(p.apply_points)}</div>
+    <div class="${winClass}"><span class="pl-win-status ${ws.cls}">${ws.label}</span>
+      <span class="pl-win-txt">🗓️ 申报窗口:${escapeHtml(p.apply_window)}</span></div>
+    <div class="pl-actions">
+      <a class="pl-guide-btn" href="/api/policy-guide/${encodeURIComponent(p.id)}" download onclick="track('policy_guide')">📥 下载申报指南</a>
+    </div>
+  </div>`;
+}
+async function loadPolicyLib() {
+  if (!policyLibList) return;
+  const params = new URLSearchParams();
+  if (plProv && plProv.value) params.set("region", plProv.value);
+  if (plIndustry && plIndustry.value) params.set("industry", plIndustry.value);
+  if (plScale && plScale.value) params.set("scale", plScale.value);
+  policyLibList.innerHTML = '<div class="empty">加载中...</div>';
+  track("policy_filter");
+  try {
+    const items = await (await fetch("/api/policies?" + params.toString())).json();
+    if (!items.length) {
+      policyLibList.innerHTML = '<div class="empty">未匹配到政策,试试放宽筛选条件。</div>';
+      return;
+    }
+    const remindOn = localStorage.getItem("policyRemind") === "on";
+    const soon = items.filter((p) => windowStatus(p.apply_window).cls === "soon").length;
+    const tip = remindOn && soon
+      ? `<div class="pl-remind-tip">🔔 已开启窗口提醒:${soon} 项政策有明确申报窗口期,请留意时间。</div>`
+      : "";
+    policyLibList.innerHTML = tip + items.map(policyLibCard).join("");
+  } catch (err) {
+    policyLibList.innerHTML = `<div class="empty">加载失败:${escapeHtml(err.message)}</div>`;
+  }
+}
+if (plSearchBtn) {
+  initPolicyLibProv();
+  plSearchBtn.addEventListener("click", loadPolicyLib);
+  let _plLoaded = false;
+  const tabSubsidyBtn = document.querySelector('.tab-btn[data-tab="subsidy"]');
+  if (tabSubsidyBtn) {
+    tabSubsidyBtn.addEventListener("click", () => {
+      if (!_plLoaded) { _plLoaded = true; loadPolicyLib(); }
+    });
+  }
+}
+
 
 /* ===== 材料清单打包 + 填写示例 ===== */
 /* ===== 资质成长报告:下月提额建议 ===== */
@@ -1034,6 +1196,7 @@ async function saveApplication() {
     });
     if (!res.ok) throw new Error("保存失败:" + res.status);
     track("save_application");
+    pushMsg("💾 申请记录已保存", "系统将模拟推进审核状态(提交→审核中→通过/放款),可在「申请记录」中查看进度。", "progress");
     btn.textContent = "✅ 已保存";
     setTimeout(() => {
       btn.disabled = false;

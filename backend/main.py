@@ -3,6 +3,7 @@ import json
 import os
 import time
 import uuid
+from urllib.parse import quote
 from collections import defaultdict, deque
 
 from fastapi import FastAPI, HTTPException, Request
@@ -173,12 +174,35 @@ def api_regions():
     return REGION_TREE
 
 
+@app.get("/api/policies")
+def api_policies(region: str = "", industry: str = "", scale: str = ""):
+    """浏览政策补贴库,可按地区/行业/企业规模筛选。"""
+    from subsidies import list_policies
+    return list_policies(region=region, industry=industry, scale=scale)
+
+
+@app.get("/api/policy-guide/{policy_id}")
+def api_policy_guide(policy_id: str):
+    """下载某项政策的申报指南(纯文本)。"""
+    from subsidies import get_policy
+    from apply_guide import build_policy_guide
+    pol = get_policy(policy_id)
+    if not pol:
+        raise HTTPException(status_code=404, detail="政策不存在")
+    text = build_policy_guide(pol)
+    fname = f"{pol['name']}_申报指南.txt"
+    return Response(
+        content=text.encode("utf-8"),
+        media_type="text/plain; charset=utf-8",
+        headers={"Content-Disposition": f"attachment; filename*=UTF-8''{quote(fname)}"},
+    )
+
+
 @app.get("/api/industry-templates")
 def api_industry_templates():
     """垂直行业风控模板列表。"""
     from industry_templates import list_templates
     return list_templates()
-
 
 @app.get("/api/industry-template/{industry}")
 def api_industry_template(industry: str):

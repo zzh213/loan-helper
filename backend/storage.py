@@ -327,6 +327,10 @@ EVENT_LABELS = {
     "chat_send": "向AI提问",
     "preaudit": "使用预审",
     "hidden_subsidy": "查隐藏贴息",
+    "policy_filter": "筛选政策库",
+    "policy_guide": "下载申报指南",
+    "credit_check": "征信自查",
+    "msg_center": "打开消息中心",
 }
 
 # 转化漏斗定义:(事件名, 展示名)。按此顺序计算逐级转化。

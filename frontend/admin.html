@@ -65,6 +65,16 @@
     .feat-bar { height:100%; background:linear-gradient(90deg,#9ac0a0,#6fae8e); }
     .feat-n { width:34px; text-align:right; font-size:12px; font-weight:700; color:var(--blue-d); }
     .insight { background:#fff8ec; border:1px solid #f6d9a8; border-radius:10px; padding:12px 14px; font-size:13.5px; color:#7a5a1e; line-height:1.7; margin-top:14px; }
+    /* 每日趋势柱状图 */
+    .trend { display:flex; align-items:flex-end; gap:8px; height:180px; padding:10px 4px 0; overflow-x:auto; }
+    .trend-col { display:flex; flex-direction:column; align-items:center; gap:4px; min-width:34px; flex-shrink:0; }
+    .trend-bars { display:flex; align-items:flex-end; gap:3px; height:140px; }
+    .trend-bar { width:11px; border-radius:3px 3px 0 0; transition:height .5s; }
+    .tb-visit { background:linear-gradient(180deg,#7ea3d0,#5f86bb); }
+    .tb-submit { background:linear-gradient(180deg,#9ac0a0,#6fae8e); }
+    .trend-date { font-size:10px; color:var(--muted); white-space:nowrap; }
+    .trend-legend { display:flex; gap:16px; font-size:12px; color:var(--muted); margin-bottom:6px; }
+    .trend-legend i { display:inline-block; width:12px; height:12px; border-radius:3px; vertical-align:-1px; margin-right:5px; }
     @media (max-width:600px){ .stat .n{font-size:24px;} }
   </style>
 </head>
@@ -110,6 +120,11 @@
       <div class="card">
         <div class="card-head"><h3>🔧 功能使用排行 · 哪些功能真的有人用</h3></div>
         <div class="feat-grid" id="feature-usage"></div>
+      </div>
+
+      <div class="card">
+        <div class="card-head"><h3>📅 每日趋势 · 访问与提交测算</h3></div>
+        <div id="trend-chart"></div>
       </div>
 
       <div class="card">
@@ -201,6 +216,28 @@
           <span class="feat-bar-wrap"><span class="feat-bar" style="width:${Math.round(f.count/fmax*100)}%"></span></span>
           <span class="feat-n">${f.count}</span>
         </div>`).join("") : `<div class="empty">暂无功能使用数据</div>`;
+
+      // 每日趋势
+      const daily = a.daily || [];
+      const dmax = Math.max(1, ...daily.map(d=>Math.max(d.page_view||0, (d.recommend_submit||0)+(d.personal_submit||0))));
+      const trendEl = document.getElementById("trend-chart");
+      if (daily.length){
+        const legend = `<div class="trend-legend"><span><i class="tb-visit" style="background:#5f86bb"></i>访问</span><span><i class="tb-submit" style="background:#6fae8e"></i>提交测算</span></div>`;
+        const cols = daily.map(d=>{
+          const v = d.page_view||0, s=(d.recommend_submit||0)+(d.personal_submit||0);
+          const vh = Math.round(v/dmax*140), sh = Math.round(s/dmax*140);
+          return `<div class="trend-col">
+            <div class="trend-bars">
+              <span class="trend-bar tb-visit" style="height:${vh}px" title="访问 ${v}"></span>
+              <span class="trend-bar tb-submit" style="height:${sh}px" title="提交 ${s}"></span>
+            </div>
+            <span class="trend-date">${esc((d.date||"").slice(5))}</span>
+          </div>`;
+        }).join("");
+        trendEl.innerHTML = legend + `<div class="trend">${cols}</div>`;
+      } else {
+        trendEl.innerHTML = `<div class="empty">暂无趋势数据</div>`;
+      }
     }
 
     function renderAll(d){

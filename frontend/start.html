@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>小微贷管家 · 3 分钟测出你能贷多少 | 免费融资测算</title>
+  <meta name="description" content="输入企业基本情况,免费智能测算可贷额度、利率区间与匹配银行产品,并筛查可申领贴息补贴。平台仅提供信息匹配,不放贷、不收前置费。" />
+  <meta name="robots" content="index,follow" />
+  <link rel="icon" href="/static/favicon.svg" type="image/svg+xml" />
+  <style>
+    :root { --blue:#5f86bb; --blue-d:#3b6fb0; --ink:#243447; --muted:#6a7f96; --line:#e2ebf5; --green:#2fa864; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif; color: var(--ink); background: #f4f8fd; line-height: 1.6; }
+    .lp-hero { background: linear-gradient(135deg, #3b6fb0, #5f86bb); color: #fff; padding: 40px 20px 48px; text-align: center; }
+    .lp-badge { display: inline-block; background: rgba(255,255,255,0.18); border: 1px solid rgba(255,255,255,0.35); border-radius: 20px; padding: 5px 14px; font-size: 13px; margin-bottom: 16px; }
+    .lp-hero h1 { font-size: 28px; font-weight: 800; margin-bottom: 12px; letter-spacing: 0.5px; }
+    .lp-hero h1 .hl { color: #ffd98a; }
+    .lp-sub { font-size: 15px; opacity: 0.92; max-width: 560px; margin: 0 auto 26px; }
+    .lp-cta { display: inline-block; background: #ffd98a; color: #7a4e12; font-size: 18px; font-weight: 800; padding: 15px 44px; border-radius: 12px; border: none; cursor: pointer; text-decoration: none; box-shadow: 0 8px 24px rgba(0,0,0,0.18); transition: transform .15s; }
+    .lp-cta:hover { transform: translateY(-2px); }
+    .lp-cta-note { font-size: 12.5px; opacity: 0.85; margin-top: 12px; }
+    .lp-trust { display: flex; justify-content: center; gap: 26px; flex-wrap: wrap; margin-top: 30px; }
+    .lp-trust div { font-size: 13px; opacity: 0.95; }
+    .lp-trust b { display: block; font-size: 24px; font-weight: 800; color: #ffd98a; }
+    .lp-wrap { max-width: 720px; margin: -28px auto 0; padding: 0 16px 40px; }
+    .lp-card { background: #fff; border: 1px solid var(--line); border-radius: 16px; padding: 24px; margin-bottom: 18px; box-shadow: 0 6px 20px rgba(60,90,130,0.06); }
+    .lp-card h2 { font-size: 19px; color: var(--blue-d); margin-bottom: 16px; }
+    .lp-steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+    .lp-step { text-align: center; }
+    .lp-step .no { width: 38px; height: 38px; border-radius: 50%; background: #eef4fb; color: var(--blue-d); font-weight: 800; display: flex; align-items: center; justify-content: center; margin: 0 auto 8px; }
+    .lp-step b { font-size: 14px; display: block; }
+    .lp-step small { font-size: 12px; color: var(--muted); }
+    .lp-feats { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; }
+    .lp-feat { display: flex; gap: 10px; align-items: flex-start; }
+    .lp-feat .ico { font-size: 22px; }
+    .lp-feat b { font-size: 14.5px; }
+    .lp-feat p { font-size: 13px; color: var(--muted); }
+    .lp-risk { background: #fff8ec; border: 1px solid #f5e0bd; border-radius: 14px; padding: 16px 18px; font-size: 13px; color: #8a5a1e; line-height: 1.7; }
+    .lp-risk b { color: #7a4e12; }
+    .lp-sticky { position: sticky; bottom: 0; background: rgba(255,255,255,0.96); border-top: 1px solid var(--line); padding: 12px 16px; text-align: center; backdrop-filter: blur(6px); }
+    .lp-sticky button { background: linear-gradient(90deg, #5f86bb, #3b6fb0); color: #fff; font-size: 16px; font-weight: 700; padding: 13px 36px; border: none; border-radius: 12px; cursor: pointer; width: 100%; max-width: 400px; }
+    .lp-foot { text-align: center; font-size: 12px; color: var(--muted); padding: 20px; }
+    .lp-foot a { color: var(--blue-d); }
+    @media (max-width: 520px) {
+      .lp-hero h1 { font-size: 23px; }
+      .lp-steps { grid-template-columns: repeat(2, 1fr); }
+    }
+  </style>
+</head>
+<body>
+  <section class="lp-hero">
+    <span class="lp-badge">🔒 融资信息匹配服务 · 不放贷 · 不收前置费</span>
+    <h1>3 分钟,测出你的企业<span class="hl">能贷多少、利率多少</span></h1>
+    <p class="lp-sub">输入企业真实经营情况,智能匹配银行信贷产品,测算可贷额度与利率区间,并筛查你能申领的贴息补贴。</p>
+    <a href="#" class="lp-cta" id="cta-top">立即免费测算 →</a>
+    <div class="lp-cta-note">无需注册 · 不收取任何费用 · 数据仅用于本次测算</div>
+    <div class="lp-trust">
+      <div><b>8 维</b>风控智能打分</div>
+      <div><b>12+</b>银行信贷产品</div>
+      <div><b>0 元</b>基础测算永久免费</div>
+    </div>
+  </section>
+
+  <div class="lp-wrap">
+    <div class="lp-card">
+      <h2>🚀 四步拿到你的专属融资方案</h2>
+      <div class="lp-steps">
+        <div class="lp-step"><div class="no">1</div><b>填经营情况</b><small>营收/年限/征信</small></div>
+        <div class="lp-step"><div class="no">2</div><b>智能风控打分</b><small>看清通过率</small></div>
+        <div class="lp-step"><div class="no">3</div><b>匹配最优产品</b><small>额度+利率</small></div>
+        <div class="lp-step"><div class="no">4</div><b>匹配贴息补贴</b><small>降低成本</small></div>
+      </div>
+    </div>
+
+    <div class="lp-card">
+      <h2>为什么选择小微贷管家</h2>
+      <div class="lp-feats">
+        <div class="lp-feat"><span class="ico">🎯</span><div><b>分层精准匹配</b><p>低资质推银税/信用贷,有设备走抵押贷,大额上组合贷。</p></div></div>
+        <div class="lp-feat"><span class="ico">📊</span><div><b>可解释风控</b><p>8 维评分卡告诉你"为什么通过率低"及提升路径。</p></div></div>
+        <div class="lp-feat"><span class="ico">🎁</span><div><b>隐藏贴息挖掘</b><p>按注册地匹配园区/区县级非公开贴息补贴。</p></div></div>
+        <div class="lp-feat"><span class="ico">📄</span><div><b>一键导出材料</b><p>生成符合银行进件模板的申报材料,提高签约率。</p></div></div>
+      </div>
+    </div>
+
+    <div class="lp-card">
+      <div class="lp-risk">
+        <b>⚠️ 风险与合规提示:</b>本平台为融资信息中介,<b>不发放贷款</b>,不收取前置服务费、保证金,最终授信与利率以持牌银行/金融机构审批结果为准。贷款有成本,逾期将影响征信。请认准年化综合成本(IRR)口径,警惕"低息、秒批、必过"等绝对化宣传。
+      </div>
+    </div>
+  </div>
+
+  <div class="lp-sticky">
+    <button id="cta-bottom">立即免费测算,看看我能贷多少 →</button>
+  </div>
+
+  <div class="lp-foot">
+    <a href="/">进入完整平台</a> · <a href="/legal">服务协议与隐私政策</a><br>
+    小微贷管家 · 融资信息匹配服务
+  </div>
+
+  <script>
+    // UTM 渠道追踪 + 埋点
+    function param(k){ return new URLSearchParams(location.search).get(k) || ""; }
+    var sid = localStorage.getItem("sid");
+    if (!sid) { sid = "s" + Date.now().toString(36) + Math.random().toString(36).slice(2, 8); localStorage.setItem("sid", sid); }
+    var utm = { source: param("utm_source") || param("source"), medium: param("utm_medium"), campaign: param("utm_campaign") };
+    if (utm.source) localStorage.setItem("utm", JSON.stringify(utm));
+    function track(name, props){
+      try {
+        navigator.sendBeacon("/api/track", new Blob([JSON.stringify({ sid: sid, name: name, props: props || utm, page: "/start" })], { type: "application/json" }));
+      } catch(e){}
+    }
+    track("landing_view");
+    function goApp(){
+      track("landing_cta");
+      var q = location.search || "";
+      location.href = "/" + q + (q ? "&" : "?") + "from=landing#loan-form";
+    }
+    document.getElementById("cta-top").addEventListener("click", function(e){ e.preventDefault(); goApp(); });
+    document.getElementById("cta-bottom").addEventListener("click", goApp);
+  </script>
+</body>
+</html>

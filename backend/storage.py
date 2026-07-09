@@ -519,6 +519,9 @@ EVENT_LABELS = {
     "upgrade_intent": "升级增值意向",
     "wecom_add": "加企微引导",
     "referral_copy": "复制裂变邀请码",
+    "landing_view": "落地页访问",
+    "landing_cta": "落地页点击测算",
+    "article_read": "阅读资讯文章",
 }
 
 # 转化漏斗定义:(事件名, 展示名)。按此顺序计算逐级转化。

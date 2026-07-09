@@ -3116,3 +3116,32 @@ body.dark .pv-left h3, body.dark .pv-qr { color: #bcd6ee; }
 body.dark .pkg-feats li, body.dark .pv-sub, body.dark .commerce-model { color: #a9bccc; }
 body.dark .referral-box { background: linear-gradient(135deg,#2a2418,#211c12); border-color: #4a3d24; }
 body.dark .ref-input { background: #16202c; color: #d8c9a8; border-color: #4a3d24; }
+
+/* ===== 融资资讯专栏 ===== */
+.content-cats { display: flex; flex-wrap: wrap; gap: 8px; margin: 4px 0 16px; }
+.content-cat { border: 1px solid var(--line, #e2ebf5); background: #fff; color: #5a7089; border-radius: 18px; padding: 6px 14px; font-size: 13px; cursor: pointer; transition: all .15s; }
+.content-cat:hover { border-color: #9fbbe0; }
+.content-cat.active { background: linear-gradient(90deg,#5f86bb,#3b6fb0); color: #fff; border-color: transparent; }
+.content-list { display: grid; grid-template-columns: 1fr; gap: 12px; }
+.article-card { border: 1px solid var(--line, #e2ebf5); border-radius: 12px; padding: 16px 18px; cursor: pointer; transition: box-shadow .15s, transform .15s; background: #fff; }
+.article-card:hover { box-shadow: 0 6px 18px rgba(60,90,130,0.1); transform: translateY(-2px); }
+.article-cat { display: inline-block; font-size: 12px; color: #3b6fb0; background: #eef4fb; border-radius: 6px; padding: 2px 9px; margin-bottom: 8px; }
+.article-card h3 { font-size: 16px; margin: 0 0 6px; color: #243447; }
+.article-card p { font-size: 13.5px; color: #6a7f96; margin: 0 0 10px; line-height: 1.6; }
+.article-meta { display: flex; justify-content: space-between; font-size: 12.5px; color: #90a2b6; }
+.article-more { color: #3b6fb0; font-weight: 600; }
+.article-read .article-cat { margin-bottom: 10px; }
+.article-read h2 { margin: 0 0 8px; }
+.article-read-meta { font-size: 12.5px; color: #90a2b6; margin-bottom: 16px; }
+.article-read h4 { font-size: 15.5px; color: #3b6fb0; margin: 16px 0 6px; }
+.article-read p { font-size: 14px; color: #435265; line-height: 1.75; margin: 0 0 10px; }
+.article-read-tip { margin-top: 18px; padding: 12px 14px; background: #fff8ec; border: 1px solid #f5e0bd; border-radius: 10px; font-size: 12.5px; color: #8a5a1e; }
+
+body.dark .content-cat { background: #16202c; color: #a9bccc; border-color: #2c3d4e; }
+body.dark .content-cat.active { color: #fff; }
+body.dark .article-card { background: #16202c; border-color: #2c3d4e; }
+body.dark .article-card h3 { color: #dce8f4; }
+body.dark .article-card p { color: #a9bccc; }
+body.dark .article-cat { background: #1e2c3a; color: #9fc2ea; }
+body.dark .article-read p { color: #c2d2e2; }
+body.dark .article-read-tip { background: #2a2418; border-color: #4a3d24; color: #d8c9a8; }

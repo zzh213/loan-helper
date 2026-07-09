@@ -138,7 +138,27 @@ function renderMsgCenter() {
     pushMsg("👋 欢迎使用小微贷管家", "完成智能匹配后可保存申请记录,状态推进与政策窗口提醒都会在这里通知你。", "info");
   }
   renderMsgCenter();
+  fetchRetentionNotices();
 })();
+
+// 拉取运营留存推送(LPR 变动 / 政策更新 / 免费诊断活动),按 id 去重进消息中心
+async function fetchRetentionNotices() {
+  try {
+    const res = await fetch("/api/retention-notices");
+    if (!res.ok) return;
+    const data = await res.json();
+    const seen = JSON.parse(localStorage.getItem("retention_seen") || "[]");
+    const notices = data.notices || [];
+    let changed = false;
+    notices.forEach((n) => {
+      if (seen.includes(n.id)) return;
+      pushMsg(n.title, n.body, n.type === "remind" ? "remind" : "info");
+      seen.push(n.id);
+      changed = true;
+    });
+    if (changed) localStorage.setItem("retention_seen", JSON.stringify(seen.slice(-50)));
+  } catch (e) {}
+}
 
 /* ===================== 账号体系(手机号登录 + 个人中心) ===================== */
 const AUTH_KEY = "auth_token";
@@ -1805,8 +1825,10 @@ function activateTab(tab) {
   document.getElementById("tab-calc").classList.toggle("hidden", tab !== "calc");
   document.getElementById("tab-records").classList.toggle("hidden", tab !== "records");
   document.getElementById("tab-game").classList.toggle("hidden", tab !== "game");
+  document.getElementById("tab-content").classList.toggle("hidden", tab !== "content");
   if (tab === "records") { loadRecords(); startRecPolling(); } else { stopRecPolling(); }
   if (tab === "game") initGame();
+  if (tab === "content") initContent();
   window.scrollTo({ top: 0, behavior: "smooth" });
 }
 let _recTimer = null;
@@ -3267,6 +3289,79 @@ function renderCouponWallet() {
   const c = getCoupons();
   return `<div class="coupon-wallet">🎟️ 我的权益券:<b>风控加分券 ×${c.risk || 0}</b> · <b>贴息优先申报券 ×${c.subsidy || 0}</b>
     <small>答对3题得风控加分券,全对一组得贴息优先券,可在匹配/申报时抵用</small></div>`;
+}
+
+// ===== 融资资讯专栏 =====
+let _contentState = { inited: false, cat: "", articles: [] };
+async function initContent() {
+  if (_contentState.inited) return;
+  _contentState.inited = true;
+  await loadArticles("");
+}
+async function loadArticles(cat) {
+  const listEl = document.getElementById("content-list");
+  listEl.innerHTML = '<div class="empty">加载中…</div>';
+  try {
+    const url = "/api/articles" + (cat ? "?category=" + encodeURIComponent(cat) : "");
+    const res = await fetch(url);
+    const data = await res.json();
+    _contentState.articles = data.articles || [];
+    _contentState.cat = cat;
+    renderContentCats(data.categories || []);
+    renderArticleList(_contentState.articles);
+  } catch (e) {
+    listEl.innerHTML = '<div class="empty">加载失败,请稍后重试。</div>';
+  }
+}
+function renderContentCats(cats) {
+  const el = document.getElementById("content-cats");
+  const all = [""].concat(cats);
+  el.innerHTML = all.map((c) => {
+    const label = c || "全部";
+    const active = c === _contentState.cat ? " active" : "";
+    return `<button class="content-cat${active}" data-cat="${escapeHtml(c)}">${escapeHtml(label)}</button>`;
+  }).join("");
+  el.querySelectorAll(".content-cat").forEach((b) => {
+    b.addEventListener("click", () => loadArticles(b.dataset.cat));
+  });
+}
+function renderArticleList(articles) {
+  const el = document.getElementById("content-list");
+  if (!articles.length) { el.innerHTML = '<div class="empty">暂无文章。</div>'; return; }
+  el.innerHTML = articles.map((a) => `
+    <div class="article-card" data-id="${escapeHtml(a.id)}">
+      <div class="article-cat">${escapeHtml(a.category || "")}</div>
+      <h3>${escapeHtml(a.title || "")}</h3>
+      <p>${escapeHtml(a.summary || "")}</p>
+      <div class="article-meta"><span>${escapeHtml(a.updated || "")}${a.read_min ? " · 约 " + a.read_min + " 分钟" : ""}</span><span class="article-more">阅读全文 →</span></div>
+    </div>`).join("");
+  el.querySelectorAll(".article-card").forEach((c) => {
+    c.addEventListener("click", () => openArticle(c.dataset.id));
+  });
+}
+async function openArticle(id) {
+  try {
+    const res = await fetch("/api/articles/" + encodeURIComponent(id));
+    if (!res.ok) { pushMsg("文章不可用", "该文章已下架。", "warn"); return; }
+    const a = await res.json();
+    track("article_read", { id: id });
+    const body = (a.body || []).map((seg) => {
+      const h = seg.h ? `<h4>${escapeHtml(seg.h)}</h4>` : "";
+      const p = seg.p ? `<p>${escapeHtml(seg.p)}</p>` : "";
+      return h + p;
+    }).join("");
+    document.getElementById("modal-content").innerHTML =
+      `<div class="article-read">
+        <div class="article-cat">${escapeHtml(a.category || "")}</div>
+        <h2>${escapeHtml(a.title || "")}</h2>
+        <div class="article-read-meta">${escapeHtml(a.updated || "")}${a.read_min ? " · 约 " + a.read_min + " 分钟阅读" : ""}</div>
+        ${body}
+        <div class="article-read-tip">📌 本文仅为融资科普,不构成放贷或投资建议。具体以持牌机构审批为准。</div>
+      </div>`;
+    document.getElementById("detail-modal").classList.remove("hidden");
+  } catch (e) {
+    pushMsg("加载失败", "文章加载失败,请稍后重试。", "warn");
+  }
 }
 
 async function initGame() {

@@ -238,6 +238,18 @@
       </div>
 
       <div class="card">
+        <div class="card-head"><h3>📰 资讯专栏管理 · 文章上下架</h3></div>
+        <div id="art-form" style="margin-bottom:12px;display:grid;gap:8px;max-width:640px">
+          <input id="art-title" placeholder="文章标题" />
+          <input id="art-cat" placeholder="分类(如:融资科普 / 贴息政策 / 避坑指南 / 行业干货)" />
+          <input id="art-summary" placeholder="一句话摘要" />
+          <textarea id="art-body" rows="5" placeholder="正文(每段一行;可用「小标题::段落」格式,或直接换行分段)"></textarea>
+          <button class="mini" id="art-add">➕ 发布文章</button>
+        </div>
+        <div class="table-scroll"><table id="art-table"></table></div>
+      </div>
+
+      <div class="card">
         <div class="card-head"><h3>🛡️ 审计日志 · 操作留痕(金融审计留存 ≥5 年)</h3></div>
         <div class="table-scroll"><table id="audit-table"></table></div>
       </div>
@@ -420,6 +432,7 @@
       renderTickets(await api("/api/admin/tickets"));
       renderAssignRule(await api("/api/admin/assign-rule"));
       renderAudit((await api("/api/admin/audit-logs?limit=200")).logs);
+      renderArticles((await api("/api/admin/articles")).articles);
       document.getElementById("exp-apps").href = "/api/admin/export/applications?token=" + encodeURIComponent(token);
       document.getElementById("exp-leads").href = "/api/admin/export/leads?token=" + encodeURIComponent(token);
       document.getElementById("exp-audit").href = "/api/admin/export/audit?token=" + encodeURIComponent(token);
@@ -631,6 +644,49 @@
           <td>${esc(l.ip)||"-"}</td></tr>`).join("")
         : `<tr><td colspan="6" class="empty">暂无操作记录</td></tr>`);
     }
+
+    function renderArticles(list){
+      const t = document.getElementById("art-table");
+      t.innerHTML = `<tr><th>标题</th><th>分类</th><th>类型</th><th>更新</th><th>状态</th><th>操作</th></tr>` +
+        (list && list.length ? list.map(a=>`<tr data-aid="${esc(a.id)}">
+          <td class="wrap-cell">${esc(a.title)}</td>
+          <td>${esc(a.category)}</td>
+          <td>${a.builtin?'<span class="tag t-gray">内置</span>':'<span class="tag t-blue">自定义</span>'}</td>
+          <td>${esc(a.updated)}</td>
+          <td><span class="tag ${a.disabled?"t-red":"t-green"}">${a.disabled?"已下架":"已上架"}</span></td>
+          <td>
+            <button class="mini art-toggle" data-dis="${a.disabled?0:1}">${a.disabled?"上架":"下架"}</button>
+            ${a.builtin?"":'<button class="mini art-del">删除</button>'}
+          </td></tr>`).join("")
+        : `<tr><td colspan="6" class="empty">暂无文章</td></tr>`);
+      t.querySelectorAll(".art-toggle").forEach(b=>b.addEventListener("click", async e=>{
+        const id = e.target.closest("tr").dataset.aid;
+        await apiPost("/api/admin/articles/"+encodeURIComponent(id)+"/toggle", { disabled: e.target.dataset.dis==="1" });
+        renderArticles((await api("/api/admin/articles")).articles);
+      }));
+      t.querySelectorAll(".art-del").forEach(b=>b.addEventListener("click", async e=>{
+        if(!confirm("确认删除该文章?")) return;
+        const id = e.target.closest("tr").dataset.aid;
+        await apiPost("/api/admin/articles/"+encodeURIComponent(id), null, "DELETE");
+        renderArticles((await api("/api/admin/articles")).articles);
+      }));
+    }
+    document.getElementById("art-add").addEventListener("click", async ()=>{
+      const title = document.getElementById("art-title").value.trim();
+      if(!title){ alert("请填写标题"); return; }
+      const body = document.getElementById("art-body").value.trim()
+        .split("\n").map(l=>l.trim()).filter(Boolean)
+        .map(l=>{ const i=l.indexOf("::"); return i>0?[l.slice(0,i).trim(), l.slice(i+2).trim()]:["", l]; });
+      const res = await apiPost("/api/admin/articles", {
+        title,
+        category: document.getElementById("art-cat").value.trim(),
+        summary: document.getElementById("art-summary").value.trim(),
+        body: body.length?body:document.getElementById("art-body").value,
+      });
+      if(res && res.ok===false){ alert(res.error||"发布失败"); return; }
+      ["art-title","art-cat","art-summary","art-body"].forEach(id=>document.getElementById(id).value="");
+      renderArticles((await api("/api/admin/articles")).articles);
+    });
 
     function showLogin(){ document.getElementById("login-view").style.display=""; document.getElementById("admin-view").style.display="none"; }
     function showAdmin(){ document.getElementById("login-view").style.display="none"; document.getElementById("admin-view").style.display=""; }

@@ -143,6 +143,30 @@ def api_pricing():
     return pricing.get_pricing()
 
 
+@app.get("/api/articles")
+def api_articles(category: str = ""):
+    """资讯专栏文章列表(公开,仅摘要)。"""
+    import content
+    return {"categories": content.CATEGORIES, "articles": content.list_articles(category=category)}
+
+
+@app.get("/api/articles/{article_id}")
+def api_article_detail(article_id: str):
+    """资讯专栏文章详情(公开)。"""
+    import content
+    art = content.get_article(article_id)
+    if not art or article_id in content._disabled():
+        raise HTTPException(status_code=404, detail="文章不存在或已下架")
+    return art
+
+
+@app.get("/api/retention-notices")
+def api_retention_notices():
+    """留存运营通知(LPR/政策更新/贴息提醒,公开,前台消息中心用)。"""
+    import content
+    return {"notices": content.retention_notices()}
+
+
 @app.post("/api/recommend", response_model=RecommendResponse)
 def api_recommend(profile: EnterpriseProfile) -> RecommendResponse:
     """根据企业实际情况返回最优贷款方案。"""
@@ -801,6 +825,47 @@ def admin_save_assign_rule(request: Request, payload: dict):
     return {"ok": True, "rule": rule}
 
 
+# ---------------- 资讯专栏后台管理 ----------------
+@app.get("/api/admin/articles")
+def admin_list_articles(request: Request):
+    """管理后台:查看全部文章(含已下架)。"""
+    require_admin(request)
+    import content
+    return {"categories": content.CATEGORIES, "articles": content.list_articles(include_disabled=True)}
+
+
+@app.post("/api/admin/articles")
+def admin_add_article(request: Request, payload: dict):
+    """管理后台:新增一篇资讯文章。"""
+    require_admin(request)
+    import content
+    res = content.add_article(payload)
+    if not res.get("ok"):
+        raise HTTPException(status_code=400, detail=res.get("error", "新增失败"))
+    storage.add_audit_log("add_article", target=res["article"]["id"], detail=res["article"]["title"], ip=_client_ip(request))
+    return res
+
+
+@app.post("/api/admin/articles/{article_id}/toggle")
+def admin_toggle_article(request: Request, article_id: str, payload: dict):
+    """管理后台:上架/下架文章。"""
+    require_admin(request)
+    import content
+    disabled = bool(payload.get("disabled"))
+    content.set_disabled(article_id, disabled)
+    storage.add_audit_log("toggle_article", target=article_id, detail=("下架" if disabled else "上架"), ip=_client_ip(request))
+    return {"ok": True}
+
+
+@app.delete("/api/admin/articles/{article_id}")
+def admin_delete_article(request: Request, article_id: str):
+    """管理后台:删除自定义文章。"""
+    require_admin(request)
+    import content
+    storage.add_audit_log("delete_article", target=article_id, ip=_client_ip(request))
+    return content.delete_article(article_id)
+
+
 # ---------------- 审计日志 ----------------
 @app.get("/api/admin/audit-logs")
 def admin_audit_logs(request: Request, limit: int = 200):
@@ -977,6 +1042,14 @@ if os.path.isdir(FRONTEND_DIR):
     def admin_page():
         return FileResponse(
             os.path.join(FRONTEND_DIR, "admin.html"),
+            media_type="text/html",
+        )
+
+    @app.get("/start")
+    def landing_page():
+        """公域引流专属落地页(百度竞价/信息流投放),一键直达测算。"""
+        return FileResponse(
+            os.path.join(FRONTEND_DIR, "start.html"),
             media_type="text/html",
         )
 

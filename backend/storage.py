@@ -235,18 +235,15 @@ def init_db():
         conn.execute("CREATE INDEX IF NOT EXISTS idx_sess_phone ON account_sessions(phone)")
 
         # 工单/客户经理字段(对旧库补列)
-        for col, ddl in (
-            ("manager", "ALTER TABLE leads ADD COLUMN manager TEXT DEFAULT ''"),
-            ("follow_up", "ALTER TABLE leads ADD COLUMN follow_up TEXT DEFAULT ''"),
-            ("updated_at", "ALTER TABLE leads ADD COLUMN updated_at TEXT DEFAULT ''"),
-            ("tags", "ALTER TABLE leads ADD COLUMN tags TEXT DEFAULT ''"),
-            ("service_tier", "ALTER TABLE leads ADD COLUMN service_tier TEXT DEFAULT ''"),
-            ("referrer", "ALTER TABLE leads ADD COLUMN referrer TEXT DEFAULT ''"),
-        ):
-            try:
-                conn.execute(ddl)
-            except Exception:
-                pass
+        _lead_cols = ["manager", "follow_up", "updated_at", "tags", "service_tier", "referrer"]
+        if _USE_PG:
+            for col in _lead_cols:
+                conn.execute(f"ALTER TABLE leads ADD COLUMN IF NOT EXISTS {col} TEXT DEFAULT ''")
+        else:
+            existing = [r[1] for r in conn.execute("PRAGMA table_info(leads)").fetchall()]
+            for col in _lead_cols:
+                if col not in existing:
+                    conn.execute(f"ALTER TABLE leads ADD COLUMN {col} TEXT DEFAULT ''")
 
         # 审计日志(满足金融审计留存要求,建议留存 ≥5 年)
         conn.execute(

@@ -1,7 +1,7 @@
 {
   "meta": {
     "name": "留学选校匹配数据集",
-    "version": "0.3.8",
+    "version": "0.3.9",
     "updated": "2026-07",
     "disclaimer": "本数据为参考性示例数据，基于公开招生信息与往年中国大陆申请者录取经验整理，均分门槛为「建议达到」的参考线，并非官方保证。实际录取受名额、竞争、文书、科研实习、面试等多因素影响，请以学校官网为准。",
     "tiers": [
@@ -37,9 +37,9 @@
       "金融",
       "金融工程"
     ],
-    "count": 687,
+    "count": 705,
     "provenanceNote": "每个项目带 provenance 溯源：dataSource=参考估算/官方核实，verified 表示是否经官方页核实，lastVerified 为核实年月，sourceUrl 为官方项目页。参考估算分数线来自公开信息与往年经验，仅供参考；官方核实项由 scripts/ingest.py 从官方来源导入。",
-    "verifiedCount": 378
+    "verifiedCount": 396
   },
   "programs": [
     {
@@ -24166,6 +24166,636 @@
         "lastVerified": "2026-07",
         "sourceUrl": "https://www.gold.ac.uk/pg/ma-journalism-digital-broadcast-news-features-magazines/",
         "searchUrl": "https://www.google.com/search?q=伦敦大学金史密斯学院+Journalism+(Digital,+Broadcast,+News,+Features+&+Magazines)+MA+entry+requirements"
+      }
+    },
+    {
+      "id": "au-uts-it",
+      "country": "澳大利亚",
+      "university": "悉尼科技大学 UTS",
+      "qsRank": 88,
+      "program": "Master of Information Technology",
+      "field": "信息技术",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 73,
+          "211": 76,
+          "双一流": 78,
+          "双非": 81,
+          "海本/中外合作": 69
+        },
+        "ielts": {
+          "overall": 6.5,
+          "sub": 6.0
+        },
+        "gre": null,
+        "background": "本科相关专业背景（以官网为准）",
+        "notes": "雅思总分 6.5、写作不低于 6.0（取自官方课程页）；通常要求本科相关背景，具体入学要求以官网为准"
+      },
+      "tuition": "学费见官网",
+      "duration": "1.5–2 年",
+      "timeline": "多为 3/8 月两次入学；分轮次滚动审理，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.uts.edu.au/study/find-a-course/master-information-technology",
+        "searchUrl": "https://www.google.com/search?q=悉尼科技大学+UTS+Master+of+Information+Technology+entry+requirements"
+      }
+    },
+    {
+      "id": "au-uts-dsi",
+      "country": "澳大利亚",
+      "university": "悉尼科技大学 UTS",
+      "qsRank": 88,
+      "program": "Master of Data Science & Innovation",
+      "field": "数据科学",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 73,
+          "211": 76,
+          "双一流": 78,
+          "双非": 81,
+          "海本/中外合作": 69
+        },
+        "ielts": {
+          "overall": 6.5,
+          "sub": 6.0
+        },
+        "gre": null,
+        "background": "本科相关专业背景（以官网为准）",
+        "notes": "雅思总分 6.5、写作不低于 6.0（取自官方课程页）；通常要求本科相关背景，具体入学要求以官网为准"
+      },
+      "tuition": "学费见官网",
+      "duration": "1.5–2 年",
+      "timeline": "多为 3/8 月两次入学；分轮次滚动审理，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.uts.edu.au/study/find-a-course/master-data-science-and-innovation",
+        "searchUrl": "https://www.google.com/search?q=悉尼科技大学+UTS+Master+of+Data+Science+&+Innovation+entry+requirements"
+      }
+    },
+    {
+      "id": "au-uts-ba",
+      "country": "澳大利亚",
+      "university": "悉尼科技大学 UTS",
+      "qsRank": 88,
+      "program": "Master of Business Analytics",
+      "field": "商业分析",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 73,
+          "211": 76,
+          "双一流": 78,
+          "双非": 81,
+          "海本/中外合作": 69
+        },
+        "ielts": {
+          "overall": 6.5,
+          "sub": 6.0
+        },
+        "gre": null,
+        "background": "本科相关专业背景（以官网为准）",
+        "notes": "雅思总分 6.5、写作不低于 6.0（取自官方课程页）；通常要求本科相关背景，具体入学要求以官网为准"
+      },
+      "tuition": "学费见官网",
+      "duration": "1.5–2 年",
+      "timeline": "多为 3/8 月两次入学；分轮次滚动审理，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.uts.edu.au/study/find-a-course/master-business-analytics",
+        "searchUrl": "https://www.google.com/search?q=悉尼科技大学+UTS+Master+of+Business+Analytics+entry+requirements"
+      }
+    },
+    {
+      "id": "au-uts-peng",
+      "country": "澳大利亚",
+      "university": "悉尼科技大学 UTS",
+      "qsRank": 88,
+      "program": "Master of Professional Engineering",
+      "field": "工程",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 73,
+          "211": 76,
+          "双一流": 78,
+          "双非": 81,
+          "海本/中外合作": 69
+        },
+        "ielts": {
+          "overall": 6.5,
+          "sub": 6.0
+        },
+        "gre": null,
+        "background": "本科相关专业背景（以官网为准）",
+        "notes": "雅思总分 6.5、写作不低于 6.0（取自官方课程页）；通常要求本科相关背景，具体入学要求以官网为准"
+      },
+      "tuition": "学费见官网",
+      "duration": "1.5–2 年",
+      "timeline": "多为 3/8 月两次入学；分轮次滚动审理，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.uts.edu.au/study/find-a-course/master-professional-engineering",
+        "searchUrl": "https://www.google.com/search?q=悉尼科技大学+UTS+Master+of+Professional+Engineering+entry+requirements"
+      }
+    },
+    {
+      "id": "au-uts-fin",
+      "country": "澳大利亚",
+      "university": "悉尼科技大学 UTS",
+      "qsRank": 88,
+      "program": "Master of Finance",
+      "field": "金融",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 73,
+          "211": 76,
+          "双一流": 78,
+          "双非": 81,
+          "海本/中外合作": 69
+        },
+        "ielts": {
+          "overall": 6.5,
+          "sub": 6.0
+        },
+        "gre": null,
+        "background": "本科相关专业背景（以官网为准）",
+        "notes": "雅思总分 6.5、写作不低于 6.0（取自官方课程页）；通常要求本科相关背景，具体入学要求以官网为准"
+      },
+      "tuition": "学费见官网",
+      "duration": "1.5–2 年",
+      "timeline": "多为 3/8 月两次入学；分轮次滚动审理，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.uts.edu.au/study/find-a-course/master-finance",
+        "searchUrl": "https://www.google.com/search?q=悉尼科技大学+UTS+Master+of+Finance+entry+requirements"
+      }
+    },
+    {
+      "id": "au-uts-eng",
+      "country": "澳大利亚",
+      "university": "悉尼科技大学 UTS",
+      "qsRank": 88,
+      "program": "Master of Engineering",
+      "field": "工程",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 73,
+          "211": 76,
+          "双一流": 78,
+          "双非": 81,
+          "海本/中外合作": 69
+        },
+        "ielts": {
+          "overall": 6.5,
+          "sub": 6.0
+        },
+        "gre": null,
+        "background": "本科相关专业背景（以官网为准）",
+        "notes": "雅思总分 6.5、写作不低于 6.0（取自官方课程页）；通常要求本科相关背景，具体入学要求以官网为准"
+      },
+      "tuition": "学费见官网",
+      "duration": "1.5–2 年",
+      "timeline": "多为 3/8 月两次入学；分轮次滚动审理，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.uts.edu.au/study/find-a-course/master-engineering",
+        "searchUrl": "https://www.google.com/search?q=悉尼科技大学+UTS+Master+of+Engineering+entry+requirements"
+      }
+    },
+    {
+      "id": "au-uts-scm",
+      "country": "澳大利亚",
+      "university": "悉尼科技大学 UTS",
+      "qsRank": 88,
+      "program": "Master of Strategic Supply Chain Management",
+      "field": "供应链管理",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 73,
+          "211": 76,
+          "双一流": 78,
+          "双非": 81,
+          "海本/中外合作": 69
+        },
+        "ielts": {
+          "overall": 6.5,
+          "sub": 6.0
+        },
+        "gre": null,
+        "background": "本科相关专业背景（以官网为准）",
+        "notes": "雅思总分 6.5、写作不低于 6.0（取自官方课程页）；通常要求本科相关背景，具体入学要求以官网为准"
+      },
+      "tuition": "学费见官网",
+      "duration": "1.5–2 年",
+      "timeline": "多为 3/8 月两次入学；分轮次滚动审理，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.uts.edu.au/study/find-a-course/master-strategic-supply-chain-management",
+        "searchUrl": "https://www.google.com/search?q=悉尼科技大学+UTS+Master+of+Strategic+Supply+Chain+Management+entry+requirements"
+      }
+    },
+    {
+      "id": "au-uts-mgmt",
+      "country": "澳大利亚",
+      "university": "悉尼科技大学 UTS",
+      "qsRank": 88,
+      "program": "Master of Management",
+      "field": "管理学",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 73,
+          "211": 76,
+          "双一流": 78,
+          "双非": 81,
+          "海本/中外合作": 69
+        },
+        "ielts": {
+          "overall": 6.5,
+          "sub": 6.0
+        },
+        "gre": null,
+        "background": "本科相关专业背景（以官网为准）",
+        "notes": "雅思总分 6.5、写作不低于 6.0（取自官方课程页）；通常要求本科相关背景，具体入学要求以官网为准"
+      },
+      "tuition": "学费见官网",
+      "duration": "1.5–2 年",
+      "timeline": "多为 3/8 月两次入学；分轮次滚动审理，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.uts.edu.au/study/find-a-course/master-management",
+        "searchUrl": "https://www.google.com/search?q=悉尼科技大学+UTS+Master+of+Management+entry+requirements"
+      }
+    },
+    {
+      "id": "au-uts-mkt",
+      "country": "澳大利亚",
+      "university": "悉尼科技大学 UTS",
+      "qsRank": 88,
+      "program": "Master of Marketing",
+      "field": "市场营销",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 73,
+          "211": 76,
+          "双一流": 78,
+          "双非": 81,
+          "海本/中外合作": 69
+        },
+        "ielts": {
+          "overall": 6.5,
+          "sub": 6.0
+        },
+        "gre": null,
+        "background": "本科相关专业背景（以官网为准）",
+        "notes": "雅思总分 6.5、写作不低于 6.0（取自官方课程页）；通常要求本科相关背景，具体入学要求以官网为准"
+      },
+      "tuition": "学费见官网",
+      "duration": "1.5–2 年",
+      "timeline": "多为 3/8 月两次入学；分轮次滚动审理，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.uts.edu.au/study/find-a-course/master-marketing",
+        "searchUrl": "https://www.google.com/search?q=悉尼科技大学+UTS+Master+of+Marketing+entry+requirements"
+      }
+    },
+    {
+      "id": "au-uwa-ds",
+      "country": "澳大利亚",
+      "university": "西澳大学 UWA",
+      "qsRank": 77,
+      "program": "Master of Data Science",
+      "field": "数据科学",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 74,
+          "211": 77,
+          "双一流": 79,
+          "双非": 82,
+          "海本/中外合作": 70
+        },
+        "ielts": {
+          "overall": 6.5,
+          "sub": 6.0
+        },
+        "gre": null,
+        "background": "本科相关专业背景（以官网为准）",
+        "notes": "雅思总分 6.5、单项不低于 6.0（取自官方课程页）；通常要求本科相关背景，具体入学要求以官网为准"
+      },
+      "tuition": "学费见官网",
+      "duration": "1.5–2 年",
+      "timeline": "多为 2/7 月两次入学；分轮次滚动审理，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.uwa.edu.au/study/courses/master-of-data-science",
+        "searchUrl": "https://www.google.com/search?q=西澳大学+UWA+Master+of+Data+Science+entry+requirements"
+      }
+    },
+    {
+      "id": "au-uwa-it",
+      "country": "澳大利亚",
+      "university": "西澳大学 UWA",
+      "qsRank": 77,
+      "program": "Master of Information Technology",
+      "field": "信息技术",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 74,
+          "211": 77,
+          "双一流": 79,
+          "双非": 82,
+          "海本/中外合作": 70
+        },
+        "ielts": {
+          "overall": 6.5,
+          "sub": 6.0
+        },
+        "gre": null,
+        "background": "本科相关专业背景（以官网为准）",
+        "notes": "雅思总分 6.5、单项不低于 6.0（取自官方课程页）；通常要求本科相关背景，具体入学要求以官网为准"
+      },
+      "tuition": "学费见官网",
+      "duration": "1.5–2 年",
+      "timeline": "多为 2/7 月两次入学；分轮次滚动审理，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.uwa.edu.au/study/courses/master-of-information-technology",
+        "searchUrl": "https://www.google.com/search?q=西澳大学+UWA+Master+of+Information+Technology+entry+requirements"
+      }
+    },
+    {
+      "id": "au-uwa-com",
+      "country": "澳大利亚",
+      "university": "西澳大学 UWA",
+      "qsRank": 77,
+      "program": "Master of Commerce",
+      "field": "商科",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 74,
+          "211": 77,
+          "双一流": 79,
+          "双非": 82,
+          "海本/中外合作": 70
+        },
+        "ielts": {
+          "overall": 6.5,
+          "sub": 6.0
+        },
+        "gre": null,
+        "background": "本科相关专业背景（以官网为准）",
+        "notes": "雅思总分 6.5、单项不低于 6.0（取自官方课程页）；通常要求本科相关背景，具体入学要求以官网为准"
+      },
+      "tuition": "学费见官网",
+      "duration": "1.5–2 年",
+      "timeline": "多为 2/7 月两次入学；分轮次滚动审理，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.uwa.edu.au/study/courses/master-of-commerce",
+        "searchUrl": "https://www.google.com/search?q=西澳大学+UWA+Master+of+Commerce+entry+requirements"
+      }
+    },
+    {
+      "id": "au-uwa-ba",
+      "country": "澳大利亚",
+      "university": "西澳大学 UWA",
+      "qsRank": 77,
+      "program": "Master of Business Analytics",
+      "field": "商业分析",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 74,
+          "211": 77,
+          "双一流": 79,
+          "双非": 82,
+          "海本/中外合作": 70
+        },
+        "ielts": {
+          "overall": 6.5,
+          "sub": 6.0
+        },
+        "gre": null,
+        "background": "本科相关专业背景（以官网为准）",
+        "notes": "雅思总分 6.5、单项不低于 6.0（取自官方课程页）；通常要求本科相关背景，具体入学要求以官网为准"
+      },
+      "tuition": "学费见官网",
+      "duration": "1.5–2 年",
+      "timeline": "多为 2/7 月两次入学；分轮次滚动审理，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.uwa.edu.au/study/courses/master-of-business-analytics",
+        "searchUrl": "https://www.google.com/search?q=西澳大学+UWA+Master+of+Business+Analytics+entry+requirements"
+      }
+    },
+    {
+      "id": "au-uwa-eng",
+      "country": "澳大利亚",
+      "university": "西澳大学 UWA",
+      "qsRank": 77,
+      "program": "Master of Professional Engineering",
+      "field": "工程",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 74,
+          "211": 77,
+          "双一流": 79,
+          "双非": 82,
+          "海本/中外合作": 70
+        },
+        "ielts": {
+          "overall": 6.5,
+          "sub": 6.0
+        },
+        "gre": null,
+        "background": "本科相关专业背景（以官网为准）",
+        "notes": "雅思总分 6.5、单项不低于 6.0（取自官方课程页）；通常要求本科相关背景，具体入学要求以官网为准"
+      },
+      "tuition": "学费见官网",
+      "duration": "1.5–2 年",
+      "timeline": "多为 2/7 月两次入学；分轮次滚动审理，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.uwa.edu.au/study/courses/master-of-professional-engineering",
+        "searchUrl": "https://www.google.com/search?q=西澳大学+UWA+Master+of+Professional+Engineering+entry+requirements"
+      }
+    },
+    {
+      "id": "au-uwa-econ",
+      "country": "澳大利亚",
+      "university": "西澳大学 UWA",
+      "qsRank": 77,
+      "program": "Master of Economics",
+      "field": "经济学",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 74,
+          "211": 77,
+          "双一流": 79,
+          "双非": 82,
+          "海本/中外合作": 70
+        },
+        "ielts": {
+          "overall": 6.5,
+          "sub": 6.0
+        },
+        "gre": null,
+        "background": "本科相关专业背景（以官网为准）",
+        "notes": "雅思总分 6.5、单项不低于 6.0（取自官方课程页）；通常要求本科相关背景，具体入学要求以官网为准"
+      },
+      "tuition": "学费见官网",
+      "duration": "1.5–2 年",
+      "timeline": "多为 2/7 月两次入学；分轮次滚动审理，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.uwa.edu.au/study/courses/master-of-economics",
+        "searchUrl": "https://www.google.com/search?q=西澳大学+UWA+Master+of+Economics+entry+requirements"
+      }
+    },
+    {
+      "id": "au-uwa-hr",
+      "country": "澳大利亚",
+      "university": "西澳大学 UWA",
+      "qsRank": 77,
+      "program": "Master of Human Resources & Employment Relations",
+      "field": "人力资源",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 74,
+          "211": 77,
+          "双一流": 79,
+          "双非": 82,
+          "海本/中外合作": 70
+        },
+        "ielts": {
+          "overall": 6.5,
+          "sub": 6.0
+        },
+        "gre": null,
+        "background": "本科相关专业背景（以官网为准）",
+        "notes": "雅思总分 6.5、单项不低于 6.0（取自官方课程页）；通常要求本科相关背景，具体入学要求以官网为准"
+      },
+      "tuition": "学费见官网",
+      "duration": "1.5–2 年",
+      "timeline": "多为 2/7 月两次入学；分轮次滚动审理，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.uwa.edu.au/study/courses/master-of-human-resources-and-employment-relations",
+        "searchUrl": "https://www.google.com/search?q=西澳大学+UWA+Master+of+Human+Resources+&+Employment+Relations+entry+requirements"
+      }
+    },
+    {
+      "id": "au-uwa-mkt",
+      "country": "澳大利亚",
+      "university": "西澳大学 UWA",
+      "qsRank": 77,
+      "program": "Master of Marketing",
+      "field": "市场营销",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 74,
+          "211": 77,
+          "双一流": 79,
+          "双非": 82,
+          "海本/中外合作": 70
+        },
+        "ielts": {
+          "overall": 6.5,
+          "sub": 6.0
+        },
+        "gre": null,
+        "background": "本科相关专业背景（以官网为准）",
+        "notes": "雅思总分 6.5、单项不低于 6.0（取自官方课程页）；通常要求本科相关背景，具体入学要求以官网为准"
+      },
+      "tuition": "学费见官网",
+      "duration": "1.5–2 年",
+      "timeline": "多为 2/7 月两次入学；分轮次滚动审理，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.uwa.edu.au/study/courses/master-of-marketing",
+        "searchUrl": "https://www.google.com/search?q=西澳大学+UWA+Master+of+Marketing+entry+requirements"
+      }
+    },
+    {
+      "id": "au-uwa-ir",
+      "country": "澳大利亚",
+      "university": "西澳大学 UWA",
+      "qsRank": 77,
+      "program": "Master of International Relations",
+      "field": "国际关系",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 74,
+          "211": 77,
+          "双一流": 79,
+          "双非": 82,
+          "海本/中外合作": 70
+        },
+        "ielts": {
+          "overall": 6.5,
+          "sub": 6.0
+        },
+        "gre": null,
+        "background": "本科相关专业背景（以官网为准）",
+        "notes": "雅思总分 6.5、单项不低于 6.0（取自官方课程页）；通常要求本科相关背景，具体入学要求以官网为准"
+      },
+      "tuition": "学费见官网",
+      "duration": "1.5–2 年",
+      "timeline": "多为 2/7 月两次入学；分轮次滚动审理，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.uwa.edu.au/study/courses/master-of-international-relations",
+        "searchUrl": "https://www.google.com/search?q=西澳大学+UWA+Master+of+International+Relations+entry+requirements"
       }
     }
   ]

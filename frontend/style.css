@@ -2066,17 +2066,54 @@ body.dark .bank-btn { background: linear-gradient(135deg, #1d4ed8, #3b82f6); col
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 15px;
-  height: 15px;
+  width: 16px;
+  height: 16px;
   margin-left: 5px;
   border-radius: 50%;
-  background: #e2e8f0;
-  color: #6c94c4;
+  background: #dbe7f5;
+  color: #3c6da7;
   font-size: 11px;
   font-weight: 700;
-  cursor: help;
+  cursor: pointer;
   vertical-align: middle;
+  user-select: none;
 }
+.field label .hint:hover { background: #c6dbf1; }
+
+/* 字段说明弹窗 */
+.hint-pop {
+  position: absolute;
+  z-index: 10001;
+  max-width: 260px;
+  background: #1f3d66;
+  color: #fff;
+  font-size: 13px;
+  line-height: 1.6;
+  padding: 10px 30px 10px 12px;
+  border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(20, 35, 60, .28);
+}
+.hint-pop::before {
+  content: "";
+  position: absolute;
+  top: -6px;
+  left: 16px;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-bottom: 6px solid #1f3d66;
+}
+.hint-pop-close {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  background: transparent;
+  border: none;
+  color: rgba(255, 255, 255, .7);
+  font-size: 13px;
+  cursor: pointer;
+  padding: 2px 4px;
+}
+.hint-pop-close:hover { color: #fff; }
 
 /* ============================ Toast 轻提示 ============================ */
 #toast-host {
@@ -2726,3 +2763,42 @@ body.dark .footer-org .ph, body.dark .footer-icp .ph { background:#3a3220; color
   .risk-ribbon { flex-direction:column; font-size:12.5px; }
   .risk-ribbon a { margin-left:0; }
 }
+
+/* ===== 表单草稿恢复条 ===== */
+.draft-restore-bar {
+  display:flex; flex-wrap:wrap; align-items:center; gap:10px;
+  background:#eef7f0; border:1px solid #b6ddc2; border-left:4px solid #2f9e5f;
+  border-radius:10px; padding:10px 14px; margin:0 0 14px; font-size:14px; color:#2c6a45;
+}
+.draft-restore-bar .dr-btns { margin-left:auto; display:flex; gap:8px; }
+.draft-restore-bar button {
+  border:none; border-radius:8px; padding:6px 14px; font-size:13px; cursor:pointer;
+}
+.draft-restore-bar #draft-restore { background:#2f9e5f; color:#fff; }
+.draft-restore-bar #draft-discard { background:#e3ece5; color:#5a6b5f; }
+body.dark .draft-restore-bar { background:#1e3327; border-color:#2f5f42; color:#8fd3a8; }
+body.dark .draft-restore-bar #draft-discard { background:#2a3a30; color:#a9c4b4; }
+
+/* ===== 补贴申报流程 ===== */
+.sub-flow-btn {
+  margin-top:8px; background:#eef4fb; color:#3c6da7; border:1px solid #cfe0f2;
+  border-radius:8px; padding:6px 12px; font-size:13px; cursor:pointer;
+}
+.sub-flow-btn:hover { background:#e0ecf8; }
+.sub-flow { margin-top:10px; padding:12px 14px; background:#f8fafc; border:1px solid #e6edf5; border-radius:10px; }
+.sf-steps { list-style:none; margin:0 0 10px; padding:0; }
+.sf-steps li { display:flex; gap:10px; align-items:flex-start; padding:6px 0; }
+.sf-no {
+  flex:0 0 auto; width:22px; height:22px; border-radius:50%; background:#3c6da7; color:#fff;
+  display:inline-flex; align-items:center; justify-content:center; font-size:12px; font-weight:700;
+}
+.sf-steps b { display:block; font-size:14px; color:#1f3d66; }
+.sf-steps small { color:#5a6b7b; font-size:12.5px; line-height:1.5; }
+.sf-mat-title { font-size:13px; font-weight:700; color:#33506e; margin-bottom:4px; }
+.sf-mat ul { margin:0; padding-left:20px; }
+.sf-mat li { font-size:12.5px; color:#4a5b6b; line-height:1.7; }
+.sub-flow-note { font-size:12px; color:#8a98a8; margin:10px 0 0; line-height:1.6; }
+body.dark .sub-flow-btn { background:#1f3242; color:#bcd6ee; border-color:#33546e; }
+body.dark .sub-flow { background:#1a2632; border-color:#2c3d4e; }
+body.dark .sf-steps b { color:#bcd6ee; }
+body.dark .sf-steps small, body.dark .sf-mat li { color:#a9bccc; }

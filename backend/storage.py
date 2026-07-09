@@ -314,6 +314,8 @@ EVENT_LABELS = {
     "view_glossary": "看名词小课堂",
     "more_tools": "打开更多功能",
     "export_pdf": "导出方案PDF",
+    "export_pdf_bank": "导出银行提交版PDF",
+    "subsidy_flow": "查看补贴申报流程",
     "export_excel": "导出Excel",
     "export_bank": "导银行材料",
     "share_poster": "生成分享海报",

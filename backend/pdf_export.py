@@ -25,6 +25,37 @@ PURPOSE_CN = {
 }
 
 
+def _mask_name(name: str) -> str:
+    """企业名称脱敏:保留首尾,中间用 * 号,便于分享时不泄露完整主体。"""
+    if not name:
+        return "企业"
+    name = name.strip()
+    if len(name) <= 2:
+        return name[0] + "*"
+    if len(name) <= 4:
+        return name[0] + "*" * (len(name) - 2) + name[-1]
+    return name[:2] + "*" * (len(name) - 4) + name[-2:]
+
+
+def _watermark_drawer(text: str):
+    """返回一个在每页绘制斜向水印的回调。"""
+    def _draw(canvas, doc):
+        canvas.saveState()
+        canvas.setFont(FONT, 42)
+        canvas.setFillColor(colors.HexColor("#1e40af"))
+        try:
+            canvas.setFillAlpha(0.07)
+        except Exception:
+            pass
+        w, h = A4
+        canvas.translate(w / 2, h / 2)
+        canvas.rotate(45)
+        for row in range(-2, 3):
+            canvas.drawCentredString(0, row * 120, text)
+        canvas.restoreState()
+    return _draw
+
+
 def _styles():
     ss = getSampleStyleSheet()
     base = ParagraphStyle("cn", parent=ss["Normal"], fontName=FONT, fontSize=10,
@@ -40,7 +71,13 @@ def _styles():
     return base, title, sub, h2, small
 
 
-def build_pdf(profile: EnterpriseProfile, result: RecommendResponse) -> bytes:
+def build_pdf(profile: EnterpriseProfile, result: RecommendResponse,
+              edition: str = "self") -> bytes:
+    """生成贷款方案 PDF。
+    edition="self":企业自查版(名称脱敏 + 自查水印,仅供内部参考);
+    edition="bank":银行提交版(完整信息 + 提交水印,用于银行进件)。
+    """
+    is_bank = edition == "bank"
     buf = io.BytesIO()
     doc = SimpleDocTemplate(buf, pagesize=A4, topMargin=18 * mm, bottomMargin=16 * mm,
                             leftMargin=16 * mm, rightMargin=16 * mm,
@@ -48,9 +85,12 @@ def build_pdf(profile: EnterpriseProfile, result: RecommendResponse) -> bytes:
     base, title, sub, h2, small = _styles()
     el = []
 
-    name = profile.company_name or "企业"
+    real_name = profile.company_name or "企业"
+    show_name = real_name if is_bank else _mask_name(real_name)
+    edition_label = "银行提交版" if is_bank else "企业自查版"
     el.append(Paragraph("中小微企业贷款方案报告", title))
-    el.append(Paragraph(f"{name} · 生成时间 {datetime.now().strftime('%Y-%m-%d %H:%M')}", sub))
+    el.append(Paragraph(
+        f"{show_name} · 【{edition_label}】 · 生成时间 {datetime.now().strftime('%Y-%m-%d %H:%M')}", sub))
     el.append(Spacer(1, 8))
 
     # 摘要
@@ -136,9 +176,15 @@ def build_pdf(profile: EnterpriseProfile, result: RecommendResponse) -> bytes:
     el.append(Paragraph(
         "免责声明:本报告利率基准参考 LPR(一年期 3.0%、五年期以上 3.5%,2025-05-20 起),"
         "其中的额度、利率、月供及政策匹配均为基于公开规则的估算与示意,"
-        "仅供参考,实际以金融机构审批结果及主管部门最新政策为准。", sub))
+        "仅供参考,实际以金融机构审批结果及主管部门最新政策为准。本平台为信息中介,不发放贷款。", sub))
+    if not is_bank:
+        el.append(Paragraph(
+            "说明:本文件为企业自查版,企业名称已做脱敏处理,仅供内部参考;"
+            "如需向银行进件,请导出「银行提交版」。", sub))
 
-    doc.build(el)
+    wm_text = "银行提交版 · LOANHELPER" if is_bank else "企业自查版 · 仅供参考"
+    drawer = _watermark_drawer(wm_text)
+    doc.build(el, onFirstPage=drawer, onLaterPages=drawer)
     buf.seek(0)
     return buf.read()
 

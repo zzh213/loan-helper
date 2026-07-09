@@ -203,11 +203,12 @@ def api_classify_industry(req: IndustryClassifyRequest):
 
 
 @app.post("/api/export/pdf")
-def api_export_pdf(profile: EnterpriseProfile):
-    """生成并下载贷款方案 PDF 报告。"""
+def api_export_pdf(profile: EnterpriseProfile, edition: str = "self"):
+    """生成并下载贷款方案 PDF 报告。edition=self 企业自查版 / bank 银行提交版。"""
+    edition = "bank" if edition == "bank" else "self"
     result = recommend(profile)
-    pdf_bytes = build_pdf(profile, result)
-    filename = "loan_plan.pdf"
+    pdf_bytes = build_pdf(profile, result, edition=edition)
+    filename = "loan_plan_bank.pdf" if edition == "bank" else "loan_plan_self.pdf"
     return Response(
         content=pdf_bytes,
         media_type="application/pdf",

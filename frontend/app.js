@@ -176,6 +176,7 @@ form.addEventListener("submit", async (e) => {
     window.__lastProfile = profile;
     window.__lastMode = "enterprise";
     render(data);
+    clearDraft();
     track((data.plans && data.plans.length) ? "recommend_success" : "recommend_empty",
       { plans: (data.plans || []).length });
     showToast("已为你匹配最优方案", "success");
@@ -191,6 +192,101 @@ form.addEventListener("submit", async (e) => {
     submitBtn.textContent = "🔍 智能匹配最优方案";
   }
 });
+
+/* ===================== 表单草稿自动保存 ===================== */
+const DRAFT_KEY = "loanFormDraft";
+function _draftFields() {
+  if (!form) return [];
+  return Array.from(form.querySelectorAll("input[name], select[name]"));
+}
+function saveDraft() {
+  if (!form) return;
+  const data = {};
+  _draftFields().forEach((el) => {
+    if (el.type === "checkbox") data[el.name] = el.checked;
+    else if (el.type === "radio") { if (el.checked) data[el.name] = el.value; }
+    else data[el.name] = el.value;
+  });
+  data.__ts = Date.now();
+  try { localStorage.setItem(DRAFT_KEY, JSON.stringify(data)); } catch (e) {}
+}
+function clearDraft() {
+  try { localStorage.removeItem(DRAFT_KEY); } catch (e) {}
+  const bar = document.getElementById("draft-restore-bar");
+  if (bar) bar.remove();
+}
+function applyDraft(data) {
+  _draftFields().forEach((el) => {
+    if (!(el.name in data)) return;
+    if (el.type === "checkbox") el.checked = !!data[el.name];
+    else if (el.type === "radio") el.checked = el.value === data[el.name];
+    else el.value = data[el.name];
+    el.dispatchEvent(new Event("change", { bubbles: true }));
+  });
+}
+function initDraft() {
+  if (!form) return;
+  let raw = null;
+  try { raw = localStorage.getItem(DRAFT_KEY); } catch (e) {}
+  if (raw) {
+    try {
+      const data = JSON.parse(raw);
+      const mins = Math.max(1, Math.round((Date.now() - (data.__ts || 0)) / 60000));
+      const when = mins < 60 ? `${mins} 分钟前` : `${Math.round(mins / 60)} 小时前`;
+      const bar = document.createElement("div");
+      bar.id = "draft-restore-bar";
+      bar.className = "draft-restore-bar";
+      bar.innerHTML = `📝 检测到你 ${when} 填写的草稿,是否继续?<span class="dr-btns"><button type="button" id="draft-restore">恢复填写</button><button type="button" id="draft-discard">重新填写</button></span>`;
+      form.parentElement.insertBefore(bar, form);
+      document.getElementById("draft-restore").addEventListener("click", () => {
+        applyDraft(data);
+        bar.remove();
+        showToast("已恢复上次填写内容", "success");
+      });
+      document.getElementById("draft-discard").addEventListener("click", clearDraft);
+    } catch (e) {}
+  }
+  let t = null;
+  form.addEventListener("input", () => {
+    clearTimeout(t);
+    t = setTimeout(saveDraft, 600);
+  });
+  form.addEventListener("change", saveDraft);
+}
+initDraft();
+
+/* ===================== 字段说明弹窗(点击问号) ===================== */
+(function () {
+  function closePop() {
+    const p = document.getElementById("hint-pop");
+    if (p) p.remove();
+    document.removeEventListener("click", onDocClick, true);
+  }
+  function onDocClick(e) {
+    if (!e.target.closest("#hint-pop") && !e.target.classList.contains("hint")) closePop();
+  }
+  document.addEventListener("click", (e) => {
+    const hint = e.target.classList && e.target.classList.contains("hint") ? e.target : null;
+    if (!hint) return;
+    e.preventDefault();
+    e.stopPropagation();
+    const text = hint.getAttribute("title") || hint.getAttribute("data-tip");
+    if (!text) return;
+    closePop();
+    const pop = document.createElement("div");
+    pop.id = "hint-pop";
+    pop.className = "hint-pop";
+    pop.innerHTML = `<span class="hint-pop-txt">${escapeHtml(text)}</span><button type="button" class="hint-pop-close" aria-label="关闭">✕</button>`;
+    document.body.appendChild(pop);
+    const r = hint.getBoundingClientRect();
+    const top = r.bottom + window.scrollY + 8;
+    let left = r.left + window.scrollX - 10;
+    pop.style.top = top + "px";
+    pop.style.left = Math.max(10, Math.min(left, window.innerWidth - pop.offsetWidth - 10)) + "px";
+    pop.querySelector(".hint-pop-close").addEventListener("click", closePop);
+    setTimeout(() => document.addEventListener("click", onDocClick, true), 0);
+  });
+})();
 
 const preauditBtn = document.getElementById("preaudit-btn");
 const preauditEl = document.getElementById("preaudit-result");
@@ -546,12 +642,13 @@ function render(data) {
       <button class="export-btn" onclick="window.print()">🖨️ 打印 / 另存</button>
     </div>`
     : `<div class="action-bar">
-      <button id="export-pdf" class="export-btn">📄 导出方案 PDF</button>
+      <button id="export-pdf" class="export-btn">📄 导出方案 PDF(自查版)</button>
       <button id="export-checklist" class="export-btn">📋 材料清单</button>
       <button id="save-application" class="export-btn save-btn">💾 保存为申请记录</button>
       <button id="toggle-tools" class="export-btn more-tools-btn" aria-expanded="false">➕ 更多功能</button>
     </div>
     <div id="more-tools" class="more-tools hidden">
+      <button id="export-pdf-bank" class="export-btn">📄 银行提交版 PDF(完整信息)</button>
       <button id="export-excel" class="export-btn excel-btn">📊 导出 Excel</button>
       <button id="export-bank" class="export-btn bank-btn">🏦 银行成品材料 PDF</button>
       <button id="export-bank-docx" class="export-btn bank-btn">📝 银行成品材料 Word</button>
@@ -729,16 +826,19 @@ function render(data) {
       <h3>🏛️ 可申报扶持政策(${data.subsidies.length})</h3>
       ${data.subsidies
         .map(
-          (s) => `<div class="subsidy">
+          (s, si) => `<div class="subsidy">
             <div class="sub-top"><span class="sub-name">${escapeHtml(s.name)}</span>
             <span class="sub-cat">${escapeHtml(s.category)}</span></div>
             <div class="sub-benefit">${escapeHtml(s.benefit)}</div>
             <div class="sub-apply">📌 申请要点:${escapeHtml(s.apply_points)}</div>
             <div class="sub-auth">主管部门:${escapeHtml(s.authority)}</div>
             <div class="sub-meta"><span class="sub-window">🗓️ ${escapeHtml(s.apply_window || "常年可申报")}</span><span class="sub-upd">政策更新于 ${escapeHtml(s.updated || "2026-06")}</span></div>
+            <button type="button" class="sub-flow-btn" data-si="${si}" aria-expanded="false">📋 查看申报流程与材料 ▾</button>
+            <div class="sub-flow hidden" id="sub-flow-${si}">${subsidyApplyFlow(s)}</div>
           </div>`
         )
         .join("")}
+      <p class="sub-flow-note">💡 以上申报流程为通用指引,具体材料与窗口以主管部门最新公告为准;可在「智能助手」中追问某项政策的详细办理方式。</p>
     </div>`;
   }
 
@@ -765,7 +865,10 @@ function render(data) {
   resultEl.scrollIntoView({ behavior: "smooth", block: "start" });
 
   const exportBtn = document.getElementById("export-pdf");
-  if (exportBtn) exportBtn.addEventListener("click", () => { track("export_pdf"); exportPdf(); });
+  if (exportBtn) exportBtn.addEventListener("click", () => { track("export_pdf"); exportPdf("self"); });
+
+  const exportBankPdfBtn = document.getElementById("export-pdf-bank");
+  if (exportBankPdfBtn) exportBankPdfBtn.addEventListener("click", () => { track("export_pdf_bank"); exportPdf("bank"); });
 
   const excelBtn = document.getElementById("export-excel");
   if (excelBtn) excelBtn.addEventListener("click", () => { track("export_excel"); exportExcel(); });
@@ -835,6 +938,17 @@ function render(data) {
       if (open) { track("view_more"); more.scrollIntoView({ behavior: "smooth", block: "nearest" }); }
     });
   }
+
+  document.querySelectorAll(".sub-flow-btn").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const panel = document.getElementById("sub-flow-" + btn.dataset.si);
+      if (!panel) return;
+      const open = panel.classList.toggle("hidden") === false;
+      btn.setAttribute("aria-expanded", open ? "true" : "false");
+      btn.textContent = open ? "📋 收起申报流程与材料 ▴" : "📋 查看申报流程与材料 ▾";
+      if (open) track("subsidy_flow");
+    });
+  });
 }
 
 /* ===================== 产品收藏对比 ===================== */
@@ -932,8 +1046,12 @@ async function saveApplication() {
   }
 }
 
-async function exportPdf() {
-  await exportReport("/api/export/pdf", "pdf", document.getElementById("export-pdf"));
+async function exportPdf(edition) {
+  const isBank = edition === "bank";
+  const ep = isBank ? "/api/export/pdf?edition=bank" : "/api/export/pdf?edition=self";
+  const btnId = isBank ? "export-pdf-bank" : "export-pdf";
+  const suffix = isBank ? "_贷款方案_银行提交版" : "_贷款方案_自查版";
+  await exportReport(ep, "pdf", document.getElementById(btnId), suffix);
 }
 
 async function exportPersonalPdf() {
@@ -1035,6 +1153,35 @@ function escapeHtml(str) {
     .replace(/&/g, "&amp;")
     .replace(/</g, "&lt;")
     .replace(/>/g, "&gt;");
+}
+
+/* 补贴政策:按类别生成申报流程与材料清单(通用指引) */
+function subsidyApplyFlow(s) {
+  const cat = s.category || "";
+  const baseMaterials = ["营业执照副本(统一社会信用代码清晰)", "法人身份证正反面", "对公银行账户信息"];
+  const catExtra = {
+    "财政贴息": ["银行贷款合同 / 放款凭证", "近期还款与结息回单", "贴息申请表(主管部门模板)"],
+    "创业就业": ["社保参保缴费证明", "带动就业花名册 / 劳动合同", "创业担保贷款相关材料(如有)"],
+    "科技创新": ["高新技术企业证书 / 研发立项材料", "研发费用辅助账或专项审计报告", "知识产权证书(专利/软著)"],
+    "产业升级": ["设备采购合同与发票", "技改 / 数字化项目方案", "项目投资明细与验收材料"],
+    "财税优惠": ["近一年纳税申报表", "财务报表(资产负债 / 利润表)", "税务信用等级证明"],
+    "乡村振兴": ["经营场所 / 基地相关证明", "带动农户 / 合作社协议", "项目产出与销售凭证"],
+  };
+  const materials = baseMaterials.concat(catExtra[cat] || ["与政策要求对应的经营 / 项目佐证材料"]);
+  const steps = [
+    { t: "资格自查", d: "对照政策条件确认是否符合(行业、规模、注册地、时间窗口等)。" },
+    { t: "备齐材料", d: "按下方清单准备并扫描存档,确保信息清晰、口径一致。" },
+    { t: "线上/线下申报", d: `向【${escapeHtml(s.authority || "主管部门")}】指定渠道提交申请与材料。` },
+    { t: "审核与拨付", d: "等待受理审核,通过后按政策发放补贴 / 贴息或享受减免。" },
+  ];
+  return `
+    <ol class="sf-steps">
+      ${steps.map((x, i) => `<li><span class="sf-no">${i + 1}</span><div><b>${x.t}</b><small>${x.d}</small></div></li>`).join("")}
+    </ol>
+    <div class="sf-mat">
+      <div class="sf-mat-title">📎 建议准备材料</div>
+      <ul>${materials.map((m) => `<li>${escapeHtml(m)}</li>`).join("")}</ul>
+    </div>`;
 }
 
 /* ===================== 申请记录 ===================== */

@@ -140,6 +140,227 @@ function renderMsgCenter() {
   renderMsgCenter();
 })();
 
+/* ===================== 账号体系(手机号登录 + 个人中心) ===================== */
+const AUTH_KEY = "auth_token";
+let _account = null;
+function authToken() { return localStorage.getItem(AUTH_KEY) || ""; }
+function authHeaders(extra) {
+  const h = extra || {};
+  const t = authToken();
+  if (t) h["X-Auth-Token"] = t;
+  return h;
+}
+function updateAccountBtn() {
+  const txt = document.getElementById("account-btn-txt");
+  if (!txt) return;
+  txt.textContent = _account ? (_account.phone_masked || "个人中心") : "登录 / 注册";
+}
+async function refreshAccount() {
+  if (!authToken()) { _account = null; updateAccountBtn(); return; }
+  try {
+    const res = await fetch("/api/auth/me", { headers: authHeaders() });
+    if (res.ok) { _account = await res.json(); }
+    else { localStorage.removeItem(AUTH_KEY); _account = null; }
+  } catch (e) { _account = null; }
+  updateAccountBtn();
+}
+function openLoginModal() { document.getElementById("login-modal")?.classList.remove("hidden"); }
+function closeLoginModal() { document.getElementById("login-modal")?.classList.add("hidden"); }
+function openProfileModal() {
+  renderPersonalCenter();
+  document.getElementById("profile-modal")?.classList.remove("hidden");
+}
+function closeProfileModal() { document.getElementById("profile-modal")?.classList.add("hidden"); }
+
+(function initAccount() {
+  const accBtn = document.getElementById("account-btn");
+  if (!accBtn) return;
+  accBtn.addEventListener("click", () => {
+    if (_account) openProfileModal(); else openLoginModal();
+  });
+  document.getElementById("login-close")?.addEventListener("click", closeLoginModal);
+  document.getElementById("profile-close")?.addEventListener("click", closeProfileModal);
+
+  const sendBtn = document.getElementById("login-send-otp");
+  let _cooldown = 0, _timer = null;
+  sendBtn?.addEventListener("click", async () => {
+    const phone = (document.getElementById("login-phone").value || "").trim();
+    if (!/^1[3-9]\d{9}$/.test(phone)) { showToast("请输入有效的 11 位手机号", "error"); return; }
+    try {
+      const res = await fetch("/api/auth/request-otp", {
+        method: "POST", headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ phone }),
+      });
+      const data = await res.json();
+      if (!data.ok) { showToast(data.error || "获取失败", "error"); return; }
+      const tip = document.getElementById("login-demo-tip");
+      if (tip) { tip.textContent = `📱 演示验证码:${data.demo_code}(自动填入,5 分钟内有效)`; tip.classList.remove("hidden"); }
+      const otpEl = document.getElementById("login-otp");
+      if (otpEl) otpEl.value = data.demo_code;
+      _cooldown = 60;
+      sendBtn.disabled = true;
+      _timer = setInterval(() => {
+        _cooldown--;
+        sendBtn.textContent = _cooldown > 0 ? `${_cooldown}s 后重发` : "获取验证码";
+        if (_cooldown <= 0) { clearInterval(_timer); sendBtn.disabled = false; }
+      }, 1000);
+    } catch (e) { showToast("网络异常,请重试", "error"); }
+  });
+
+  document.getElementById("login-submit")?.addEventListener("click", async () => {
+    const phone = (document.getElementById("login-phone").value || "").trim();
+    const code = (document.getElementById("login-otp").value || "").trim();
+    if (!/^1[3-9]\d{9}$/.test(phone)) { showToast("请输入有效的手机号", "error"); return; }
+    if (!/^\d{6}$/.test(code)) { showToast("请输入 6 位验证码", "error"); return; }
+    try {
+      const res = await fetch("/api/auth/verify-otp", {
+        method: "POST", headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ phone, code }),
+      });
+      const data = await res.json();
+      if (!res.ok) { showToast(data.detail || "登录失败", "error"); return; }
+      localStorage.setItem(AUTH_KEY, data.token);
+      _account = data.account;
+      updateAccountBtn();
+      closeLoginModal();
+      track("account_login");
+      showToast("登录成功", "success");
+      pushMsg("👤 登录成功", "企业信息将云端保存,下次匹配可一键回填。", "success");
+      if (_account.profile) offerAutofill();
+    } catch (e) { showToast("网络异常,请重试", "error"); }
+  });
+
+  document.getElementById("logout-btn")?.addEventListener("click", async () => {
+    try { await fetch("/api/auth/logout", { method: "POST", headers: authHeaders() }); } catch (e) {}
+    localStorage.removeItem(AUTH_KEY);
+    _account = null;
+    updateAccountBtn();
+    closeProfileModal();
+    showToast("已退出登录", "info");
+  });
+
+  document.getElementById("role-add-btn")?.addEventListener("click", saveRoleFromForm);
+  document.getElementById("pc-goto-records")?.addEventListener("click", () => {
+    closeProfileModal();
+    document.querySelector('.tab-btn[data-tab="records"]')?.click();
+  });
+
+  refreshAccount();
+})();
+
+function offerAutofill() {
+  if (!_account || !_account.profile || !form) return;
+  const p = _account.profile;
+  const set = (id, v) => { const el = document.getElementById(id); if (el != null && v != null && v !== "") el.value = v; };
+  set("f-company", p.company_name);
+  set("f-industry", p.industry);
+  set("f-years", p.years_in_business);
+  set("f-revenue", p.annual_revenue);
+  set("f-capital", p.registered_capital);
+  set("f-employees", p.employees);
+  set("f-credit", p.credit_level);
+  set("f-collateral", p.collateral_value);
+  set("f-amount", p.loan_amount);
+  set("f-purpose", p.loan_purpose);
+  set("f-term", p.preferred_term_months);
+  const chk = (name, on) => { const el = form.querySelector(`input[name="${name}"]`); if (el) el.checked = !!on; };
+  chk("has_collateral", p.has_collateral);
+  chk("has_tax_record", p.has_tax_record);
+  chk("has_invoice", p.has_invoice);
+  chk("has_overdue", p.has_overdue);
+  chk("urgent", p.urgent);
+  showToast("已回填你上次保存的企业信息", "success");
+}
+
+async function saveProfileToCloud(profile) {
+  if (!authToken()) return;
+  try {
+    const res = await fetch("/api/auth/profile", {
+      method: "POST", headers: authHeaders({ "Content-Type": "application/json" }),
+      body: JSON.stringify({ profile }),
+    });
+    if (res.ok) { const d = await res.json(); if (d.account) _account = d.account; }
+  } catch (e) {}
+}
+
+function renderPersonalCenter() {
+  if (!_account) return;
+  document.getElementById("pc-phone").textContent = _account.phone_masked || "";
+  document.getElementById("pc-since").textContent = _account.created_at ? `注册于 ${_account.created_at.slice(0, 10)}` : "";
+  const pf = document.getElementById("pc-profile");
+  if (pf) {
+    const p = _account.profile;
+    if (!p) {
+      pf.innerHTML = '<div class="pc-empty">还没有保存企业信息。完成一次智能匹配后会自动云端保存。</div>';
+    } else {
+      const rows = [
+        ["企业名称", p.company_name || "—"],
+        ["所属行业", p.industry || "—"],
+        ["经营年限", (p.years_in_business ?? "—") + " 年"],
+        ["年营业额", (p.annual_revenue ?? "—") + " 万"],
+        ["员工人数", (p.employees ?? "—") + " 人"],
+        ["拟贷金额", (p.loan_amount ?? "—") + " 万"],
+      ];
+      pf.innerHTML = `<div class="pc-grid">${rows.map(([k, v]) => `<div class="pc-cell"><small>${k}</small><b>${escapeHtml(String(v))}</b></div>`).join("")}</div>
+        <button id="pc-autofill" class="export-btn">↩️ 回填到智能匹配表单</button>`;
+      document.getElementById("pc-autofill")?.addEventListener("click", () => {
+        closeProfileModal();
+        document.querySelector('.tab-btn[data-tab="apply"]')?.click();
+        offerAutofill();
+      });
+    }
+  }
+  renderRoles();
+}
+
+function renderRoles() {
+  const box = document.getElementById("pc-roles");
+  if (!box) return;
+  const roles = (_account && _account.roles) || [];
+  if (!roles.length) {
+    box.innerHTML = '<div class="pc-empty">尚未添加企业成员。</div>';
+    return;
+  }
+  box.innerHTML = roles.map((r, i) => `
+    <div class="pc-role-item">
+      <span class="pc-role-tag">${escapeHtml(r.role)}</span>
+      <b>${escapeHtml(r.name || "未填写")}</b>
+      <span class="pc-role-phone">${escapeHtml(r.phone || "")}</span>
+      <button class="pc-role-del" data-idx="${i}" type="button">删除</button>
+    </div>`).join("");
+  box.querySelectorAll(".pc-role-del").forEach((b) => b.addEventListener("click", async () => {
+    const idx = parseInt(b.dataset.idx);
+    const roles2 = ((_account && _account.roles) || []).filter((_, i) => i !== idx);
+    await saveRoles(roles2);
+  }));
+}
+
+async function saveRoleFromForm() {
+  const name = (document.getElementById("role-name").value || "").trim();
+  const role = document.getElementById("role-type").value;
+  const phone = (document.getElementById("role-phone").value || "").trim();
+  if (!name) { showToast("请填写成员姓名", "error"); return; }
+  const roles = ((_account && _account.roles) || []).concat([{ name, role, phone }]);
+  await saveRoles(roles);
+  document.getElementById("role-name").value = "";
+  document.getElementById("role-phone").value = "";
+}
+
+async function saveRoles(roles) {
+  try {
+    const res = await fetch("/api/auth/roles", {
+      method: "POST", headers: authHeaders({ "Content-Type": "application/json" }),
+      body: JSON.stringify({ roles }),
+    });
+    const data = await res.json();
+    if (!res.ok) { showToast(data.detail || "保存失败", "error"); return; }
+    if (data.account) _account = data.account;
+    renderRoles();
+    showToast("已更新企业成员", "success");
+  } catch (e) { showToast("网络异常,请重试", "error"); }
+}
+
+
 
 function clearFieldError(field) {
   field.classList.remove("invalid");
@@ -265,6 +486,7 @@ form.addEventListener("submit", async (e) => {
     if (data.plans && data.plans.length) {
       pushMsg("✅ 方案匹配完成", `已为「${(profile.company_name || "你的企业")}」匹配 ${data.plans.length} 套方案,可导出 PDF 或保存为申请记录。`, "success");
     }
+    saveProfileToCloud(profile);
     showToast("已为你匹配最优方案", "success");
     resultEl.scrollIntoView({ behavior: "smooth", block: "start" });
   } catch (err) {

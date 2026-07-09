@@ -97,10 +97,74 @@
     <div id="msg-list" class="msg-list"></div>
   </div>
 
+  <div id="login-modal" class="acc-modal hidden">
+    <div class="acc-dialog">
+      <button class="acc-close" id="login-close" type="button" aria-label="关闭">✕</button>
+      <h3>👤 手机号登录 / 注册</h3>
+      <p class="acc-sub">登录后企业信息云端保存,下次无需重复填写;可查看历史测算、收藏补贴、管理企业成员。</p>
+      <div class="acc-field">
+        <label for="login-phone">手机号</label>
+        <input id="login-phone" type="tel" maxlength="11" placeholder="请输入 11 位手机号" />
+      </div>
+      <div class="acc-field acc-otp-row">
+        <div class="acc-otp-input">
+          <label for="login-otp">验证码</label>
+          <input id="login-otp" type="text" maxlength="6" placeholder="6 位验证码" />
+        </div>
+        <button id="login-send-otp" class="acc-otp-btn" type="button">获取验证码</button>
+      </div>
+      <div id="login-demo-tip" class="acc-demo-tip hidden"></div>
+      <button id="login-submit" class="acc-submit" type="button">登录</button>
+      <p class="acc-note">📌 演示环境:验证码会直接显示在页面上,无需真实短信。本平台仅采集必要信息,你可随时注销并删除数据。</p>
+    </div>
+  </div>
+
+  <div id="profile-modal" class="acc-modal hidden">
+    <div class="acc-dialog acc-dialog-wide">
+      <button class="acc-close" id="profile-close" type="button" aria-label="关闭">✕</button>
+      <div class="pc-head">
+        <div class="pc-avatar">👤</div>
+        <div>
+          <div class="pc-phone" id="pc-phone">—</div>
+          <div class="pc-since" id="pc-since"></div>
+        </div>
+        <button id="logout-btn" class="pc-logout" type="button">退出登录</button>
+      </div>
+
+      <div class="pc-section">
+        <h4>🏢 云端企业信息</h4>
+        <div id="pc-profile" class="pc-profile"></div>
+      </div>
+
+      <div class="pc-section">
+        <h4>👥 企业成员管理(多角色)</h4>
+        <p class="pc-sub">法人、财务、经办人可分别登记,方便多人协作对接融资。</p>
+        <div id="pc-roles" class="pc-roles"></div>
+        <div class="pc-role-add">
+          <input id="role-name" type="text" placeholder="姓名" />
+          <select id="role-type">
+            <option value="法人">法人</option>
+            <option value="财务">财务</option>
+            <option value="经办人">经办人</option>
+          </select>
+          <input id="role-phone" type="tel" maxlength="11" placeholder="手机号(选填)" />
+          <button id="role-add-btn" class="export-btn" type="button">➕ 添加</button>
+        </div>
+      </div>
+
+      <div class="pc-section">
+        <h4>📁 我的历史测算记录</h4>
+        <p class="pc-sub">已保存的申请记录可在「申请记录」查看完整进度。</p>
+        <button id="pc-goto-records" class="ghost-btn" type="button">查看申请记录 →</button>
+      </div>
+    </div>
+  </div>
+
   <main class="layout">
     <aside class="sidebar">
       <nav class="side-tabs">
         <div class="side-tabs-title">功能导航</div>
+        <button id="account-btn" class="account-btn" type="button"><span class="tb-ico">👤</span><span class="tb-txt" id="account-btn-txt">登录 / 注册</span></button>
         <button class="tab-btn active" data-tab="apply"><span class="tb-ico">🔍</span><span class="tb-txt">智能匹配</span></button>
         <button class="tab-btn" data-tab="subsidy"><span class="tb-ico">🔒</span><span class="tb-txt">隐藏贴息</span></button>
         <button class="tab-btn" data-tab="calc"><span class="tb-ico">🧮</span><span class="tb-txt">月供试算</span></button>

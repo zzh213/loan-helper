@@ -212,6 +212,27 @@ def init_db():
         )
         conn.execute("CREATE INDEX IF NOT EXISTS idx_events_name ON events(name)")
         conn.execute("CREATE INDEX IF NOT EXISTS idx_events_session ON events(session_id)")
+        conn.execute(
+            """
+            CREATE TABLE IF NOT EXISTS accounts (
+                phone TEXT PRIMARY KEY,
+                profile_json TEXT DEFAULT '',
+                roles_json TEXT DEFAULT '[]',
+                created_at TEXT,
+                last_login TEXT
+            )
+            """
+        )
+        conn.execute(
+            """
+            CREATE TABLE IF NOT EXISTS account_sessions (
+                token TEXT PRIMARY KEY,
+                phone TEXT NOT NULL,
+                created_at TEXT
+            )
+            """
+        )
+        conn.execute("CREATE INDEX IF NOT EXISTS idx_sess_phone ON account_sessions(phone)")
 
 
 def save_chat_message(session_id: str, role: str, content: str) -> None:
@@ -331,6 +352,7 @@ EVENT_LABELS = {
     "policy_guide": "下载申报指南",
     "credit_check": "征信自查",
     "msg_center": "打开消息中心",
+    "account_login": "手机号登录",
 }
 
 # 转化漏斗定义:(事件名, 展示名)。按此顺序计算逐级转化。

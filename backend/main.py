@@ -198,12 +198,82 @@ def api_policy_guide(policy_id: str):
     )
 
 
+# ------------------------- 账号体系(演示版) -------------------------
+class OtpRequest(BaseModel):
+    phone: str
+
+
+class OtpVerify(BaseModel):
+    phone: str
+    code: str
+
+
+class ProfileSave(BaseModel):
+    profile: dict
+
+
+class RolesSave(BaseModel):
+    roles: list
+
+
+def _auth_token(request: Request) -> str:
+    return request.headers.get("X-Auth-Token", "") or ""
+
+
+@app.post("/api/auth/request-otp")
+def api_request_otp(req: OtpRequest):
+    import accounts
+    return accounts.request_otp(req.phone)
+
+
+@app.post("/api/auth/verify-otp")
+def api_verify_otp(req: OtpVerify):
+    import accounts
+    res = accounts.verify_otp(req.phone, req.code)
+    if not res.get("ok"):
+        raise HTTPException(status_code=400, detail=res.get("error", "验证失败"))
+    return res
+
+
+@app.get("/api/auth/me")
+def api_auth_me(request: Request):
+    import accounts
+    acc = accounts.account_by_token(_auth_token(request))
+    if not acc:
+        raise HTTPException(status_code=401, detail="未登录")
+    return acc
+
+
+@app.post("/api/auth/logout")
+def api_auth_logout(request: Request):
+    import accounts
+    accounts.logout(_auth_token(request))
+    return {"ok": True}
+
+
+@app.post("/api/auth/profile")
+def api_auth_save_profile(req: ProfileSave, request: Request):
+    import accounts
+    res = accounts.save_profile(_auth_token(request), req.profile)
+    if not res.get("ok"):
+        raise HTTPException(status_code=401, detail=res.get("error", "保存失败"))
+    return res
+
+
+@app.post("/api/auth/roles")
+def api_auth_save_roles(req: RolesSave, request: Request):
+    import accounts
+    res = accounts.set_roles(_auth_token(request), req.roles)
+    if not res.get("ok"):
+        raise HTTPException(status_code=401, detail=res.get("error", "保存失败"))
+    return res
+
+
 @app.get("/api/industry-templates")
 def api_industry_templates():
     """垂直行业风控模板列表。"""
     from industry_templates import list_templates
     return list_templates()
-
 @app.get("/api/industry-template/{industry}")
 def api_industry_template(industry: str):
     """单个行业的专属授信加分项与材料清单。"""

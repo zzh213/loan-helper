@@ -1,7 +1,7 @@
 {
   "meta": {
     "name": "留学选校匹配数据集",
-    "version": "0.4.1",
+    "version": "0.4.2",
     "updated": "2026-07",
     "disclaimer": "本数据为参考性示例数据，基于公开招生信息与往年中国大陆申请者录取经验整理，均分门槛为「建议达到」的参考线，并非官方保证。实际录取受名额、竞争、文书、科研实习、面试等多因素影响，请以学校官网为准。",
     "tiers": [
@@ -37,9 +37,9 @@
       "金融",
       "金融工程"
     ],
-    "count": 736,
+    "count": 749,
     "provenanceNote": "每个项目带 provenance 溯源：dataSource=参考估算/官方核实，verified 表示是否经官方页核实，lastVerified 为核实年月，sourceUrl 为官方项目页。参考估算分数线来自公开信息与往年经验，仅供参考；官方核实项由 scripts/ingest.py 从官方来源导入。",
-    "verifiedCount": 427
+    "verifiedCount": 440
   },
   "programs": [
     {
@@ -25881,6 +25881,461 @@
         "lastVerified": "2026-07",
         "sourceUrl": "https://www.surrey.ac.uk/postgraduate/electronic-engineering-msc",
         "searchUrl": "https://www.google.com/search?q=萨里大学+Surrey+Electronic+Engineering+MSc+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-qub-finance",
+      "country": "英国",
+      "university": "贝尔法斯特女王大学 QUB",
+      "qsRank": 202,
+      "program": "Finance MSc",
+      "field": "金融",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 76,
+          "211": 79,
+          "双一流": 81,
+          "双非": 83,
+          "海本/中外合作": 72
+        },
+        "ielts": {
+          "overall": 6.5,
+          "sub": 5.5
+        },
+        "gre": null,
+        "background": "英国二等荣誉学位或同等学历（以官网为准）",
+        "notes": "雅思总分 6.5、单项不低于 5.5（取自官方课程页）；通常要求英国二等荣誉学位或同等学历，具体以官网为准"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.qub.ac.uk/courses/postgraduate-taught/finance-msc/",
+        "searchUrl": "https://www.google.com/search?q=贝尔法斯特女王大学+QUB+Finance+MSc+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-qub-fintrading",
+      "country": "英国",
+      "university": "贝尔法斯特女王大学 QUB",
+      "qsRank": 202,
+      "program": "Finance and Trading MSc",
+      "field": "金融",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 76,
+          "211": 79,
+          "双一流": 81,
+          "双非": 83,
+          "海本/中外合作": 72
+        },
+        "ielts": {
+          "overall": 6.5,
+          "sub": 5.5
+        },
+        "gre": null,
+        "background": "英国二等荣誉学位或同等学历（以官网为准）",
+        "notes": "雅思总分 6.5、单项不低于 5.5（取自官方课程页）；通常要求英国二等荣誉学位或同等学历，具体以官网为准"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.qub.ac.uk/courses/postgraduate-taught/finance-trading-msc/",
+        "searchUrl": "https://www.google.com/search?q=贝尔法斯特女王大学+QUB+Finance+and+Trading+MSc+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-qub-frm",
+      "country": "英国",
+      "university": "贝尔法斯特女王大学 QUB",
+      "qsRank": 202,
+      "program": "Financial Risk Management MSc",
+      "field": "金融风险",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 76,
+          "211": 79,
+          "双一流": 81,
+          "双非": 83,
+          "海本/中外合作": 72
+        },
+        "ielts": {
+          "overall": 6.5,
+          "sub": 5.5
+        },
+        "gre": null,
+        "background": "英国二等荣誉学位或同等学历（以官网为准）",
+        "notes": "雅思总分 6.5、单项不低于 5.5（取自官方课程页）；通常要求英国二等荣誉学位或同等学历，具体以官网为准"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.qub.ac.uk/courses/postgraduate-taught/financial-risk-management-msc/",
+        "searchUrl": "https://www.google.com/search?q=贝尔法斯特女王大学+QUB+Financial+Risk+Management+MSc+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-qub-finanalytics",
+      "country": "英国",
+      "university": "贝尔法斯特女王大学 QUB",
+      "qsRank": 202,
+      "program": "Financial Analytics MSc",
+      "field": "金融/数据分析",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 76,
+          "211": 79,
+          "双一流": 81,
+          "双非": 83,
+          "海本/中外合作": 72
+        },
+        "ielts": {
+          "overall": 6.5,
+          "sub": 5.5
+        },
+        "gre": null,
+        "background": "英国二等荣誉学位或同等学历（以官网为准）",
+        "notes": "雅思总分 6.5、单项不低于 5.5（取自官方课程页）；通常要求英国二等荣誉学位或同等学历，具体以官网为准"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.qub.ac.uk/courses/postgraduate-taught/financial-analytics-msc/",
+        "searchUrl": "https://www.google.com/search?q=贝尔法斯特女王大学+QUB+Financial+Analytics+MSc+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-qub-accfin",
+      "country": "英国",
+      "university": "贝尔法斯特女王大学 QUB",
+      "qsRank": 202,
+      "program": "Accounting, Finance and Analytics MSc",
+      "field": "会计与金融",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 76,
+          "211": 79,
+          "双一流": 81,
+          "双非": 83,
+          "海本/中外合作": 72
+        },
+        "ielts": {
+          "overall": 6.5,
+          "sub": 5.5
+        },
+        "gre": null,
+        "background": "英国二等荣誉学位或同等学历（以官网为准）",
+        "notes": "雅思总分 6.5、单项不低于 5.5（取自官方课程页）；通常要求英国二等荣誉学位或同等学历，具体以官网为准"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.qub.ac.uk/courses/postgraduate-taught/accounting-finance-analytics-msc/",
+        "searchUrl": "https://www.google.com/search?q=贝尔法斯特女王大学+QUB+Accounting,+Finance+and+Analytics+MSc+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-qub-ba",
+      "country": "英国",
+      "university": "贝尔法斯特女王大学 QUB",
+      "qsRank": 202,
+      "program": "Business Analytics MSc",
+      "field": "商业分析",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 76,
+          "211": 79,
+          "双一流": 81,
+          "双非": 83,
+          "海本/中外合作": 72
+        },
+        "ielts": {
+          "overall": 6.5,
+          "sub": 5.5
+        },
+        "gre": null,
+        "background": "英国二等荣誉学位或同等学历（以官网为准）",
+        "notes": "雅思总分 6.5、单项不低于 5.5（取自官方课程页）；通常要求英国二等荣誉学位或同等学历，具体以官网为准"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.qub.ac.uk/courses/postgraduate-taught/business-analytics-msc/",
+        "searchUrl": "https://www.google.com/search?q=贝尔法斯特女王大学+QUB+Business+Analytics+MSc+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-qub-ai",
+      "country": "英国",
+      "university": "贝尔法斯特女王大学 QUB",
+      "qsRank": 202,
+      "program": "Artificial Intelligence MSc",
+      "field": "人工智能",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 76,
+          "211": 79,
+          "双一流": 81,
+          "双非": 83,
+          "海本/中外合作": 72
+        },
+        "ielts": {
+          "overall": 6.0,
+          "sub": 5.5
+        },
+        "gre": null,
+        "background": "英国二等荣誉学位或同等学历（以官网为准）",
+        "notes": "雅思总分 6.0、单项不低于 5.5（取自官方课程页）；通常要求英国二等荣誉学位或同等学历，具体以官网为准"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.qub.ac.uk/courses/postgraduate-taught/artificial-intelligence-msc/",
+        "searchUrl": "https://www.google.com/search?q=贝尔法斯特女王大学+QUB+Artificial+Intelligence+MSc+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-qub-da",
+      "country": "英国",
+      "university": "贝尔法斯特女王大学 QUB",
+      "qsRank": 202,
+      "program": "Data Analytics MSc",
+      "field": "数据分析",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 76,
+          "211": 79,
+          "双一流": 81,
+          "双非": 83,
+          "海本/中外合作": 72
+        },
+        "ielts": {
+          "overall": 6.5,
+          "sub": 5.5
+        },
+        "gre": null,
+        "background": "英国二等荣誉学位或同等学历（以官网为准）",
+        "notes": "雅思总分 6.5、单项不低于 5.5（取自官方课程页）；通常要求英国二等荣誉学位或同等学历，具体以官网为准"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.qub.ac.uk/courses/postgraduate-taught/data-analytics-msc/",
+        "searchUrl": "https://www.google.com/search?q=贝尔法斯特女王大学+QUB+Data+Analytics+MSc+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-qub-cyber",
+      "country": "英国",
+      "university": "贝尔法斯特女王大学 QUB",
+      "qsRank": 202,
+      "program": "Applied Cyber Security MSc",
+      "field": "网络安全",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 76,
+          "211": 79,
+          "双一流": 81,
+          "双非": 83,
+          "海本/中外合作": 72
+        },
+        "ielts": {
+          "overall": 6.0,
+          "sub": 5.5
+        },
+        "gre": null,
+        "background": "英国二等荣誉学位或同等学历（以官网为准）",
+        "notes": "雅思总分 6.0、单项不低于 5.5（取自官方课程页）；通常要求英国二等荣誉学位或同等学历，具体以官网为准"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.qub.ac.uk/courses/postgraduate-taught/applied-cyber-security-msc/",
+        "searchUrl": "https://www.google.com/search?q=贝尔法斯特女王大学+QUB+Applied+Cyber+Security+MSc+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-qub-digmkt",
+      "country": "英国",
+      "university": "贝尔法斯特女王大学 QUB",
+      "qsRank": 202,
+      "program": "Digital Marketing and Analytics MSc",
+      "field": "数字营销",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 76,
+          "211": 79,
+          "双一流": 81,
+          "双非": 83,
+          "海本/中外合作": 72
+        },
+        "ielts": {
+          "overall": 6.5,
+          "sub": 5.5
+        },
+        "gre": null,
+        "background": "英国二等荣誉学位或同等学历（以官网为准）",
+        "notes": "雅思总分 6.5、单项不低于 5.5（取自官方课程页）；通常要求英国二等荣誉学位或同等学历，具体以官网为准"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.qub.ac.uk/courses/postgraduate-taught/digital-marketing-analytics-msc/",
+        "searchUrl": "https://www.google.com/search?q=贝尔法斯特女王大学+QUB+Digital+Marketing+and+Analytics+MSc+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-qub-aibiz",
+      "country": "英国",
+      "university": "贝尔法斯特女王大学 QUB",
+      "qsRank": 202,
+      "program": "Artificial Intelligence in Business MSc",
+      "field": "商业分析",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 76,
+          "211": 79,
+          "双一流": 81,
+          "双非": 83,
+          "海本/中外合作": 72
+        },
+        "ielts": {
+          "overall": 6.5,
+          "sub": 5.5
+        },
+        "gre": null,
+        "background": "英国二等荣誉学位或同等学历（以官网为准）",
+        "notes": "雅思总分 6.5、单项不低于 5.5（取自官方课程页）；通常要求英国二等荣誉学位或同等学历，具体以官网为准"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.qub.ac.uk/courses/postgraduate-taught/ai-business-msc/",
+        "searchUrl": "https://www.google.com/search?q=贝尔法斯特女王大学+QUB+Artificial+Intelligence+in+Business+MSc+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-qub-leadership",
+      "country": "英国",
+      "university": "贝尔法斯特女王大学 QUB",
+      "qsRank": 202,
+      "program": "Global Leadership MSc",
+      "field": "管理学",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 76,
+          "211": 79,
+          "双一流": 81,
+          "双非": 83,
+          "海本/中外合作": 72
+        },
+        "ielts": {
+          "overall": 6.5,
+          "sub": 5.5
+        },
+        "gre": null,
+        "background": "英国二等荣誉学位或同等学历（以官网为准）",
+        "notes": "雅思总分 6.5、单项不低于 5.5（取自官方课程页）；通常要求英国二等荣誉学位或同等学历，具体以官网为准"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.qub.ac.uk/courses/postgraduate-taught/global-leadership-msc/",
+        "searchUrl": "https://www.google.com/search?q=贝尔法斯特女王大学+QUB+Global+Leadership+MSc+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-qub-digbiz",
+      "country": "英国",
+      "university": "贝尔法斯特女王大学 QUB",
+      "qsRank": 202,
+      "program": "Digital Business MSc",
+      "field": "商业信息技术",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 76,
+          "211": 79,
+          "双一流": 81,
+          "双非": 83,
+          "海本/中外合作": 72
+        },
+        "ielts": {
+          "overall": 6.5,
+          "sub": 5.5
+        },
+        "gre": null,
+        "background": "英国二等荣誉学位或同等学历（以官网为准）",
+        "notes": "雅思总分 6.5、单项不低于 5.5（取自官方课程页）；通常要求英国二等荣誉学位或同等学历，具体以官网为准"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.qub.ac.uk/courses/postgraduate-taught/digital-business-msc/",
+        "searchUrl": "https://www.google.com/search?q=贝尔法斯特女王大学+QUB+Digital+Business+MSc+entry+requirements"
       }
     }
   ]

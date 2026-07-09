@@ -76,6 +76,24 @@
     .trend-legend { display:flex; gap:16px; font-size:12px; color:var(--muted); margin-bottom:6px; }
     .trend-legend i { display:inline-block; width:12px; height:12px; border-radius:3px; vertical-align:-1px; margin-right:5px; }
     @media (max-width:600px){ .stat .n{font-size:24px;} }
+    /* 第四批:运营中台 */
+    .hint { font-size:12.5px; color:var(--muted); margin:0 0 12px; line-height:1.6; }
+    .mini.primary { background:var(--blue); color:#fff; }
+    .mini.primary:hover { background:var(--blue-d); }
+    .tools { display:flex; gap:8px; }
+    .churn { border-radius:10px; padding:10px 14px; font-size:13px; margin-top:10px; font-weight:500; }
+    .churn-warn { background:#fef9c3; color:#a16207; border:1px solid #f5e08a; }
+    .churn-high { background:#fee2e2; color:#b91c1c; border:1px solid #f6b0b0; }
+    .risk-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(160px,1fr)); gap:10px; margin-bottom:12px; }
+    .risk-title { grid-column:1/-1; font-size:13px; font-weight:700; color:var(--ink); margin-top:4px; }
+    .risk-item { display:flex; align-items:center; justify-content:space-between; gap:8px; font-size:13px; background:#f7fafd; border:1px solid var(--line); border-radius:8px; padding:6px 10px; }
+    .risk-item input { width:56px; padding:4px 6px; border:1px solid var(--line); border-radius:6px; text-align:right; font-size:13px; }
+    .save-msg { font-size:13px; color:#15803d; margin-top:10px; min-height:18px; font-weight:600; }
+    .cell-in { width:74px; padding:4px 6px; border:1px solid var(--line); border-radius:6px; font-size:12.5px; }
+    select.cell-in { width:auto; }
+    .export-btns { display:flex; gap:12px; flex-wrap:wrap; }
+    .pol-form { display:grid; grid-template-columns:repeat(auto-fill,minmax(180px,1fr)); gap:10px; margin-bottom:14px; padding:14px; background:#f7fafd; border-radius:10px; }
+    .pol-form input { padding:7px 10px; border:1px solid var(--line); border-radius:8px; font-size:13px; }
   </style>
 </head>
 <body>
@@ -118,6 +136,7 @@
         </div>
         <div class="funnel" id="funnel"></div>
         <div class="insight" id="funnel-insight"></div>
+        <div id="churn-alerts"></div>
       </div>
 
       <div class="card">
@@ -149,6 +168,59 @@
         <div class="card-head"><h3>🏭 行业分布</h3></div>
         <div id="industries"></div>
       </div>
+
+      <div class="card">
+        <div class="card-head">
+          <h3>🎯 工单 / 客户经理管理</h3>
+          <span id="ticket-stats" class="sub"></span>
+        </div>
+        <div class="table-scroll"><table id="tickets-table"></table></div>
+      </div>
+
+      <div class="card">
+        <div class="card-head">
+          <h3>⚖️ 风控规则配置 · 无需改代码即时生效</h3>
+          <div class="tools">
+            <button class="mini" id="risk-reset">↩︎ 恢复默认</button>
+            <button class="mini primary" id="risk-save">💾 保存生效</button>
+          </div>
+        </div>
+        <p class="hint">调整各维度权重(总分自动归一到 100)、等级门槛。改完点「保存生效」,前台测算立即按新规则打分。</p>
+        <div id="risk-dims" class="risk-grid"></div>
+        <div id="risk-grades" class="risk-grid"></div>
+        <div id="risk-msg" class="save-msg"></div>
+      </div>
+
+      <div class="card">
+        <div class="card-head"><h3>🏦 产品库管理 · 利率 / 准入 / 启停</h3></div>
+        <div class="table-scroll"><table id="products-table"></table></div>
+        <div id="product-msg" class="save-msg"></div>
+      </div>
+
+      <div class="card">
+        <div class="card-head">
+          <h3>🎁 政策库管理 · 批量维护贴息补贴</h3>
+          <button class="mini primary" id="policy-add-btn">＋ 新增政策</button>
+        </div>
+        <div id="policy-form" style="display:none;"></div>
+        <div class="table-scroll"><table id="policies-table"></table></div>
+      </div>
+
+      <div class="card">
+        <div class="card-head">
+          <h3>📤 数据导出 · 全量报表(CSV)</h3>
+        </div>
+        <div class="export-btns">
+          <a class="mini" id="exp-apps" target="_blank">导出全量申请记录</a>
+          <a class="mini" id="exp-leads" target="_blank">导出全量客户线索</a>
+          <a class="mini" id="exp-audit" target="_blank">导出审计日志</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-head"><h3>🛡️ 审计日志 · 操作留痕(金融审计留存 ≥5 年)</h3></div>
+        <div class="table-scroll"><table id="audit-table"></table></div>
+      </div>
     </div>
   </div>
 
@@ -175,6 +247,7 @@
         renderAll(d);
         showAdmin();
         try { renderAnalytics(await api("/api/admin/analytics?days=30")); } catch(_) {}
+        try { await loadOps(); } catch(_) {}
       } catch(e){
         if (e.message === "401"){ err.textContent = "口令错误,请重试"; localStorage.removeItem(TOKEN_KEY); token=""; showLogin(); }
         else { err.textContent = "加载失败,请稍后重试"; }
@@ -210,7 +283,12 @@
           + `　整体表单转化率 <b>${t.form_conversion||0}%</b>,留资转化率 <b>${t.lead_conversion||0}%</b>(共 ${t.sessions||0} 个访客)。`;
       } else { ins.style.display = "none"; }
 
-      // 功能使用排行
+      // 流失预警:单步流失 >40% 自动告警
+      const alerts = a.churn_alerts || [];
+      const ca = document.getElementById("churn-alerts");
+      ca.innerHTML = alerts.length ? alerts.map(al =>
+        `<div class="churn ${al.level==='high'?'churn-high':'churn-warn'}">⚠️ 流失预警:「${esc(al.from)}」→「${esc(al.to)}」单步流失 <b>${al.drop}%</b>${al.level==='high'?'(严重,优先优化)':'(需关注)'}</div>`
+      ).join("") : "";
       const feats = a.feature_usage || [];
       const fmax = Math.max(1, ...feats.map(f=>f.count));
       document.getElementById("feature-usage").innerHTML = feats.length ? feats.map(f=>`
@@ -299,6 +377,185 @@
 
       document.getElementById("export-apps").href = "/api/applications-summary/pdf";
       document.getElementById("updated-at").textContent = "更新于 " + new Date().toLocaleString("zh-CN");
+    }
+
+    // ---------------- 第四批:后台运营中台 ----------------
+    async function apiPost(path, body, method){
+      const r = await fetch(path, {
+        method: method || "POST",
+        headers: { "X-Admin-Token": token, "Content-Type": "application/json" },
+        body: body ? JSON.stringify(body) : undefined,
+      });
+      if (r.status === 401) throw new Error("401");
+      return r.json();
+    }
+
+    let RISK_CFG = null;
+    const DIM_NAMES = {credit:"征信状况",revenue:"营收规模",years:"经营年限",tax:"纳税信用",collateral:"抵押物",orders:"订单/流水",debt:"负债杠杆",industry:"行业风险"};
+
+    async function loadOps(){
+      const rc = await api("/api/admin/risk-config"); RISK_CFG = rc.config; renderRiskConfig();
+      renderProducts((await api("/api/admin/products")).products);
+      renderPolicies(await api("/api/admin/policies"));
+      renderTickets(await api("/api/admin/tickets"));
+      renderAudit((await api("/api/admin/audit-logs?limit=200")).logs);
+      document.getElementById("exp-apps").href = "/api/admin/export/applications?token=" + encodeURIComponent(token);
+      document.getElementById("exp-leads").href = "/api/admin/export/leads?token=" + encodeURIComponent(token);
+      document.getElementById("exp-audit").href = "/api/admin/export/audit?token=" + encodeURIComponent(token);
+    }
+
+    function renderRiskConfig(){
+      const dm = RISK_CFG.dim_max, total = Object.values(dm).reduce((a,b)=>a+b,0);
+      document.getElementById("risk-dims").innerHTML =
+        `<div class="risk-title">各维度权重(当前合计 ${total},保存后自动归一到 100)</div>` +
+        Object.keys(DIM_NAMES).map(k=>`
+          <label class="risk-item"><span>${DIM_NAMES[k]}</span>
+            <input type="number" min="0" max="60" data-dim="${k}" value="${dm[k]}"></label>`).join("");
+      const gt = RISK_CFG.grade_thresholds;
+      document.getElementById("risk-grades").innerHTML =
+        `<div class="risk-title">等级门槛(分数下限)</div>` +
+        ["A","B","C","D"].map(g=>`
+          <label class="risk-item"><span>${g} 级 ≥</span>
+            <input type="number" min="0" max="100" data-grade="${g}" value="${gt[g]}"></label>`).join("");
+    }
+
+    document.getElementById("risk-save").addEventListener("click", async ()=>{
+      const dim_max={}, gt={};
+      document.querySelectorAll("#risk-dims input[data-dim]").forEach(i=>dim_max[i.dataset.dim]=parseInt(i.value)||0);
+      document.querySelectorAll("#risk-grades input[data-grade]").forEach(i=>gt[i.dataset.grade]=parseInt(i.value)||0);
+      const res = await apiPost("/api/admin/risk-config", {dim_max, grade_thresholds:gt});
+      RISK_CFG = res.config; renderRiskConfig();
+      const m=document.getElementById("risk-msg"); m.textContent="✅ 已保存,前台测算立即生效"; setTimeout(()=>m.textContent="",3000);
+    });
+    document.getElementById("risk-reset").addEventListener("click", async ()=>{
+      const res = await apiPost("/api/admin/risk-config/reset"); RISK_CFG=res.config; renderRiskConfig();
+      const m=document.getElementById("risk-msg"); m.textContent="↩︎ 已恢复默认"; setTimeout(()=>m.textContent="",3000);
+    });
+
+    function renderProducts(list){
+      document.getElementById("products-table").innerHTML =
+        `<tr><th>产品</th><th>机构</th><th>年利率下限%</th><th>年利率上限%</th><th>最低年限</th><th>最低营收(万)</th><th>状态</th><th>操作</th></tr>` +
+        list.map(p=>`<tr data-pid="${p.id}">
+          <td class="wrap-cell">${esc(p.name)}</td>
+          <td>${esc(p.provider_type)}</td>
+          <td><input class="cell-in" data-f="annual_rate_min" type="number" step="0.1" value="${p.annual_rate_min}"></td>
+          <td><input class="cell-in" data-f="annual_rate_max" type="number" step="0.1" value="${p.annual_rate_max}"></td>
+          <td><input class="cell-in" data-f="min_years" type="number" step="0.5" value="${p.min_years_eff}"></td>
+          <td><input class="cell-in" data-f="min_annual_revenue" type="number" value="${p.min_revenue_eff}"></td>
+          <td><span class="tag ${p.enabled?"t-green":"t-red"}">${p.enabled?"启用":"停用"}</span></td>
+          <td>
+            <button class="mini prod-save">保存</button>
+            <button class="mini prod-toggle">${p.enabled?"停用":"启用"}</button>
+          </td></tr>`).join("");
+      document.querySelectorAll(".prod-save").forEach(b=>b.addEventListener("click", ()=>saveProduct(b, true)));
+      document.querySelectorAll(".prod-toggle").forEach(b=>b.addEventListener("click", ()=>saveProduct(b, false)));
+    }
+
+    async function saveProduct(btn, isSave){
+      const tr = btn.closest("tr"), pid = tr.dataset.pid, body = {};
+      if (isSave){
+        tr.querySelectorAll("input[data-f]").forEach(i=>body[i.dataset.f]=parseFloat(i.value));
+      } else {
+        body.enabled = tr.querySelector(".tag").textContent === "停用";
+      }
+      await apiPost("/api/admin/products/"+pid, body);
+      renderProducts((await api("/api/admin/products")).products);
+      const m=document.getElementById("product-msg"); m.textContent="✅ 产品已更新,推荐引擎即时生效"; setTimeout(()=>m.textContent="",3000);
+    }
+
+    function renderPolicies(d){
+      const rows = [...(d.builtin||[]).map(p=>({...p, _builtin:true})), ...(d.extra||[])];
+      document.getElementById("policies-table").innerHTML =
+        `<tr><th>名称</th><th>类别</th><th>主管部门</th><th>补贴力度</th><th>地区</th><th>来源</th><th>操作</th></tr>` +
+        rows.map(p=>`<tr>
+          <td class="wrap-cell">${esc(p.name)}</td><td>${esc(p.category)}</td>
+          <td>${esc(p.authority||"-")}</td><td class="wrap-cell">${esc(p.benefit||"-")}</td>
+          <td>${esc(p.region||"-")}</td>
+          <td>${p._builtin?'<span class="tag t-gray">内置</span>':'<span class="tag t-blue">自定义</span>'}</td>
+          <td>${p._builtin?"-":`<button class="mini pol-del" data-id="${p.id}">删除</button>`}</td>
+        </tr>`).join("");
+      document.querySelectorAll(".pol-del").forEach(b=>b.addEventListener("click", async ()=>{
+        if(!confirm("确认删除该自定义政策?")) return;
+        await apiPost("/api/admin/policies/"+b.dataset.id, null, "DELETE");
+        renderPolicies(await api("/api/admin/policies"));
+      }));
+    }
+
+    document.getElementById("policy-add-btn").addEventListener("click", ()=>{
+      const f = document.getElementById("policy-form");
+      if (f.style.display==="none"){
+        f.style.display="";
+        f.innerHTML = `<div class="pol-form">
+          <input id="pf-name" placeholder="政策名称(必填)">
+          <input id="pf-cat" placeholder="类别,如 贴息/稳岗">
+          <input id="pf-auth" placeholder="主管部门">
+          <input id="pf-benefit" placeholder="补贴力度描述">
+          <input id="pf-region" placeholder="适用地区,如 全国通用">
+          <input id="pf-window" placeholder="申报窗口">
+          <button class="mini primary" id="pf-submit">提交</button>
+        </div>`;
+        document.getElementById("pf-submit").addEventListener("click", async ()=>{
+          const body = {
+            name: document.getElementById("pf-name").value.trim(),
+            category: document.getElementById("pf-cat").value.trim(),
+            authority: document.getElementById("pf-auth").value.trim(),
+            benefit: document.getElementById("pf-benefit").value.trim(),
+            region: document.getElementById("pf-region").value.trim(),
+            apply_window: document.getElementById("pf-window").value.trim(),
+          };
+          if(!body.name){ alert("政策名称必填"); return; }
+          const res = await apiPost("/api/admin/policies", body);
+          if(!res.ok){ alert(res.detail||"新增失败"); return; }
+          f.style.display="none"; f.innerHTML="";
+          renderPolicies(await api("/api/admin/policies"));
+        });
+      } else { f.style.display="none"; f.innerHTML=""; }
+    });
+
+    const MANAGERS = ["李经理","王经理","张经理","刘经理"];
+    const TICKET_STATUS = ["待回访","已联系","材料待补充","银行审核中","已放款","已拒绝"];
+    function renderTickets(d){
+      const s = d.stats||{};
+      document.getElementById("ticket-stats").textContent =
+        `共 ${s.total||0} 单 · 成单 ${s.won||0} · 成单率 ${s.win_rate||0}%`;
+      const leads = d.leads||[];
+      document.getElementById("tickets-table").innerHTML =
+        `<tr><th>时间</th><th>企业/联系人</th><th>手机</th><th>需求(万)</th><th>客户经理</th><th>状态</th><th>跟进记录</th><th></th></tr>` +
+        (leads.length ? leads.map(r=>`<tr data-id="${r.id}">
+          <td>${esc((r.created_at||"").slice(5,16))}</td>
+          <td class="wrap-cell">${esc(r.company_name)||"-"}</td>
+          <td><a class="phone" href="tel:${esc(r.phone)}">${esc(r.phone)||"-"}</a></td>
+          <td>${esc(r.loan_amount)||"-"}</td>
+          <td><select class="cell-in tk-mgr">
+            <option value="">未分配</option>
+            ${MANAGERS.map(m=>`<option ${r.manager===m?"selected":""}>${m}</option>`).join("")}</select></td>
+          <td><select class="cell-in tk-status">
+            ${TICKET_STATUS.map(st=>`<option ${r.status===st?"selected":""}>${st}</option>`).join("")}</select></td>
+          <td><input class="cell-in tk-note" value="${esc(r.follow_up||"")}" placeholder="跟进备注"></td>
+          <td><button class="mini tk-save">保存</button></td>
+        </tr>`).join("")
+        : `<tr><td colspan="8" class="empty">暂无工单</td></tr>`);
+      document.querySelectorAll(".tk-save").forEach(b=>b.addEventListener("click", async ()=>{
+        const tr=b.closest("tr");
+        await apiPost("/api/admin/tickets/"+tr.dataset.id, {
+          manager: tr.querySelector(".tk-mgr").value,
+          status: tr.querySelector(".tk-status").value,
+          follow_up: tr.querySelector(".tk-note").value,
+        });
+        renderTickets(await api("/api/admin/tickets"));
+      }));
+    }
+
+    function renderAudit(logs){
+      document.getElementById("audit-table").innerHTML =
+        `<tr><th>时间</th><th>操作人</th><th>操作</th><th>对象</th><th>详情</th><th>IP</th></tr>` +
+        (logs.length ? logs.map(l=>`<tr>
+          <td>${esc((l.created_at||"").slice(5))}</td><td>${esc(l.actor)}</td>
+          <td><span class="tag t-blue">${esc(l.action)}</span></td>
+          <td>${esc(l.target)||"-"}</td>
+          <td class="wrap-cell">${esc((l.detail||"").slice(0,60))}</td>
+          <td>${esc(l.ip)||"-"}</td></tr>`).join("")
+        : `<tr><td colspan="6" class="empty">暂无操作记录</td></tr>`);
     }
 
     function showLogin(){ document.getElementById("login-view").style.display=""; document.getElementById("admin-view").style.display="none"; }

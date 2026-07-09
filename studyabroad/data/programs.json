@@ -1,7 +1,7 @@
 {
   "meta": {
     "name": "留学选校匹配数据集",
-    "version": "0.4.0",
+    "version": "0.4.1",
     "updated": "2026-07",
     "disclaimer": "本数据为参考性示例数据，基于公开招生信息与往年中国大陆申请者录取经验整理，均分门槛为「建议达到」的参考线，并非官方保证。实际录取受名额、竞争、文书、科研实习、面试等多因素影响，请以学校官网为准。",
     "tiers": [
@@ -37,9 +37,9 @@
       "金融",
       "金融工程"
     ],
-    "count": 722,
+    "count": 736,
     "provenanceNote": "每个项目带 provenance 溯源：dataSource=参考估算/官方核实，verified 表示是否经官方页核实，lastVerified 为核实年月，sourceUrl 为官方项目页。参考估算分数线来自公开信息与往年经验，仅供参考；官方核实项由 scripts/ingest.py 从官方来源导入。",
-    "verifiedCount": 413
+    "verifiedCount": 427
   },
   "programs": [
     {
@@ -25391,6 +25391,496 @@
         "lastVerified": "2026-07",
         "sourceUrl": "https://www.uow.edu.au/study/courses/master-of-professional-accounting/",
         "searchUrl": "https://www.google.com/search?q=卧龙岗大学+UOW+Master+of+Professional+Accounting+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-surrey-ai",
+      "country": "英国",
+      "university": "萨里大学 Surrey",
+      "qsRank": 305,
+      "program": "Artificial Intelligence MSc",
+      "field": "人工智能",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 74,
+          "211": 77,
+          "双一流": 79,
+          "双非": 82,
+          "海本/中外合作": 70
+        },
+        "ielts": {
+          "overall": 6.5,
+          "sub": 6.0
+        },
+        "gre": null,
+        "background": "英国二等荣誉学位或同等学历（以官网为准）",
+        "notes": "雅思总分 6.5、单项不低于 6.0（取自官方课程页）；通常要求英国二等荣誉学位或同等学历，具体以官网为准"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9/10 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.surrey.ac.uk/postgraduate/artificial-intelligence-msc",
+        "searchUrl": "https://www.google.com/search?q=萨里大学+Surrey+Artificial+Intelligence+MSc+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-surrey-ba",
+      "country": "英国",
+      "university": "萨里大学 Surrey",
+      "qsRank": 305,
+      "program": "Business Analytics MSc",
+      "field": "商业分析",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 74,
+          "211": 77,
+          "双一流": 79,
+          "双非": 82,
+          "海本/中外合作": 70
+        },
+        "ielts": {
+          "overall": 6.5,
+          "sub": 6.0
+        },
+        "gre": null,
+        "background": "英国二等荣誉学位或同等学历（以官网为准）",
+        "notes": "雅思总分 6.5、单项不低于 6.0（取自官方课程页）；通常要求英国二等荣誉学位或同等学历，具体以官网为准"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9/10 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.surrey.ac.uk/postgraduate/business-analytics-msc",
+        "searchUrl": "https://www.google.com/search?q=萨里大学+Surrey+Business+Analytics+MSc+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-surrey-cyber",
+      "country": "英国",
+      "university": "萨里大学 Surrey",
+      "qsRank": 305,
+      "program": "Cyber Security MSc",
+      "field": "网络安全",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 74,
+          "211": 77,
+          "双一流": 79,
+          "双非": 82,
+          "海本/中外合作": 70
+        },
+        "ielts": {
+          "overall": 6.5,
+          "sub": 6.0
+        },
+        "gre": null,
+        "background": "英国二等荣誉学位或同等学历（以官网为准）",
+        "notes": "雅思总分 6.5、单项不低于 6.0（取自官方课程页）；通常要求英国二等荣誉学位或同等学历，具体以官网为准"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9/10 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.surrey.ac.uk/postgraduate/cyber-security-msc",
+        "searchUrl": "https://www.google.com/search?q=萨里大学+Surrey+Cyber+Security+MSc+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-surrey-cvml",
+      "country": "英国",
+      "university": "萨里大学 Surrey",
+      "qsRank": 305,
+      "program": "Computer Vision, Robotics & Machine Learning MSc",
+      "field": "计算机视觉与机器学习",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 74,
+          "211": 77,
+          "双一流": 79,
+          "双非": 82,
+          "海本/中外合作": 70
+        },
+        "ielts": {
+          "overall": 6.5,
+          "sub": 6.0
+        },
+        "gre": null,
+        "background": "英国二等荣誉学位或同等学历（以官网为准）",
+        "notes": "雅思总分 6.5、单项不低于 6.0（取自官方课程页）；通常要求英国二等荣誉学位或同等学历，具体以官网为准"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9/10 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.surrey.ac.uk/postgraduate/computer-vision-robotics-and-machine-learning-msc",
+        "searchUrl": "https://www.google.com/search?q=萨里大学+Surrey+Computer+Vision,+Robotics+&+Machine+Learning+MSc+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-surrey-econ",
+      "country": "英国",
+      "university": "萨里大学 Surrey",
+      "qsRank": 305,
+      "program": "Economics MSc",
+      "field": "经济学",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 74,
+          "211": 77,
+          "双一流": 79,
+          "双非": 82,
+          "海本/中外合作": 70
+        },
+        "ielts": {
+          "overall": 6.5,
+          "sub": 6.0
+        },
+        "gre": null,
+        "background": "英国二等荣誉学位或同等学历（以官网为准）",
+        "notes": "雅思总分 6.5、单项不低于 6.0（取自官方课程页）；通常要求英国二等荣誉学位或同等学历，具体以官网为准"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9/10 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.surrey.ac.uk/postgraduate/economics-msc",
+        "searchUrl": "https://www.google.com/search?q=萨里大学+Surrey+Economics+MSc+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-surrey-ibm",
+      "country": "英国",
+      "university": "萨里大学 Surrey",
+      "qsRank": 305,
+      "program": "International Business Management MSc",
+      "field": "国际商务管理",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 74,
+          "211": 77,
+          "双一流": 79,
+          "双非": 82,
+          "海本/中外合作": 70
+        },
+        "ielts": {
+          "overall": 6.5,
+          "sub": 6.0
+        },
+        "gre": null,
+        "background": "英国二等荣誉学位或同等学历（以官网为准）",
+        "notes": "雅思总分 6.5、单项不低于 6.0（取自官方课程页）；通常要求英国二等荣誉学位或同等学历，具体以官网为准"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9/10 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.surrey.ac.uk/postgraduate/international-business-management-msc",
+        "searchUrl": "https://www.google.com/search?q=萨里大学+Surrey+International+Business+Management+MSc+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-surrey-hrm",
+      "country": "英国",
+      "university": "萨里大学 Surrey",
+      "qsRank": 305,
+      "program": "Human Resources Management MSc",
+      "field": "人力资源管理",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 74,
+          "211": 77,
+          "双一流": 79,
+          "双非": 82,
+          "海本/中外合作": 70
+        },
+        "ielts": {
+          "overall": 6.5,
+          "sub": 6.0
+        },
+        "gre": null,
+        "background": "英国二等荣誉学位或同等学历（以官网为准）",
+        "notes": "雅思总分 6.5、单项不低于 6.0（取自官方课程页）；通常要求英国二等荣誉学位或同等学历，具体以官网为准"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9/10 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.surrey.ac.uk/postgraduate/human-resources-management-msc",
+        "searchUrl": "https://www.google.com/search?q=萨里大学+Surrey+Human+Resources+Management+MSc+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-surrey-accfin",
+      "country": "英国",
+      "university": "萨里大学 Surrey",
+      "qsRank": 305,
+      "program": "Accounting & Finance MSc",
+      "field": "会计与金融",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 74,
+          "211": 77,
+          "双一流": 79,
+          "双非": 82,
+          "海本/中外合作": 70
+        },
+        "ielts": {
+          "overall": 6.5,
+          "sub": 6.0
+        },
+        "gre": null,
+        "background": "英国二等荣誉学位或同等学历（以官网为准）",
+        "notes": "雅思总分 6.5、单项不低于 6.0（取自官方课程页）；通常要求英国二等荣誉学位或同等学历，具体以官网为准"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9/10 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.surrey.ac.uk/postgraduate/accounting-and-finance-msc",
+        "searchUrl": "https://www.google.com/search?q=萨里大学+Surrey+Accounting+&+Finance+MSc+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-surrey-bankfin",
+      "country": "英国",
+      "university": "萨里大学 Surrey",
+      "qsRank": 305,
+      "program": "Banking & Finance MSc",
+      "field": "银行与金融",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 74,
+          "211": 77,
+          "双一流": 79,
+          "双非": 82,
+          "海本/中外合作": 70
+        },
+        "ielts": {
+          "overall": 6.5,
+          "sub": 6.0
+        },
+        "gre": null,
+        "background": "英国二等荣誉学位或同等学历（以官网为准）",
+        "notes": "雅思总分 6.5、单项不低于 6.0（取自官方课程页）；通常要求英国二等荣誉学位或同等学历，具体以官网为准"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9/10 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.surrey.ac.uk/postgraduate/banking-and-finance-msc",
+        "searchUrl": "https://www.google.com/search?q=萨里大学+Surrey+Banking+&+Finance+MSc+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-surrey-econfin",
+      "country": "英国",
+      "university": "萨里大学 Surrey",
+      "qsRank": 305,
+      "program": "Economics & Finance MSc",
+      "field": "经济与金融",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 74,
+          "211": 77,
+          "双一流": 79,
+          "双非": 82,
+          "海本/中外合作": 70
+        },
+        "ielts": {
+          "overall": 6.5,
+          "sub": 6.0
+        },
+        "gre": null,
+        "background": "英国二等荣誉学位或同等学历（以官网为准）",
+        "notes": "雅思总分 6.5、单项不低于 6.0（取自官方课程页）；通常要求英国二等荣誉学位或同等学历，具体以官网为准"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9/10 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.surrey.ac.uk/postgraduate/economics-and-finance-msc",
+        "searchUrl": "https://www.google.com/search?q=萨里大学+Surrey+Economics+&+Finance+MSc+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-surrey-eim",
+      "country": "英国",
+      "university": "萨里大学 Surrey",
+      "qsRank": 305,
+      "program": "Entrepreneurship & Innovation Management MSc",
+      "field": "创业与创新管理",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 74,
+          "211": 77,
+          "双一流": 79,
+          "双非": 82,
+          "海本/中外合作": 70
+        },
+        "ielts": {
+          "overall": 6.5,
+          "sub": 6.0
+        },
+        "gre": null,
+        "background": "英国二等荣誉学位或同等学历（以官网为准）",
+        "notes": "雅思总分 6.5、单项不低于 6.0（取自官方课程页）；通常要求英国二等荣誉学位或同等学历，具体以官网为准"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9/10 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.surrey.ac.uk/postgraduate/entrepreneurship-innovation-management-msc",
+        "searchUrl": "https://www.google.com/search?q=萨里大学+Surrey+Entrepreneurship+&+Innovation+Management+MSc+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-surrey-aiconv",
+      "country": "英国",
+      "university": "萨里大学 Surrey",
+      "qsRank": 305,
+      "program": "Artificial Intelligence (Conversion) MSc",
+      "field": "人工智能转换",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 74,
+          "211": 77,
+          "双一流": 79,
+          "双非": 82,
+          "海本/中外合作": 70
+        },
+        "ielts": {
+          "overall": 6.5,
+          "sub": 6.0
+        },
+        "gre": null,
+        "background": "英国二等荣誉学位或同等学历（以官网为准）",
+        "notes": "雅思总分 6.5、单项不低于 6.0（取自官方课程页）；通常要求英国二等荣誉学位或同等学历，具体以官网为准"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9/10 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.surrey.ac.uk/postgraduate/artificial-intelligence-conversion-msc",
+        "searchUrl": "https://www.google.com/search?q=萨里大学+Surrey+Artificial+Intelligence+(Conversion)+MSc+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-surrey-dsconv",
+      "country": "英国",
+      "university": "萨里大学 Surrey",
+      "qsRank": 305,
+      "program": "Data Science (Conversion) MSc",
+      "field": "数据科学转换",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 74,
+          "211": 77,
+          "双一流": 79,
+          "双非": 82,
+          "海本/中外合作": 70
+        },
+        "ielts": {
+          "overall": 6.5,
+          "sub": 6.0
+        },
+        "gre": null,
+        "background": "英国二等荣誉学位或同等学历（以官网为准）",
+        "notes": "雅思总分 6.5、单项不低于 6.0（取自官方课程页）；通常要求英国二等荣誉学位或同等学历，具体以官网为准"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9/10 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.surrey.ac.uk/postgraduate/data-science-conversion-msc",
+        "searchUrl": "https://www.google.com/search?q=萨里大学+Surrey+Data+Science+(Conversion)+MSc+entry+requirements"
+      }
+    },
+    {
+      "id": "uk-surrey-eee",
+      "country": "英国",
+      "university": "萨里大学 Surrey",
+      "qsRank": 305,
+      "program": "Electronic Engineering MSc",
+      "field": "电子工程",
+      "degree": "硕士",
+      "requirements": {
+        "avgByTier": {
+          "985": 74,
+          "211": 77,
+          "双一流": 79,
+          "双非": 82,
+          "海本/中外合作": 70
+        },
+        "ielts": {
+          "overall": 6.5,
+          "sub": 6.0
+        },
+        "gre": null,
+        "background": "英国二等荣誉学位或同等学历（以官网为准）",
+        "notes": "雅思总分 6.5、单项不低于 6.0（取自官方课程页）；通常要求英国二等荣誉学位或同等学历，具体以官网为准"
+      },
+      "tuition": "学费见官网",
+      "duration": "1 年",
+      "timeline": "9/10 月入学；分轮次滚动审理、招满即止，建议尽早递交（以官网为准）",
+      "provenance": {
+        "dataSource": "官方核实",
+        "verified": true,
+        "lastVerified": "2026-07",
+        "sourceUrl": "https://www.surrey.ac.uk/postgraduate/electronic-engineering-msc",
+        "searchUrl": "https://www.google.com/search?q=萨里大学+Surrey+Electronic+Engineering+MSc+entry+requirements"
       }
     }
   ]

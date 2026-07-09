@@ -8,6 +8,7 @@ from risk import amount_multiplier, assess, rate_adjustment
 from subsidies import match_policies
 from guarantee import build_guarantee
 from plain_language import build_plain_language
+from fraud_rules import build_match_strategy, detect_fraud_signals
 import storage
 
 
@@ -336,7 +337,6 @@ def recommend(profile: EnterpriseProfile) -> RecommendResponse:
     subsidies = match_policies(profile)
     advice = _personalized_advice(profile, risk, plans)
     tiers = [PlanTier(**t) for t in _build_tiers(plans, bool(subsidies))]
-
     best_amt = plans[0].estimated_amount if plans else 0.0
     guarantee = build_guarantee(profile, best_amt, profile.loan_amount)
 
@@ -375,6 +375,8 @@ def recommend(profile: EnterpriseProfile) -> RecommendResponse:
         plans=plans,
         tiers=tiers,
         guarantee=guarantee,
+        match_strategy=build_match_strategy(profile, risk, plans),
+        risk_alerts=detect_fraud_signals(profile),
         plain_language=build_plain_language(
             plans=plans, risk=risk, subsidies=subsidies,
             requested_amount=profile.loan_amount, is_personal=False,

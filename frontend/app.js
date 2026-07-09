@@ -1093,34 +1093,85 @@ function render(data) {
 
   // ---- 以下为详细内容,默认折叠 ----
 
-  // 风控评估
+  // 风控评估:标准化 8 维评分卡
   if (data.risk) {
     const r = data.risk;
+    const dimIcon = { credit: "🧾", revenue: "💰", years: "📅", tax: "🏛️", collateral: "🏠", orders: "📈", debt: "⚖️", industry: "🏭" };
+    const scorecard = (r.scorecard && r.scorecard.length) ? r.scorecard : null;
     moreHtml += `<div class="risk-box">
       <div class="risk-head">
-        <h3>🛡️ 风控评估</h3>
-        <div class="risk-score grade-${r.grade}" title="风控等级 A≥85 / B 70-84 / C 55-69 / D<55,综合8维度评分">
+        <h3>🛡️ 风控评估 · 8维评分卡</h3>
+        <div class="risk-score grade-${r.grade}" title="风控等级 A≥85 / B 70-84 / C 55-69 / D 40-54 / E<40,综合8维度评分">
           <span class="rs-num">${r.score}</span>
           <span class="rs-grade">等级 ${r.grade} · ${escapeHtml(r.grade_label)}</span>
         </div>
       </div>
-      ${
-        r.debt_ratio != null
-          ? `<p class="risk-meta">负债杠杆(贷款/年营收):约 ${Math.round(r.debt_ratio * 100)}%</p>`
-          : ""
+      ${r.debt_ratio != null ? `<p class="risk-meta">负债杠杆(贷款/年营收):约 ${Math.round(r.debt_ratio * 100)}%${r.bonus_add ? ` · 行业增信 +${r.bonus_add} 分` : ""}</p>` : ""}`;
+
+    if (scorecard) {
+      moreHtml += `<div class="scorecard">
+        ${scorecard.map((d) => {
+          const pct = d.max ? Math.round((d.score / d.max) * 100) : 0;
+          return `<div class="sc-dim sc-${d.level}">
+            <div class="sc-dim-head">
+              <span class="sc-ico">${dimIcon[d.key] || "•"}</span>
+              <b class="sc-name">${escapeHtml(d.name)}</b>
+              <span class="sc-pts">${d.score}<small>/${d.max}</small></span>
+            </div>
+            <div class="sc-bar"><div class="sc-bar-fill sc-fill-${d.level}" style="width:${pct}%"></div></div>
+            <div class="sc-reason">${escapeHtml(d.reason)}</div>
+            ${d.advice ? `<div class="sc-advice">💡 ${escapeHtml(d.advice)}</div>` : ""}
+          </div>`;
+        }).join("")}
+      </div>`;
+
+      if (r.weak_points && r.weak_points.length) {
+        moreHtml += `<div class="weak-points">
+          <div class="wp-title">🔎 为什么通过率被拉低?(失分最多的 ${r.weak_points.length} 项)</div>
+          ${r.weak_points.map((w) => `<div class="wp-item">
+            <div class="wp-head"><b>${escapeHtml(w.name)}</b><span class="wp-lost">失分 ${w.lost}</span></div>
+            <div class="wp-reason">${escapeHtml(w.reason)}</div>
+            <div class="wp-advice">✅ ${escapeHtml(w.advice)}</div>
+          </div>`).join("")}
+        </div>`;
       }
-      <div class="factors">
-        ${r.factors
-          .map(
-            (f) =>
-              `<div class="factor factor-${f.impact}"><b>${escapeHtml(f.name)}</b> ${escapeHtml(
-                f.detail
-              )}</div>`
-          )
-          .join("")}
-      </div>
+    } else {
+      moreHtml += `<div class="factors">
+        ${r.factors.map((f) => `<div class="factor factor-${f.impact}"><b>${escapeHtml(f.name)}</b> ${escapeHtml(f.detail)}</div>`).join("")}
+      </div>`;
+    }
+    moreHtml += `</div>`;
+  }
+
+  // 反欺诈 / 异常拦截提示
+  if (data.risk_alerts && data.risk_alerts.length) {
+    const lvIco = { high: "🚫", mid: "⚠️", info: "ℹ️" };
+    const lvLabel = { high: "高风险信号", mid: "存疑待佐证", info: "温馨提示" };
+    moreHtml += `<div class="risk-alerts">
+      <h3>🛑 合规与反欺诈提示</h3>
+      <p class="ra-sub">以下为系统自动识别的数据异常信号,仅作提示,帮助你在进件前修正,避免因资料不实被直接拒件。</p>
+      ${data.risk_alerts.map((a) => `<div class="ra-item ra-${a.level}">
+        <div class="ra-head">${lvIco[a.level] || "•"} <b>${escapeHtml(a.title)}</b><span class="ra-tag">${lvLabel[a.level] || ""}</span></div>
+        <div class="ra-detail">${escapeHtml(a.detail)}</div>
+        <div class="ra-suggest">✅ ${escapeHtml(a.suggestion)}</div>
+      </div>`).join("")}
     </div>`;
   }
+
+  // 分层匹配策略
+  if (data.match_strategy) {
+    const ms = data.match_strategy;
+    moreHtml += `<div class="match-strategy">
+      <h3>🎯 分层匹配策略</h3>
+      <div class="ms-seg"><span class="ms-seg-tag">${escapeHtml(ms.segment)}</span><span class="ms-focus">主推:${escapeHtml(ms.focus_label)}</span></div>
+      <p class="ms-reason">${escapeHtml(ms.reason)}</p>
+      <div class="ms-products">
+        ${ms.focus_products.map((p) => `<span class="ms-prod ${p.matched ? "matched" : "locked"}">${p.matched ? "✅" : "🔒"} ${escapeHtml(p.product_name)}</span>`).join("")}
+      </div>
+      ${ms.tips && ms.tips.length ? `<ul class="ms-tips">${ms.tips.map((t) => `<li>${escapeHtml(t)}</li>`).join("")}</ul>` : ""}
+    </div>`;
+  }
+
 
   // 政府性融资担保增信方案(抵押不足补满额度)
   if (data.guarantee) {

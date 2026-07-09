@@ -947,6 +947,85 @@ body.dark .excl-hidden, body.dark .excl-rate { color: #cbd5e1; }
   border-left-color: #9ca3af;
 }
 
+/* 8维标准化评分卡 */
+.scorecard {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 10px; margin-top: 14px;
+}
+.sc-dim {
+  padding: 10px 12px; border-radius: 10px; background: #f9fafb;
+  border: 1px solid #eef2f7;
+}
+.sc-dim-head { display: flex; align-items: center; gap: 6px; }
+.sc-ico { font-size: 0.95rem; }
+.sc-name { font-size: 0.9rem; }
+.sc-pts { margin-left: auto; font-weight: 700; font-size: 0.95rem; }
+.sc-pts small { font-weight: 400; opacity: 0.55; font-size: 0.78rem; }
+.sc-bar { height: 7px; border-radius: 5px; background: rgba(140,172,210,0.2); margin: 7px 0 6px; overflow: hidden; }
+.sc-bar-fill { height: 100%; border-radius: 5px; transition: width 0.5s ease; }
+.sc-fill-good { background: linear-gradient(90deg, #22c55e, #16a34a); }
+.sc-fill-mid { background: linear-gradient(90deg, #f59e0b, #d97706); }
+.sc-fill-weak { background: linear-gradient(90deg, #ef4444, #dc2626); }
+.sc-reason { font-size: 0.78rem; line-height: 1.5; opacity: 0.82; }
+.sc-advice { font-size: 0.76rem; line-height: 1.5; margin-top: 4px; color: #a16207; }
+.sc-weak { border-color: rgba(220,38,38,0.28); background: #fef4f4; }
+body.dark .sc-dim { background: rgba(140,172,210,0.06); border-color: rgba(140,172,210,0.15); }
+body.dark .sc-weak { background: rgba(220,38,38,0.08); }
+body.dark .sc-advice { color: #e0b35a; }
+
+/* 为什么通过率低 */
+.weak-points {
+  margin-top: 14px; padding: 12px 14px; border-radius: 12px;
+  background: rgba(220,38,38,0.05); border: 1px solid rgba(220,38,38,0.2);
+}
+.wp-title { font-weight: 700; font-size: 0.92rem; margin-bottom: 8px; color: #b91c1c; }
+.wp-item { padding: 8px 0; border-top: 1px dashed rgba(220,38,38,0.2); }
+.wp-item:first-of-type { border-top: none; }
+.wp-head { display: flex; align-items: center; gap: 8px; }
+.wp-lost { margin-left: auto; font-size: 0.74rem; background: rgba(220,38,38,0.14); color: #b91c1c; padding: 1px 8px; border-radius: 8px; font-weight: 700; }
+.wp-reason { font-size: 0.8rem; opacity: 0.82; margin-top: 3px; }
+.wp-advice { font-size: 0.8rem; margin-top: 3px; color: #16a34a; }
+body.dark .wp-title { color: #f87171; }
+body.dark .weak-points { background: rgba(220,38,38,0.08); }
+
+/* 反欺诈提示 */
+.risk-alerts {
+  margin-bottom: 18px; padding: 16px 18px; border-radius: 12px;
+  background: #fffbeb; border: 1px solid #fde68a;
+}
+.risk-alerts h3 { margin: 0 0 4px; font-size: 15px; }
+.ra-sub { font-size: 0.8rem; opacity: 0.75; margin: 0 0 10px; line-height: 1.5; }
+.ra-item { padding: 10px 12px; border-radius: 10px; margin-bottom: 8px; background: #fff; border-left: 3px solid #f59e0b; }
+.ra-head { display: flex; align-items: center; gap: 6px; font-size: 0.9rem; }
+.ra-tag { margin-left: auto; font-size: 0.72rem; padding: 1px 8px; border-radius: 8px; background: rgba(245,158,11,0.16); color: #b45309; }
+.ra-detail { font-size: 0.8rem; line-height: 1.55; opacity: 0.85; margin-top: 4px; }
+.ra-suggest { font-size: 0.8rem; line-height: 1.55; margin-top: 4px; color: #16a34a; }
+.ra-high { border-left-color: #dc2626; }
+.ra-high .ra-tag { background: rgba(220,38,38,0.14); color: #b91c1c; }
+.ra-info { border-left-color: #2563eb; }
+.ra-info .ra-tag { background: rgba(37,99,235,0.14); color: #1d4ed8; }
+body.dark .risk-alerts { background: rgba(245,158,11,0.08); border-color: rgba(245,158,11,0.3); }
+body.dark .ra-item { background: rgba(140,172,210,0.06); }
+
+/* 分层匹配策略 */
+.match-strategy {
+  margin-bottom: 18px; padding: 16px 18px; border-radius: 12px;
+  background: #f0f7ff; border: 1px solid #bfdbfe;
+}
+.match-strategy h3 { margin: 0 0 8px; font-size: 15px; }
+.ms-seg { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 6px; }
+.ms-seg-tag { background: linear-gradient(135deg, #2563eb, #1d4ed8); color: #fff; font-size: 0.82rem; font-weight: 700; padding: 3px 12px; border-radius: 20px; }
+.ms-focus { font-size: 0.86rem; font-weight: 600; color: #1d4ed8; }
+.ms-reason { font-size: 0.82rem; line-height: 1.55; opacity: 0.85; margin: 0 0 10px; }
+.ms-products { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 10px; }
+.ms-prod { font-size: 0.82rem; padding: 5px 12px; border-radius: 20px; border: 1px solid rgba(37,99,235,0.3); }
+.ms-prod.matched { background: rgba(22,163,74,0.1); border-color: rgba(22,163,74,0.35); color: #16a34a; }
+.ms-prod.locked { background: rgba(140,172,210,0.1); opacity: 0.75; }
+.ms-tips { margin: 0; padding-left: 20px; font-size: 0.82rem; line-height: 1.7; }
+body.dark .match-strategy { background: rgba(37,99,235,0.08); border-color: rgba(37,99,235,0.3); }
+body.dark .ms-focus { color: #93b8f5; }
+body.dark .ms-prod.matched { color: #4ade80; }
+
 /* 个性化建议 */
 .advice-box {
   background: #f0f5fb;

@@ -144,12 +144,32 @@ class RiskFactorModel(BaseModel):
     detail: str
 
 
+class ScorecardDimension(BaseModel):
+    key: str
+    name: str
+    score: int
+    max: int
+    level: str   # good / mid / weak
+    reason: str
+    advice: str = ""
+
+
+class WeakPoint(BaseModel):
+    name: str
+    lost: int
+    reason: str
+    advice: str = ""
+
+
 class RiskAssessment(BaseModel):
     score: int
     grade: str
     grade_label: str
     debt_ratio: Optional[float] = None
     industry_coefficient: float = 1.0
+    scorecard: List[ScorecardDimension] = []
+    bonus_add: int = 0
+    weak_points: List[WeakPoint] = []
     factors: List[RiskFactorModel] = []
 
 
@@ -175,6 +195,8 @@ class RecommendResponse(BaseModel):
     tiers: List[PlanTier] = []
     guarantee: Optional[dict] = None
     plain_language: Optional[dict] = None
+    match_strategy: Optional[dict] = None
+    risk_alerts: List[dict] = []
 
 
 class ApplicationCreate(BaseModel):

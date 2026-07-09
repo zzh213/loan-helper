@@ -721,6 +721,54 @@ def calibrate_industry(industry: str) -> dict:
             "delta": rate - 70}
 
 
+def scorecard_calibration() -> dict:
+    """评分卡冷启动校准:按预测风控分档,统计真实审批通过率与平均放款额度差异。
+
+    用于验证评分卡区分度(分越高实际通过率应越高),并为评分卡迭代提供依据。
+    """
+    bands = [
+        ("A", 85, 101, "优质低风险"),
+        ("B", 70, 85, "良好可控"),
+        ("C", 55, 70, "中等风险"),
+        ("D", 40, 55, "较高风险"),
+        ("E", 0, 40, "高风险"),
+    ]
+    with _conn() as conn:
+        rows = conn.execute(
+            "SELECT risk_score, best_amount, status FROM applications "
+            "WHERE status IN ('已通过','已放款','已拒绝')"
+        ).fetchall()
+    decided = [r for r in rows if r["risk_score"] is not None]
+    total = len(decided)
+    result = []
+    for grade, lo, hi, label in bands:
+        seg = [r for r in decided if lo <= (r["risk_score"] or 0) < hi]
+        n = len(seg)
+        approved = [r for r in seg if r["status"] in ("已通过", "已放款")]
+        pass_rate = round(len(approved) / n * 100) if n else None
+        avg_amt = round(sum((r["best_amount"] or 0) for r in approved) / len(approved), 1) if approved else None
+        result.append({
+            "grade": grade,
+            "label": label,
+            "range": f"{lo}-{hi - 1}",
+            "samples": n,
+            "actual_pass_rate": pass_rate,
+            "avg_approved_amount": avg_amt,
+        })
+    # 区分度判断:高分档通过率是否单调高于低分档
+    known = [b for b in result if b["actual_pass_rate"] is not None]
+    monotonic = all(
+        known[i]["actual_pass_rate"] >= known[i + 1]["actual_pass_rate"]
+        for i in range(len(known) - 1)
+    ) if len(known) >= 2 else None
+    return {
+        "total_samples": total,
+        "enough": total >= 5,
+        "bands": result,
+        "discriminative": monotonic,
+    }
+
+
 def data_assets() -> dict:
     """沉淀的独家私有数据集统计:真实审批样本、贴息落地案例、行业分布。
     这是通用大模型无法获取的线下闭环数据,样本越多壁垒越厚。"""

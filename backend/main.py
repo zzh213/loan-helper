@@ -556,6 +556,12 @@ def data_assets():
     return storage.data_assets()
 
 
+@app.get("/api/scorecard-calibration")
+def scorecard_calibration():
+    """评分卡冷启动校准看板:各风控分档的真实通过率与平均放款额度,验证评分卡区分度。"""
+    return storage.scorecard_calibration()
+
+
 @app.post("/api/leads")
 def create_lead(payload: dict):
     """提交预约/咨询线索入库,客户经理后台可见。"""

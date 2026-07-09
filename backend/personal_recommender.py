@@ -71,7 +71,7 @@ def assess_personal(p: PersonalProfile) -> dict:
     if p.has_social_security:
         score += 5; add("社保", "positive", "连续缴纳社保,身份与稳定性加分")
     if p.has_housing_fund:
-        score += 6; add("公积金", "positive", "连续缴存公积金,可解锁低息公积金贷")
+        score += 6; add("公积金", "positive", "连续缴存公积金,可申请利率较优的公积金贷")
 
     if p.work_years >= 3:
         score += 6; add("职业稳定性", "positive", f"当前职业 {p.work_years} 年,稳定性好")
@@ -85,7 +85,7 @@ def assess_personal(p: PersonalProfile) -> dict:
     add("个人征信", "positive" if cb.get(p.credit_level.value, 0) >= 8 else
         ("negative" if cb.get(p.credit_level.value, 0) < 0 else "neutral"),
         f"征信{CREDIT_CN.get(p.credit_level.value, '')}," +
-        ("是低息产品的敲门砖" if p.credit_level.value in ("excellent", "good") else "会影响额度与利率,建议先修复"))
+        ("是申请利率较优产品的敲门砖" if p.credit_level.value in ("excellent", "good") else "会影响额度与利率,建议先修复"))
 
     if p.has_overdue:
         score -= 12; add("当前逾期", "negative", "存在逾期会显著影响审批,建议先结清")
@@ -99,7 +99,7 @@ def assess_personal(p: PersonalProfile) -> dict:
         score += 4; add("负债率", "positive", f"月还款占比约 {int(dti*100)}%,负债健康")
 
     if p.has_house:
-        score += 8; add("资产", "positive", "名下有房,可办大额低息房抵贷")
+        score += 8; add("资产", "positive", "名下有房,可办大额房抵贷(利率相对较优)")
     if p.has_car:
         score += 3
     if p.has_insurance_policy:
@@ -277,7 +277,7 @@ def _improvement_tips(p: PersonalProfile) -> List[str]:
     if p.credit_level.value in ("fair", "poor"):
         tips.append("按时还款、降低信用卡使用率,征信修复后额度与利率会明显改善")
     if p.has_overdue:
-        tips.append("优先结清当前逾期,征信恢复后再申请银行低息产品")
+        tips.append("优先结清当前逾期,征信恢复后再申请银行利率较优的产品")
     if p.income_type != "salary":
         tips.append("尽量将收入转为银行代发工资,或沉淀稳定流水,可大幅提升可贷额度")
     if not p.has_social_security:
@@ -296,7 +296,7 @@ def _advice(p: PersonalProfile, risk: dict, plans: List[RecommendedPlan]) -> Lis
     grade = risk["grade"]
     if grade in ("A", "B"):
         advice.append(f"你的综合评分 {risk['score']} 分(等级 {grade}·{risk['grade_label']}),"
-                      "资质优良,建议优先选择银行低息信用贷,并可争取更高额度与更长期限。")
+                      "资质优良,建议优先选择银行利率较优的信用贷,并可争取更高额度与更长期限。")
     elif grade == "C":
         advice.append(f"综合评分 {risk['score']} 分(等级 {grade}·{risk['grade_label']}),"
                       "建议先选审批友好的产品,控制单笔额度,按时还款积累信用后再升级。")
@@ -315,7 +315,7 @@ def _advice(p: PersonalProfile, risk: dict, plans: List[RecommendedPlan]) -> Lis
         "consumption": "日常消费建议用随借随还的信用贷,按实际用款计息更省。",
         "decoration": "装修可对比家装分期与普通信用贷,哪个折算年化更低选哪个,并留意银行贴息活动。",
         "car": "购车优先比较厂商金融贴息方案与银行车贷,免息期活动往往比现金贷更划算。",
-        "education": "教育用途可先申请国家助学贷款/贴息政策,不足部分再用低息信用贷补充。",
+        "education": "教育用途可先申请国家助学贷款/贴息政策,不足部分再用利率较优的信用贷补充。",
         "medical": "医疗建议先走医保报销与大病救助,减少举债金额后再申请贷款。",
         "marriage": "婚庆属一次性支出,建议控制额度、选短期限,避免婚后长期背高息。",
         "turnover": "短期周转优先选随借随还产品,回款后尽快结清以省利息。",
@@ -343,7 +343,7 @@ def _build_tiers(plans: List[RecommendedPlan], has_subsidy: bool) -> List[dict]:
                    and (p.annual_rate_min + p.annual_rate_max) / 2 <= 12] or plans
     steady = max(steady_pool, key=lambda p: (p.local_approval_rate, p.score))
     tiers.append({
-        "key": "steady", "name": "高通过率稳批版", "tagline": "审批最稳,优先求过",
+        "key": "steady", "name": "稳健审批版", "tagline": "偏重审批稳妥",
         "product_id": steady.product_id, "product_name": steady.product_name,
         "headline": f"通过率{steady.approval_probability} · 参考通过率 {steady.local_approval_rate}%",
         "reason": f"该产品门槛友好、通过率约 {steady.local_approval_rate}%,预估额度 {steady.estimated_amount} 万元,适合稳妥拿下放款。",
@@ -352,7 +352,7 @@ def _build_tiers(plans: List[RecommendedPlan], has_subsidy: bool) -> List[dict]:
 
     sprint = max(plans, key=lambda p: (p.estimated_amount, p.score))
     tiers.append({
-        "key": "sprint", "name": "额度拉满进阶版", "tagline": "额度拉满,博更高授信",
+        "key": "sprint", "name": "额度优先版", "tagline": "偏重更高授信额度",
         "product_id": sprint.product_id, "product_name": sprint.product_name,
         "headline": f"最高额度 {sprint.estimated_amount} 万元 · 年化 {sprint.annual_rate_min}%-{sprint.annual_rate_max}%",
         "reason": f"该产品可冲刺最高 {sprint.estimated_amount} 万元,适合大额需求,但审批相对严格。",
@@ -364,7 +364,7 @@ def _build_tiers(plans: List[RecommendedPlan], has_subsidy: bool) -> List[dict]:
         return (0 if p.subsidy_linked else 1, (p.annual_rate_min + p.annual_rate_max) / 2)
     cheap = min(plans, key=cost_key)
     tiers.append({
-        "key": "subsidy", "name": "成本最低省钱版", "tagline": "利率最低,资金成本最优",
+        "key": "subsidy", "name": "利率优选版", "tagline": "资金成本较优",
         "product_id": cheap.product_id, "product_name": cheap.product_name,
         "headline": f"综合年化 {cheap.annual_rate_min}%-{cheap.annual_rate_max}%"
                     + (" · 含政府贴息" if cheap.subsidy_linked else ""),

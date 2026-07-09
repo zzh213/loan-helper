@@ -662,6 +662,13 @@ if os.path.isdir(FRONTEND_DIR):
             media_type="text/html",
         )
 
+    @app.get("/legal")
+    def legal_page():
+        return FileResponse(
+            os.path.join(FRONTEND_DIR, "legal.html"),
+            media_type="text/html",
+        )
+
     @app.get("/sw.js")
     def service_worker():
         """Service Worker 必须从根路径提供,才能控制整个站点。"""

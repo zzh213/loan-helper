@@ -144,6 +144,12 @@ function collectProfile() {
 
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
+  const consentEl = document.getElementById("consent-enterprise");
+  if (consentEl && !consentEl.checked) {
+    showToast("请先阅读并勾选同意《服务协议》与《隐私政策》", "error");
+    consentEl.focus();
+    return;
+  }
   const profile = collectProfile();
 
   const errors = validateForm(profile);
@@ -1135,6 +1141,12 @@ document.querySelectorAll(".tab-btn[data-tab]").forEach((btn) => {
   const perBtn = document.getElementById("personal-submit-btn");
   perForm.addEventListener("submit", async (e) => {
     e.preventDefault();
+    const consentEl = document.getElementById("consent-personal");
+    if (consentEl && !consentEl.checked) {
+      showToast("请先阅读并勾选同意《服务协议》与《隐私政策》", "error");
+      consentEl.focus();
+      return;
+    }
     const profile = collectPersonalProfile();
     const errors = validatePersonal(profile);
     if (errors.length) {

@@ -145,11 +145,11 @@ def _improvement_tips(profile: EnterpriseProfile) -> List[str]:
     if profile.has_overdue:
         tips.append("优先结清当前逾期,征信修复后再申请更优产品")
     if not profile.has_tax_record:
-        tips.append("建立规范连续的纳税记录,可解锁'银税互动'类低息信用贷")
+        tips.append("建立规范连续的纳税记录,可解锁'银税互动'类利率较优的信用贷")
     if not profile.has_invoice:
         tips.append("沉淀稳定的开票/经营流水,有助于提升信用额度评估")
     if not profile.has_collateral:
-        tips.append("如有房产/设备等可抵押资产,可申请大额低息抵押经营贷")
+        tips.append("如有房产/设备等可抵押资产,可申请大额抵押经营贷(利率相对较优)")
     if profile.years_in_business < 2:
         tips.append("经营年限增长后(满 2 年),可申请门槛更高、利率更优的产品")
     return tips
@@ -164,7 +164,7 @@ def _personalized_advice(profile: EnterpriseProfile, risk: dict, plans) -> List[
     if grade in ("A", "B"):
         advice.append(
             f"你的综合风控评分为 {risk['score']} 分(等级 {grade}·{risk['grade_label']}),"
-            "资质较优,建议优先选择银行类低息产品,并可尝试争取更高授信额度与更长期限。")
+            "资质较优,建议优先选择银行类利率较优的产品,并可尝试争取更高授信额度与更长期限。")
     elif grade == "C":
         advice.append(
             f"综合风控评分 {risk['score']} 分(等级 {grade}·{risk['grade_label']}),"
@@ -172,7 +172,7 @@ def _personalized_advice(profile: EnterpriseProfile, risk: dict, plans) -> List[
     else:
         advice.append(
             f"综合风控评分 {risk['score']} 分(等级 {grade}·{risk['grade_label']}),"
-            "当前直接获批优质产品难度较大,建议先小额周转、按时还款积累信用,再逐步申请低息产品。")
+            "当前直接获批优质产品难度较大,建议先小额周转、按时还款积累信用,再逐步申请利率较优的产品。")
 
     # 负债杠杆
     dr = risk.get("debt_ratio")
@@ -226,7 +226,7 @@ def _build_tiers(plans: List[RecommendedPlan], has_subsidy: bool) -> List[dict]:
                    and (p.annual_rate_min + p.annual_rate_max) / 2 <= 12] or plans
     steady = max(steady_pool, key=lambda p: (p.local_approval_rate, p.score))
     tiers.append({
-        "key": "steady", "name": "高通过率稳批版", "tagline": "审批最稳,优先求过",
+        "key": "steady", "name": "稳健审批版", "tagline": "偏重审批稳妥",
         "product_id": steady.product_id, "product_name": steady.product_name,
         "headline": f"本地通过率 {steady.local_approval_rate}% · 通过率{steady.approval_probability}",
         "reason": f"该产品资质门槛友好、近三月本地审批通过率约 {steady.local_approval_rate}%,"
@@ -238,7 +238,7 @@ def _build_tiers(plans: List[RecommendedPlan], has_subsidy: bool) -> List[dict]:
     # 2) 冲刺方案:额度最高,标注门槛与风险
     sprint = max(plans, key=lambda p: (p.estimated_amount, p.score))
     tiers.append({
-        "key": "sprint", "name": "额度拉满进阶版", "tagline": "额度拉满,博更高授信",
+        "key": "sprint", "name": "额度优先版", "tagline": "偏重更高授信额度",
         "product_id": sprint.product_id, "product_name": sprint.product_name,
         "headline": f"最高额度 {sprint.estimated_amount} 万元 · 年化 {sprint.annual_rate_min}%-{sprint.annual_rate_max}%",
         "reason": f"该产品可冲刺最高 {sprint.estimated_amount} 万元额度,适合扩产/大额需求,"
@@ -263,7 +263,7 @@ def _build_tiers(plans: List[RecommendedPlan], has_subsidy: bool) -> List[dict]:
         after_subsidy = (f"叠加 2% 贴息后真实年化约 {rate_after}%,"
                          f"每年省息约 {save_year} 万、每月省约 {save_month} 万。")
     tiers.append({
-        "key": "subsidy", "name": "财政补贴省钱版", "tagline": "成本最低,叠加补贴",
+        "key": "subsidy", "name": "财政贴息版", "tagline": "叠加补贴,资金成本较优",
         "product_id": subsidy.product_id, "product_name": subsidy.product_name,
         "headline": f"综合年化 {subsidy.annual_rate_min}%-{subsidy.annual_rate_max}%"
                     + (" · 含贴息" if subsidy.subsidy_linked else ""),

@@ -2685,3 +2685,44 @@ body.dark .rec-filter { background:#23303f; color:#dbe4ee; border-color:#3a4a5c;
   .verdict-grid { grid-template-columns: 1fr; }
   h1 { font-size:20px; } h2 { font-size:18px; }
 }
+
+/* ===== 合规组件 ===== */
+.risk-ribbon {
+  display:flex; gap:10px; align-items:flex-start;
+  background:#fff6f5; border:1px solid #f3c9c4; border-left:4px solid #c0392b;
+  border-radius:10px; padding:10px 14px; margin:0 0 14px; font-size:13px; line-height:1.6; color:#5a3a37;
+}
+.risk-ribbon .rr-ico { font-size:16px; line-height:1.5; }
+.risk-ribbon .rr-text b { color:#c0392b; }
+.risk-ribbon a { color:#c0392b; text-decoration:underline; white-space:nowrap; margin-left:4px; }
+.consent-row {
+  display:flex; gap:8px; align-items:flex-start; font-size:12.5px; line-height:1.6;
+  color:#5a6b7b; background:#f5f8fc; border:1px solid #e2e8f0; border-radius:10px;
+  padding:10px 12px; margin:4px 0 10px;
+}
+.consent-row input { margin-top:3px; flex:0 0 auto; }
+.consent-row a { color:#3c6da7; text-decoration:underline; }
+.irr-note {
+  background:#eef4fb; border:1px solid #cfe0f2; border-radius:10px;
+  padding:10px 14px; font-size:13px; line-height:1.7; color:#33506e; margin:6px 0 10px;
+}
+.irr-note b { color:#2b567f; }
+.footer-links {
+  display:flex; flex-wrap:wrap; gap:6px 16px; justify-content:center;
+  margin:10px 0 6px; font-size:13px;
+}
+.footer-links a { color:#6c94c4; text-decoration:none; }
+.footer-links a:hover { color:#3c6da7; text-decoration:underline; }
+.footer-org, .footer-icp { text-align:center; font-size:12px; color:#8a98a8; margin:4px 0; line-height:1.7; }
+.footer-org .ph, .footer-icp .ph {
+  background:#fff8e6; border:1px dashed #e0b23c; border-radius:4px; padding:0 5px; color:#8a6100;
+}
+body.dark .risk-ribbon { background:#3a2422; border-color:#6a3a35; color:#e8c4bf; }
+body.dark .consent-row { background:#23303f; border-color:#3a4a5c; color:#b9c6d4; }
+body.dark .irr-note { background:#1f3242; border-color:#33546e; color:#bcd6ee; }
+body.dark .footer-org .ph, body.dark .footer-icp .ph { background:#3a3220; color:#e0b23c; }
+
+@media (max-width: 560px) {
+  .risk-ribbon { flex-direction:column; font-size:12.5px; }
+  .risk-ribbon a { margin-left:0; }
+}

@@ -3,7 +3,46 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>选校匹配 · 出国读研 DIY 助手</title>
+  <title>出国读研选校匹配 · 免费 DIY 留学选校助手｜打破信息差不花冤枉钱</title>
+
+  <meta name="description" content="免费出国读研选校匹配工具：输入本科院校、均分/GPA、雅思成绩，立刻看到你能申请的英国、美国、香港、新加坡、澳洲等地研究生项目及雅思、绩点等硬性要求。687 个项目、378 个官方核实，打破留学中介信息差，不花冤枉钱。" />
+  <meta name="keywords" content="出国读研,留学选校,研究生申请,选校匹配,英国留学,香港留学,雅思要求,GPA换算,DIY留学,留学定位,均分要求,硕士申请" />
+  <meta name="author" content="出国读研选校匹配" />
+  <link rel="canonical" href="https://studyabroad-ixw0.onrender.com/" />
+
+  <link rel="icon" type="image/png" href="assets/favicon.png" />
+  <link rel="apple-touch-icon" href="assets/favicon.png" />
+
+  <!-- Open Graph（微信/QQ/Facebook 等分享卡片） -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="出国读研选校匹配" />
+  <meta property="og:title" content="出国读研选校匹配 · 免费 DIY 留学选校助手" />
+  <meta property="og:description" content="输入本科院校、均分/GPA、雅思成绩，立刻看到能申请的研究生项目与硬性要求。687 个项目、378 个官方核实，打破信息差，不花冤枉钱。" />
+  <meta property="og:url" content="https://studyabroad-ixw0.onrender.com/" />
+  <meta property="og:image" content="https://studyabroad-ixw0.onrender.com/assets/og-cover.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:locale" content="zh_CN" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="出国读研选校匹配 · 免费 DIY 留学选校助手" />
+  <meta name="twitter:description" content="输入背景，立刻看到能申请的学校与硬性要求。打破信息差，不花冤枉钱。" />
+  <meta name="twitter:image" content="https://studyabroad-ixw0.onrender.com/assets/og-cover.png" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "出国读研选校匹配",
+    "url": "https://studyabroad-ixw0.onrender.com/",
+    "applicationCategory": "EducationApplication",
+    "operatingSystem": "Web",
+    "description": "免费出国读研选校匹配工具，输入本科背景即可匹配可申请的研究生项目及硬性要求。",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "CNY" }
+  }
+  </script>
+
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
@@ -313,6 +352,32 @@
       <p class="footer-blessing">🎓 预祝每一位同学都能拿到心仪的 offer，去到自己向往的学校 ✨</p>
     </div>
   </footer>
+
+  <!-- 反馈组件 -->
+  <button type="button" id="fb-fab" title="提建议 / 找学校没找到？告诉我们">💬 反馈</button>
+  <div id="fb-modal" class="fb-modal" hidden>
+    <div class="fb-box">
+      <button type="button" class="fb-close" id="fb-close">✕</button>
+      <h3>💬 意见反馈</h3>
+      <p class="fb-sub">发现数据有误、想要的学校没收录、有改进建议？告诉我们，会认真看每一条 🙏</p>
+      <label class="fb-label">反馈类型</label>
+      <select id="fb-category">
+        <option value="数据纠错">数据有误 / 要求不准</option>
+        <option value="缺少学校">想要的学校/项目没收录</option>
+        <option value="功能建议">功能建议</option>
+        <option value="使用问题">使用遇到问题</option>
+        <option value="其他">其他</option>
+      </select>
+      <label class="fb-label">具体内容</label>
+      <textarea id="fb-message" rows="4" placeholder="例如：希望增加澳洲墨尔本大学的商科项目 / XX 学校雅思要求写错了……"></textarea>
+      <label class="fb-label">联系方式（选填，方便回复你）</label>
+      <input id="fb-contact" placeholder="微信 / 邮箱（选填）" />
+      <div class="fb-actions">
+        <span class="fb-tip" id="fb-tip"></span>
+        <button type="button" id="fb-submit">提交反馈</button>
+      </div>
+    </div>
+  </div>
 
   <script src="js/match.js"></script>
   <script src="js/app.js"></script>

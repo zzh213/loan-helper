@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>数据看板 · 出国读研选校匹配</title>
+  <style>
+    :root { --bg:#0a0a0f; --card:#15151d; --card2:#1c1c26; --border:#2a2a36; --text:#e8e8ef; --muted:#8b8b99; --primary:#5c7cfa; --green:#3ddc84; }
+    * { box-sizing: border-box; }
+    body { margin:0; background:var(--bg); color:var(--text); font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif; }
+    .wrap { max-width:960px; margin:0 auto; padding:24px 16px 60px; }
+    h1 { font-size:22px; }
+    h2 { font-size:16px; margin:26px 0 10px; color:var(--muted); }
+    .gate { display:flex; gap:8px; margin:16px 0; }
+    input { padding:10px 12px; border:1px solid var(--border); border-radius:8px; background:var(--card2); color:var(--text); font-size:15px; flex:1; }
+    button { padding:10px 16px; border:none; border-radius:8px; background:var(--primary); color:#fff; font-size:15px; cursor:pointer; }
+    .cards { display:grid; grid-template-columns:repeat(auto-fit,minmax(140px,1fr)); gap:12px; }
+    .kpi { background:var(--card); border:1px solid var(--border); border-radius:12px; padding:16px; }
+    .kpi .n { font-size:28px; font-weight:700; color:var(--green); }
+    .kpi .l { font-size:13px; color:var(--muted); margin-top:4px; }
+    table { width:100%; border-collapse:collapse; background:var(--card); border:1px solid var(--border); border-radius:12px; overflow:hidden; }
+    th,td { text-align:left; padding:9px 12px; border-bottom:1px solid var(--border); font-size:14px; }
+    th { color:var(--muted); font-weight:600; }
+    tr:last-child td { border-bottom:none; }
+    .bar { height:8px; background:var(--primary); border-radius:4px; }
+    .msg { color:var(--muted); margin:12px 0; }
+    .fb { background:var(--card); border:1px solid var(--border); border-radius:10px; padding:12px 14px; margin-bottom:10px; }
+    .fb .meta { font-size:12px; color:var(--muted); margin-bottom:6px; }
+    .tag { display:inline-block; background:var(--card2); border:1px solid var(--border); border-radius:6px; padding:1px 8px; font-size:12px; margin-right:6px; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>📊 数据看板</h1>
+    <div class="gate">
+      <input id="key" type="password" placeholder="输入管理密钥" />
+      <button onclick="load()">查看</button>
+    </div>
+    <div id="out"></div>
+  </div>
+  <script>
+    function esc(s){return (s||'').replace(/[<>&]/g,c=>({'<':'&lt;','>':'&gt;','&':'&amp;'}[c]));}
+    async function load(){
+      const key=document.getElementById('key').value.trim();
+      const out=document.getElementById('out');
+      if(!key){out.innerHTML='<p class="msg">请输入密钥</p>';return;}
+      out.innerHTML='<p class="msg">加载中…</p>';
+      try{
+        const r=await fetch('/api/admin/stats?key='+encodeURIComponent(key));
+        if(!r.ok){out.innerHTML='<p class="msg">密钥错误或无权访问</p>';return;}
+        const d=await r.json();
+        localStorage.setItem('adminKey',key);
+        render(d);
+      }catch(e){out.innerHTML='<p class="msg">加载失败：'+esc(e.message)+'</p>';}
+    }
+    function tbl(rows,cols){
+      if(!rows.length)return '<p class="msg">暂无数据</p>';
+      const max=Math.max(...rows.map(r=>r.count||r.events||0),1);
+      let h='<table><tr>'+cols.map(c=>'<th>'+c[0]+'</th>').join('')+'</tr>';
+      for(const r of rows){
+        h+='<tr>'+cols.map(c=>'<td>'+c[1](r,max)+'</td>').join('')+'</tr>';
+      }
+      return h+'</table>';
+    }
+    function render(d){
+      let h='';
+      h+='<div class="cards">';
+      h+='<div class="kpi"><div class="n">'+d.sessions+'</div><div class="l">独立访客(会话)</div></div>';
+      h+='<div class="kpi"><div class="n">'+d.events_total+'</div><div class="l">事件总数</div></div>';
+      const runs=(d.by_name.find(x=>x.name==='run_match')||{}).count||0;
+      h+='<div class="kpi"><div class="n">'+runs+'</div><div class="l">执行匹配次数</div></div>';
+      h+='<div class="kpi"><div class="n">'+d.feedback.length+'</div><div class="l">用户反馈</div></div>';
+      h+='</div>';
+
+      h+='<h2>每日活跃（近30天）</h2>';
+      h+=tbl(d.by_day,[['日期',r=>r.date],['访客',(r,m)=>r.users],['事件',(r,m)=>'<div style="display:flex;align-items:center;gap:8px"><div class="bar" style="width:'+Math.round(r.events/m*120)+'px"></div>'+r.events+'</div>']]);
+
+      h+='<h2>事件分布</h2>';
+      h+=tbl(d.by_name,[['事件',r=>r.name],['次数',(r,m)=>'<div style="display:flex;align-items:center;gap:8px"><div class="bar" style="width:'+Math.round(r.count/m*120)+'px"></div>'+r.count+'</div>']]);
+
+      h+='<h2>热门搜索（院校/国家/专业）</h2>';
+      h+=tbl(d.top_searches,[['关键词',r=>esc(r.q)],['次数',(r,m)=>r.count]]);
+
+      h+='<h2>⚠️ 搜了但无结果（需补数据/功能）</h2>';
+      h+=tbl(d.no_result_searches,[['关键词',r=>esc(r.q)],['次数',(r,m)=>r.count]]);
+
+      h+='<h2>用户反馈</h2>';
+      if(!d.feedback.length){h+='<p class="msg">暂无反馈</p>';}
+      else{for(const f of d.feedback){
+        h+='<div class="fb"><div class="meta">#'+f.id+' · '+f.at+(f.category?' · <span class="tag">'+esc(f.category)+'</span>':'')+(f.contact?' · 联系：'+esc(f.contact):'')+'</div>'+esc(f.message)+'</div>';
+      }}
+      document.getElementById('out').innerHTML=h;
+    }
+    const saved=localStorage.getItem('adminKey');
+    if(saved){document.getElementById('key').value=saved;load();}
+  </script>
+</body>
+</html>

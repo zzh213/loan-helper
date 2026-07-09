@@ -52,6 +52,33 @@ async function api(path, method = "GET", body = null) {
 }
 const isLoggedIn = () => !!getAuth();
 
+/* ============ 轻量埋点（自建，无第三方） ============ */
+const TRACK_SID_KEY = "studyabroad_sid";
+function trackSession() {
+  let s = localStorage.getItem(TRACK_SID_KEY);
+  if (!s) {
+    s = (Date.now().toString(36) + Math.random().toString(36).slice(2, 8));
+    localStorage.setItem(TRACK_SID_KEY, s);
+  }
+  return s;
+}
+function track(name, props) {
+  try {
+    const body = JSON.stringify({
+      name,
+      props: props == null ? "" : String(props).slice(0, 300),
+      path: location.pathname,
+      session: trackSession(),
+    });
+    const url = "/api/track";
+    if (navigator.sendBeacon) {
+      navigator.sendBeacon(url, new Blob([body], { type: "application/json" }));
+    } else {
+      fetch(url, { method: "POST", headers: { "Content-Type": "application/json" }, body, keepalive: true });
+    }
+  } catch {}
+}
+
 /* ============ GPA 换算 ============ */
 function gpaToPercentage(gpa, scale) {
   if (!gpa) return 0;
@@ -426,7 +453,7 @@ function programCard(result) {
         ${wesNote}
         ${coopNotes}
         ${warnings}
-        <div class="verify"><a href="${verifyHref}" target="_blank" rel="noopener">${verifyText}</a></div>
+        <div class="verify"><a href="${verifyHref}" target="_blank" rel="noopener" onclick="track('open_school','${(p.university || '').replace(/'/g, '')} · ${(p.program || '').replace(/'/g, '')}')">${verifyText}</a></div>
       </div>
     </div>`;
 }
@@ -1234,13 +1261,64 @@ async function init() {
     e.preventDefault();
     if (!DATA) return;
     const profile = readProfile();
-    render(matchPrograms(DATA.programs, profile), profile);
+    const buckets = matchPrograms(DATA.programs, profile);
+    render(buckets, profile);
+
+    // 埋点：执行匹配 + 搜索维度 + 无结果
+    const total = ["保底", "匹配", "冲刺", "超出"].reduce((s, k) => s + (buckets[k] ? buckets[k].length : 0), 0);
+    track("run_match", `tier=${profile.tier || ""};total=${total}`);
+    if (profile.school) track("search", "院校:" + profile.school);
+    (profile.countries || []).forEach((c) => track("search", "国家:" + c));
+    if (profile.undergradMajor) track("search", "本科专业:" + profile.undergradMajor);
+    (profile.fields || []).forEach((f) => track("search", "研究生方向:" + f));
+    if (total === 0) {
+      track("no_result", `国家:${(profile.countries || []).join("/") || "全部"};方向:${(profile.fields || []).join("/") || "全部"}`);
+    }
   });
 
   document.getElementById("checklist-btn").onclick = renderChecklist;
   document.getElementById("sop-btn").onclick = renderSOP;
   document.getElementById("export-pdf-btn").onclick = () => exportPlan("pdf");
   document.getElementById("export-xlsx-btn").onclick = () => exportPlan("xlsx");
+
+  // 反馈组件
+  const fbModal = document.getElementById("fb-modal");
+  const fbTip = document.getElementById("fb-tip");
+  const openFb = () => {
+    fbModal.hidden = false;
+    fbTip.textContent = "";
+    track("feedback_open");
+  };
+  const closeFb = () => { fbModal.hidden = true; };
+  document.getElementById("fb-fab").onclick = openFb;
+  document.getElementById("fb-close").onclick = closeFb;
+  fbModal.addEventListener("click", (e) => { if (e.target === fbModal) closeFb(); });
+  document.getElementById("fb-submit").onclick = async () => {
+    const msg = document.getElementById("fb-message").value.trim();
+    if (!msg) { fbTip.style.color = "#f0729a"; fbTip.textContent = "请填写反馈内容"; return; }
+    const btn = document.getElementById("fb-submit");
+    btn.disabled = true;
+    try {
+      await api("/api/feedback", "POST", {
+        category: document.getElementById("fb-category").value,
+        message: msg,
+        contact: document.getElementById("fb-contact").value.trim(),
+        path: location.pathname,
+        session: trackSession(),
+      });
+      fbTip.style.color = "";
+      fbTip.textContent = "✅ 已收到，感谢你的反馈！";
+      document.getElementById("fb-message").value = "";
+      document.getElementById("fb-contact").value = "";
+      track("feedback_submit", document.getElementById("fb-category").value);
+      setTimeout(() => { fbModal.hidden = true; }, 1200);
+    } catch (err) {
+      fbTip.style.color = "#f0729a";
+      fbTip.textContent = "提交失败：" + err.message;
+    } finally {
+      btn.disabled = false;
+    }
+  };
 
   // 简历上传
   document.getElementById("resume-pick").onclick = () =>
@@ -1275,6 +1353,7 @@ function switchView(view) {
   document.querySelectorAll(".nav-btn").forEach((b) =>
     b.classList.toggle("active", b.dataset.view === view)
   );
+  track("view", view);
   window.scrollTo({ top: 0, behavior: "smooth" });
 }
 
@@ -1430,3 +1509,4 @@ function initPoliciesView(data) {
 }
 
 init();
+track("page_view");

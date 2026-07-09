@@ -16,7 +16,7 @@ from typing import List, Optional
 
 from fastapi import FastAPI, File, Header, HTTPException, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import FileResponse, StreamingResponse
+from fastapi.responses import FileResponse, Response, StreamingResponse
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
 
@@ -65,6 +65,28 @@ def init_db() -> None:
                 note TEXT DEFAULT '',
                 created_at TEXT DEFAULT CURRENT_TIMESTAMP,
                 PRIMARY KEY (username, program_id)
+            )"""
+        )
+        conn.execute(
+            """CREATE TABLE IF NOT EXISTS events (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                name TEXT NOT NULL,
+                props TEXT DEFAULT '',
+                path TEXT DEFAULT '',
+                session TEXT DEFAULT '',
+                ua TEXT DEFAULT '',
+                created_at TEXT DEFAULT CURRENT_TIMESTAMP
+            )"""
+        )
+        conn.execute(
+            """CREATE TABLE IF NOT EXISTS feedback (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                category TEXT DEFAULT '',
+                message TEXT NOT NULL,
+                contact TEXT DEFAULT '',
+                path TEXT DEFAULT '',
+                session TEXT DEFAULT '',
+                created_at TEXT DEFAULT CURRENT_TIMESTAMP
             )"""
         )
         # 旧库平滑升级：补列
@@ -1212,11 +1234,128 @@ def export_pdf(body: ExportReq):
     )
 
 
+# ===================== 埋点统计 & 用户反馈 =====================
+ADMIN_KEY = os.environ.get("ADMIN_KEY", "zihan-admin")
+
+
+class TrackIn(BaseModel):
+    name: str
+    props: Optional[str] = ""
+    path: Optional[str] = ""
+    session: Optional[str] = ""
+
+
+class FeedbackIn(BaseModel):
+    category: Optional[str] = ""
+    message: str
+    contact: Optional[str] = ""
+    path: Optional[str] = ""
+    session: Optional[str] = ""
+
+
+@app.post("/api/track")
+def api_track(body: TrackIn, user_agent: Optional[str] = Header(None)):
+    name = (body.name or "").strip()[:60]
+    if not name:
+        return {"ok": False}
+    with db() as conn:
+        conn.execute(
+            "INSERT INTO events (name, props, path, session, ua) VALUES (?,?,?,?,?)",
+            (name, (body.props or "")[:500], (body.path or "")[:200],
+             (body.session or "")[:64], (user_agent or "")[:200]),
+        )
+        conn.commit()
+    return {"ok": True}
+
+
+@app.post("/api/feedback")
+def api_feedback(body: FeedbackIn):
+    msg = (body.message or "").strip()
+    if not msg:
+        raise HTTPException(status_code=400, detail="反馈内容不能为空")
+    with db() as conn:
+        conn.execute(
+            "INSERT INTO feedback (category, message, contact, path, session) VALUES (?,?,?,?,?)",
+            ((body.category or "")[:40], msg[:2000], (body.contact or "")[:120],
+             (body.path or "")[:200], (body.session or "")[:64]),
+        )
+        conn.commit()
+    return {"ok": True}
+
+
+@app.get("/api/admin/stats")
+def api_admin_stats(key: str = ""):
+    if key != ADMIN_KEY:
+        raise HTTPException(status_code=401, detail="无权访问")
+    with db() as conn:
+        total = conn.execute("SELECT COUNT(*) FROM events").fetchone()[0]
+        sessions = conn.execute("SELECT COUNT(DISTINCT session) FROM events WHERE session<>''").fetchone()[0]
+        by_name = conn.execute(
+            "SELECT name, COUNT(*) c FROM events GROUP BY name ORDER BY c DESC"
+        ).fetchall()
+        by_day = conn.execute(
+            "SELECT substr(created_at,1,10) d, COUNT(DISTINCT session) u, COUNT(*) c "
+            "FROM events GROUP BY d ORDER BY d DESC LIMIT 30"
+        ).fetchall()
+        searches = conn.execute(
+            "SELECT props, COUNT(*) c FROM events WHERE name='search' AND props<>'' "
+            "GROUP BY props ORDER BY c DESC LIMIT 30"
+        ).fetchall()
+        no_result = conn.execute(
+            "SELECT props, COUNT(*) c FROM events WHERE name='no_result' AND props<>'' "
+            "GROUP BY props ORDER BY c DESC LIMIT 30"
+        ).fetchall()
+        fbs = conn.execute(
+            "SELECT id, category, message, contact, created_at FROM feedback "
+            "ORDER BY id DESC LIMIT 100"
+        ).fetchall()
+    return {
+        "events_total": total,
+        "sessions": sessions,
+        "by_name": [{"name": n, "count": c} for n, c in by_name],
+        "by_day": [{"date": d, "users": u, "events": c} for d, u, c in by_day],
+        "top_searches": [{"q": p, "count": c} for p, c in searches],
+        "no_result_searches": [{"q": p, "count": c} for p, c in no_result],
+        "feedback": [
+            {"id": i, "category": cat, "message": m, "contact": ct, "at": at}
+            for i, cat, m, ct, at in fbs
+        ],
+    }
+
+
+@app.get("/admin")
+def admin_page():
+    return FileResponse(os.path.join(BASE_DIR, "admin.html"))
+
+
 # ===================== 静态页面托管 =====================
-# 仅暴露前端所需的 css / js / data 目录；backend（含数据库）与 scripts 不对外暴露
+# 仅暴露前端所需的 css / js / data / assets 目录；backend（含数据库）与 scripts 不对外暴露
 app.mount("/css", StaticFiles(directory=os.path.join(BASE_DIR, "css")), name="css")
 app.mount("/js", StaticFiles(directory=os.path.join(BASE_DIR, "js")), name="js")
 app.mount("/data", StaticFiles(directory=os.path.join(BASE_DIR, "data")), name="data")
+app.mount("/assets", StaticFiles(directory=os.path.join(BASE_DIR, "assets")), name="assets")
+
+
+SITE_URL = "https://studyabroad-ixw0.onrender.com"
+
+
+@app.get("/robots.txt")
+def robots():
+    body = f"User-agent: *\nAllow: /\nSitemap: {SITE_URL}/sitemap.xml\n"
+    return Response(content=body, media_type="text/plain")
+
+
+@app.get("/sitemap.xml")
+def sitemap():
+    today = datetime.now().strftime("%Y-%m-%d")
+    body = (
+        '<?xml version="1.0" encoding="UTF-8"?>\n'
+        '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
+        f"  <url><loc>{SITE_URL}/</loc><lastmod>{today}</lastmod>"
+        "<changefreq>weekly</changefreq><priority>1.0</priority></url>\n"
+        "</urlset>\n"
+    )
+    return Response(content=body, media_type="application/xml")
 
 
 @app.get("/")

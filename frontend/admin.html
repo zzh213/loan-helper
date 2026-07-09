@@ -111,7 +111,10 @@
       <div class="card">
         <div class="card-head">
           <h3>📈 转化漏斗 · 用户从访问到留资的每一步</h3>
-          <span class="mini" id="analytics-range">近 30 天</span>
+          <div class="tools">
+            <button class="mini" id="seed-demo" title="生成演示数据,方便答辩展示">✨ 生成演示数据</button>
+            <button class="mini" id="clear-demo" title="清除所有演示数据">🧹 清除演示</button>
+          </div>
         </div>
         <div class="funnel" id="funnel"></div>
         <div class="insight" id="funnel-insight"></div>
@@ -310,6 +313,30 @@
     document.getElementById("token-input").addEventListener("keydown", e=>{ if(e.key==="Enter") document.getElementById("login-btn").click(); });
     document.getElementById("logout").addEventListener("click", ()=>{ localStorage.removeItem(TOKEN_KEY); token=""; showLogin(); document.getElementById("token-input").value=""; });
     document.getElementById("refresh-btn").addEventListener("click", load);
+
+    async function adminPost(path){
+      const r = await fetch(path, { method:"POST", headers:{ "X-Admin-Token": token } });
+      if (!r.ok) throw new Error("请求失败");
+      return r.json();
+    }
+    document.getElementById("seed-demo").addEventListener("click", async (e)=>{
+      const btn = e.target; const old = btn.textContent;
+      btn.disabled = true; btn.textContent = "生成中...";
+      try { const d = await adminPost("/api/admin/analytics/seed-demo");
+        btn.textContent = `✅ 已生成 ${d.inserted} 条`;
+        setTimeout(()=>{ btn.disabled=false; btn.textContent=old; }, 1800);
+        renderAnalytics(await api("/api/admin/analytics?days=30"));
+      } catch(_){ btn.disabled=false; btn.textContent=old; }
+    });
+    document.getElementById("clear-demo").addEventListener("click", async (e)=>{
+      if(!confirm("确定清除所有演示数据吗?(不影响真实用户数据)")) return;
+      const btn = e.target; const old = btn.textContent;
+      btn.disabled = true; btn.textContent = "清除中...";
+      try { await adminPost("/api/admin/analytics/clear-demo");
+        btn.disabled=false; btn.textContent=old;
+        renderAnalytics(await api("/api/admin/analytics?days=30"));
+      } catch(_){ btn.disabled=false; btn.textContent=old; }
+    });
 
     if(token) load(); else showLogin();
   </script>

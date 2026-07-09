@@ -446,6 +446,74 @@ def analytics_summary(days: int = 30) -> dict:
     }
 
 
+def seed_demo_events(days: int = 14, visitors_per_day: int = 40) -> dict:
+    """生成一批演示用埋点数据(仅供答辩/演示,带 demo 标记,可一键清除)。
+
+    模拟真实的逐级流失:并非每个访客都会走到最后,越往后人越少。
+    """
+    import random
+    from datetime import timedelta
+
+    # 各漏斗步骤的"通过率"(相对上一步),模拟真实转化衰减
+    step_pass = {
+        "page_view": 1.0,
+        "form_start": 0.62,
+        "recommend_submit": 0.71,
+        "recommend_success": 0.90,
+        "view_more": 0.48,
+        "lead_submit": 0.22,
+    }
+    # 附带功能事件及其在"看到方案"用户中的触发概率
+    feature_probs = {
+        "view_glossary": 0.35, "more_tools": 0.20, "export_pdf": 0.28,
+        "save_application": 0.18, "share_poster": 0.09, "growth_report": 0.11,
+        "chat_open": 0.24, "chat_send": 0.16, "preaudit": 0.14,
+        "hidden_subsidy": 0.12, "export_excel": 0.07, "personal_submit": 0.15,
+    }
+    now = datetime.now()
+    rows = []
+    for d in range(days):
+        day = now - timedelta(days=days - 1 - d)
+        # 周末流量略低,整体有小幅波动
+        base = int(visitors_per_day * (0.7 if day.weekday() >= 5 else 1.0)
+                   * random.uniform(0.75, 1.25))
+        for _ in range(base):
+            ts = day.replace(hour=random.randint(8, 22),
+                             minute=random.randint(0, 59),
+                             second=random.randint(0, 59))
+            created = ts.strftime("%Y-%m-%d %H:%M:%S")
+            sid = "demo_" + uuid.uuid4().hex[:10]
+            reached = True
+            for step in ["page_view", "form_start", "recommend_submit",
+                         "recommend_success", "view_more", "lead_submit"]:
+                if step != "page_view":
+                    reached = reached and (random.random() < step_pass[step])
+                if reached:
+                    rows.append((sid, step, "demo", "/", created))
+            # 到达"看到方案"的用户,可能触发一些功能事件
+            if any(r[1] == "recommend_success" and r[0] == sid for r in rows[-6:]):
+                for feat, prob in feature_probs.items():
+                    if random.random() < prob:
+                        rows.append((sid, feat, "demo", "/", created))
+    with _conn() as conn:
+        for r in rows:
+            conn.execute(
+                "INSERT INTO events (session_id, name, props, page, created_at) "
+                "VALUES (?, ?, ?, ?, ?)", r,
+            )
+    return {"inserted": len(rows), "days": days}
+
+
+def clear_demo_events() -> dict:
+    """清除所有演示埋点数据(session_id 以 demo_ 开头或 props='demo')。"""
+    with _conn() as conn:
+        cur = conn.execute(
+            "DELETE FROM events WHERE session_id LIKE 'demo_%' OR props = 'demo'"
+        )
+        n = cur.rowcount if hasattr(cur, "rowcount") else 0
+    return {"deleted": n}
+
+
 # 申请状态流转
 VALID_STATUS = ["待提交", "已提交", "审核中", "已通过", "已拒绝", "已放款"]
 

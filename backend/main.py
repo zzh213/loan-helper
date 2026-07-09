@@ -500,6 +500,20 @@ def admin_analytics(request: Request, days: int = 30):
     return storage.analytics_summary(days=max(1, min(365, days)))
 
 
+@app.post("/api/admin/analytics/seed-demo")
+def admin_seed_demo(request: Request):
+    """管理后台:一键生成演示用埋点数据(仅供答辩演示,可一键清除)。"""
+    require_admin(request)
+    return storage.seed_demo_events()
+
+
+@app.post("/api/admin/analytics/clear-demo")
+def admin_clear_demo(request: Request):
+    """管理后台:清除所有演示埋点数据。"""
+    require_admin(request)
+    return storage.clear_demo_events()
+
+
 @app.get("/api/admin/overview")
 def admin_overview(request: Request):
     """管理后台总览:申请、线索、数据资产统计汇总。"""

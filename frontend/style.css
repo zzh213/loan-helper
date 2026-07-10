@@ -456,12 +456,13 @@ body {
 }
 .id-tags-label { color: #6b7f96; font-size: 13px; font-weight: 600; }
 .data-note {
+  position: relative; z-index: 3;
   font-size: 12.5px;
   color: #5f7793;
   background: #eef4fb;
   border: 1px solid #dce8f6;
   border-radius: 10px;
-  padding: 9px 88px 9px 13px;
+  padding: 9px 13px;
   margin: 0 0 16px;
   line-height: 1.6;
 }
@@ -2996,13 +2997,14 @@ body.dark .rec-filter { background:#23303f; color:#dbe4ee; border-color:#3a4a5c;
 
 /* ===== 合规组件 ===== */
 .risk-ribbon {
+  position: relative; z-index: 3;
   display:flex; gap:10px; align-items:flex-start;
   background:#fff6f5; border:1px solid #f3c9c4; border-left:4px solid #c0392b;
-  border-radius:10px; padding:10px 88px 10px 14px; margin:0 0 14px; font-size:13px; line-height:1.6; color:#5a3a37;
+  border-radius:10px; padding:10px 14px; margin:0 0 14px; font-size:13px; line-height:1.6; color:#5a3a37;
 }
 .risk-ribbon .rr-ico { font-size:16px; line-height:1.5; }
 .risk-ribbon .rr-text b { color:#c0392b; }
-.risk-ribbon a { color:#c0392b; text-decoration:underline; white-space:normal; margin-left:4px; }
+.risk-ribbon a { color:#c0392b; text-decoration:underline; white-space:nowrap; margin-left:4px; }
 .consent-row {
   display:flex; gap:8px; align-items:flex-start; font-size:12.5px; line-height:1.6;
   color:#5a6b7b; background:#f5f8fc; border:1px solid #e2e8f0; border-radius:10px;

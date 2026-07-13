@@ -677,11 +677,11 @@ if (preauditBtn) {
     setBtnLoading(preauditBtn, true, "预审中…");
     track("preaudit");
     try {
-      const res = await fetch("/api/preaudit", {
+      const res = await fetchWithRetry("/api/preaudit", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(profile),
-      });
+      }, { onWake: () => showToast("服务启动中,正在为你连接…", "info") });
       if (!res.ok) throw new Error("请求失败:" + res.status);
       renderPreaudit(await res.json());
       preauditEl.scrollIntoView({ behavior: "smooth", block: "start" });

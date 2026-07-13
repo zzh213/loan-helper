@@ -9,8 +9,6 @@ from typing import List, Optional
 import risk
 from models import EnterpriseProfile
 
-CREDIT_BASE = risk.CREDIT_BASE
-
 
 def _debt_ratio(p: EnterpriseProfile) -> Optional[float]:
     if p.annual_revenue <= 0:

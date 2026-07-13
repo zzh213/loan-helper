@@ -3221,3 +3221,123 @@ body.dark .form-progress .fp-step.done b { background: #2c4257; color: #9fc2ea; 
 body.dark .confirm-box { background: #16202c; }
 body.dark .confirm-title { color: #dce8f4; }
 body.dark .confirm-msg { color: #a9bccc; }
+
+/* ===================== 可视化融资分析报告 ===================== */
+.viz-report {
+  margin: 16px 0 4px;
+  padding: 18px 18px 14px;
+  border: 1px solid #e6ecf3;
+  border-radius: 14px;
+  background: linear-gradient(180deg, #fbfcfe, #f5f8fc);
+}
+.viz-rep-head {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 6px;
+  border-bottom: 1px dashed #d6e0ec;
+  padding-bottom: 10px;
+  margin-bottom: 14px;
+}
+.vrh-brand { font-size: 16px; font-weight: 700; color: #2b3648; }
+.vrh-meta { font-size: 12px; color: #7a8aa0; }
+.viz-charts {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+.viz-chart-box {
+  background: #fff;
+  border: 1px solid #eef1f5;
+  border-radius: 10px;
+  padding: 10px 10px 8px;
+}
+.viz-chart-title {
+  font-size: 12.5px;
+  font-weight: 600;
+  color: #52627a;
+  text-align: center;
+  margin-bottom: 6px;
+}
+.viz-chart-box canvas { width: 100%; display: block; }
+.viz-legend {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 6px 12px;
+  margin-top: 6px;
+}
+.vz-lg {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 11px;
+  color: #52627a;
+}
+.vz-lg i { width: 10px; height: 10px; border-radius: 2px; display: inline-block; }
+.viz-cards-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: #2b3648;
+  margin: 16px 0 8px;
+}
+.viz-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 12px;
+}
+.viz-card {
+  border: 1px solid #e6ecf3;
+  border-radius: 12px;
+  padding: 12px;
+  background: #fff;
+}
+.viz-card.viz-best {
+  border-color: #4a7fd6;
+  box-shadow: 0 4px 14px rgba(74, 127, 214, 0.16);
+}
+.vzc-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; }
+.vzc-label { font-size: 12px; font-weight: 700; color: #4a7fd6; }
+.viz-best .vzc-label { color: #d97706; }
+.vzc-tag {
+  font-size: 11px;
+  padding: 1px 8px;
+  border-radius: 999px;
+  background: #eef4fd;
+  color: #4a7fd6;
+}
+.vzc-name { font-size: 13.5px; font-weight: 600; color: #2b3648; margin-bottom: 8px; min-height: 20px; }
+.vzc-metrics { display: grid; grid-template-columns: 1fr 1fr; gap: 8px 10px; }
+.vzc-m { display: flex; flex-direction: column; }
+.vzc-m small { font-size: 11px; color: #8a98a8; }
+.vzc-m b { font-size: 13.5px; color: #2b3648; }
+.viz-rep-foot {
+  margin-top: 14px;
+  padding-top: 10px;
+  border-top: 1px dashed #d6e0ec;
+  font-size: 11px;
+  line-height: 1.6;
+  color: #9aa7b6;
+}
+.viz-actions { display: flex; align-items: center; flex-wrap: wrap; gap: 10px; margin: 10px 0 4px; }
+.viz-pdf-btn { background: linear-gradient(135deg, #4a7fd6, #3b6cc4) !important; color: #fff !important; }
+.viz-pdf-note { font-size: 11px; color: #9aa7b6; }
+
+@media (max-width: 720px) {
+  .viz-charts { grid-template-columns: 1fr; }
+}
+
+body.dark .viz-report { background: linear-gradient(180deg, #131d2c, #0f1826); border-color: #24344c; }
+body.dark .vrh-brand { color: #e5edf7; }
+body.dark .vrh-meta, body.dark .viz-pdf-note, body.dark .viz-rep-foot { color: #7e93ab; }
+body.dark .viz-rep-head, body.dark .viz-rep-foot { border-color: #24344c; }
+body.dark .viz-chart-box { background: #111a2b; border-color: #24344c; }
+body.dark .viz-chart-title { color: #a9bccc; }
+body.dark .vz-lg { color: #a9bccc; }
+body.dark .viz-cards-title { color: #e5edf7; }
+body.dark .viz-card { background: #111a2b; border-color: #24344c; }
+body.dark .viz-card.viz-best { border-color: #4a7fd6; box-shadow: 0 4px 14px rgba(74, 127, 214, 0.28); }
+body.dark .vzc-name, body.dark .vzc-m b { color: #e5edf7; }
+body.dark .vzc-m small { color: #8296ac; }
+body.dark .vzc-tag { background: #1b2a40; color: #7aa8e6; }

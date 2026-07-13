@@ -1080,6 +1080,9 @@ function render(data) {
     ${actionBtns}
   </div>`;
 
+  // 可视化融资分析报告(图表 + 对比卡片 + 前端导出 PDF)
+  html += renderVizSection(data);
+
   // 大白话解读:用通俗语言给看不懂专业术语的用户讲清楚
   if (data.plain_language) {
     const pl = data.plain_language;
@@ -1327,6 +1330,10 @@ function render(data) {
   resultEl.innerHTML = html;
   resultEl.classList.remove("hidden");
   renderCommerceCTA(data);
+  window.__lastVizData = data;
+  drawVizCharts(data);
+  const vizPdfBtn = document.getElementById("viz-export-pdf");
+  if (vizPdfBtn) vizPdfBtn.addEventListener("click", () => { track("export_viz_pdf"); exportVizPdf(); });
   resultEl.scrollIntoView({ behavior: "smooth", block: "start" });
 
   const exportBtn = document.getElementById("export-pdf");
@@ -1415,6 +1422,282 @@ function render(data) {
     });
   });
 }
+
+/* ===================== 可视化融资分析报告 ===================== */
+function shortName(s) {
+  s = String(s || "");
+  return s.length > 6 ? s.slice(0, 6) + "…" : s;
+}
+
+// 估算补贴/贴息减免金额(万):有可申报补贴时,按约 2 个百分点贴息折算利息节省
+function estSubsidySaving(plan, data) {
+  if (!plan || !data || !data.subsidies || !data.subsidies.length) return 0;
+  const avg = ((Number(plan.annual_rate_min) || 0) + (Number(plan.annual_rate_max) || 0)) / 2;
+  const ti = Number(plan.total_interest_estimate) || 0;
+  if (avg <= 0 || ti <= 0) return 0;
+  const cut = Math.min(2, avg * 0.4);
+  return Math.round(ti * (cut / avg) * 100) / 100;
+}
+
+function renderVizSection(data) {
+  if (!data.plans || !data.plans.length) return "";
+  const isPersonal = window.__lastMode === "personal";
+  const name =
+    (window.__lastProfile && window.__lastProfile.company_name) ||
+    (window.__lastPersonalProfile && window.__lastPersonalProfile.name) ||
+    (isPersonal ? "个人客户" : "贵企业");
+  const today = new Date().toLocaleDateString("zh-CN");
+  const cards = data.plans
+    .slice(0, 3)
+    .map((p, i) => {
+      const tag = p.requires_collateral ? "抵押贷" : "信用贷";
+      const label = i === 0 ? "方案A · 首推" : i === 1 ? "方案B" : "方案C";
+      return `<div class="viz-card ${i === 0 ? "viz-best" : ""}">
+        <div class="vzc-head"><span class="vzc-label">${label}</span><span class="vzc-tag">${tag}</span></div>
+        <div class="vzc-name">${escapeHtml(p.product_name)}</div>
+        <div class="vzc-metrics">
+          <div class="vzc-m"><small>可贷额度</small><b>${p.estimated_amount} 万</b></div>
+          <div class="vzc-m"><small>年化利率</small><b>${p.annual_rate_min}%-${p.annual_rate_max}%</b></div>
+          <div class="vzc-m"><small>预估月供</small><b>${p.monthly_payment_estimate} 万</b></div>
+          <div class="vzc-m"><small>预估总利息</small><b>${p.total_interest_estimate} 万</b></div>
+          <div class="vzc-m"><small>通过率</small><b>${escapeHtml(p.approval_probability)}</b></div>
+          <div class="vzc-m"><small>建议期限</small><b>${p.suggested_term_months} 月</b></div>
+        </div>
+      </div>`;
+    })
+    .join("");
+  return `<div id="viz-report" class="viz-report">
+    <div class="viz-rep-head">
+      <div class="vrh-brand">📊 融资可视化分析报告</div>
+      <div class="vrh-meta">对象：${escapeHtml(name)}　|　生成日期：${today}</div>
+    </div>
+    <div class="viz-charts">
+      <div class="viz-chart-box">
+        <div class="viz-chart-title">首推方案成本构成</div>
+        <canvas id="viz-donut" height="200"></canvas>
+        <div class="viz-legend" id="viz-donut-legend"></div>
+      </div>
+      <div class="viz-chart-box">
+        <div class="viz-chart-title">各方案总利息对比（万）</div>
+        <canvas id="viz-bar-interest" height="200"></canvas>
+      </div>
+      <div class="viz-chart-box">
+        <div class="viz-chart-title">各方案月供对比（万）</div>
+        <canvas id="viz-bar-monthly" height="200"></canvas>
+      </div>
+    </div>
+    <div class="viz-cards-title">🧾 多方案横向对比</div>
+    <div class="viz-cards">${cards}</div>
+    <div class="viz-rep-foot">本报告基于您填写的信息与本地银行产品测算生成，利率、额度、补贴金额均为估算值，以持牌金融机构及主管部门最终审批为准，仅供参考。本平台为融资信息匹配服务，不直接放贷。</div>
+  </div>
+  <div class="viz-actions">
+    <button id="viz-export-pdf" class="export-btn viz-pdf-btn">📄 一键导出可视化报告 PDF</button>
+    <span class="viz-pdf-note">纯前端生成，不上传服务器，敏感信息不留存</span>
+  </div>`;
+}
+
+function drawVizCharts(data) {
+  if (!data || !data.plans || !data.plans.length) return;
+  const dark = document.body.classList.contains("dark");
+  const best = data.plans[0];
+  const principal = Number(best.estimated_amount) || 0;
+  const interest = Number(best.total_interest_estimate) || 0;
+  const save = estSubsidySaving(best, data);
+  const netInterest = Math.max(0, interest - save);
+  const segs = [
+    { label: "本金", value: principal, color: "#4a7fd6" },
+    { label: "净利息", value: netInterest, color: "#e0794b" },
+  ];
+  if (save > 0) segs.push({ label: "补贴减免", value: save, color: "#f6b73c" });
+  drawDonut(document.getElementById("viz-donut"), segs, "viz-donut-legend", dark);
+  const plans = data.plans.slice(0, 4);
+  drawBars(
+    document.getElementById("viz-bar-interest"),
+    plans.map((p, i) => ({
+      label: shortName(p.product_name),
+      value: Number(p.total_interest_estimate) || 0,
+      color: i === 0 ? "#e0794b" : "#eab08f",
+    })),
+    dark
+  );
+  drawBars(
+    document.getElementById("viz-bar-monthly"),
+    plans.map((p, i) => ({
+      label: shortName(p.product_name),
+      value: Number(p.monthly_payment_estimate) || 0,
+      color: i === 0 ? "#4a7fd6" : "#9db8dd",
+    })),
+    dark
+  );
+}
+
+function drawDonut(cv, segs, legendId, dark) {
+  if (!cv) return;
+  const dpr = window.devicePixelRatio || 1;
+  const W = cv.clientWidth || cv.parentElement.clientWidth || 280;
+  const H = 200;
+  cv.width = W * dpr;
+  cv.height = H * dpr;
+  const ctx = cv.getContext("2d");
+  ctx.scale(dpr, dpr);
+  ctx.clearRect(0, 0, W, H);
+  const total = segs.reduce((s, x) => s + Math.max(0, x.value), 0) || 1;
+  const cx = W / 2,
+    cy = H / 2,
+    R = Math.min(W, H) / 2 - 8,
+    r = R * 0.58;
+  let a = -Math.PI / 2;
+  segs.forEach((s) => {
+    const ang = (Math.max(0, s.value) / total) * Math.PI * 2;
+    ctx.beginPath();
+    ctx.moveTo(cx, cy);
+    ctx.arc(cx, cy, R, a, a + ang);
+    ctx.closePath();
+    ctx.fillStyle = s.color;
+    ctx.fill();
+    a += ang;
+  });
+  ctx.beginPath();
+  ctx.arc(cx, cy, r, 0, Math.PI * 2);
+  ctx.fillStyle = dark ? "#111a2b" : "#fff";
+  ctx.fill();
+  ctx.textAlign = "center";
+  ctx.fillStyle = dark ? "#e5edf7" : "#2b3648";
+  ctx.font = "bold 15px sans-serif";
+  ctx.fillText(total.toFixed(1), cx, cy - 1);
+  ctx.font = "11px sans-serif";
+  ctx.fillStyle = "#94a3b8";
+  ctx.fillText("合计(万)", cx, cy + 15);
+  const lg = legendId && document.getElementById(legendId);
+  if (lg) {
+    lg.innerHTML = segs
+      .map(
+        (s) =>
+          `<span class="vz-lg"><i style="background:${s.color}"></i>${s.label} ${s.value.toFixed(1)}万 (${Math.round(
+            (s.value / total) * 100
+          )}%)</span>`
+      )
+      .join("");
+  }
+}
+
+function _roundRect(ctx, x, y, w, h, r) {
+  if (h < 1) h = 1;
+  r = Math.min(r, w / 2, h);
+  ctx.beginPath();
+  ctx.moveTo(x + r, y);
+  ctx.arcTo(x + w, y, x + w, y + h, r);
+  ctx.arcTo(x + w, y + h, x, y + h, r);
+  ctx.arcTo(x, y + h, x, y, r);
+  ctx.arcTo(x, y, x + w, y, r);
+  ctx.closePath();
+}
+
+function drawBars(cv, items, dark) {
+  if (!cv || !items.length) return;
+  const dpr = window.devicePixelRatio || 1;
+  const W = cv.clientWidth || cv.parentElement.clientWidth || 280;
+  const H = 200;
+  cv.width = W * dpr;
+  cv.height = H * dpr;
+  const ctx = cv.getContext("2d");
+  ctx.scale(dpr, dpr);
+  ctx.clearRect(0, 0, W, H);
+  const pad = { l: 10, r: 10, t: 22, b: 32 };
+  const cw = W - pad.l - pad.r,
+    ch = H - pad.t - pad.b;
+  const max = Math.max(...items.map((i) => i.value), 0.01);
+  const n = items.length;
+  const gap = cw / n;
+  const bw = Math.min(46, gap * 0.56);
+  ctx.strokeStyle = dark ? "#2a3a55" : "#eef1f5";
+  ctx.lineWidth = 1;
+  for (let g = 0; g <= 3; g++) {
+    const gy = pad.t + (ch * g) / 3;
+    ctx.beginPath();
+    ctx.moveTo(pad.l, gy);
+    ctx.lineTo(W - pad.r, gy);
+    ctx.stroke();
+  }
+  items.forEach((it, i) => {
+    const x = pad.l + gap * i + gap / 2;
+    const bh = ch * (it.value / max);
+    const y = pad.t + ch - bh;
+    ctx.fillStyle = it.color;
+    _roundRect(ctx, x - bw / 2, y, bw, bh, 5);
+    ctx.fill();
+    ctx.fillStyle = dark ? "#e5edf7" : "#2b3648";
+    ctx.font = "bold 11px sans-serif";
+    ctx.textAlign = "center";
+    ctx.fillText(it.value.toFixed(1), x, y - 5);
+    ctx.fillStyle = dark ? "#9db3cf" : "#7a8aa0";
+    ctx.font = "11px sans-serif";
+    ctx.fillText(it.label, x, H - 11);
+  });
+}
+
+function _loadScriptOnce(src) {
+  return new Promise((resolve, reject) => {
+    if (Array.prototype.some.call(document.scripts, (s) => s.src === src)) return resolve();
+    const s = document.createElement("script");
+    s.src = src;
+    s.onload = () => resolve();
+    s.onerror = () => reject(new Error("加载失败:" + src));
+    document.head.appendChild(s);
+  });
+}
+
+// 纯前端导出可视化报告 PDF:按需懒加载 html2canvas + jsPDF,失败则回退浏览器打印
+async function exportVizPdf() {
+  const btn = document.getElementById("viz-export-pdf");
+  const target = document.getElementById("viz-report");
+  if (!target) return;
+  if (btn && btn.classList.contains("btn-loading")) return;
+  if (typeof setBtnLoading === "function") setBtnLoading(btn, true, "生成中…");
+  try {
+    if (!window.html2canvas) await _loadScriptOnce("/static/html2canvas.min.js");
+    if (!(window.jspdf && window.jspdf.jsPDF)) await _loadScriptOnce("/static/jspdf.umd.min.js");
+    const bg = document.body.classList.contains("dark") ? "#0e1626" : "#ffffff";
+    const canvas = await window.html2canvas(target, { scale: 2, backgroundColor: bg, useCORS: true });
+    const JsPDF = (window.jspdf && window.jspdf.jsPDF) || window.jsPDF;
+    const pdf = new JsPDF("p", "mm", "a4");
+    const pw = pdf.internal.pageSize.getWidth();
+    const ph = pdf.internal.pageSize.getHeight();
+    const imgW = pw;
+    const imgH = (canvas.height * pw) / canvas.width;
+    const img = canvas.toDataURL("image/png");
+    let heightLeft = imgH;
+    let position = 0;
+    pdf.addImage(img, "PNG", 0, position, imgW, imgH);
+    heightLeft -= ph;
+    while (heightLeft > 0) {
+      position = heightLeft - imgH;
+      pdf.addPage();
+      pdf.addImage(img, "PNG", 0, position, imgW, imgH);
+      heightLeft -= ph;
+    }
+    const who =
+      (window.__lastProfile && window.__lastProfile.company_name) ||
+      (window.__lastPersonalProfile && window.__lastPersonalProfile.name) ||
+      "融资分析";
+    pdf.save(who + "_可视化融资分析报告.pdf");
+    if (typeof showToast === "function") showToast("报告已导出", "success");
+  } catch (err) {
+    if (typeof showToast === "function") showToast("在线导出组件加载失败,已改用打印/另存为 PDF", "error");
+    window.print();
+  } finally {
+    if (typeof setBtnLoading === "function") setBtnLoading(btn, false);
+  }
+}
+
+let _vizResizeTimer = null;
+window.addEventListener("resize", () => {
+  if (!window.__lastVizData) return;
+  clearTimeout(_vizResizeTimer);
+  _vizResizeTimer = setTimeout(() => {
+    if (document.getElementById("viz-donut")) drawVizCharts(window.__lastVizData);
+  }, 200);
+});
 
 /* ===================== 产品收藏对比 ===================== */
 function getFavs() {
@@ -2188,6 +2471,7 @@ function applyTheme(dark) {
   if (themeToggle) themeToggle.textContent = dark ? "☀️ 浅色模式" : "🌙 深色模式";
   localStorage.setItem("theme", dark ? "dark" : "light");
   if (typeof calcMortgage === "function") calcMortgage();
+  if (typeof drawVizCharts === "function" && window.__lastVizData) drawVizCharts(window.__lastVizData);
 }
 if (themeToggle) {
   themeToggle.addEventListener("click", () => {

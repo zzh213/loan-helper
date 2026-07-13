@@ -468,8 +468,10 @@ function collectProfile() {
 
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
+  if (submitBtn.classList.contains("btn-loading")) return;
   const consentEl = document.getElementById("consent-enterprise");
   if (consentEl && !consentEl.checked) {
+    if (form.__stepper) form.__stepper.gotoEl(consentEl);
     showToast("请先阅读并勾选同意《服务协议》与《隐私政策》", "error");
     consentEl.focus();
     return;
@@ -480,12 +482,14 @@ form.addEventListener("submit", async (e) => {
   if (errors.length) {
     showToast(`请检查:${errors.join("、")}`, "error");
     const firstInvalid = form.querySelector(".invalid");
-    if (firstInvalid) firstInvalid.focus();
+    if (firstInvalid) {
+      if (form.__stepper) form.__stepper.gotoEl(firstInvalid);
+      firstInvalid.focus();
+    }
     return;
   }
 
-  submitBtn.disabled = true;
-  submitBtn.textContent = "匹配中...";
+  setBtnLoading(submitBtn, true, "匹配中…");
   renderSkeleton();
   track("recommend_submit", { industry: profile.industry, amount: profile.loan_amount });
 
@@ -516,8 +520,7 @@ form.addEventListener("submit", async (e) => {
     if (rb) rb.addEventListener("click", () => form.requestSubmit());
     showToast("匹配失败,请稍后重试", "error");
   } finally {
-    submitBtn.disabled = false;
-    submitBtn.textContent = "🔍 智能匹配最优方案";
+    setBtnLoading(submitBtn, false);
   }
 });
 
@@ -571,7 +574,15 @@ function initDraft() {
         bar.remove();
         showToast("已恢复上次填写内容", "success");
       });
-      document.getElementById("draft-discard").addEventListener("click", clearDraft);
+      document.getElementById("draft-discard").addEventListener("click", async () => {
+        const ok = await showConfirm({
+          title: "重新填写",
+          message: "确定清除已保存的草稿、重新填写吗?此操作不可撤销。",
+          okText: "清除并重填",
+          danger: true,
+        });
+        if (ok) { clearDraft(); bar.remove(); }
+      });
     } catch (e) {}
   }
   let t = null;
@@ -628,8 +639,7 @@ if (preauditBtn) {
       if (fi) fi.focus();
       return;
     }
-    preauditBtn.disabled = true;
-    preauditBtn.textContent = "预审中...";
+    setBtnLoading(preauditBtn, true, "预审中…");
     track("preaudit");
     try {
       const res = await fetch("/api/preaudit", {
@@ -644,8 +654,7 @@ if (preauditBtn) {
       preauditEl.innerHTML = `<div class="empty">预审失败:${escapeHtml(err.message)}</div>`;
       preauditEl.classList.remove("hidden");
     } finally {
-      preauditBtn.disabled = false;
-      preauditBtn.textContent = "🛡️ 前置预审(提交前先体检)";
+      setBtnLoading(preauditBtn, false);
     }
   });
 }
@@ -1695,6 +1704,8 @@ document.querySelectorAll(".tab-btn[data-tab]").forEach((btn) => {
     resultEl.classList.add("hidden");
     resultEl.innerHTML = "";
     window.__lastMode = personal ? "personal" : "enterprise";
+    const activeForm = personal ? perForm : form;
+    if (activeForm && activeForm.__stepper) activeForm.__stepper.reset();
   }
   switchEl.querySelectorAll(".id-btn").forEach((b) =>
     b.addEventListener("click", () => setIdentity(b.dataset.identity))
@@ -1736,17 +1747,21 @@ document.querySelectorAll(".tab-btn[data-tab]").forEach((btn) => {
 
   function validatePersonal(p) {
     const errs = [];
-    if (!p.monthly_income || p.monthly_income <= 0) errs.push("请填写月收入");
-    if (!p.loan_amount || p.loan_amount <= 0) errs.push("请填写贷款金额");
-    if (!p.preferred_term_months || p.preferred_term_months < 1) errs.push("请填写贷款期限");
+    const f = (name) => perForm.querySelector(`[name="${name}"]`);
+    perForm.querySelectorAll(".invalid").forEach((el) => clearFieldError(el));
+    if (!(p.monthly_income > 0)) { setFieldError(f("monthly_income"), "税后月收入需大于 0"); errs.push("月收入"); }
+    if (!(p.loan_amount > 0)) { setFieldError(f("loan_amount"), "期望贷款金额需大于 0"); errs.push("贷款金额"); }
+    if (!(p.preferred_term_months >= 1)) { setFieldError(f("preferred_term_months"), "期望期限需大于 0"); errs.push("贷款期限"); }
     return errs;
   }
 
   const perBtn = document.getElementById("personal-submit-btn");
   perForm.addEventListener("submit", async (e) => {
     e.preventDefault();
+    if (perBtn.classList.contains("btn-loading")) return;
     const consentEl = document.getElementById("consent-personal");
     if (consentEl && !consentEl.checked) {
+      if (perForm.__stepper) perForm.__stepper.gotoEl(consentEl);
       showToast("请先阅读并勾选同意《服务协议》与《隐私政策》", "error");
       consentEl.focus();
       return;
@@ -1755,10 +1770,11 @@ document.querySelectorAll(".tab-btn[data-tab]").forEach((btn) => {
     const errors = validatePersonal(profile);
     if (errors.length) {
       showToast(`请检查:${errors.join("、")}`, "error");
+      const fi = perForm.querySelector(".invalid");
+      if (fi) { if (perForm.__stepper) perForm.__stepper.gotoEl(fi); fi.focus(); }
       return;
     }
-    perBtn.disabled = true;
-    perBtn.textContent = "匹配中...";
+    setBtnLoading(perBtn, true, "匹配中…");
     renderSkeleton();
     track("personal_submit", { amount: profile.loan_amount });
     try {
@@ -1783,8 +1799,7 @@ document.querySelectorAll(".tab-btn[data-tab]").forEach((btn) => {
       if (rb) rb.addEventListener("click", () => perForm.requestSubmit());
       showToast("匹配失败,请稍后重试", "error");
     } finally {
-      perBtn.disabled = false;
-      perBtn.textContent = "🔍 智能匹配最优方案";
+      setBtnLoading(perBtn, false);
     }
   });
 
@@ -3631,3 +3646,203 @@ async function setQuizNickname() {
     /* ignore */
   }
 }
+
+/* ============================================================
+   商用交互标准化:分步表单 / 实时校验 / 加载态 / 确认弹窗
+   ============================================================ */
+
+// —— 按钮加载态(spinner + 置灰防重复点击)——
+function setBtnLoading(btn, loading, loadingText) {
+  if (!btn) return;
+  if (loading) {
+    if (!btn.dataset._html) btn.dataset._html = btn.innerHTML;
+    btn.disabled = true;
+    btn.classList.add("btn-loading");
+    btn.innerHTML = `<span class="btn-spinner" aria-hidden="true"></span>${loadingText || "处理中…"}`;
+  } else {
+    btn.disabled = false;
+    btn.classList.remove("btn-loading");
+    if (btn.dataset._html !== undefined) { btn.innerHTML = btn.dataset._html; delete btn.dataset._html; }
+  }
+}
+
+// —— 确认弹窗组件(替代原生 confirm,返回 Promise<boolean>)——
+function showConfirm(opts) {
+  opts = opts || {};
+  const title = opts.title || "确认操作";
+  const message = opts.message || "";
+  const okText = opts.okText || "确定";
+  const cancelText = opts.cancelText || "取消";
+  const danger = !!opts.danger;
+  return new Promise((resolve) => {
+    const ov = document.createElement("div");
+    ov.className = "confirm-overlay";
+    ov.innerHTML =
+      `<div class="confirm-box" role="dialog" aria-modal="true">
+        <div class="confirm-title">${escapeHtml(title)}</div>
+        <div class="confirm-msg">${escapeHtml(message)}</div>
+        <div class="confirm-btns">
+          <button type="button" class="confirm-cancel ghost-btn">${escapeHtml(cancelText)}</button>
+          <button type="button" class="confirm-ok${danger ? " danger" : ""}">${escapeHtml(okText)}</button>
+        </div>
+      </div>`;
+    document.body.appendChild(ov);
+    const done = (v) => { ov.remove(); document.removeEventListener("keydown", onKey); resolve(v); };
+    function onKey(e) { if (e.key === "Escape") done(false); }
+    ov.querySelector(".confirm-cancel").addEventListener("click", () => done(false));
+    ov.querySelector(".confirm-ok").addEventListener("click", () => done(true));
+    ov.addEventListener("click", (e) => { if (e.target === ov) done(false); });
+    document.addEventListener("keydown", onKey);
+    requestAnimationFrame(() => ov.classList.add("show"));
+    setTimeout(() => ov.querySelector(".confirm-ok").focus(), 0);
+  });
+}
+
+// —— 单字段规则校验,返回错误文案('' 表示通过)——
+function validateField(el) {
+  if (!el || el.disabled) return "";
+  const type = (el.type || "").toLowerCase();
+  const v = (el.value || "").trim();
+  const isPhone = type === "tel" || el.dataset.validate === "phone";
+  if (isPhone) {
+    if (v === "") return el.required ? "请输入手机号" : "";
+    if (!/^1[3-9]\d{9}$/.test(v)) return "请输入正确的 11 位手机号";
+    return "";
+  }
+  if (type === "number") {
+    if (v === "") return el.required ? "此项为必填" : "";
+    const n = Number(v);
+    if (Number.isNaN(n)) return "请输入数字";
+    if (n < 0) return "不能为负数";
+    const min = el.getAttribute("min");
+    if (min !== null && min !== "" && n < Number(min)) return `不能小于 ${min}`;
+    const max = el.getAttribute("max");
+    if (max !== null && max !== "" && n > Number(max)) return `不能大于 ${max}`;
+    return "";
+  }
+  if (el.required && v === "") return "此项为必填";
+  return "";
+}
+
+// —— 为容器内的数字/手机号输入绑定实时校验(失焦标红、输入即清错)——
+function attachLiveValidation(scope) {
+  if (!scope) return;
+  const sel = 'input[type="number"], input[type="tel"], input[data-validate]';
+  scope.querySelectorAll(sel).forEach((el) => {
+    if (el.dataset._live) return;
+    el.dataset._live = "1";
+    el.addEventListener("blur", () => {
+      const err = validateField(el);
+      if (err) setFieldError(el, err); else clearFieldError(el);
+    });
+    el.addEventListener("input", () => {
+      if (el.classList.contains("invalid") && !validateField(el)) clearFieldError(el);
+    });
+  });
+}
+
+// —— 通用分步表单器 ——
+function _stepWrap(id) {
+  const e = document.getElementById(id);
+  if (!e) return null;
+  return e.closest(".field") || e;
+}
+
+function buildStepper(form, groups, titles) {
+  if (!form || form.__stepper) return;
+  groups.forEach((els, i) => els.forEach((el) => { if (el) el.dataset.step = String(i); }));
+  const total = groups.length;
+
+  const prog = document.createElement("div");
+  prog.className = "form-progress";
+  prog.innerHTML =
+    `<div class="fp-track"><div class="fp-fill"></div></div>
+     <div class="fp-steps">${titles.map((t, i) =>
+       `<span class="fp-step" data-i="${i}"><b>${i + 1}</b><span>${escapeHtml(t)}</span></span>`).join("")}</div>`;
+  form.insertBefore(prog, form.firstChild);
+
+  const nav = document.createElement("div");
+  nav.className = "step-nav";
+  nav.innerHTML =
+    `<button type="button" class="step-prev ghost-btn">← 上一步</button>
+     <button type="button" class="step-next">下一步 →</button>`;
+  form.appendChild(nav);
+
+  const fill = prog.querySelector(".fp-fill");
+  const spans = Array.from(prog.querySelectorAll(".fp-step"));
+  const prevBtn = nav.querySelector(".step-prev");
+  const nextBtn = nav.querySelector(".step-next");
+  let cur = 0;
+
+  function render() {
+    groups.forEach((els, i) => els.forEach((el) => { if (el) el.classList.toggle("step-off", i !== cur); }));
+    fill.style.width = (total <= 1 ? 100 : (cur / (total - 1)) * 100) + "%";
+    spans.forEach((s, i) => { s.classList.toggle("active", i === cur); s.classList.toggle("done", i < cur); });
+    prevBtn.classList.toggle("hidden", cur === 0);
+    nextBtn.classList.toggle("hidden", cur === total - 1);
+  }
+
+  function validateStep(n) {
+    let ok = true, first = null;
+    groups[n].forEach((m) => {
+      if (!m) return;
+      const fields = m.matches("input,select,textarea") ? [m] : Array.from(m.querySelectorAll("input,select,textarea"));
+      fields.forEach((el) => {
+        if (el.type === "checkbox" || el.type === "hidden" || el.classList.contains("step-off")) return;
+        const err = validateField(el);
+        if (err) { setFieldError(el, err); if (!first) first = el; ok = false; }
+      });
+    });
+    if (first) first.focus();
+    return ok;
+  }
+
+  nextBtn.addEventListener("click", () => {
+    if (!validateStep(cur)) { showToast("请先完善本步信息再继续", "error"); return; }
+    if (cur < total - 1) { cur++; render(); prog.scrollIntoView({ behavior: "smooth", block: "center" }); }
+  });
+  prevBtn.addEventListener("click", () => {
+    if (cur > 0) { cur--; render(); prog.scrollIntoView({ behavior: "smooth", block: "center" }); }
+  });
+  spans.forEach((s) => s.addEventListener("click", () => {
+    const i = Number(s.dataset.i);
+    if (i < cur) { cur = i; render(); }
+  }));
+
+  form.__stepper = {
+    gotoEl(el) {
+      if (!el) return;
+      let holder = el.closest("[data-step]");
+      let step = holder && holder.dataset.step != null ? Number(holder.dataset.step) : null;
+      if (step == null) { const p = el.closest(".field"); if (p && p.dataset.step != null) step = Number(p.dataset.step); }
+      if (step != null) { cur = step; render(); }
+    },
+    reset() { cur = 0; render(); },
+    render,
+  };
+  render();
+}
+
+// —— 初始化两个测算表单的分步 + 实时校验 ——
+(function initSteppedForms() {
+  const ent = document.getElementById("loan-form");
+  if (ent && !ent.__stepper) {
+    buildStepper(ent, [
+      ["f-company", "f-industry", "custom-industry-box", "industry-template-box", "f-years", "f-capital", "f-employees"].map(_stepWrap),
+      ["f-revenue", "f-credit", "f-collateral"].map(_stepWrap).concat([ent.querySelector(".checks")]),
+      ["f-amount", "f-purpose", "f-term"].map(_stepWrap).concat([ent.querySelector(".consent-row"), ent.querySelector(".form-btns")]),
+    ], ["基础信息", "经营与征信", "融资需求"]);
+    attachLiveValidation(ent);
+  }
+  const per = document.getElementById("personal-form");
+  if (per && !per.__stepper) {
+    buildStepper(per, [
+      ["pf-name", "pf-occupation", "pf-age", "pf-workyears"].map(_stepWrap),
+      ["pf-income", "pf-income-type", "pf-fund", "pf-house", "pf-car", "pf-debt"].map(_stepWrap).concat(Array.from(per.querySelectorAll(".checks"))),
+      ["pf-credit", "pf-amount", "pf-purpose", "pf-term"].map(_stepWrap).concat([per.querySelector(".consent-row"), per.querySelector(".form-btns")]),
+    ], ["基础信息", "收入与资产", "征信与需求"]);
+    attachLiveValidation(per);
+  }
+  // 账号登录等页面上的手机号输入也接入格式校验
+  attachLiveValidation(document.body);
+})();

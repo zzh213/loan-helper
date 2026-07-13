@@ -2,6 +2,9 @@ const form = document.getElementById("loan-form");
 const resultEl = document.getElementById("result");
 const submitBtn = document.getElementById("submit-btn");
 
+// 静默唤醒后端(Render 免费档休眠后首个请求慢),用户填表时服务已就绪
+try { fetch("/api/health", { cache: "no-store" }).catch(function () {}); } catch (e) {}
+
 /* ===================== 产品埋点 ===================== */
 function _visitorId() {
   let id = localStorage.getItem("vid");
@@ -55,6 +58,38 @@ function showToast(message, type = "info") {
     el.classList.remove("show");
     setTimeout(() => el.remove(), 300);
   }, 3200);
+}
+
+/* ===================== 抗冷启动:带自动重试的请求 ===================== */
+// Render 免费档休眠后首个请求会 502/503,或部署切换瞬间短暂不可用。
+// 对匹配类请求做指数退避自动重试,把"匹配失败"转成"服务启动中,请稍候"。
+async function fetchWithRetry(url, options, opts) {
+  opts = opts || {};
+  const maxRetries = opts.maxRetries != null ? opts.maxRetries : 3;
+  const onWake = opts.onWake || function () {};
+  let lastErr = null;
+  for (let attempt = 0; attempt <= maxRetries; attempt++) {
+    try {
+      const res = await fetch(url, options);
+      // 502/503/504 视为服务尚未就绪,可重试
+      if ((res.status === 502 || res.status === 503 || res.status === 504) && attempt < maxRetries) {
+        onWake(attempt + 1, maxRetries);
+        await new Promise((r) => setTimeout(r, 1500 + attempt * 2000));
+        continue;
+      }
+      return res;
+    } catch (err) {
+      // 网络层错误(含冷启动连接被拒),重试
+      lastErr = err;
+      if (attempt < maxRetries) {
+        onWake(attempt + 1, maxRetries);
+        await new Promise((r) => setTimeout(r, 1500 + attempt * 2000));
+        continue;
+      }
+      throw lastErr;
+    }
+  }
+  throw lastErr || new Error("请求失败");
 }
 
 /* ===================== 站内消息中心 ===================== */
@@ -494,11 +529,11 @@ form.addEventListener("submit", async (e) => {
   track("recommend_submit", { industry: profile.industry, amount: profile.loan_amount });
 
   try {
-    const res = await fetch("/api/recommend", {
+    const res = await fetchWithRetry("/api/recommend", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(profile),
-    });
+    }, { onWake: () => showToast("服务启动中,正在为你连接…", "info") });
     if (!res.ok) throw new Error("请求失败:" + res.status);
     const data = await res.json();
     window.__lastProfile = profile;
@@ -514,11 +549,11 @@ form.addEventListener("submit", async (e) => {
     showToast("已为你匹配最优方案", "success");
     resultEl.scrollIntoView({ behavior: "smooth", block: "start" });
   } catch (err) {
-    resultEl.innerHTML = `<div class="empty err-empty">😕 匹配遇到问题:${escapeHtml(err.message)}<br><button id="retry-match" class="export-btn">🔄 重试一次</button><br><small style="color:#8a98a8">多次失败?点右下角💬 智能助手或拨打客户经理热线,我们帮你人工匹配。</small></div>`;
+    resultEl.innerHTML = `<div class="empty err-empty">😕 匹配暂时没成功:${escapeHtml(err.message)}<br><small style="color:#8a98a8">若为首次访问,服务可能正在唤醒,稍等 30 秒再点重试即可。</small><br><button id="retry-match" class="export-btn">🔄 重试一次</button><br><small style="color:#8a98a8">多次失败?点右下角💬 智能助手或拨打客户经理热线,我们帮你人工匹配。</small></div>`;
     resultEl.classList.remove("hidden");
     const rb = document.getElementById("retry-match");
     if (rb) rb.addEventListener("click", () => form.requestSubmit());
-    showToast("匹配失败,请稍后重试", "error");
+    showToast("匹配未成功,请稍后重试", "error");
   } finally {
     setBtnLoading(submitBtn, false);
   }
@@ -2061,11 +2096,11 @@ document.querySelectorAll(".tab-btn[data-tab]").forEach((btn) => {
     renderSkeleton();
     track("personal_submit", { amount: profile.loan_amount });
     try {
-      const res = await fetch("/api/recommend-personal", {
+      const res = await fetchWithRetry("/api/recommend-personal", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(profile),
-      });
+      }, { onWake: () => showToast("服务启动中,正在为你连接…", "info") });
       if (!res.ok) throw new Error("请求失败:" + res.status);
       const data = await res.json();
       window.__lastPersonalProfile = profile;
@@ -2076,11 +2111,11 @@ document.querySelectorAll(".tab-btn[data-tab]").forEach((btn) => {
       showToast("已为你匹配最优方案", "success");
       resultEl.scrollIntoView({ behavior: "smooth", block: "start" });
     } catch (err) {
-      resultEl.innerHTML = `<div class="empty err-empty">😕 匹配遇到问题:${escapeHtml(err.message)}<br><button id="retry-personal" class="export-btn">🔄 重试一次</button></div>`;
+      resultEl.innerHTML = `<div class="empty err-empty">😕 匹配暂时没成功:${escapeHtml(err.message)}<br><small style="color:#8a98a8">若为首次访问,服务可能正在唤醒,稍等 30 秒再点重试即可。</small><br><button id="retry-personal" class="export-btn">🔄 重试一次</button></div>`;
       resultEl.classList.remove("hidden");
       const rb = document.getElementById("retry-personal");
       if (rb) rb.addEventListener("click", () => perForm.requestSubmit());
-      showToast("匹配失败,请稍后重试", "error");
+      showToast("匹配未成功,请稍后重试", "error");
     } finally {
       setBtnLoading(perBtn, false);
     }

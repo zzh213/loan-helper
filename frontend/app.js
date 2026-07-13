@@ -1483,10 +1483,11 @@ function renderVizSection(data) {
     (isPersonal ? "个人客户" : "贵企业");
   const today = new Date().toLocaleDateString("zh-CN");
   const cards = data.plans
-    .slice(0, 3)
+    .slice(0, 4)
     .map((p, i) => {
       const tag = p.requires_collateral ? "抵押贷" : "信用贷";
-      const label = i === 0 ? "方案A · 首推" : i === 1 ? "方案B" : "方案C";
+      const letters = ["A", "B", "C", "D"];
+      const label = i === 0 ? "方案A · 首推" : "方案" + letters[i];
       return `<div class="viz-card ${i === 0 ? "viz-best" : ""}">
         <div class="vzc-head"><span class="vzc-label">${label}</span><span class="vzc-tag">${tag}</span></div>
         <div class="vzc-name">${escapeHtml(p.product_name)}</div>

@@ -1521,6 +1521,7 @@ function renderVizSection(data) {
         <canvas id="viz-bar-monthly" height="200"></canvas>
       </div>
     </div>
+    <div class="viz-bar-legend" id="viz-bar-legend"></div>
     <div class="viz-cards-title">🧾 多方案横向对比</div>
     <div class="viz-cards">${cards}</div>
     <div class="viz-rep-foot">本报告基于您填写的信息与本地银行产品测算生成，利率、额度、补贴金额均为估算值，以持牌金融机构及主管部门最终审批为准，仅供参考。本平台为融资信息匹配服务，不直接放贷。</div>
@@ -1546,10 +1547,11 @@ function drawVizCharts(data) {
   if (save > 0) segs.push({ label: "补贴减免", value: save, color: "#f6b73c" });
   drawDonut(document.getElementById("viz-donut"), segs, "viz-donut-legend", dark);
   const plans = data.plans.slice(0, 4);
+  const letters = ["A", "B", "C", "D"];
   drawBars(
     document.getElementById("viz-bar-interest"),
     plans.map((p, i) => ({
-      label: shortName(p.product_name),
+      label: "方案" + letters[i],
       value: Number(p.total_interest_estimate) || 0,
       color: i === 0 ? "#e0794b" : "#eab08f",
     })),
@@ -1558,12 +1560,21 @@ function drawVizCharts(data) {
   drawBars(
     document.getElementById("viz-bar-monthly"),
     plans.map((p, i) => ({
-      label: shortName(p.product_name),
+      label: "方案" + letters[i],
       value: Number(p.monthly_payment_estimate) || 0,
       color: i === 0 ? "#4a7fd6" : "#9db8dd",
     })),
     dark
   );
+  const lg = document.getElementById("viz-bar-legend");
+  if (lg) {
+    lg.innerHTML = plans
+      .map(
+        (p, i) =>
+          `<span class="vz-lg"><b class="vzb-key">方案${letters[i]}</b>${escapeHtml(p.product_name)}</span>`
+      )
+      .join("");
+  }
 }
 
 function drawDonut(cv, segs, legendId, dark) {

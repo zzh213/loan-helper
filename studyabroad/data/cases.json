@@ -17,16 +17,51 @@
       "tier": "985",
       "undergradType": "985",
       "major": "金融学",
-      "gpa": { "pct": 88, "scale4": 3.6 },
-      "ielts": { "overall": 7.0, "sub": 6.5 },
+      "gpa": {
+        "pct": 88,
+        "scale4": 3.6
+      },
+      "ielts": {
+        "overall": 7.0,
+        "sub": 6.5
+      },
       "gre": null,
-      "background": ["券商研究所实习 3 个月", "数模国赛省一", "一段量化课题"],
+      "background": [
+        "券商研究所实习 3 个月",
+        "数模国赛省一",
+        "一段量化课题"
+      ],
       "results": [
-        { "school": "LSE", "program": "Finance MSc / Finance and Economics MSc", "region": "英国", "outcome": "reach" },
-        { "school": "帝国理工 IC", "program": "Finance MSc", "region": "英国", "outcome": "reach" },
-        { "school": "华威 Warwick", "program": "Finance MSc", "region": "英国", "outcome": "admit" },
-        { "school": "港大 HKU", "program": "Finance / Economics MSc", "region": "香港", "outcome": "admit" },
-        { "school": "曼彻斯特", "program": "Finance MSc", "region": "英国", "outcome": "admit" }
+        {
+          "school": "LSE",
+          "program": "Finance MSc / Finance and Economics MSc",
+          "region": "英国",
+          "outcome": "reach"
+        },
+        {
+          "school": "帝国理工 IC",
+          "program": "Finance MSc",
+          "region": "英国",
+          "outcome": "reach"
+        },
+        {
+          "school": "华威 Warwick",
+          "program": "Finance MSc",
+          "region": "英国",
+          "outcome": "admit"
+        },
+        {
+          "school": "港大 HKU",
+          "program": "Finance / Economics MSc",
+          "region": "香港",
+          "outcome": "admit"
+        },
+        {
+          "school": "曼彻斯特",
+          "program": "Finance MSc",
+          "region": "英国",
+          "outcome": "admit"
+        }
       ],
       "takeaway": "985 + 88 均分 + 券商实习，英港名校金融匹配充分，G5 可冲。补 GRE/GMAT 高分可进一步冲 LSE/IC。"
     },
@@ -35,16 +70,51 @@
       "tier": "211",
       "undergradType": "211",
       "major": "金融学",
-      "gpa": { "pct": 86, "scale4": 3.5 },
-      "ielts": { "overall": 6.5, "sub": 6.0 },
+      "gpa": {
+        "pct": 86,
+        "scale4": 3.5
+      },
+      "ielts": {
+        "overall": 6.5,
+        "sub": 6.0
+      },
       "gre": null,
-      "background": ["银行实习", "会计师事务所实习", "校级奖学金"],
+      "background": [
+        "银行实习",
+        "会计师事务所实习",
+        "校级奖学金"
+      ],
       "results": [
-        { "school": "华威 Warwick", "program": "Finance MSc", "region": "英国", "outcome": "reach" },
-        { "school": "曼彻斯特", "program": "Finance / Accounting and Finance MSc", "region": "英国", "outcome": "admit" },
-        { "school": "格拉斯哥", "program": "Financial Economics / International Finance MSc", "region": "英国", "outcome": "admit" },
-        { "school": "港中大 CUHK", "program": "Finance MSc", "region": "香港", "outcome": "reach" },
-        { "school": "利兹 Leeds", "program": "Finance and Investment MSc", "region": "英国", "outcome": "admit" }
+        {
+          "school": "华威 Warwick",
+          "program": "Finance MSc",
+          "region": "英国",
+          "outcome": "reach"
+        },
+        {
+          "school": "曼彻斯特",
+          "program": "Finance / Accounting and Finance MSc",
+          "region": "英国",
+          "outcome": "admit"
+        },
+        {
+          "school": "格拉斯哥",
+          "program": "Financial Economics / International Finance MSc",
+          "region": "英国",
+          "outcome": "admit"
+        },
+        {
+          "school": "港中大 CUHK",
+          "program": "Finance MSc",
+          "region": "香港",
+          "outcome": "reach"
+        },
+        {
+          "school": "利兹 Leeds",
+          "program": "Finance and Investment MSc",
+          "region": "英国",
+          "outcome": "admit"
+        }
       ],
       "takeaway": "211 + 86 均分 + 两段金融实习，王曼爱华可稳，华威冲刺。港校金融竞争激烈需早申。"
     },
@@ -53,16 +123,52 @@
       "tier": "双非",
       "undergradType": "双非",
       "major": "金融学",
-      "gpa": { "pct": 89, "scale4": 3.7 },
-      "ielts": { "overall": 6.5, "sub": 6.0 },
+      "gpa": {
+        "pct": 89,
+        "scale4": 3.7
+      },
+      "ielts": {
+        "overall": 6.5,
+        "sub": 6.0
+      },
       "gre": null,
-      "background": ["券商实习", "银行实习", "数模美赛 H 奖", "早申第一批"],
+      "background": [
+        "券商实习",
+        "银行实习",
+        "数模美赛 H 奖",
+        "早申第一批"
+      ],
       "results": [
-        { "school": "曼彻斯特", "program": "Accounting and Finance MSc", "region": "英国", "outcome": "reach" },
-        { "school": "格拉斯哥", "program": "International Finance MSc", "region": "英国", "outcome": "admit" },
-        { "school": "杜伦 Durham", "program": "Finance MSc", "region": "英国", "outcome": "reach" },
-        { "school": "利兹 Leeds", "program": "Finance and Investment MSc", "region": "英国", "outcome": "admit" },
-        { "school": "南安普顿", "program": "Finance MSc", "region": "英国", "outcome": "admit" }
+        {
+          "school": "曼彻斯特",
+          "program": "Accounting and Finance MSc",
+          "region": "英国",
+          "outcome": "reach"
+        },
+        {
+          "school": "格拉斯哥",
+          "program": "International Finance MSc",
+          "region": "英国",
+          "outcome": "admit"
+        },
+        {
+          "school": "杜伦 Durham",
+          "program": "Finance MSc",
+          "region": "英国",
+          "outcome": "reach"
+        },
+        {
+          "school": "利兹 Leeds",
+          "program": "Finance and Investment MSc",
+          "region": "英国",
+          "outcome": "admit"
+        },
+        {
+          "school": "南安普顿",
+          "program": "Finance MSc",
+          "region": "英国",
+          "outcome": "admit"
+        }
       ],
       "takeaway": "双非要冲名校，89 高均分 + 强实习 + 早申是关键。曼大等有院校 list，务必先确认本科在名单内。"
     },
@@ -71,16 +177,54 @@
       "tier": "985",
       "undergradType": "985",
       "major": "计算机科学与技术",
-      "gpa": { "pct": 87, "scale4": 3.6 },
-      "ielts": { "overall": 7.0, "sub": 6.5 },
-      "gre": { "total": 325, "quant": 168 },
-      "background": ["大厂算法实习", "ACM 区域赛奖", "一篇会议论文（二作）"],
+      "gpa": {
+        "pct": 87,
+        "scale4": 3.6
+      },
+      "ielts": {
+        "overall": 7.0,
+        "sub": 6.5
+      },
+      "gre": {
+        "total": 325,
+        "quant": 168
+      },
+      "background": [
+        "大厂算法实习",
+        "ACM 区域赛奖",
+        "一篇会议论文（二作）"
+      ],
       "results": [
-        { "school": "帝国理工 IC", "program": "Computing (MSc)", "region": "英国", "outcome": "reach" },
-        { "school": "爱丁堡", "program": "Informatics / AI MSc", "region": "英国", "outcome": "admit" },
-        { "school": "新加坡国立 NUS", "program": "Computing / AI MSc", "region": "新加坡", "outcome": "reach" },
-        { "school": "港科大 HKUST", "program": "Computer Science MSc", "region": "香港", "outcome": "admit" },
-        { "school": "曼彻斯特", "program": "Advanced Computer Science MSc", "region": "英国", "outcome": "admit" }
+        {
+          "school": "帝国理工 IC",
+          "program": "Computing (MSc)",
+          "region": "英国",
+          "outcome": "reach"
+        },
+        {
+          "school": "爱丁堡",
+          "program": "Informatics / AI MSc",
+          "region": "英国",
+          "outcome": "admit"
+        },
+        {
+          "school": "新加坡国立 NUS",
+          "program": "Computing / AI MSc",
+          "region": "新加坡",
+          "outcome": "reach"
+        },
+        {
+          "school": "港科大 HKUST",
+          "program": "Computer Science MSc",
+          "region": "香港",
+          "outcome": "admit"
+        },
+        {
+          "school": "曼彻斯特",
+          "program": "Advanced Computer Science MSc",
+          "region": "英国",
+          "outcome": "admit"
+        }
       ],
       "takeaway": "985 CS + 论文 + 大厂实习 + GRE325，英港新 CS 匹配充分，IC/NUS 可冲。科研产出是区分度关键。"
     },
@@ -89,16 +233,51 @@
       "tier": "双非",
       "undergradType": "双非",
       "major": "软件工程",
-      "gpa": { "pct": 85, "scale4": 3.4 },
-      "ielts": { "overall": 6.5, "sub": 6.0 },
+      "gpa": {
+        "pct": 85,
+        "scale4": 3.4
+      },
+      "ielts": {
+        "overall": 6.5,
+        "sub": 6.0
+      },
       "gre": null,
-      "background": ["中小厂开发实习", "GitHub 开源项目", "省级程序设计竞赛奖"],
+      "background": [
+        "中小厂开发实习",
+        "GitHub 开源项目",
+        "省级程序设计竞赛奖"
+      ],
       "results": [
-        { "school": "格拉斯哥", "program": "Computing Science / IT MSc", "region": "英国", "outcome": "admit" },
-        { "school": "谢菲尔德", "program": "Computer Science MSc", "region": "英国", "outcome": "admit" },
-        { "school": "利兹 Leeds", "program": "Advanced Computer Science MSc", "region": "英国", "outcome": "reach" },
-        { "school": "香港理工 PolyU", "program": "Information Technology MSc", "region": "香港", "outcome": "admit" },
-        { "school": "南安普顿", "program": "Computer Science MSc", "region": "英国", "outcome": "admit" }
+        {
+          "school": "格拉斯哥",
+          "program": "Computing Science / IT MSc",
+          "region": "英国",
+          "outcome": "admit"
+        },
+        {
+          "school": "谢菲尔德",
+          "program": "Computer Science MSc",
+          "region": "英国",
+          "outcome": "admit"
+        },
+        {
+          "school": "利兹 Leeds",
+          "program": "Advanced Computer Science MSc",
+          "region": "英国",
+          "outcome": "reach"
+        },
+        {
+          "school": "香港理工 PolyU",
+          "program": "Information Technology MSc",
+          "region": "香港",
+          "outcome": "admit"
+        },
+        {
+          "school": "南安普顿",
+          "program": "Computer Science MSc",
+          "region": "英国",
+          "outcome": "admit"
+        }
       ],
       "takeaway": "双非 CS 用项目产出（开源/竞赛）弥补背景，红砖院校 CS 可稳。冲刺档需更强科研或更高均分。"
     },
@@ -107,16 +286,51 @@
       "tier": "985",
       "undergradType": "985",
       "major": "信息管理与信息系统",
-      "gpa": { "pct": 86, "scale4": 3.5 },
-      "ielts": { "overall": 6.5, "sub": 6.0 },
+      "gpa": {
+        "pct": 86,
+        "scale4": 3.5
+      },
+      "ielts": {
+        "overall": 6.5,
+        "sub": 6.0
+      },
       "gre": null,
-      "background": ["咨询公司数据分析实习", "SQL/Python 项目", "商赛获奖"],
+      "background": [
+        "咨询公司数据分析实习",
+        "SQL/Python 项目",
+        "商赛获奖"
+      ],
       "results": [
-        { "school": "华威 Warwick", "program": "Business Analytics MSc", "region": "英国", "outcome": "reach" },
-        { "school": "爱丁堡", "program": "Business Analytics MSc", "region": "英国", "outcome": "admit" },
-        { "school": "曼彻斯特", "program": "Business Analytics MSc", "region": "英国", "outcome": "admit" },
-        { "school": "新加坡国立 NUS", "program": "Business Analytics MSc", "region": "新加坡", "outcome": "reach" },
-        { "school": "港大 HKU", "program": "Business Analytics MSc", "region": "香港", "outcome": "admit" }
+        {
+          "school": "华威 Warwick",
+          "program": "Business Analytics MSc",
+          "region": "英国",
+          "outcome": "reach"
+        },
+        {
+          "school": "爱丁堡",
+          "program": "Business Analytics MSc",
+          "region": "英国",
+          "outcome": "admit"
+        },
+        {
+          "school": "曼彻斯特",
+          "program": "Business Analytics MSc",
+          "region": "英国",
+          "outcome": "admit"
+        },
+        {
+          "school": "新加坡国立 NUS",
+          "program": "Business Analytics MSc",
+          "region": "新加坡",
+          "outcome": "reach"
+        },
+        {
+          "school": "港大 HKU",
+          "program": "Business Analytics MSc",
+          "region": "香港",
+          "outcome": "admit"
+        }
       ],
       "takeaway": "商业分析看重量化能力，985 + 编程/数据实习是标配。华威 BA/NUS 需早申且量化背景突出。"
     },
@@ -125,16 +339,54 @@
       "tier": "211",
       "undergradType": "211",
       "major": "经济学",
-      "gpa": { "pct": 87, "scale4": 3.6 },
-      "ielts": { "overall": 7.0, "sub": 6.5 },
-      "gre": { "total": 322, "quant": 167 },
-      "background": ["研究助理（RA）经历", "计量经济课题", "SSCI 期刊在投"],
+      "gpa": {
+        "pct": 87,
+        "scale4": 3.6
+      },
+      "ielts": {
+        "overall": 7.0,
+        "sub": 6.5
+      },
+      "gre": {
+        "total": 322,
+        "quant": 167
+      },
+      "background": [
+        "研究助理（RA）经历",
+        "计量经济课题",
+        "SSCI 期刊在投"
+      ],
       "results": [
-        { "school": "LSE", "program": "Economics / Econometrics MSc", "region": "英国", "outcome": "risky" },
-        { "school": "华威 Warwick", "program": "Economics MSc", "region": "英国", "outcome": "reach" },
-        { "school": "曼彻斯特", "program": "Economics MSc", "region": "英国", "outcome": "admit" },
-        { "school": "格拉斯哥", "program": "Economics MSc", "region": "英国", "outcome": "admit" },
-        { "school": "港大 HKU", "program": "Economics MSc", "region": "香港", "outcome": "admit" }
+        {
+          "school": "LSE",
+          "program": "Economics / Econometrics MSc",
+          "region": "英国",
+          "outcome": "risky"
+        },
+        {
+          "school": "华威 Warwick",
+          "program": "Economics MSc",
+          "region": "英国",
+          "outcome": "reach"
+        },
+        {
+          "school": "曼彻斯特",
+          "program": "Economics MSc",
+          "region": "英国",
+          "outcome": "admit"
+        },
+        {
+          "school": "格拉斯哥",
+          "program": "Economics MSc",
+          "region": "英国",
+          "outcome": "admit"
+        },
+        {
+          "school": "港大 HKU",
+          "program": "Economics MSc",
+          "region": "香港",
+          "outcome": "admit"
+        }
       ],
       "takeaway": "经济学看重数学/计量与 RA 经历。LSE 经济极难，需顶尖数学背景 + 高 GRE；华威可冲，曼大稳。"
     },
@@ -143,16 +395,51 @@
       "tier": "985",
       "undergradType": "985",
       "major": "新闻学",
-      "gpa": { "pct": 85, "scale4": 3.4 },
-      "ielts": { "overall": 7.0, "sub": 6.5 },
+      "gpa": {
+        "pct": 85,
+        "scale4": 3.4
+      },
+      "ielts": {
+        "overall": 7.0,
+        "sub": 6.5
+      },
       "gre": null,
-      "background": ["主流媒体实习", "公众号运营", "校媒负责人"],
+      "background": [
+        "主流媒体实习",
+        "公众号运营",
+        "校媒负责人"
+      ],
       "results": [
-        { "school": "LSE", "program": "Media and Communications MSc", "region": "英国", "outcome": "reach" },
-        { "school": "爱丁堡", "program": "Media MSc", "region": "英国", "outcome": "admit" },
-        { "school": "利兹 Leeds", "program": "Communication and Media MA", "region": "英国", "outcome": "admit" },
-        { "school": "港中大 CUHK", "program": "Communication / Media MSc", "region": "香港", "outcome": "reach" },
-        { "school": "威斯敏斯特", "program": "Media / Communication MA", "region": "英国", "outcome": "admit" }
+        {
+          "school": "LSE",
+          "program": "Media and Communications MSc",
+          "region": "英国",
+          "outcome": "reach"
+        },
+        {
+          "school": "爱丁堡",
+          "program": "Media MSc",
+          "region": "英国",
+          "outcome": "admit"
+        },
+        {
+          "school": "利兹 Leeds",
+          "program": "Communication and Media MA",
+          "region": "英国",
+          "outcome": "admit"
+        },
+        {
+          "school": "港中大 CUHK",
+          "program": "Communication / Media MSc",
+          "region": "香港",
+          "outcome": "reach"
+        },
+        {
+          "school": "威斯敏斯特",
+          "program": "Media / Communication MA",
+          "region": "英国",
+          "outcome": "admit"
+        }
       ],
       "takeaway": "传媒看重相关实习与作品集/写作，雅思写作小分常要 7.0。LSE 传媒竞争大，利兹/威敏为传媒强校。"
     },
@@ -161,16 +448,53 @@
       "tier": "海本/中外合作",
       "undergradType": "中外合办（西浦/宁诺类）",
       "major": "金融 / 会计金融",
-      "gpa": { "pct": 0, "scale4": 0, "ukClass": "2:1（65+）" },
-      "ielts": { "overall": null, "sub": null, "waiver": "全英文授课可申语言豁免" },
+      "gpa": {
+        "pct": null,
+        "scale4": null,
+        "ukClass": "2:1（65+）"
+      },
+      "ielts": {
+        "overall": null,
+        "sub": null,
+        "waiver": "全英文授课可申语言豁免"
+      },
       "gre": null,
-      "background": ["拿国外合作大学学位申请", "四大/券商实习", "毕设与合作方导师"],
+      "background": [
+        "拿国外合作大学学位申请",
+        "四大/券商实习",
+        "毕设与合作方导师"
+      ],
       "results": [
-        { "school": "帝国理工 IC", "program": "Finance MSc", "region": "英国", "outcome": "reach" },
-        { "school": "华威 Warwick", "program": "Finance MSc", "region": "英国", "outcome": "admit" },
-        { "school": "曼彻斯特", "program": "Finance MSc", "region": "英国", "outcome": "admit" },
-        { "school": "港大 HKU", "program": "Finance MSc", "region": "香港", "outcome": "admit" },
-        { "school": "新加坡国立 NUS", "program": "Finance MSc", "region": "新加坡", "outcome": "reach" }
+        {
+          "school": "帝国理工 IC",
+          "program": "Finance MSc",
+          "region": "英国",
+          "outcome": "reach"
+        },
+        {
+          "school": "华威 Warwick",
+          "program": "Finance MSc",
+          "region": "英国",
+          "outcome": "admit"
+        },
+        {
+          "school": "曼彻斯特",
+          "program": "Finance MSc",
+          "region": "英国",
+          "outcome": "admit"
+        },
+        {
+          "school": "港大 HKU",
+          "program": "Finance MSc",
+          "region": "香港",
+          "outcome": "admit"
+        },
+        {
+          "school": "新加坡国立 NUS",
+          "program": "Finance MSc",
+          "region": "新加坡",
+          "outcome": "reach"
+        }
       ],
       "takeaway": "中外合办拿海外学位（英式 2:1）申请，竞争力常优于同分双非，多数可申语言豁免。别把自己当双非。"
     },
@@ -179,16 +503,54 @@
       "tier": "985",
       "undergradType": "985",
       "major": "数据科学 / 统计",
-      "gpa": { "pct": 88, "scale4": 3.7 },
-      "ielts": { "overall": 7.0, "sub": 6.5 },
-      "gre": { "total": 328, "quant": 170 },
-      "background": ["Kaggle 银牌", "机器学习科研", "大厂数据实习"],
+      "gpa": {
+        "pct": 88,
+        "scale4": 3.7
+      },
+      "ielts": {
+        "overall": 7.0,
+        "sub": 6.5
+      },
+      "gre": {
+        "total": 328,
+        "quant": 170
+      },
+      "background": [
+        "Kaggle 银牌",
+        "机器学习科研",
+        "大厂数据实习"
+      ],
       "results": [
-        { "school": "帝国理工 IC", "program": "Machine Learning / Data Science MSc", "region": "英国", "outcome": "reach" },
-        { "school": "爱丁堡", "program": "Data Science / AI MSc", "region": "英国", "outcome": "admit" },
-        { "school": "新加坡国立 NUS", "program": "Data Science MSc", "region": "新加坡", "outcome": "reach" },
-        { "school": "港科大 HKUST", "program": "Data Science MSc", "region": "香港", "outcome": "admit" },
-        { "school": "哥伦比亚 / 美国名校", "program": "Data Science MS", "region": "美国", "outcome": "reach" }
+        {
+          "school": "帝国理工 IC",
+          "program": "Machine Learning / Data Science MSc",
+          "region": "英国",
+          "outcome": "reach"
+        },
+        {
+          "school": "爱丁堡",
+          "program": "Data Science / AI MSc",
+          "region": "英国",
+          "outcome": "admit"
+        },
+        {
+          "school": "新加坡国立 NUS",
+          "program": "Data Science MSc",
+          "region": "新加坡",
+          "outcome": "reach"
+        },
+        {
+          "school": "港科大 HKUST",
+          "program": "Data Science MSc",
+          "region": "香港",
+          "outcome": "admit"
+        },
+        {
+          "school": "哥伦比亚 / 美国名校",
+          "program": "Data Science MS",
+          "region": "美国",
+          "outcome": "reach"
+        }
       ],
       "takeaway": "数据科学量化门槛高，GRE 数学接近满分 + 科研/竞赛 + 实习是冲刺名校标配。申美需 WES + 送分。"
     },
@@ -197,16 +559,51 @@
       "tier": "211",
       "undergradType": "211",
       "major": "市场营销",
-      "gpa": { "pct": 84, "scale4": 3.3 },
-      "ielts": { "overall": 6.5, "sub": 6.0 },
+      "gpa": {
+        "pct": 84,
+        "scale4": 3.3
+      },
+      "ielts": {
+        "overall": 6.5,
+        "sub": 6.0
+      },
       "gre": null,
-      "background": ["快消品牌市场实习", "新媒体运营", "商赛区域奖"],
+      "background": [
+        "快消品牌市场实习",
+        "新媒体运营",
+        "商赛区域奖"
+      ],
       "results": [
-        { "school": "曼彻斯特", "program": "Marketing MSc", "region": "英国", "outcome": "reach" },
-        { "school": "利兹 Leeds", "program": "International Marketing Management MSc", "region": "英国", "outcome": "admit" },
-        { "school": "格拉斯哥", "program": "Marketing MSc", "region": "英国", "outcome": "admit" },
-        { "school": "南安普顿", "program": "Marketing Management MSc", "region": "英国", "outcome": "admit" },
-        { "school": "香港浸会 HKBU", "program": "Marketing / Communication MSc", "region": "香港", "outcome": "admit" }
+        {
+          "school": "曼彻斯特",
+          "program": "Marketing MSc",
+          "region": "英国",
+          "outcome": "reach"
+        },
+        {
+          "school": "利兹 Leeds",
+          "program": "International Marketing Management MSc",
+          "region": "英国",
+          "outcome": "admit"
+        },
+        {
+          "school": "格拉斯哥",
+          "program": "Marketing MSc",
+          "region": "英国",
+          "outcome": "admit"
+        },
+        {
+          "school": "南安普顿",
+          "program": "Marketing Management MSc",
+          "region": "英国",
+          "outcome": "admit"
+        },
+        {
+          "school": "香港浸会 HKBU",
+          "program": "Marketing / Communication MSc",
+          "region": "香港",
+          "outcome": "admit"
+        }
       ],
       "takeaway": "营销看重相关实习与商赛，211 + 84 均分匹配王曼爱华一档。冲刺需更高均分或更强实习。"
     },
@@ -215,16 +612,51 @@
       "tier": "双非",
       "undergradType": "双非",
       "major": "英语 / 教育学",
-      "gpa": { "pct": 86, "scale4": 3.5 },
-      "ielts": { "overall": 7.0, "sub": 6.5 },
+      "gpa": {
+        "pct": 86,
+        "scale4": 3.5
+      },
+      "ielts": {
+        "overall": 7.0,
+        "sub": 6.5
+      },
       "gre": null,
-      "background": ["中小学实习/家教", "支教经历", "专四专八优秀"],
+      "background": [
+        "中小学实习/家教",
+        "支教经历",
+        "专四专八优秀"
+      ],
       "results": [
-        { "school": "爱丁堡", "program": "TESOL / Education MSc", "region": "英国", "outcome": "reach" },
-        { "school": "格拉斯哥", "program": "TESOL / Education MSc", "region": "英国", "outcome": "admit" },
-        { "school": "利兹 Leeds", "program": "TESOL Studies MA", "region": "英国", "outcome": "admit" },
-        { "school": "港大 HKU", "program": "Education / TESOL MEd", "region": "香港", "outcome": "reach" },
-        { "school": "南安普顿", "program": "Education MSc", "region": "英国", "outcome": "admit" }
+        {
+          "school": "爱丁堡",
+          "program": "TESOL / Education MSc",
+          "region": "英国",
+          "outcome": "reach"
+        },
+        {
+          "school": "格拉斯哥",
+          "program": "TESOL / Education MSc",
+          "region": "英国",
+          "outcome": "admit"
+        },
+        {
+          "school": "利兹 Leeds",
+          "program": "TESOL Studies MA",
+          "region": "英国",
+          "outcome": "admit"
+        },
+        {
+          "school": "港大 HKU",
+          "program": "Education / TESOL MEd",
+          "region": "香港",
+          "outcome": "reach"
+        },
+        {
+          "school": "南安普顿",
+          "program": "Education MSc",
+          "region": "英国",
+          "outcome": "admit"
+        }
       ],
       "takeaway": "教育/TESOL 对双非较友好，雅思高（写作 7）+ 教学相关经历是加分项。港大教育需早申且背景突出。"
     },
@@ -233,16 +665,51 @@
       "tier": "985",
       "undergradType": "985",
       "major": "法学",
-      "gpa": { "pct": 87, "scale4": 3.6 },
-      "ielts": { "overall": 7.0, "sub": 6.5 },
+      "gpa": {
+        "pct": 87,
+        "scale4": 3.6
+      },
+      "ielts": {
+        "overall": 7.0,
+        "sub": 6.5
+      },
       "gre": null,
-      "background": ["红圈所/律所实习", "法律援助", "模拟法庭获奖"],
+      "background": [
+        "红圈所/律所实习",
+        "法律援助",
+        "模拟法庭获奖"
+      ],
       "results": [
-        { "school": "LSE", "program": "Master of Laws LLM", "region": "英国", "outcome": "reach" },
-        { "school": "UCL", "program": "LLM", "region": "英国", "outcome": "reach" },
-        { "school": "爱丁堡", "program": "LLM", "region": "英国", "outcome": "admit" },
-        { "school": "港大 HKU", "program": "LLM", "region": "香港", "outcome": "admit" },
-        { "school": "曼彻斯特", "program": "LLM", "region": "英国", "outcome": "admit" }
+        {
+          "school": "LSE",
+          "program": "Master of Laws LLM",
+          "region": "英国",
+          "outcome": "reach"
+        },
+        {
+          "school": "UCL",
+          "program": "LLM",
+          "region": "英国",
+          "outcome": "reach"
+        },
+        {
+          "school": "爱丁堡",
+          "program": "LLM",
+          "region": "英国",
+          "outcome": "admit"
+        },
+        {
+          "school": "港大 HKU",
+          "program": "LLM",
+          "region": "香港",
+          "outcome": "admit"
+        },
+        {
+          "school": "曼彻斯特",
+          "program": "LLM",
+          "region": "英国",
+          "outcome": "admit"
+        }
       ],
       "takeaway": "LLM 看重法学背景、均分与雅思（写作常需 7），律所实习加分。G5 LLM 竞争激烈需早申 + 强文书。"
     },
@@ -251,16 +718,51 @@
       "tier": "211",
       "undergradType": "211",
       "major": "机械工程",
-      "gpa": { "pct": 85, "scale4": 3.4 },
-      "ielts": { "overall": 6.5, "sub": 6.0 },
+      "gpa": {
+        "pct": 85,
+        "scale4": 3.4
+      },
+      "ielts": {
+        "overall": 6.5,
+        "sub": 6.0
+      },
       "gre": null,
-      "background": ["制造业实习", "机器人竞赛", "毕设做仿真"],
+      "background": [
+        "制造业实习",
+        "机器人竞赛",
+        "毕设做仿真"
+      ],
       "results": [
-        { "school": "帝国理工 IC", "program": "Mechanical Engineering MSc", "region": "英国", "outcome": "reach" },
-        { "school": "曼彻斯特", "program": "Mechanical Engineering MSc", "region": "英国", "outcome": "admit" },
-        { "school": "谢菲尔德", "program": "Mechanical Engineering MSc", "region": "英国", "outcome": "admit" },
-        { "school": "利兹 Leeds", "program": "Mechanical Engineering MSc", "region": "英国", "outcome": "admit" },
-        { "school": "新加坡国立 NUS", "program": "Mechanical Engineering MSc", "region": "新加坡", "outcome": "reach" }
+        {
+          "school": "帝国理工 IC",
+          "program": "Mechanical Engineering MSc",
+          "region": "英国",
+          "outcome": "reach"
+        },
+        {
+          "school": "曼彻斯特",
+          "program": "Mechanical Engineering MSc",
+          "region": "英国",
+          "outcome": "admit"
+        },
+        {
+          "school": "谢菲尔德",
+          "program": "Mechanical Engineering MSc",
+          "region": "英国",
+          "outcome": "admit"
+        },
+        {
+          "school": "利兹 Leeds",
+          "program": "Mechanical Engineering MSc",
+          "region": "英国",
+          "outcome": "admit"
+        },
+        {
+          "school": "新加坡国立 NUS",
+          "program": "Mechanical Engineering MSc",
+          "region": "新加坡",
+          "outcome": "reach"
+        }
       ],
       "takeaway": "工科看重专业课均分与项目经历，211 + 85 匹配红砖工科强校。IC/NUS 工科需更高均分冲刺。"
     },
@@ -269,16 +771,54 @@
       "tier": "985",
       "undergradType": "985",
       "major": "金融工程 / 数学",
-      "gpa": { "pct": 90, "scale4": 3.8 },
-      "ielts": { "overall": 7.5, "sub": 7.0 },
-      "gre": { "total": 330, "quant": 170 },
-      "background": ["量化实习", "数学建模国奖", "两段科研 + 强推"],
+      "gpa": {
+        "pct": 90,
+        "scale4": 3.8
+      },
+      "ielts": {
+        "overall": 7.5,
+        "sub": 7.0
+      },
+      "gre": {
+        "total": 330,
+        "quant": 170
+      },
+      "background": [
+        "量化实习",
+        "数学建模国奖",
+        "两段科研 + 强推"
+      ],
       "results": [
-        { "school": "哥伦比亚大学", "program": "Financial Engineering MS (MFE)", "region": "美国", "outcome": "reach" },
-        { "school": "加州伯克利 UCB", "program": "Financial Engineering MFE", "region": "美国", "outcome": "risky" },
-        { "school": "康奈尔大学", "program": "Financial Engineering MEng", "region": "美国", "outcome": "reach" },
-        { "school": "帝国理工 IC", "program": "Mathematics and Finance MSc", "region": "英国", "outcome": "admit" },
-        { "school": "新加坡国立 NUS", "program": "Quantitative Finance MSc", "region": "新加坡", "outcome": "admit" }
+        {
+          "school": "哥伦比亚大学",
+          "program": "Financial Engineering MS (MFE)",
+          "region": "美国",
+          "outcome": "reach"
+        },
+        {
+          "school": "加州伯克利 UCB",
+          "program": "Financial Engineering MFE",
+          "region": "美国",
+          "outcome": "risky"
+        },
+        {
+          "school": "康奈尔大学",
+          "program": "Financial Engineering MEng",
+          "region": "美国",
+          "outcome": "reach"
+        },
+        {
+          "school": "帝国理工 IC",
+          "program": "Mathematics and Finance MSc",
+          "region": "英国",
+          "outcome": "admit"
+        },
+        {
+          "school": "新加坡国立 NUS",
+          "program": "Quantitative Finance MSc",
+          "region": "新加坡",
+          "outcome": "admit"
+        }
       ],
       "takeaway": "金工/MFE 是量化天花板项目，需顶尖数学 + GRE 数学满分 + 量化实习 + 强推，且申美要 WES + 早规划送分。"
     },
@@ -287,16 +827,51 @@
       "tier": "双非",
       "undergradType": "双非",
       "major": "会计学",
-      "gpa": { "pct": 88, "scale4": 3.7 },
-      "ielts": { "overall": 6.5, "sub": 6.0 },
+      "gpa": {
+        "pct": 88,
+        "scale4": 3.7
+      },
+      "ielts": {
+        "overall": 6.5,
+        "sub": 6.0
+      },
       "gre": null,
-      "background": ["会计师事务所实习", "ACCA 通过多科", "早申第一批"],
+      "background": [
+        "会计师事务所实习",
+        "ACCA 通过多科",
+        "早申第一批"
+      ],
       "results": [
-        { "school": "曼彻斯特", "program": "Accounting MSc", "region": "英国", "outcome": "reach" },
-        { "school": "格拉斯哥", "program": "International Accounting and Financial Management MSc", "region": "英国", "outcome": "admit" },
-        { "school": "利兹 Leeds", "program": "Accounting and Finance MSc", "region": "英国", "outcome": "admit" },
-        { "school": "杜伦 Durham", "program": "Accounting MSc", "region": "英国", "outcome": "reach" },
-        { "school": "南安普顿", "program": "Accounting and Finance MSc", "region": "英国", "outcome": "admit" }
+        {
+          "school": "曼彻斯特",
+          "program": "Accounting MSc",
+          "region": "英国",
+          "outcome": "reach"
+        },
+        {
+          "school": "格拉斯哥",
+          "program": "International Accounting and Financial Management MSc",
+          "region": "英国",
+          "outcome": "admit"
+        },
+        {
+          "school": "利兹 Leeds",
+          "program": "Accounting and Finance MSc",
+          "region": "英国",
+          "outcome": "admit"
+        },
+        {
+          "school": "杜伦 Durham",
+          "program": "Accounting MSc",
+          "region": "英国",
+          "outcome": "reach"
+        },
+        {
+          "school": "南安普顿",
+          "program": "Accounting and Finance MSc",
+          "region": "英国",
+          "outcome": "admit"
+        }
       ],
       "takeaway": "双非会计用高均分（88）+ ACCA + 事务所实习补背景，王曼爱华可冲。ACCA 部分科目还可申免考。"
     },
@@ -305,16 +880,51 @@
       "tier": "211",
       "undergradType": "211",
       "major": "工商管理",
-      "gpa": { "pct": 85, "scale4": 3.4 },
-      "ielts": { "overall": 6.5, "sub": 6.0 },
+      "gpa": {
+        "pct": 85,
+        "scale4": 3.4
+      },
+      "ielts": {
+        "overall": 6.5,
+        "sub": 6.0
+      },
       "gre": null,
-      "background": ["500强管培实习", "学生组织负责人", "商赛国奖"],
+      "background": [
+        "500强管培实习",
+        "学生组织负责人",
+        "商赛国奖"
+      ],
       "results": [
-        { "school": "华威 Warwick", "program": "Management MSc", "region": "英国", "outcome": "reach" },
-        { "school": "曼彻斯特", "program": "Management MSc", "region": "英国", "outcome": "admit" },
-        { "school": "爱丁堡", "program": "Management MSc", "region": "英国", "outcome": "admit" },
-        { "school": "港中大 CUHK", "program": "Management MSc", "region": "香港", "outcome": "reach" },
-        { "school": "利兹 Leeds", "program": "Management MSc", "region": "英国", "outcome": "admit" }
+        {
+          "school": "华威 Warwick",
+          "program": "Management MSc",
+          "region": "英国",
+          "outcome": "reach"
+        },
+        {
+          "school": "曼彻斯特",
+          "program": "Management MSc",
+          "region": "英国",
+          "outcome": "admit"
+        },
+        {
+          "school": "爱丁堡",
+          "program": "Management MSc",
+          "region": "英国",
+          "outcome": "admit"
+        },
+        {
+          "school": "港中大 CUHK",
+          "program": "Management MSc",
+          "region": "香港",
+          "outcome": "reach"
+        },
+        {
+          "school": "利兹 Leeds",
+          "program": "Management MSc",
+          "region": "英国",
+          "outcome": "admit"
+        }
       ],
       "takeaway": "管理学接受背景较广，211 + 85 + 实习/领导力匹配王曼爱华。华威管理需早申，港校看院校背景。"
     },
@@ -323,16 +933,53 @@
       "tier": "海本/中外合作",
       "undergradType": "中外合办（西浦/宁诺类）",
       "major": "计算机 / 数据科学",
-      "gpa": { "pct": 0, "scale4": 0, "ukClass": "First（70+）" },
-      "ielts": { "overall": null, "sub": null, "waiver": "全英文授课可申语言豁免" },
+      "gpa": {
+        "pct": null,
+        "scale4": null,
+        "ukClass": "First（70+）"
+      },
+      "ielts": {
+        "overall": null,
+        "sub": null,
+        "waiver": "全英文授课可申语言豁免"
+      },
       "gre": null,
-      "background": ["拿国外合作大学学位申请", "大厂算法实习", "毕设机器学习方向"],
+      "background": [
+        "拿国外合作大学学位申请",
+        "大厂算法实习",
+        "毕设机器学习方向"
+      ],
       "results": [
-        { "school": "帝国理工 IC", "program": "Computing MSc", "region": "英国", "outcome": "reach" },
-        { "school": "爱丁堡", "program": "AI / Data Science MSc", "region": "英国", "outcome": "admit" },
-        { "school": "新加坡国立 NUS", "program": "Computing MSc", "region": "新加坡", "outcome": "reach" },
-        { "school": "港科大 HKUST", "program": "Computer Science MSc", "region": "香港", "outcome": "admit" },
-        { "school": "曼彻斯特", "program": "Advanced Computer Science MSc", "region": "英国", "outcome": "admit" }
+        {
+          "school": "帝国理工 IC",
+          "program": "Computing MSc",
+          "region": "英国",
+          "outcome": "reach"
+        },
+        {
+          "school": "爱丁堡",
+          "program": "AI / Data Science MSc",
+          "region": "英国",
+          "outcome": "admit"
+        },
+        {
+          "school": "新加坡国立 NUS",
+          "program": "Computing MSc",
+          "region": "新加坡",
+          "outcome": "reach"
+        },
+        {
+          "school": "港科大 HKUST",
+          "program": "Computer Science MSc",
+          "region": "香港",
+          "outcome": "admit"
+        },
+        {
+          "school": "曼彻斯特",
+          "program": "Advanced Computer Science MSc",
+          "region": "英国",
+          "outcome": "admit"
+        }
       ],
       "takeaway": "中外合办拿海外学位（英式 First）+ 大厂实习，CS 竞争力强，多可申语言豁免。First 等级对冲刺名校很关键。"
     },
@@ -341,16 +988,51 @@
       "tier": "985",
       "undergradType": "985",
       "major": "国际政治 / 公共管理",
-      "gpa": { "pct": 86, "scale4": 3.5 },
-      "ielts": { "overall": 7.0, "sub": 6.5 },
+      "gpa": {
+        "pct": 86,
+        "scale4": 3.5
+      },
+      "ielts": {
+        "overall": 7.0,
+        "sub": 6.5
+      },
       "gre": null,
-      "background": ["智库/政府部门实习", "社会调研项目", "英文论文写作"],
+      "background": [
+        "智库/政府部门实习",
+        "社会调研项目",
+        "英文论文写作"
+      ],
       "results": [
-        { "school": "LSE", "program": "Public Policy / International Relations MSc", "region": "英国", "outcome": "reach" },
-        { "school": "UCL", "program": "Public Policy MSc", "region": "英国", "outcome": "admit" },
-        { "school": "爱丁堡", "program": "Public Policy MSc", "region": "英国", "outcome": "admit" },
-        { "school": "港大 HKU", "program": "Public Administration MPA", "region": "香港", "outcome": "admit" },
-        { "school": "曼彻斯特", "program": "Public Policy and Management MSc", "region": "英国", "outcome": "admit" }
+        {
+          "school": "LSE",
+          "program": "Public Policy / International Relations MSc",
+          "region": "英国",
+          "outcome": "reach"
+        },
+        {
+          "school": "UCL",
+          "program": "Public Policy MSc",
+          "region": "英国",
+          "outcome": "admit"
+        },
+        {
+          "school": "爱丁堡",
+          "program": "Public Policy MSc",
+          "region": "英国",
+          "outcome": "admit"
+        },
+        {
+          "school": "港大 HKU",
+          "program": "Public Administration MPA",
+          "region": "香港",
+          "outcome": "admit"
+        },
+        {
+          "school": "曼彻斯特",
+          "program": "Public Policy and Management MSc",
+          "region": "英国",
+          "outcome": "admit"
+        }
       ],
       "takeaway": "公共政策/IR 看重相关实习、研究与写作能力，雅思写作常需 7。LSE 政策类竞争激烈需强文书 + 早申。"
     },
@@ -359,16 +1041,52 @@
       "tier": "双非",
       "undergradType": "双非",
       "major": "统计学 / 应用数学",
-      "gpa": { "pct": 87, "scale4": 3.6 },
-      "ielts": { "overall": 6.5, "sub": 6.0 },
+      "gpa": {
+        "pct": 87,
+        "scale4": 3.6
+      },
+      "ielts": {
+        "overall": 6.5,
+        "sub": 6.0
+      },
       "gre": null,
-      "background": ["数据分析实习", "Python/R 项目", "数模竞赛省一", "早申"],
+      "background": [
+        "数据分析实习",
+        "Python/R 项目",
+        "数模竞赛省一",
+        "早申"
+      ],
       "results": [
-        { "school": "曼彻斯特", "program": "Business Analytics MSc", "region": "英国", "outcome": "reach" },
-        { "school": "爱丁堡", "program": "Business Analytics MSc", "region": "英国", "outcome": "admit" },
-        { "school": "格拉斯哥", "program": "Data Analytics MSc", "region": "英国", "outcome": "admit" },
-        { "school": "利兹 Leeds", "program": "Business Analytics and Decision Sciences MSc", "region": "英国", "outcome": "admit" },
-        { "school": "南安普顿", "program": "Business Analytics MSc", "region": "英国", "outcome": "admit" }
+        {
+          "school": "曼彻斯特",
+          "program": "Business Analytics MSc",
+          "region": "英国",
+          "outcome": "reach"
+        },
+        {
+          "school": "爱丁堡",
+          "program": "Business Analytics MSc",
+          "region": "英国",
+          "outcome": "reach"
+        },
+        {
+          "school": "格拉斯哥",
+          "program": "Data Analytics MSc",
+          "region": "英国",
+          "outcome": "admit"
+        },
+        {
+          "school": "利兹 Leeds",
+          "program": "Business Analytics and Decision Sciences MSc",
+          "region": "英国",
+          "outcome": "admit"
+        },
+        {
+          "school": "南安普顿",
+          "program": "Business Analytics MSc",
+          "region": "英国",
+          "outcome": "admit"
+        }
       ],
       "takeaway": "双非但有量化背景（统计/数学 + 编程 + 数模），商业分析很吃香。高均分 + 早申可冲曼大 BA。"
     },
@@ -377,16 +1095,55 @@
       "tier": "985",
       "undergradType": "985（两财一贸/顶尖财经）",
       "major": "金融学",
-      "gpa": { "pct": 91, "scale4": 3.8 },
-      "ielts": { "overall": 7.5, "sub": 7.0 },
-      "gre": { "total": 328, "quant": 169 },
-      "background": ["顶级投行/PE 实习 2 段", "CFA 一级", "科研论文", "强推"],
+      "gpa": {
+        "pct": 91,
+        "scale4": 3.8
+      },
+      "ielts": {
+        "overall": 7.5,
+        "sub": 7.0
+      },
+      "gre": {
+        "total": 328,
+        "quant": 169
+      },
+      "background": [
+        "顶级投行/PE 实习 2 段",
+        "CFA 一级",
+        "科研论文",
+        "强推"
+      ],
       "results": [
-        { "school": "LSE", "program": "Finance MSc", "region": "英国", "outcome": "reach" },
-        { "school": "帝国理工 IC", "program": "Finance MSc", "region": "英国", "outcome": "admit" },
-        { "school": "牛津 Oxford", "program": "Financial Economics MSc", "region": "英国", "outcome": "risky" },
-        { "school": "新加坡国立 NUS", "program": "Finance MSc", "region": "新加坡", "outcome": "admit" },
-        { "school": "港大 HKU", "program": "Finance MSc", "region": "香港", "outcome": "admit" }
+        {
+          "school": "LSE",
+          "program": "Finance MSc",
+          "region": "英国",
+          "outcome": "reach"
+        },
+        {
+          "school": "帝国理工 IC",
+          "program": "Finance MSc",
+          "region": "英国",
+          "outcome": "admit"
+        },
+        {
+          "school": "牛津 Oxford",
+          "program": "Financial Economics MSc",
+          "region": "英国",
+          "outcome": "risky"
+        },
+        {
+          "school": "新加坡国立 NUS",
+          "program": "Finance MSc",
+          "region": "新加坡",
+          "outcome": "admit"
+        },
+        {
+          "school": "港大 HKU",
+          "program": "Finance MSc",
+          "region": "香港",
+          "outcome": "admit"
+        }
       ],
       "takeaway": "顶尖财经院校 + 91 均分 + 投行实习 + CFA + 高 GRE，是冲牛剑 LSE 金融的顶配背景，仍需强文书与运气。"
     }

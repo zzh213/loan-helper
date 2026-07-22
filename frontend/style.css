@@ -2285,22 +2285,33 @@ body.dark .bank-btn { background: linear-gradient(135deg, #1d4ed8, #3b82f6); col
   }
   .side-tabs {
     flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: stretch;
     height: auto;
     gap: 0;
-    padding: 6px 4px;
+    padding: 6px 2px;
     padding-bottom: calc(6px + env(safe-area-inset-bottom, 0px));
     border-radius: 0;
     background: linear-gradient(180deg, #7ea2ce 0%, #6c94c4 100%);
     box-shadow: 0 -4px 18px rgba(108, 148, 196, 0.28);
-    overflow: visible;
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
   }
+  .side-tabs::-webkit-scrollbar { display: none; }
   .side-tabs-title { display: none; }
   .side-tabs #theme-toggle { display: none; }
   .side-tabs .nav-chat-btn { display: flex; }
   #chat-launcher { display: none !important; }
-  .side-tabs .tab-btn {
-    flex: 1;
-    min-width: 0;
+  /* 底栏所有项(含账号)统一为等宽图标按钮 */
+  .side-tabs .tab-btn,
+  .side-tabs .account-btn {
+    flex: 1 0 auto;
+    width: auto;
+    min-width: 44px;
+    max-width: 96px;
+    margin: 0;
     flex-direction: column;
     align-items: center;
     justify-content: center;
@@ -2313,12 +2324,23 @@ body.dark .bank-btn { background: linear-gradient(135deg, #1d4ed8, #3b82f6); col
     padding: 6px 2px;
     border-radius: 12px;
     font-size: 11px;
+    font-weight: 500;
   }
-  .side-tabs .tab-btn .tb-ico { font-size: 21px; }
-  .side-tabs .tab-btn .tb-txt { font-size: 11px; line-height: 1.1; }
+  .side-tabs .account-btn { color: #fff; }
+  .side-tabs .account-btn:hover { filter: none; }
+  .side-tabs .tab-btn .tb-ico,
+  .side-tabs .account-btn .tb-ico { font-size: 20px; line-height: 1; }
+  .side-tabs .tab-btn .tb-txt,
+  .side-tabs .account-btn .tb-txt {
+    font-size: 10.5px;
+    line-height: 1.1;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
   .side-tabs .tab-btn:hover { transform: none; background: transparent; }
   .side-tabs .tab-btn.active {
-    background: transparent;
+    background: rgba(255, 255, 255, 0.16);
     color: #fff;
     font-weight: 700;
     box-shadow: none;

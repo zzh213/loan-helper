@@ -43,7 +43,7 @@
   }
   </script>
 
-  <link rel="stylesheet" href="css/style.css?v=20260722d" />
+  <link rel="stylesheet" href="css/style.css?v=20260722e" />
 </head>
 <body>
   <header class="hero">
@@ -333,7 +333,15 @@
               </select>
             </div>
             <div class="field">
-              <label for="plan-tier">本科院校层次</label>
+              <label for="plan-school">本科院校（输入院校名或省份，如「北京」）</label>
+              <div class="ac-wrap">
+                <input id="plan-school" placeholder="如 北京 / 武汉大学 / 西交利物浦大学" autocomplete="off" />
+                <div class="ac-list" id="plan-uni-ac" hidden></div>
+              </div>
+              <div class="hint" id="plan-school-hint">选择院校后将自动识别院校层次</div>
+            </div>
+            <div class="field">
+              <label for="plan-tier">院校层次（自动识别，可手动调整）</label>
               <select id="plan-tier">
                 <option value="985">985</option>
                 <option value="211">211</option>
@@ -380,28 +388,43 @@
           </div>
 
           <div class="plan-soft">
-            <div class="plan-soft-title">💪 现有经历（有多少填多少，没有填 0）</div>
-            <div class="soft-grid">
-              <div class="field">
-                <label for="plan-internships">实习段数</label>
-                <input type="number" id="plan-internships" min="0" max="20" step="1" placeholder="0" />
+            <div class="plan-soft-title">💪 现有经历（填写具体内容，越详细规划越精准；没有的留空）</div>
+
+            <div class="soft-section">
+              <div class="soft-section-head">
+                <label>实习经历（公司、岗位、时间与工作内容/成果）</label>
+                <button type="button" class="btn-mini" id="plan-add-internship">+ 添加实习</button>
               </div>
-              <div class="field">
-                <label for="plan-research">科研 / 课题段数</label>
-                <input type="number" id="plan-research" min="0" max="20" step="1" placeholder="0" />
+              <div id="plan-internship-list" class="entry-list"></div>
+            </div>
+
+            <div class="soft-section">
+              <div class="soft-section-head">
+                <label>科研 / 课题经历（课题名、你的角色、时间与内容/产出）</label>
+                <button type="button" class="btn-mini" id="plan-add-research">+ 添加科研</button>
               </div>
-              <div class="field">
-                <label for="plan-competitions">竞赛获奖数</label>
-                <input type="number" id="plan-competitions" min="0" max="20" step="1" placeholder="0" />
+              <div id="plan-research-list" class="entry-list"></div>
+            </div>
+
+            <div class="soft-section">
+              <div class="soft-section-head">
+                <label>竞赛获奖（赛事名、奖项/名次、时间与项目内容）</label>
+                <button type="button" class="btn-mini" id="plan-add-competition">+ 添加竞赛</button>
               </div>
-              <div class="field">
-                <label for="plan-papers">论文发表数</label>
-                <input type="number" id="plan-papers" min="0" max="20" step="1" placeholder="0" />
+              <div id="plan-competition-list" class="entry-list"></div>
+            </div>
+
+            <div class="soft-section">
+              <div class="soft-section-head">
+                <label>论文发表（标题、期刊/会议及级别、时间与研究内容）</label>
+                <button type="button" class="btn-mini" id="plan-add-paper">+ 添加论文</button>
               </div>
-              <div class="field">
-                <label for="plan-ielts">雅思现状（还没考留空）</label>
-                <input type="number" id="plan-ielts" min="0" max="9" step="0.5" placeholder="如 6.0" />
-              </div>
+              <div id="plan-paper-list" class="entry-list"></div>
+            </div>
+
+            <div class="field" style="margin-top:12px;">
+              <label for="plan-ielts">雅思现状（还没考留空）</label>
+              <input type="number" id="plan-ielts" min="0" max="9" step="0.5" placeholder="如 6.0" />
             </div>
           </div>
 
@@ -467,7 +490,7 @@
     </div>
   </footer>
 
-  <script src="js/match.js?v=20260722d"></script>
-  <script src="js/app.js?v=20260722d"></script>
+  <script src="js/match.js?v=20260722e"></script>
+  <script src="js/app.js?v=20260722e"></script>
 </body>
 </html>

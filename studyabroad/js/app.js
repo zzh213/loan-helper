@@ -165,6 +165,50 @@ const ENTRY_KINDS = {
     descPh: "内容 / 收获（如：修读 2 门 CS 课程，GPA 3.9，参与教授课题）",
     empty: "还没有交换 / 海外经历，点击「+ 添加交换」填写交换、暑研、海外课程等。",
   },
+  planInternship: {
+    store: [], hostId: "plan-internship-list", addId: "plan-add-internship",
+    label: "实习", scoreField: "internshipList", noPreview: true,
+    fields: [
+      { key: "company", ph: "公司 / 机构（如 字节跳动）" },
+      { key: "role", ph: "岗位（如 数据分析实习生）" },
+      { key: "period", ph: "时间（如 2025.07-2025.09）" },
+    ],
+    descPh: "工作内容 / 成果（如：搭建用户行为看板，支撑 3 个业务线决策）",
+    empty: "还没有实习经历，点击「+ 添加实习」填写公司、岗位与内容。",
+  },
+  planResearch: {
+    store: [], hostId: "plan-research-list", addId: "plan-add-research",
+    label: "科研", scoreField: "researchList", noPreview: true,
+    fields: [
+      { key: "topic", ph: "课题 / 方向（如 图神经网络推荐）" },
+      { key: "role", ph: "角色（如 RA / 组员，导师：X 教授）" },
+      { key: "period", ph: "时间（如 2025.03-至今）" },
+    ],
+    descPh: "研究内容 / 产出（如：负责数据预处理与实验，投稿 1 篇会议在审）",
+    empty: "还没有科研经历，点击「+ 添加科研」填写课题、角色与内容。",
+  },
+  planCompetition: {
+    store: [], hostId: "plan-competition-list", addId: "plan-add-competition",
+    label: "竞赛", scoreField: "competitionList", noPreview: true,
+    fields: [
+      { key: "name", ph: "赛事名称（如 全国大学生数学建模）" },
+      { key: "award", ph: "奖项 / 名次（如 国家一等奖）" },
+      { key: "period", ph: "时间（如 2025.09）" },
+    ],
+    descPh: "项目内容 / 你的贡献（如：负责建模与编程，队伍排名前 1%）",
+    empty: "还没有竞赛经历，点击「+ 添加竞赛」填写赛事、奖项与内容。",
+  },
+  planPaper: {
+    store: [], hostId: "plan-paper-list", addId: "plan-add-paper",
+    label: "论文", scoreField: "paperList", noPreview: true,
+    fields: [
+      { key: "title", ph: "论文标题" },
+      { key: "venue", ph: "期刊 / 会议及级别（如 SCI 二区 / EI / 在投）" },
+      { key: "period", ph: "时间（如 2025.05 录用）" },
+    ],
+    descPh: "研究内容 / 你的角色（如：第一作者，提出 X 方法，指标提升 12%）",
+    empty: "还没有论文，点击「+ 添加论文」填写标题、期刊/会议与内容。",
+  },
 };
 function entryRow(kind, it, idx) {
   const cfg = ENTRY_KINDS[kind];
@@ -194,7 +238,7 @@ function renderEntries(kind) {
   host.querySelectorAll(".entry-f").forEach((el) => {
     el.oninput = () => {
       cfg.store[el.dataset.idx][el.dataset.key] = el.value;
-      updateSoftPreview();
+      if (!cfg.noPreview) updateSoftPreview();
     };
   });
   host.querySelectorAll(".entry-desc").forEach((el) => {
@@ -204,7 +248,7 @@ function renderEntries(kind) {
     el.onclick = () => {
       cfg.store.splice(el.dataset.idx, 1);
       renderEntries(kind);
-      updateSoftPreview();
+      if (!cfg.noPreview) updateSoftPreview();
     };
   });
 }
@@ -1084,9 +1128,13 @@ function renderTranscript(r, ctx = TS_MAIN) {
 
 /* ============ 早规划（在读生申研路线图） ============ */
 function readPlanProfile() {
-  const n = (id) => parseInt(document.getElementById(id).value) || 0;
+  const intern = entryFilled("planInternship");
+  const research = entryFilled("planResearch");
+  const comps = entryFilled("planCompetition");
+  const papers = entryFilled("planPaper");
   return {
     grade: parseInt(document.getElementById("plan-grade").value) || 2,
+    school: (document.getElementById("plan-school").value || "").trim(),
     tier: document.getElementById("plan-tier").value,
     avg: parseFloat(document.getElementById("plan-avg").value) || 0,
     field: (document.getElementById("plan-field").value || "").trim(),
@@ -1094,11 +1142,12 @@ function readPlanProfile() {
       document.querySelectorAll("#plan-countries input:checked")
     ).map((c) => c.value),
     soft: {
-      internships: n("plan-internships"),
-      research: n("plan-research"),
-      competitions: n("plan-competitions"),
-      papers: n("plan-papers"),
+      internships: intern.length,
+      research: research.length,
+      competitions: comps.length,
+      papers: papers.length,
     },
+    exp: { internships: intern, research, competitions: comps, papers },
     ielts: parseFloat(document.getElementById("plan-ielts").value) || 0,
   };
 }
@@ -1309,23 +1358,47 @@ function buildDiagnosis(p, bands, standing) {
     });
   }
 
-  // 3) 软背景诊断
+  // 3) 软背景诊断（结合具体填写内容）
+  const ex = p.exp || { internships: [], research: [], competitions: [], papers: [] };
   const totalExp = p.soft.internships + p.soft.research + p.soft.competitions + p.soft.papers;
+  const firstText = (arr, keys) => {
+    if (!arr || !arr.length) return "";
+    const it = arr[0];
+    return keys.map((k) => it[k]).filter(Boolean).join(" · ");
+  };
+  const have = [];
+  if (p.soft.internships) have.push(`${p.soft.internships} 段实习（如「${firstText(ex.internships, ["company", "role"])}」）`);
+  if (p.soft.research) have.push(`${p.soft.research} 段科研（如「${firstText(ex.research, ["topic", "role"])}」）`);
+  if (p.soft.competitions) have.push(`${p.soft.competitions} 项竞赛（如「${firstText(ex.competitions, ["name", "award"])}」）`);
+  if (p.soft.papers) have.push(`${p.soft.papers} 篇论文（如「${firstText(ex.papers, ["title", "venue"])}」）`);
+  const haveTxt = have.length ? `你已填：${have.join("；")}。` : "";
+  const missing = [];
+  if (stem) {
+    if (!p.soft.research) missing.push("科研/课题（理工申研最看重）");
+    if (!p.soft.competitions) missing.push("学科竞赛（数模/ACM/挑战杯）");
+    if (!p.soft.internships) missing.push("对口实习");
+  } else {
+    if (!p.soft.internships) missing.push("对口实习（商科/文社科最看重）");
+    if (!p.soft.competitions) missing.push("商赛/数模");
+    if (!p.soft.research) missing.push("研究/课题助理");
+  }
+  const missTxt = missing.length ? `目前还缺：<strong>${missing.join("、")}</strong>。` : "";
+
   if (standing && standing.boost < 2 && yearsLeft >= 0) {
     items.push({
       pri: p.grade >= 3 ? "high" : "mid",
       icon: "💼",
       title: totalExp === 0 ? "软背景几乎空白——现在是积累的最好时机" : "软背景偏薄，建议尽快补强",
-      body: stem
-        ? `理工科最看重<strong>科研经历</strong>：主动联系专业课老师进实验室/做课题，争取 1–2 段；再叠加学科竞赛（数模、ACM、挑战杯）。这些能显著提升名校竞争力，等效可加分。`
-        : `商科/文社科最看重<strong>对口实习</strong>：券商/银行/互联网/四大/知名企业实习 1–2 段，追求"有量化成果"；辅以商赛、数模。名企实习对申请帮助很大。`,
+      body: `${haveTxt}${missTxt}` + (stem
+        ? `理工科建议主动联系专业课老师进实验室做课题（争取 1–2 段有产出的科研），再叠加学科竞赛，这些能显著提升名校竞争力。`
+        : `商科/文社科建议争取券商/银行/互联网/四大/名企实习 1–2 段，追求"有量化成果"；辅以商赛、数模。`),
     });
   } else if (standing && standing.boost >= 3) {
     items.push({
       pri: "low",
       icon: "💼",
       title: `软背景不错（等效 +${standing.boost} 分，${standing.softLevel}）`,
-      body: "继续深耕、把经历做出成果和故事线，文书里能讲清「做了什么、拿到什么结果」比堆数量更重要。",
+      body: `${haveTxt}继续深耕、把经历做出成果和故事线，文书里能讲清「做了什么、拿到什么结果」比堆数量更重要。${missTxt}`,
     });
   }
 
@@ -1376,7 +1449,7 @@ function renderPlan() {
     standingHtml = `
       <div class="plan-card">
         <h3>📍 现状定位</h3>
-        <p>按你目前的 <strong>${p.tier} · 均分 ${p.avg}</strong>${p.ielts ? " · 雅思 " + p.ielts : ""}，
+        <p>按你目前的 <strong>${p.school ? p.school + " · " : ""}${p.tier} · 均分 ${p.avg}</strong>${p.ielts ? " · 雅思 " + p.ielts : ""}，
         软背景等效 <strong>+${standing.boost}</strong> 分（${standing.softLevel}），在你选的方向/国家里现在大致可以：</p>
         <div class="plan-standing">
           <span class="ps-item ps-safe">保底 ${standing.safe}</span>
@@ -1453,6 +1526,32 @@ function renderPlan() {
     )
     .join("");
 
+  // 已填经历回顾（把具体内容原样呈现，便于核对与文书取材）
+  const ex = p.exp || { internships: [], research: [], competitions: [], papers: [] };
+  const expGroup = (title, arr, keys) => {
+    if (!arr || !arr.length) return "";
+    const rows = arr
+      .map((it) => {
+        const head = keys.map((k) => it[k]).filter(Boolean).join(" · ");
+        const desc = (it.desc || "").trim();
+        return `<li><strong>${head || "（未填写标题）"}</strong>${desc ? `<br><span class="exp-desc">${desc}</span>` : ""}</li>`;
+      })
+      .join("");
+    return `<div class="exp-group"><div class="exp-group-title">${title}</div><ul class="exp-items">${rows}</ul></div>`;
+  };
+  const expBody =
+    expGroup("💼 实习", ex.internships, ["company", "role", "period"]) +
+    expGroup("🔬 科研 / 课题", ex.research, ["topic", "role", "period"]) +
+    expGroup("🏆 竞赛", ex.competitions, ["name", "award", "period"]) +
+    expGroup("📄 论文", ex.papers, ["title", "venue", "period"]);
+  const expHtml = expBody
+    ? `<div class="plan-card">
+        <h3>🗂️ 你填写的经历</h3>
+        <p class="plan-hint">下面是你填的具体内容，规划已据此给出针对性建议；这些也是将来写 PS/CV 的素材。</p>
+        ${expBody}
+      </div>`
+    : "";
+
   box.innerHTML = `
     ${standingHtml}
     <div class="plan-card">
@@ -1465,6 +1564,7 @@ function renderPlan() {
       <p class="plan-hint">下面按学校档位列出你所在层次通常需要的均分线与雅思（数据来自本站项目库；均分为中国大陆申请参考线，非官方保证）。</p>
       <div class="bands">${bandsHtml}</div>
     </div>
+    ${expHtml}
     <div class="plan-card">
       <h3>🗓️ 你的行动路线图（${years[0].title} → 毕业申请）</h3>
       <div class="roadmap">${roadmapHtml}</div>
@@ -1615,6 +1715,108 @@ async function doLogout() {
 }
 
 /* ============ 初始化 ============ */
+function setupSchoolAutocomplete({ schoolId, hintId, acId, tierId, coop }) {
+  const schoolInput = document.getElementById(schoolId);
+  const hint = document.getElementById(hintId);
+  const uniAc = document.getElementById(acId);
+  if (!schoolInput || !hint || !uniAc) return;
+  let uniAcIndex = -1;
+
+  function refreshTierHint() {
+    const tier = detectTier(schoolInput.value);
+    const uni = UNI_MAP[schoolInput.value.trim()];
+    if (tier) {
+      const tierSel = document.getElementById(tierId);
+      if (tierSel) tierSel.value = tier;
+      if (coop && uni && uni.partner) {
+        hint.innerHTML =
+          `✅ 已识别：<strong>${tier}</strong>（${uni.province}）<br>` +
+          `<span class="coop-banner">🎓 中外合作大学：申研以合作方【${uni.partner}（${uni.degreeRegion}）】海外学位申请。` +
+          `${uni.coopNote || ""}</span>`;
+      } else {
+        hint.innerHTML = `✅ 已识别：<strong>${tier}</strong>（${uni.province}）`;
+      }
+      hint.className = "hint ok-hint";
+    } else if (schoolInput.value.trim()) {
+      hint.innerHTML = "未在列表中找到，请手动选择院校层次";
+      hint.className = "hint";
+    } else {
+      hint.textContent = "选择院校后将自动识别院校层次";
+      hint.className = "hint";
+    }
+  }
+
+  function closeUniAc() {
+    uniAc.hidden = true;
+    uniAc.innerHTML = "";
+    uniAcIndex = -1;
+  }
+
+  // 按院校名或省份过滤（如输入「北京」列出所有北京院校）
+  function renderUniAc() {
+    const q = schoolInput.value.trim().toLowerCase();
+    if (!q) { closeUniAc(); return; }
+    const matches = UNIVERSITIES.filter((x) => {
+      const name = x.name.toLowerCase();
+      const prov = (x.province || "").toLowerCase();
+      const tier = (x.tier || "").toLowerCase();
+      return name.includes(q) || prov.includes(q) || tier.includes(q);
+    }).slice(0, 60);
+
+    if (!matches.length) {
+      uniAc.innerHTML = `<div class="ac-empty">未找到匹配院校，可直接手动选择院校层次</div>`;
+      uniAc.hidden = false;
+      uniAcIndex = -1;
+      return;
+    }
+    uniAc.innerHTML = matches
+      .map(
+        (x) =>
+          `<div class="ac-item" data-name="${x.name}">` +
+          `<span>${x.name}</span>` +
+          `<span class="ac-meta">${x.tier} · ${x.province}</span></div>`
+      )
+      .join("");
+    uniAc.hidden = false;
+    uniAcIndex = -1;
+    uniAc.querySelectorAll(".ac-item").forEach((el) => {
+      el.addEventListener("mousedown", (e) => {
+        e.preventDefault();
+        schoolInput.value = el.dataset.name;
+        closeUniAc();
+        refreshTierHint();
+      });
+    });
+  }
+
+  schoolInput.addEventListener("input", () => {
+    renderUniAc();
+    refreshTierHint();
+  });
+  schoolInput.addEventListener("focus", renderUniAc);
+  schoolInput.addEventListener("blur", () => setTimeout(closeUniAc, 120));
+  schoolInput.addEventListener("keydown", (e) => {
+    if (uniAc.hidden) return;
+    const items = [...uniAc.querySelectorAll(".ac-item")];
+    if (!items.length) return;
+    if (e.key === "ArrowDown" || e.key === "ArrowUp") {
+      e.preventDefault();
+      uniAcIndex += e.key === "ArrowDown" ? 1 : -1;
+      if (uniAcIndex < 0) uniAcIndex = items.length - 1;
+      if (uniAcIndex >= items.length) uniAcIndex = 0;
+      items.forEach((el, i) => el.classList.toggle("active", i === uniAcIndex));
+      items[uniAcIndex].scrollIntoView({ block: "nearest" });
+    } else if (e.key === "Enter" && uniAcIndex >= 0) {
+      e.preventDefault();
+      schoolInput.value = items[uniAcIndex].dataset.name;
+      closeUniAc();
+      refreshTierHint();
+    } else if (e.key === "Escape") {
+      closeUniAc();
+    }
+  });
+}
+
 async function init() {
   renderAccount();
 
@@ -1666,103 +1868,12 @@ async function init() {
     b.addEventListener("click", () => switchView(b.dataset.view));
   });
 
-  // 院校 → 层次识别
-  const schoolInput = document.getElementById("school");
-  const hint = document.getElementById("school-hint");
-  const uniAc = document.getElementById("uni-ac");
-  let uniAcIndex = -1;
-
-  function refreshTierHint() {
-    const tier = detectTier(schoolInput.value);
-    const uni = UNI_MAP[schoolInput.value.trim()];
-    if (tier) {
-      document.getElementById("tier").value = tier;
-      if (uni && uni.partner) {
-        hint.innerHTML =
-          `✅ 已识别：<strong>${tier}</strong>（${uni.province}）<br>` +
-          `<span class="coop-banner">🎓 中外合作大学：申研以合作方【${uni.partner}（${uni.degreeRegion}）】海外学位申请。` +
-          `${uni.coopNote || ""}</span>`;
-      } else {
-        hint.innerHTML = `✅ 已识别：<strong>${tier}</strong>（${uni.province}）`;
-      }
-      hint.className = "hint ok-hint";
-    } else if (schoolInput.value.trim()) {
-      hint.innerHTML = "未在列表中找到，请在右侧手动选择院校层次";
-      hint.className = "hint";
-    } else {
-      hint.textContent = "选择院校后将自动识别院校层次";
-      hint.className = "hint";
-    }
-  }
-
-  function closeUniAc() {
-    uniAc.hidden = true;
-    uniAc.innerHTML = "";
-    uniAcIndex = -1;
-  }
-
-  // 按院校名或省份过滤（如输入「北京」列出所有北京院校）
-  function renderUniAc() {
-    const q = schoolInput.value.trim().toLowerCase();
-    if (!q) { closeUniAc(); return; }
-    const matches = UNIVERSITIES.filter((x) => {
-      const name = x.name.toLowerCase();
-      const prov = (x.province || "").toLowerCase();
-      const tier = (x.tier || "").toLowerCase();
-      return name.includes(q) || prov.includes(q) || tier.includes(q);
-    }).slice(0, 60);
-
-    if (!matches.length) {
-      uniAc.innerHTML = `<div class="ac-empty">未找到匹配院校，可直接手动选择右侧院校层次</div>`;
-      uniAc.hidden = false;
-      uniAcIndex = -1;
-      return;
-    }
-    uniAc.innerHTML = matches
-      .map(
-        (x) =>
-          `<div class="ac-item" data-name="${x.name}">` +
-          `<span>${x.name}</span>` +
-          `<span class="ac-meta">${x.tier} · ${x.province}</span></div>`
-      )
-      .join("");
-    uniAc.hidden = false;
-    uniAcIndex = -1;
-    uniAc.querySelectorAll(".ac-item").forEach((el) => {
-      el.addEventListener("mousedown", (e) => {
-        e.preventDefault();
-        schoolInput.value = el.dataset.name;
-        closeUniAc();
-        refreshTierHint();
-      });
-    });
-  }
-
-  schoolInput.addEventListener("input", () => {
-    renderUniAc();
-    refreshTierHint();
+  // 院校 → 层次识别（主匹配页 + 早规划页复用）
+  setupSchoolAutocomplete({
+    schoolId: "school", hintId: "school-hint", acId: "uni-ac", tierId: "tier", coop: true,
   });
-  schoolInput.addEventListener("focus", renderUniAc);
-  schoolInput.addEventListener("blur", () => setTimeout(closeUniAc, 120));
-  schoolInput.addEventListener("keydown", (e) => {
-    if (uniAc.hidden) return;
-    const items = [...uniAc.querySelectorAll(".ac-item")];
-    if (!items.length) return;
-    if (e.key === "ArrowDown" || e.key === "ArrowUp") {
-      e.preventDefault();
-      uniAcIndex += e.key === "ArrowDown" ? 1 : -1;
-      if (uniAcIndex < 0) uniAcIndex = items.length - 1;
-      if (uniAcIndex >= items.length) uniAcIndex = 0;
-      items.forEach((el, i) => el.classList.toggle("active", i === uniAcIndex));
-      items[uniAcIndex].scrollIntoView({ block: "nearest" });
-    } else if (e.key === "Enter" && uniAcIndex >= 0) {
-      e.preventDefault();
-      schoolInput.value = items[uniAcIndex].dataset.name;
-      closeUniAc();
-      refreshTierHint();
-    } else if (e.key === "Escape") {
-      closeUniAc();
-    }
+  setupSchoolAutocomplete({
+    schoolId: "plan-school", hintId: "plan-school-hint", acId: "plan-uni-ac", tierId: "plan-tier", coop: false,
   });
 
   // 本科专业 → 推荐研究生方向（列表外专业走 AI 识别，输入防抖）

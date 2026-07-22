@@ -1292,45 +1292,6 @@ async function init() {
   document.getElementById("export-pdf-btn").onclick = () => exportPlan("pdf");
   document.getElementById("export-xlsx-btn").onclick = () => exportPlan("xlsx");
 
-  // 反馈组件
-  const fbModal = document.getElementById("fb-modal");
-  const fbTip = document.getElementById("fb-tip");
-  const openFb = () => {
-    fbModal.hidden = false;
-    fbTip.textContent = "";
-    track("feedback_open");
-  };
-  const closeFb = () => { fbModal.hidden = true; };
-  document.getElementById("fb-fab").onclick = openFb;
-  document.getElementById("fb-close").onclick = closeFb;
-  fbModal.addEventListener("click", (e) => { if (e.target === fbModal) closeFb(); });
-  document.getElementById("fb-submit").onclick = async () => {
-    const msg = document.getElementById("fb-message").value.trim();
-    if (!msg) { fbTip.style.color = "#f0729a"; fbTip.textContent = "请填写反馈内容"; return; }
-    const btn = document.getElementById("fb-submit");
-    btn.disabled = true;
-    try {
-      await api("/api/feedback", "POST", {
-        category: document.getElementById("fb-category").value,
-        message: msg,
-        contact: document.getElementById("fb-contact").value.trim(),
-        path: location.pathname,
-        session: trackSession(),
-      });
-      fbTip.style.color = "";
-      fbTip.textContent = "✅ 已收到，感谢你的反馈！";
-      document.getElementById("fb-message").value = "";
-      document.getElementById("fb-contact").value = "";
-      track("feedback_submit", document.getElementById("fb-category").value);
-      setTimeout(() => { fbModal.hidden = true; }, 1200);
-    } catch (err) {
-      fbTip.style.color = "#f0729a";
-      fbTip.textContent = "提交失败：" + err.message;
-    } finally {
-      btn.disabled = false;
-    }
-  };
-
   // 简历上传
   document.getElementById("resume-pick").onclick = () =>
     document.getElementById("resume-file").click();

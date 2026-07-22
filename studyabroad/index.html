@@ -132,6 +132,19 @@
             </div>
           </div>
 
+          <div class="transcript-box" id="transcript-box">
+            <div class="transcript-left">
+              <strong>📷 上传成绩单截图，AI 自动算均分 / 绩点</strong>
+              <p class="hint">支持成绩单截图 / 照片（PNG、JPG）。在你的浏览器本地用 OCR 识别各科成绩与学分，自动算出加权均分和 4.0 绩点——图片不会上传服务器，保护隐私。识别结果请务必核对。</p>
+            </div>
+            <div class="transcript-right">
+              <input type="file" id="transcript-file" accept="image/*" hidden />
+              <button type="button" class="btn-secondary" id="transcript-pick">📷 选择成绩单截图</button>
+              <span class="resume-name" id="transcript-name"></span>
+            </div>
+          </div>
+          <div class="transcript-result hidden" id="transcript-result"></div>
+
           <div class="field" id="avg-field">
             <label for="avg">均分（百分制）</label>
             <input type="number" id="avg" min="0" max="100" step="0.1" placeholder="如 85" value="85" />

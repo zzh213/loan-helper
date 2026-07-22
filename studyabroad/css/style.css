@@ -470,6 +470,36 @@ footer {
   padding: 4px 10px; border-radius: 14px; font-size: 13px;
 }
 
+/* ============ 成绩单截图 OCR ============ */
+.transcript-box {
+  display: flex; justify-content: space-between; align-items: center; gap: 16px;
+  flex-wrap: wrap;
+  background: linear-gradient(120deg, #10221c, #0d0d0f);
+  border: 1px solid #1f5744; border-radius: 12px;
+  padding: 14px 18px; margin: 4px 0 12px;
+}
+.transcript-left strong { font-size: 15px; }
+.transcript-left .hint { margin: 4px 0 0; }
+.transcript-right { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.transcript-result {
+  background: var(--card-2); border: 1px solid var(--border); border-radius: 10px;
+  padding: 12px 16px; margin-bottom: 14px; font-size: 14px;
+}
+.ts-nums { display: flex; gap: 14px; flex-wrap: wrap; margin: 10px 0; }
+.ts-num {
+  background: #0e1630; border: 1px solid #2a3566; color: var(--text);
+  padding: 8px 14px; border-radius: 10px; font-size: 15px;
+}
+.ts-num strong { color: var(--primary); font-size: 18px; }
+.ts-actions { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; margin-top: 6px; }
+.ts-tip { margin: 10px 0 0; font-size: 12.5px; color: var(--muted); line-height: 1.6; }
+.ts-detail { margin-top: 12px; max-height: 260px; overflow: auto; }
+.ts-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+.ts-table th, .ts-table td {
+  border: 1px solid var(--border); padding: 5px 8px; text-align: center;
+}
+.ts-table th { background: var(--card); color: var(--muted); }
+
 /* ============ 软实力背景 ============ */
 .soft-block {
   background: var(--card-2); border: 1px solid var(--border); border-radius: 12px;

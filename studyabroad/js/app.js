@@ -914,6 +914,160 @@ async function handleResume(file) {
   }
 }
 
+/* ============ 成绩单截图 OCR：自动算均分 / 绩点 ============ */
+let _tesseractPromise = null;
+function loadTesseract() {
+  if (window.Tesseract) return Promise.resolve(window.Tesseract);
+  if (_tesseractPromise) return _tesseractPromise;
+  _tesseractPromise = new Promise((resolve, reject) => {
+    const s = document.createElement("script");
+    s.src = "https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js";
+    s.onload = () => resolve(window.Tesseract);
+    s.onerror = () => reject(new Error("OCR 组件加载失败，请检查网络后重试"));
+    document.head.appendChild(s);
+  });
+  return _tesseractPromise;
+}
+
+// 中国百分制 → 4.0 绩点（常用院校换算段位）
+function china4(pct) {
+  if (pct >= 90) return 4.0;
+  if (pct >= 85) return 3.7;
+  if (pct >= 82) return 3.3;
+  if (pct >= 78) return 3.0;
+  if (pct >= 75) return 2.7;
+  if (pct >= 72) return 2.3;
+  if (pct >= 68) return 2.0;
+  if (pct >= 64) return 1.5;
+  if (pct >= 60) return 1.0;
+  return 0.0;
+}
+
+// 从 OCR 文本解析各科成绩与学分，计算均分与绩点
+function parseTranscript(text) {
+  const lines = text.split(/\n+/).map((l) => l.trim()).filter(Boolean);
+  const courses = [];
+  const NUM = /\d{1,3}(?:\.\d{1,2})?/g;
+  for (const ln of lines) {
+    // 跳过明显的汇总/表头行，避免把「平均分/总学分」当成科目
+    if (/(平均|均分|总学分|绩点|GPA|学期|排名|加权|合计|总分)/i.test(ln) &&
+        !/\d{2,3}\s*\d|\d\.\d\s+\d{2}/.test(ln)) continue;
+    const nums = (ln.match(NUM) || []).map(Number);
+    if (!nums.length) continue;
+    // 成绩：40–100（排除年份 19xx/20xx）
+    const scoreCands = nums.filter((n) => n >= 40 && n <= 100 && !(n >= 1900 && n <= 2100));
+    if (!scoreCands.length) continue;
+    const score = Math.max(...scoreCands); // 一行多数字时取较大者为成绩
+    // 学分：0.5–10 的较小数字（成绩以外）
+    const creditCands = nums.filter((n) => n >= 0.5 && n <= 10 && n !== score);
+    const credit = creditCands.length ? creditCands[0] : null;
+    courses.push({ score, credit });
+  }
+  if (courses.length < 3) return { ok: false, count: courses.length };
+  const hasCredits = courses.filter((c) => c.credit).length >= Math.ceil(courses.length * 0.6);
+  let avg, gpa;
+  if (hasCredits) {
+    let ws = 0, wc = 0, wg = 0;
+    courses.forEach((c) => {
+      const cr = c.credit || 1;
+      ws += c.score * cr; wc += cr; wg += china4(c.score) * cr;
+    });
+    avg = ws / wc; gpa = wg / wc;
+  } else {
+    avg = courses.reduce((s, c) => s + c.score, 0) / courses.length;
+    gpa = courses.reduce((s, c) => s + china4(c.score), 0) / courses.length;
+  }
+  return {
+    ok: true, count: courses.length, weighted: hasCredits,
+    avg: Math.round(avg * 100) / 100, gpa: Math.round(gpa * 100) / 100,
+    courses,
+  };
+}
+
+async function handleTranscript(file) {
+  const box = document.getElementById("transcript-result");
+  const nameEl = document.getElementById("transcript-name");
+  nameEl.textContent = file.name;
+  box.classList.remove("hidden");
+  box.innerHTML = "⏳ 正在加载 OCR 组件…";
+  let result;
+  try {
+    const T = await loadTesseract();
+    box.innerHTML = "⏳ 正在识别成绩单（首次需下载中文识别包，请稍候）… <span id='ocr-pct'>0%</span>";
+    const worker = await T.createWorker("chi_sim+eng", 1, {
+      logger: (m) => {
+        if (m.status === "recognizing text") {
+          const el = document.getElementById("ocr-pct");
+          if (el) el.textContent = Math.round(m.progress * 100) + "%";
+        }
+      },
+    });
+    const { data } = await worker.recognize(file);
+    await worker.terminate();
+    result = parseTranscript(data.text || "");
+  } catch (e) {
+    box.innerHTML = `❌ ${e.message || "识别失败"}，可改用清晰截图或手动填写均分。`;
+    return;
+  }
+  if (!result.ok) {
+    box.innerHTML =
+      `⚠️ 只识别到 ${result.count} 门课的成绩，样本太少可能不准。建议换用更清晰、完整的成绩单截图，或手动填写均分。`;
+    return;
+  }
+  renderTranscript(result);
+}
+
+function renderTranscript(r) {
+  const box = document.getElementById("transcript-result");
+  const rows = r.courses
+    .map(
+      (c, i) =>
+        `<tr><td>${i + 1}</td><td>${c.score}</td><td>${c.credit ?? "—"}</td><td>${china4(c.score).toFixed(1)}</td></tr>`
+    )
+    .join("");
+  box.innerHTML = `
+    <div class="ts-summary">
+      ✅ 已识别 <strong>${r.count}</strong> 门课程，${r.weighted ? "按<strong>学分加权</strong>" : "按<strong>简单平均</strong>（未识别到学分）"}算出：
+      <div class="ts-nums">
+        <span class="ts-num">均分 <strong>${r.avg}</strong></span>
+        <span class="ts-num">绩点(4.0) <strong>${r.gpa}</strong></span>
+      </div>
+      <div class="ts-actions">
+        <button type="button" class="btn-primary" id="ts-apply-avg">填入均分 ${r.avg}</button>
+        <button type="button" class="btn-secondary" id="ts-apply-gpa">填入 GPA ${r.gpa}</button>
+        <button type="button" class="btn-link" id="ts-toggle-detail">查看识别明细</button>
+      </div>
+      <p class="ts-tip">⚠️ OCR 识别可能有误差（漏课、串行、学分未识别等），<strong>请务必核对</strong>后再使用；最终以学校官方成绩单为准。</p>
+    </div>
+    <div class="ts-detail hidden" id="ts-detail">
+      <table class="ts-table">
+        <thead><tr><th>#</th><th>成绩</th><th>学分</th><th>绩点</th></tr></thead>
+        <tbody>${rows}</tbody>
+      </table>
+    </div>`;
+  document.getElementById("ts-apply-avg").onclick = () => {
+    document.querySelector('input[name="scoreType"][value="avg"]').checked = true;
+    document.getElementById("avg-field").classList.remove("hidden");
+    document.getElementById("gpa-field").classList.add("hidden");
+    setVal("avg", r.avg);
+    document.getElementById("avg").dispatchEvent(new Event("input"));
+    track("transcript_apply", "avg");
+  };
+  document.getElementById("ts-apply-gpa").onclick = () => {
+    document.querySelector('input[name="scoreType"][value="gpa"]').checked = true;
+    document.getElementById("avg-field").classList.add("hidden");
+    document.getElementById("gpa-field").classList.remove("hidden");
+    document.getElementById("gpaScale").value = "4.0";
+    setVal("gpa", r.gpa);
+    document.getElementById("gpa").dispatchEvent(new Event("input"));
+    track("transcript_apply", "gpa");
+  };
+  document.getElementById("ts-toggle-detail").onclick = () => {
+    document.getElementById("ts-detail").classList.toggle("hidden");
+  };
+  track("transcript_ocr", r.weighted ? "weighted" : "simple");
+}
+
 /* ============ AI 文书辅助 ============ */
 async function renderSOP() {
   const el = document.getElementById("sop-section");
@@ -1297,6 +1451,14 @@ async function init() {
     document.getElementById("resume-file").click();
   document.getElementById("resume-file").addEventListener("change", (e) => {
     if (e.target.files[0]) handleResume(e.target.files[0]);
+  });
+
+  // 成绩单截图 OCR
+  document.getElementById("transcript-pick").onclick = () =>
+    document.getElementById("transcript-file").click();
+  document.getElementById("transcript-file").addEventListener("change", (e) => {
+    if (e.target.files[0]) handleTranscript(e.target.files[0]);
+    e.target.value = "";
   });
 
   // 经历动态条目（实习/项目/校园活动/交换）

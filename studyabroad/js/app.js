@@ -1009,21 +1009,25 @@ function parseTranscript(text) {
   }
   if (courses.length < 3) return { ok: false, count: courses.length };
   const hasCredits = courses.filter((c) => c.credit).length >= Math.ceil(courses.length * 0.6);
-  let avg, gpa;
+  let avg, gpa, wes;
   if (hasCredits) {
-    let ws = 0, wc = 0, wg = 0;
+    let ws = 0, wc = 0, wg = 0, ww = 0;
     courses.forEach((c) => {
       const cr = c.credit || 1;
       ws += c.score * cr; wc += cr; wg += china4(c.score) * cr;
+      ww += (wesGpa(c.score)?.gpa ?? 0) * cr;
     });
-    avg = ws / wc; gpa = wg / wc;
+    avg = ws / wc; gpa = wg / wc; wes = ww / wc;
   } else {
     avg = courses.reduce((s, c) => s + c.score, 0) / courses.length;
     gpa = courses.reduce((s, c) => s + china4(c.score), 0) / courses.length;
+    wes = courses.reduce((s, c) => s + (wesGpa(c.score)?.gpa ?? 0), 0) / courses.length;
   }
   return {
     ok: true, count: courses.length, weighted: hasCredits,
-    avg: Math.round(avg * 100) / 100, gpa: Math.round(gpa * 100) / 100,
+    avg: Math.round(avg * 100) / 100,
+    gpa: Math.round(gpa * 100) / 100,
+    wes: Math.round(wes * 100) / 100,
     courses,
   };
 }
@@ -1069,7 +1073,7 @@ function renderTranscript(r, ctx = TS_MAIN) {
   const rows = r.courses
     .map(
       (c, i) =>
-        `<tr><td>${i + 1}</td><td>${c.score}</td><td>${c.credit ?? "—"}</td><td>${china4(c.score).toFixed(1)}</td></tr>`
+        `<tr><td>${i + 1}</td><td>${c.score}</td><td>${c.credit ?? "—"}</td><td>${china4(c.score).toFixed(1)}</td><td>${(wesGpa(c.score)?.gpa ?? 0).toFixed(1)}</td></tr>`
     )
     .join("");
   const applyBtns =
@@ -1083,16 +1087,17 @@ function renderTranscript(r, ctx = TS_MAIN) {
       <div class="ts-nums">
         <span class="ts-num">均分 <strong>${r.avg}</strong></span>
         <span class="ts-num">绩点(4.0) <strong>${r.gpa}</strong></span>
+        <span class="ts-num ts-num-wes" title="WES 用逐门课四分段位换算（A=4/B=3/C=2），北美院校常用；此为估算，正式以 WES 官方报告为准">WES iGPA <strong>${r.wes != null ? r.wes.toFixed(2) : "—"}</strong> / 4.0</span>
       </div>
       <div class="ts-actions">
         ${applyBtns}
         <button type="button" class="btn-link ts-toggle-detail">查看识别明细</button>
       </div>
-      <p class="ts-tip">⚠️ OCR 识别可能有误差（漏课、串行、学分未识别等），<strong>请务必核对</strong>后再使用；最终以学校官方成绩单为准。</p>
+      <p class="ts-tip">⚠️ OCR 识别可能有误差（漏课、串行、学分未识别等），<strong>请务必核对</strong>后再使用；最终以学校官方成绩单为准。<br>💡 <strong>WES iGPA</strong> 按 WES 段位法（85+=A/4.0、75–84=B/3.0、60–74=C/2.0）逐门课加权估算，申美/加常需 WES 认证，正式绩点以官方报告为准。</p>
     </div>
     <div class="ts-detail hidden">
       <table class="ts-table">
-        <thead><tr><th>#</th><th>成绩</th><th>学分</th><th>绩点</th></tr></thead>
+        <thead><tr><th>#</th><th>成绩</th><th>学分</th><th>绩点</th><th>WES</th></tr></thead>
         <tbody>${rows}</tbody>
       </table>
     </div>`;
@@ -1446,6 +1451,10 @@ function renderPlan() {
   let standingHtml = "";
   if (standing) {
     const total = standing.safe + standing.match + standing.reach;
+    const w = wesGpa(p.avg);
+    const wesLine = w
+      ? `<p class="plan-wes">🇺🇸 若申美/加需 <strong>WES</strong> 认证：按你均分 ${p.avg} 估算 <strong>WES iGPA ≈ ${w.gpa.toFixed(1)} / 4.0（${w.grade}）</strong>。<span class="plan-hint">WES 逐门课按段位换算（85+=A、75–84=B、60–74=C），正式绩点以官方报告为准；用成绩单 OCR 可算更精确的逐课加权值。</span></p>`
+      : "";
     standingHtml = `
       <div class="plan-card">
         <h3>📍 现状定位</h3>
@@ -1456,6 +1465,7 @@ function renderPlan() {
           <span class="ps-item ps-match">匹配 ${standing.match}</span>
           <span class="ps-item ps-reach">冲刺 ${standing.reach}</span>
         </div>
+        ${wesLine}
         <p class="plan-hint">这是"如果现在就毕业申请"的粗略定位；你还有时间，下面的路线图能帮你往上走。</p>
       </div>`;
   } else {

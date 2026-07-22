@@ -984,20 +984,23 @@ function parseTranscript(text) {
   };
 }
 
-async function handleTranscript(file) {
-  const box = document.getElementById("transcript-result");
-  const nameEl = document.getElementById("transcript-name");
+const TS_MAIN = { resultId: "transcript-result", nameId: "transcript-name", target: "main" };
+const TS_PLAN = { resultId: "plan-transcript-result", nameId: "plan-transcript-name", target: "plan" };
+
+async function handleTranscript(file, ctx = TS_MAIN) {
+  const box = document.getElementById(ctx.resultId);
+  const nameEl = document.getElementById(ctx.nameId);
   nameEl.textContent = file.name;
   box.classList.remove("hidden");
   box.innerHTML = "⏳ 正在加载 OCR 组件…";
   let result;
   try {
     const T = await loadTesseract();
-    box.innerHTML = "⏳ 正在识别成绩单（首次需下载中文识别包，请稍候）… <span id='ocr-pct'>0%</span>";
+    box.innerHTML = "⏳ 正在识别成绩单（首次需下载中文识别包，请稍候）… <span class='ocr-pct'>0%</span>";
     const worker = await T.createWorker("chi_sim+eng", 1, {
       logger: (m) => {
         if (m.status === "recognizing text") {
-          const el = document.getElementById("ocr-pct");
+          const el = box.querySelector(".ocr-pct");
           if (el) el.textContent = Math.round(m.progress * 100) + "%";
         }
       },
@@ -1014,17 +1017,22 @@ async function handleTranscript(file) {
       `⚠️ 只识别到 ${result.count} 门课的成绩，样本太少可能不准。建议换用更清晰、完整的成绩单截图，或手动填写均分。`;
     return;
   }
-  renderTranscript(result);
+  renderTranscript(result, ctx);
 }
 
-function renderTranscript(r) {
-  const box = document.getElementById("transcript-result");
+function renderTranscript(r, ctx = TS_MAIN) {
+  const box = document.getElementById(ctx.resultId);
   const rows = r.courses
     .map(
       (c, i) =>
         `<tr><td>${i + 1}</td><td>${c.score}</td><td>${c.credit ?? "—"}</td><td>${china4(c.score).toFixed(1)}</td></tr>`
     )
     .join("");
+  const applyBtns =
+    ctx.target === "plan"
+      ? `<button type="button" class="btn-primary ts-apply-avg">填入均分 ${r.avg}</button>`
+      : `<button type="button" class="btn-primary ts-apply-avg">填入均分 ${r.avg}</button>
+         <button type="button" class="btn-secondary ts-apply-gpa">填入 GPA ${r.gpa}</button>`;
   box.innerHTML = `
     <div class="ts-summary">
       ✅ 已识别 <strong>${r.count}</strong> 门课程，${r.weighted ? "按<strong>学分加权</strong>" : "按<strong>简单平均</strong>（未识别到学分）"}算出：
@@ -1033,39 +1041,301 @@ function renderTranscript(r) {
         <span class="ts-num">绩点(4.0) <strong>${r.gpa}</strong></span>
       </div>
       <div class="ts-actions">
-        <button type="button" class="btn-primary" id="ts-apply-avg">填入均分 ${r.avg}</button>
-        <button type="button" class="btn-secondary" id="ts-apply-gpa">填入 GPA ${r.gpa}</button>
-        <button type="button" class="btn-link" id="ts-toggle-detail">查看识别明细</button>
+        ${applyBtns}
+        <button type="button" class="btn-link ts-toggle-detail">查看识别明细</button>
       </div>
       <p class="ts-tip">⚠️ OCR 识别可能有误差（漏课、串行、学分未识别等），<strong>请务必核对</strong>后再使用；最终以学校官方成绩单为准。</p>
     </div>
-    <div class="ts-detail hidden" id="ts-detail">
+    <div class="ts-detail hidden">
       <table class="ts-table">
         <thead><tr><th>#</th><th>成绩</th><th>学分</th><th>绩点</th></tr></thead>
         <tbody>${rows}</tbody>
       </table>
     </div>`;
-  document.getElementById("ts-apply-avg").onclick = () => {
-    document.querySelector('input[name="scoreType"][value="avg"]').checked = true;
-    document.getElementById("avg-field").classList.remove("hidden");
-    document.getElementById("gpa-field").classList.add("hidden");
-    setVal("avg", r.avg);
-    document.getElementById("avg").dispatchEvent(new Event("input"));
-    track("transcript_apply", "avg");
+  box.querySelector(".ts-apply-avg").onclick = () => {
+    if (ctx.target === "plan") {
+      setVal("plan-avg", r.avg);
+    } else {
+      document.querySelector('input[name="scoreType"][value="avg"]').checked = true;
+      document.getElementById("avg-field").classList.remove("hidden");
+      document.getElementById("gpa-field").classList.add("hidden");
+      setVal("avg", r.avg);
+      document.getElementById("avg").dispatchEvent(new Event("input"));
+    }
+    track("transcript_apply", ctx.target + ":avg");
   };
-  document.getElementById("ts-apply-gpa").onclick = () => {
-    document.querySelector('input[name="scoreType"][value="gpa"]').checked = true;
-    document.getElementById("avg-field").classList.add("hidden");
-    document.getElementById("gpa-field").classList.remove("hidden");
-    document.getElementById("gpaScale").value = "4.0";
-    setVal("gpa", r.gpa);
-    document.getElementById("gpa").dispatchEvent(new Event("input"));
-    track("transcript_apply", "gpa");
-  };
-  document.getElementById("ts-toggle-detail").onclick = () => {
-    document.getElementById("ts-detail").classList.toggle("hidden");
+  const gpaBtn = box.querySelector(".ts-apply-gpa");
+  if (gpaBtn) {
+    gpaBtn.onclick = () => {
+      document.querySelector('input[name="scoreType"][value="gpa"]').checked = true;
+      document.getElementById("avg-field").classList.add("hidden");
+      document.getElementById("gpa-field").classList.remove("hidden");
+      document.getElementById("gpaScale").value = "4.0";
+      setVal("gpa", r.gpa);
+      document.getElementById("gpa").dispatchEvent(new Event("input"));
+      track("transcript_apply", "main:gpa");
+    };
+  }
+  box.querySelector(".ts-toggle-detail").onclick = () => {
+    box.querySelector(".ts-detail").classList.toggle("hidden");
   };
   track("transcript_ocr", r.weighted ? "weighted" : "simple");
+}
+
+/* ============ 早规划（在读生申研路线图） ============ */
+function readPlanProfile() {
+  const n = (id) => parseInt(document.getElementById(id).value) || 0;
+  return {
+    grade: parseInt(document.getElementById("plan-grade").value) || 2,
+    tier: document.getElementById("plan-tier").value,
+    avg: parseFloat(document.getElementById("plan-avg").value) || 0,
+    field: (document.getElementById("plan-field").value || "").trim(),
+    countries: Array.from(
+      document.querySelectorAll("#plan-countries input:checked")
+    ).map((c) => c.value),
+    soft: {
+      internships: n("plan-internships"),
+      research: n("plan-research"),
+      competitions: n("plan-competitions"),
+      papers: n("plan-papers"),
+    },
+    ielts: parseFloat(document.getElementById("plan-ielts").value) || 0,
+  };
+}
+
+function median(arr) {
+  if (!arr.length) return null;
+  const s = arr.slice().sort((a, b) => a - b);
+  const m = Math.floor(s.length / 2);
+  return s.length % 2 ? s[m] : (s[m - 1] + s[m]) / 2;
+}
+
+// 按 QS 档位聚合目标方向/国家的均分线、雅思、代表校
+function planTierBands(p) {
+  const useField = p.field && PROGRAM_FIELDS.has(p.field) ? p.field : null;
+  const def = [
+    { key: "top", label: "🌍 世界顶尖", qs: "QS ≤ 50", min: 0, max: 50 },
+    { key: "elite", label: "⭐ 世界名校", qs: "QS 51–100", min: 51, max: 100 },
+    { key: "quality", label: "✅ 优质院校", qs: "QS 101–200", min: 101, max: 200 },
+    { key: "solid", label: "🛟 稳妥院校", qs: "QS 200+", min: 201, max: 999999 },
+  ];
+  const bands = def.map((b) => ({ ...b, avgs: [], ielts: [], schools: [] }));
+  DATA.programs.forEach((pr) => {
+    if (p.countries.length && !p.countries.includes(pr.country)) return;
+    if (useField && pr.field !== useField) return;
+    const qs = pr.qsRank || 9999;
+    const band = bands.find((b) => qs >= b.min && qs <= b.max);
+    if (!band) return;
+    const req = pr.requirements || {};
+    const ra = req.avgByTier && (req.avgByTier[p.tier] ?? req.avgByTier["双非"]);
+    const io = req.ielts && req.ielts.overall;
+    if (ra) band.avgs.push(ra);
+    if (io) band.ielts.push(io);
+    band.schools.push({ uni: pr.university, program: pr.program, qs, ra, io });
+  });
+  return bands
+    .filter((b) => b.schools.length)
+    .map((b) => {
+      // 代表校：按 uni 去重取 QS 最靠前，最多 4 所
+      const byUni = {};
+      b.schools.forEach((s) => {
+        if (!byUni[s.uni] || s.qs < byUni[s.uni].qs) byUni[s.uni] = s;
+      });
+      const reps = Object.values(byUni).sort((a, b2) => a.qs - b2.qs).slice(0, 4);
+      return {
+        ...b,
+        avgMin: b.avgs.length ? Math.min(...b.avgs) : null,
+        avgTypical: median(b.avgs),
+        ieltsTypical: median(b.ielts),
+        count: b.schools.length,
+        reps,
+      };
+    });
+}
+
+// 现状定位：用现有匹配引擎评估当前背景能进哪档
+function planCurrentStanding(p) {
+  if (!p.avg) return null;
+  const mk = (nn) => Array.from({ length: nn }, () => ({ company: "x", role: "x" }));
+  const profile = {
+    tier: p.tier,
+    avg: p.avg,
+    fields: p.field && PROGRAM_FIELDS.has(p.field) ? [p.field] : [],
+    field: p.field && PROGRAM_FIELDS.has(p.field) ? p.field : "全部",
+    countries: p.countries,
+    ielts: { overall: p.ielts, sub: p.ielts },
+    gre: { total: 0 },
+    soft: {
+      internshipList: mk(p.soft.internships),
+      research: p.soft.research,
+      competitions: p.soft.competitions,
+      competitionLevel: p.soft.competitions ? "省级" : null,
+      papers: p.soft.papers,
+      paperLevel: p.soft.papers ? "会议" : null,
+    },
+  };
+  const buckets = matchPrograms(DATA.programs, profile);
+  const soft = computeSoftBackground(profile.soft);
+  return {
+    safe: buckets.保底.length,
+    match: buckets.匹配.length,
+    reach: buckets.冲刺.length,
+    boost: soft.boost,
+    softLevel: soft.level,
+  };
+}
+
+// 生成分年级行动清单
+function buildRoadmap(p, bands) {
+  const stem = /计算|软件|工程|数据|人工智能|电子|机械|材料|物理|数学|统计|生物|化学|信息|网络|通信/.test(p.field || "");
+  // 选一个"跳一跳"的目标档作为 GPA 激励线
+  const elite = bands.find((b) => b.key === "elite");
+  const quality = bands.find((b) => b.key === "quality");
+  const target = elite && elite.avgTypical ? elite : quality;
+  const targetLine = target && target.avgTypical
+    ? `想冲「${target.label}（${target.qs}）」，你所在层次通常需要均分 <strong>${Math.round(target.avgTypical)}+</strong>`
+    : "把加权均分稳在同层次高位（通常越高选择越多）";
+
+  const expStem = "找 1 段科研/课题（进实验室、跟老师做项目），有条件冲学科竞赛（如数模、ACM、挑战杯）";
+  const expBiz = "找 1 段对口实习（券商/银行/互联网/四大等），参加商赛/数模，积累可写进 CV 的成果";
+  const exp = stem ? expStem : expBiz;
+
+  const Y = {
+    1: {
+      title: "大一",
+      gpa: `打好每门专业基础课，冲高绩点、绝不挂科重修（申研主要看前三年加权）。${targetLine}。`,
+      lang: "背单词、过四六级，开始磨雅思听力/阅读语感，不用急着考试。",
+      exp: "多探索方向：加入相关社团/兴趣科研组，了解自己想读的研究生方向。",
+      plan: "初步了解目标国家/地区和专业的大致要求（本站可查各校雅思/均分线）。",
+    },
+    2: {
+      title: "大二",
+      gpa: `重视专业核心课，把加权均分往上提。${targetLine}。低分课尽早补救。`,
+      lang: "系统备考雅思，目标先摸到 6.0–6.5；口语写作早练。",
+      exp: stem
+        ? "尝试进实验室做科研入门、参加学科竞赛，积累第一段硬经历。"
+        : "争取第一段实习或商赛经历，建立行业认知。",
+      plan: "缩小到 2–3 个目标国家 + 方向，关注对口项目的具体门槛。",
+    },
+    3: {
+      title: "大三",
+      gpa: "稳住均分（这是申请看到的最后完整成绩），把弱项课补上去。",
+      lang: "务必在大三下之前考出达标雅思（多数英港新要 6.5，名校要 7.0）。",
+      exp: `${exp}，追求"有成果、能讲故事"而非数量堆砌。`,
+      plan: "大三下：确定选校清单（冲刺/匹配/保底）、动笔写 PS/CV、联系 2 位推荐人。",
+    },
+    4: {
+      title: "大四（申请季）",
+      gpa: "保持成绩别松懈，部分项目会看到大四成绩单。",
+      lang: "如未达标抓紧刷分/补考，卡在小分的重点突破。",
+      exp: "收尾实习/项目，把成果量化写进 CV。",
+      plan: "9–12 月网申开放即尽早递交（滚动录取先到先得），跟进面试、准备后续签证。",
+    },
+  };
+  const years = [];
+  for (let g = p.grade; g <= 4; g++) years.push(Y[g]);
+  return { years, target };
+}
+
+function renderPlan() {
+  const p = readPlanProfile();
+  const box = document.getElementById("plan-result");
+  box.classList.remove("hidden");
+  if (!DATA || !DATA.programs) {
+    box.innerHTML = `<div class="empty">数据未加载，请刷新后重试。</div>`;
+    return;
+  }
+  const bands = planTierBands(p);
+  if (!bands.length) {
+    box.innerHTML = `<div class="empty">没有匹配到项目，试着不填方向或放宽意向国家再生成。</div>`;
+    return;
+  }
+  const standing = planCurrentStanding(p);
+  const { years, target } = buildRoadmap(p, bands);
+
+  // 现状定位
+  let standingHtml = "";
+  if (standing) {
+    const total = standing.safe + standing.match + standing.reach;
+    standingHtml = `
+      <div class="plan-card">
+        <h3>📍 现状定位</h3>
+        <p>按你目前的 <strong>${p.tier} · 均分 ${p.avg}</strong>${p.ielts ? " · 雅思 " + p.ielts : ""}，
+        软背景等效 <strong>+${standing.boost}</strong> 分（${standing.softLevel}），在你选的方向/国家里现在大致可以：</p>
+        <div class="plan-standing">
+          <span class="ps-item ps-safe">保底 ${standing.safe}</span>
+          <span class="ps-item ps-match">匹配 ${standing.match}</span>
+          <span class="ps-item ps-reach">冲刺 ${standing.reach}</span>
+        </div>
+        <p class="plan-hint">这是"如果现在就毕业申请"的粗略定位；你还有时间，下面的路线图能帮你往上走。</p>
+      </div>`;
+  } else {
+    standingHtml = `
+      <div class="plan-card">
+        <h3>📍 现状定位</h3>
+        <p class="plan-hint">填入「目前均分」后，这里会显示你现在大致能匹配到的学校档位。</p>
+      </div>`;
+  }
+
+  // 目标档位表
+  const gapTag = (avgMin) => {
+    if (!p.avg || avgMin == null) return "";
+    const d = Math.round((p.avg - avgMin) * 10) / 10;
+    if (d >= 0) return `<span class="gap ok">目前已达线（+${d}）</span>`;
+    return `<span class="gap warn">还差约 ${Math.abs(d)} 分</span>`;
+  };
+  const bandsHtml = bands
+    .map((b) => {
+      const reps = b.reps
+        .map((s) => `<span class="rep-school">${s.uni}${s.qs < 9999 ? `<em>#${s.qs}</em>` : ""}</span>`)
+        .join("");
+      const avgTxt = b.avgTypical != null
+        ? `均分 <strong>${Math.round(b.avgTypical)}</strong> 左右${b.avgMin != null ? `（门槛约 ${Math.round(b.avgMin)}+）` : ""}`
+        : "均分线暂无数据";
+      const ieltsTxt = b.ieltsTypical != null ? `雅思 <strong>${b.ieltsTypical}</strong>` : "雅思见项目";
+      return `
+        <div class="band-row">
+          <div class="band-head">
+            <span class="band-label">${b.label}</span>
+            <span class="band-qs">${b.qs} · ${b.count} 个项目</span>
+          </div>
+          <div class="band-req">🎯 ${avgTxt} · 🗣️ ${ieltsTxt} ${gapTag(b.avgMin)}</div>
+          <div class="band-reps">${reps}</div>
+        </div>`;
+    })
+    .join("");
+
+  // 路线图
+  const roadmapHtml = years
+    .map(
+      (y) => `
+      <div class="rm-year">
+        <div class="rm-year-title">${y.title}</div>
+        <ul class="rm-tasks">
+          <li><strong>📊 绩点：</strong>${y.gpa}</li>
+          <li><strong>🗣️ 语言：</strong>${y.lang}</li>
+          <li><strong>💼 经历：</strong>${y.exp}</li>
+          <li><strong>🗂️ 选校/文书：</strong>${y.plan}</li>
+        </ul>
+      </div>`
+    )
+    .join("");
+
+  box.innerHTML = `
+    ${standingHtml}
+    <div class="plan-card">
+      <h3>🎯 目标档位：想去哪，均分要保持在多少</h3>
+      <p class="plan-hint">下面按学校档位列出你所在层次通常需要的均分线与雅思（数据来自本站项目库；均分为中国大陆申请参考线，非官方保证）。</p>
+      <div class="bands">${bandsHtml}</div>
+    </div>
+    <div class="plan-card">
+      <h3>🗓️ 你的行动路线图（${years[0].title} → 毕业申请）</h3>
+      <div class="roadmap">${roadmapHtml}</div>
+    </div>
+    <p class="disclaimer">本规划为基于公开数据与普遍规律的<strong>参考建议</strong>，不构成录取保证。真实录取受名额、竞争、文书、面试、科研实习等多因素影响，请结合各校官方要求综合判断。</p>`;
+
+  track("plan_generate", `${p.grade}年级/${p.tier}/${p.field || "不限"}`);
+  box.scrollIntoView({ behavior: "smooth", block: "start" });
 }
 
 /* ============ AI 文书辅助 ============ */
@@ -1236,6 +1506,8 @@ async function init() {
       return `<option value="${m.name}">${m.category}</option>`;
     }).join("");
     document.getElementById("gradfield-list").innerHTML =
+      GRAD_FIELDS.map((f) => `<option value="${f}">研究生方向</option>`).join("");
+    document.getElementById("plan-field-list").innerHTML =
       GRAD_FIELDS.map((f) => `<option value="${f}">研究生方向</option>`).join("");
   } catch {}
   renderSelectedFields();
@@ -1458,6 +1730,18 @@ async function init() {
     document.getElementById("transcript-file").click();
   document.getElementById("transcript-file").addEventListener("change", (e) => {
     if (e.target.files[0]) handleTranscript(e.target.files[0]);
+    e.target.value = "";
+  });
+
+  // 早规划：表单提交 + 成绩单 OCR
+  document.getElementById("plan-form").addEventListener("submit", (e) => {
+    e.preventDefault();
+    renderPlan();
+  });
+  document.getElementById("plan-transcript-pick").onclick = () =>
+    document.getElementById("plan-transcript-file").click();
+  document.getElementById("plan-transcript-file").addEventListener("change", (e) => {
+    if (e.target.files[0]) handleTranscript(e.target.files[0], TS_PLAN);
     e.target.value = "";
   });
 

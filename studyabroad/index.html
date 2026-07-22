@@ -43,7 +43,7 @@
   }
   </script>
 
-  <link rel="stylesheet" href="css/style.css?v=20260722b" />
+  <link rel="stylesheet" href="css/style.css?v=20260722c" />
 </head>
 <body>
   <header class="hero">
@@ -53,6 +53,7 @@
         <p class="subtitle">输入背景，立刻看到能申请的学校与硬性要求 —— 打破信息差，不花冤枉钱</p>
         <nav class="hero-nav" id="hero-nav">
           <button type="button" class="nav-btn active" data-view="match">🎯 选校匹配</button>
+          <button type="button" class="nav-btn" data-view="planning">🚀 早规划（在读生）</button>
           <button type="button" class="nav-btn" data-view="cases">📊 申研参考案例</button>
           <button type="button" class="nav-btn" data-view="policies">📚 政策知识库</button>
         </nav>
@@ -313,6 +314,106 @@
     <section id="checklist-section" class="checklist-section hidden"></section>
     </div><!-- /view-match -->
 
+    <div id="view-planning" class="view hidden">
+      <section class="card">
+        <div class="view-intro">
+          <h2>🚀 早规划：在读生申研路线图</h2>
+          <p class="hint">还在读大一 / 大二 / 大三？填入你现在的年级、成绩与经历，这里会告诉你：<strong>照这个趋势能去到什么档次的学校</strong>、<strong>想冲某档梦校均分要保持在多少</strong>，并给出<strong>到毕业前每一年该做什么</strong>的行动清单。越早规划越主动。</p>
+        </div>
+
+        <form id="plan-form">
+          <div class="grid">
+            <div class="field">
+              <label for="plan-grade">当前年级</label>
+              <select id="plan-grade">
+                <option value="1">大一在读</option>
+                <option value="2" selected>大二在读</option>
+                <option value="3">大三在读</option>
+                <option value="4">大四在读（准备申请）</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="plan-tier">本科院校层次</label>
+              <select id="plan-tier">
+                <option value="985">985</option>
+                <option value="211">211</option>
+                <option value="双一流">双一流（非 985/211）</option>
+                <option value="双非" selected>双非（普通本科）</option>
+                <option value="海本/中外合作">海本 / 中外合作</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="plan-avg">目前均分（百分制，尽量填近几学期加权）</label>
+              <input type="number" id="plan-avg" min="0" max="100" step="0.1" placeholder="如 82" />
+            </div>
+            <div class="field">
+              <label for="plan-field">目标研究生方向（可留空 = 不限）</label>
+              <input list="plan-field-list" id="plan-field" placeholder="如 金融 / 计算机 / 传媒" autocomplete="off" />
+              <datalist id="plan-field-list"></datalist>
+            </div>
+          </div>
+
+          <div class="transcript-box" id="plan-transcript-box">
+            <div class="transcript-left">
+              <strong>📷 不确定均分？上传成绩单截图自动算</strong>
+              <p class="hint">浏览器本地 OCR 识别各科成绩与学分，算出加权均分自动填入上方（图片不上传服务器）。</p>
+            </div>
+            <div class="transcript-right">
+              <input type="file" id="plan-transcript-file" accept="image/*" hidden />
+              <button type="button" class="btn-secondary" id="plan-transcript-pick">📷 选择成绩单截图</button>
+              <span class="resume-name" id="plan-transcript-name"></span>
+            </div>
+          </div>
+          <div class="transcript-result hidden" id="plan-transcript-result"></div>
+
+          <div class="field">
+            <label>意向国家 / 地区（不选 = 全部）</label>
+            <div class="checks" id="plan-countries">
+              <label><input type="checkbox" value="英国" /> 英国</label>
+              <label><input type="checkbox" value="美国" /> 美国</label>
+              <label><input type="checkbox" value="中国香港" /> 中国香港</label>
+              <label><input type="checkbox" value="新加坡" /> 新加坡</label>
+              <label><input type="checkbox" value="澳大利亚" /> 澳大利亚</label>
+              <label><input type="checkbox" value="加拿大" /> 加拿大</label>
+              <label><input type="checkbox" value="爱尔兰" /> 爱尔兰</label>
+            </div>
+          </div>
+
+          <div class="plan-soft">
+            <div class="plan-soft-title">💪 现有经历（有多少填多少，没有填 0）</div>
+            <div class="soft-grid">
+              <div class="field">
+                <label for="plan-internships">实习段数</label>
+                <input type="number" id="plan-internships" min="0" max="20" step="1" placeholder="0" />
+              </div>
+              <div class="field">
+                <label for="plan-research">科研 / 课题段数</label>
+                <input type="number" id="plan-research" min="0" max="20" step="1" placeholder="0" />
+              </div>
+              <div class="field">
+                <label for="plan-competitions">竞赛获奖数</label>
+                <input type="number" id="plan-competitions" min="0" max="20" step="1" placeholder="0" />
+              </div>
+              <div class="field">
+                <label for="plan-papers">论文发表数</label>
+                <input type="number" id="plan-papers" min="0" max="20" step="1" placeholder="0" />
+              </div>
+              <div class="field">
+                <label for="plan-ielts">雅思现状（还没考留空）</label>
+                <input type="number" id="plan-ielts" min="0" max="9" step="0.5" placeholder="如 6.0" />
+              </div>
+            </div>
+          </div>
+
+          <div class="actions">
+            <button type="submit" class="btn-primary">🚀 生成我的申研规划</button>
+          </div>
+        </form>
+
+        <div id="plan-result" class="plan-result hidden"></div>
+      </section>
+    </div><!-- /view-planning -->
+
     <div id="view-cases" class="view hidden">
       <section class="card">
         <div class="view-intro">
@@ -366,7 +467,7 @@
     </div>
   </footer>
 
-  <script src="js/match.js?v=20260722b"></script>
-  <script src="js/app.js?v=20260722b"></script>
+  <script src="js/match.js?v=20260722c"></script>
+  <script src="js/app.js?v=20260722c"></script>
 </body>
 </html>

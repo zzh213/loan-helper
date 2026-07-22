@@ -535,6 +535,20 @@ footer {
 .rm-tasks { margin: 0; padding-left: 18px; }
 .rm-tasks li { font-size: 13.5px; line-height: 1.75; margin: 3px 0; color: var(--text); }
 
+.diag-list { display: flex; flex-direction: column; gap: 10px; }
+.diag-item { border: 1px solid var(--border); border-radius: 10px; padding: 12px 14px; background: var(--card); border-left-width: 3px; }
+.diag-high { border-left-color: #f0729a; }
+.diag-mid { border-left-color: #fbbf24; }
+.diag-low { border-left-color: #3ddc84; }
+.diag-top { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.diag-icon { font-size: 16px; }
+.diag-title { font-size: 14.5px; font-weight: 700; flex: 1; }
+.diag-pri { font-size: 11px; padding: 2px 8px; border-radius: 10px; white-space: nowrap; }
+.diag-pri-high { background: #2a0d16; color: #f0729a; border: 1px solid #6b1f34; }
+.diag-pri-mid { background: #2a1a05; color: #fbbf24; border: 1px solid #6b4a1a; }
+.diag-pri-low { background: #07210f; color: #3ddc84; border: 1px solid #14502f; }
+.diag-body { margin: 8px 0 0; font-size: 13px; line-height: 1.7; color: var(--muted); }
+
 /* ============ 软实力背景 ============ */
 .soft-block {
   background: var(--card-2); border: 1px solid var(--border); border-radius: 12px;

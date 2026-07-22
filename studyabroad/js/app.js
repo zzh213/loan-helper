@@ -1237,6 +1237,121 @@ function buildRoadmap(p, bands) {
   return { years, target };
 }
 
+// 基于差距的针对性诊断：按优先级给出"现在最该做什么"
+function buildDiagnosis(p, bands, standing) {
+  const items = [];
+  const yearsLeft = Math.max(0, 4 - p.grade); // 还剩几个完整学年可提升
+  const stem = /计算|软件|工程|数据|人工智能|电子|机械|材料|物理|数学|统计|生物|化学|信息|网络|通信/.test(p.field || "");
+
+  // 找"跳一跳"目标档（优先名校档，否则优质档）
+  const elite = bands.find((b) => b.key === "elite");
+  const quality = bands.find((b) => b.key === "quality");
+  const top = bands.find((b) => b.key === "top");
+  const target = (elite && elite.avgTypical) ? elite : (quality || bands[0]);
+
+  // 1) 均分诊断
+  if (p.avg && target && target.avgTypical != null) {
+    const need = Math.round(target.avgTypical);
+    const gap = Math.round((need - p.avg) * 10) / 10;
+    if (gap > 0) {
+      // 每年需提升多少（还有 yearsLeft 年，若已大四则本季度末）
+      const perYear = yearsLeft > 0 ? Math.ceil((gap / yearsLeft) * 10) / 10 : gap;
+      const feasible = gap <= 3 ? "完全够得着" : gap <= 6 ? "有挑战但可行" : "难度较大，需持续发力";
+      items.push({
+        pri: gap <= 6 ? "high" : "mid",
+        icon: "📊",
+        title: `把均分从 ${p.avg} 提到 ${need}+（冲「${target.label}」还差 ${gap} 分）`,
+        body: yearsLeft > 0
+          ? `你还有约 ${yearsLeft} 个完整学年，平均每年提升 <strong>${perYear} 分</strong>即可，${feasible}。重点：抓专业核心课学分权重高的科目、避免任何挂科重修、低分课争取重修刷高。`
+          : `已进入申请季，均分基本定型；把剩余课程稳住，同时用雅思/软背景/文书弥补，并把选校重心放在"${quality ? quality.label : "匹配档"}"更稳。`,
+      });
+    } else {
+      items.push({
+        pri: "low",
+        icon: "✅",
+        title: `均分 ${p.avg} 已达「${target.label}」参考线（${need}）`,
+        body: `保持住别松懈，继续往更高档冲。${top && top.avgTypical ? `若想够世界顶尖（${top.label}），参考线约 ${Math.round(top.avgTypical)}，可作为拉高目标。` : ""}`,
+      });
+    }
+  } else if (!p.avg) {
+    items.push({
+      pri: "high",
+      icon: "📊",
+      title: "先填入/上传你的目前均分",
+      body: "均分是申研最核心的硬指标，填了才能算出你离各档还差多少。可直接上传成绩单截图自动计算。",
+    });
+  }
+
+  // 2) 雅思诊断
+  const targetIelts = (target && target.ieltsTypical) || 6.5;
+  if (!p.ielts) {
+    const when = p.grade <= 2 ? "大二起系统备考，大三下前考出" : p.grade === 3 ? "本学年内尽快考出" : "立刻刷分，别再拖";
+    items.push({
+      pri: p.grade >= 3 ? "high" : "mid",
+      icon: "🗣️",
+      title: `雅思还没考——目标档通常要 ${targetIelts}`,
+      body: `建议${when}。雅思有效期 2 年，${p.grade <= 2 ? "现在先打基础、刷单词和听读语感，大二下再正式考更划算" : "口语写作是中国学生普遍弱项，尽早开练"}。多数英港新要总分 6.5、名校要 7.0。`,
+    });
+  } else if (p.ielts < targetIelts) {
+    const d = Math.round((targetIelts - p.ielts) * 10) / 10;
+    items.push({
+      pri: "mid",
+      icon: "🗣️",
+      title: `雅思 ${p.ielts} → 目标档要 ${targetIelts}（差 ${d}）`,
+      body: `还有时间，重点突破薄弱单项（小分卡线最常见）；名校常要求单项不低于 6.0/6.5，别只顾总分。`,
+    });
+  } else {
+    items.push({
+      pri: "low",
+      icon: "🗣️",
+      title: `雅思 ${p.ielts} 已达目标档参考线`,
+      body: "达标即可，把精力转向均分和软背景；若冲 7.0 名校可再刷高。",
+    });
+  }
+
+  // 3) 软背景诊断
+  const totalExp = p.soft.internships + p.soft.research + p.soft.competitions + p.soft.papers;
+  if (standing && standing.boost < 2 && yearsLeft >= 0) {
+    items.push({
+      pri: p.grade >= 3 ? "high" : "mid",
+      icon: "💼",
+      title: totalExp === 0 ? "软背景几乎空白——现在是积累的最好时机" : "软背景偏薄，建议尽快补强",
+      body: stem
+        ? `理工科最看重<strong>科研经历</strong>：主动联系专业课老师进实验室/做课题，争取 1–2 段；再叠加学科竞赛（数模、ACM、挑战杯）。这些能显著提升名校竞争力，等效可加分。`
+        : `商科/文社科最看重<strong>对口实习</strong>：券商/银行/互联网/四大/知名企业实习 1–2 段，追求"有量化成果"；辅以商赛、数模。名企实习对申请帮助很大。`,
+    });
+  } else if (standing && standing.boost >= 3) {
+    items.push({
+      pri: "low",
+      icon: "💼",
+      title: `软背景不错（等效 +${standing.boost} 分，${standing.softLevel}）`,
+      body: "继续深耕、把经历做出成果和故事线，文书里能讲清「做了什么、拿到什么结果」比堆数量更重要。",
+    });
+  }
+
+  // 4) 时间紧迫度提醒
+  if (p.grade <= 2) {
+    items.push({
+      pri: "low",
+      icon: "⏳",
+      title: "你的最大优势是时间",
+      body: "越早规划越主动：现在把绩点打高、方向探索清楚，到大三大四会非常从容。定期回来更新数据、看目标档变化。",
+    });
+  } else if (p.grade === 4) {
+    items.push({
+      pri: "high",
+      icon: "⏳",
+      title: "已进入申请季，行动要快",
+      body: "9–12 月网申陆续开放，滚动录取先到先得——尽早定选校清单、写 PS/CV、联系推荐人并递交，别等 deadline。",
+    });
+  }
+
+  // 排序：高 > 中 > 低
+  const order = { high: 0, mid: 1, low: 2 };
+  items.sort((a, b) => order[a.pri] - order[b.pri]);
+  return items;
+}
+
 function renderPlan() {
   const p = readPlanProfile();
   const box = document.getElementById("plan-result");
@@ -1252,6 +1367,7 @@ function renderPlan() {
   }
   const standing = planCurrentStanding(p);
   const { years, target } = buildRoadmap(p, bands);
+  const diagnosis = buildDiagnosis(p, bands, standing);
 
   // 现状定位
   let standingHtml = "";
@@ -1321,8 +1437,29 @@ function renderPlan() {
     )
     .join("");
 
+  // 针对性诊断建议（按优先级）
+  const priLabel = { high: "高优先", mid: "建议", low: "锦上添花" };
+  const diagHtml = diagnosis
+    .map(
+      (d) => `
+      <div class="diag-item diag-${d.pri}">
+        <div class="diag-top">
+          <span class="diag-icon">${d.icon}</span>
+          <span class="diag-title">${d.title}</span>
+          <span class="diag-pri diag-pri-${d.pri}">${priLabel[d.pri]}</span>
+        </div>
+        <p class="diag-body">${d.body}</p>
+      </div>`
+    )
+    .join("");
+
   box.innerHTML = `
     ${standingHtml}
+    <div class="plan-card">
+      <h3>🔑 现在最该做什么（按优先级）</h3>
+      <p class="plan-hint">根据你当前均分离目标的差距、雅思与软背景现状，为你排好了先后顺序。</p>
+      <div class="diag-list">${diagHtml}</div>
+    </div>
     <div class="plan-card">
       <h3>🎯 目标档位：想去哪，均分要保持在多少</h3>
       <p class="plan-hint">下面按学校档位列出你所在层次通常需要的均分线与雅思（数据来自本站项目库；均分为中国大陆申请参考线，非官方保证）。</p>

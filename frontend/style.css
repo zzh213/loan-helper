@@ -2304,7 +2304,9 @@ body.dark .bank-btn { background: linear-gradient(135deg, #1d4ed8, #3b82f6); col
   .side-tabs #theme-toggle { display: none; }
   .side-tabs .nav-chat-btn { display: flex; }
   #chat-launcher { display: none !important; }
-  /* 底栏所有项(含账号)统一为等宽图标按钮 */
+  /* 手机端底栏隐藏「登录 / 注册」按钮 */
+  .side-tabs .account-btn { display: none !important; }
+  /* 底栏所有项统一为等宽图标按钮 */
   .side-tabs .tab-btn,
   .side-tabs .account-btn {
     flex: 1 0 auto;

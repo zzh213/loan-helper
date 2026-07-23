@@ -2,8 +2,38 @@ const form = document.getElementById("loan-form");
 const resultEl = document.getElementById("result");
 const submitBtn = document.getElementById("submit-btn");
 
-// 静默唤醒后端(Render 免费档休眠后首个请求慢),用户填表时服务已就绪
-try { fetch("/api/health", { cache: "no-store" }).catch(function () {}); } catch (e) {}
+// 静默唤醒后端(Render 免费档休眠后首个请求慢),用户填表时服务已就绪。
+// 若服务在冷启动(短时间内未就绪),显示「服务启动中」提示条,唤醒完成自动消失,
+// 避免用户以为页面卡死。
+(function wakeBackend() {
+  let banner = null;
+  const showBanner = function () {
+    if (banner || document.getElementById("wake-banner")) return;
+    banner = document.createElement("div");
+    banner.id = "wake-banner";
+    banner.setAttribute("role", "status");
+    banner.innerHTML = '<span class="wake-spin"></span>服务正在启动中,首次访问需几秒,请稍候…';
+    (document.body || document.documentElement).appendChild(banner);
+  };
+  const hideBanner = function () {
+    const el = banner || document.getElementById("wake-banner");
+    if (el) { el.classList.add("wake-hide"); setTimeout(function () { el.remove(); }, 400); }
+  };
+  // 若 1.2 秒内还没唤醒成功,说明大概率在冷启动,展示提示条
+  const t = setTimeout(showBanner, 1200);
+  const ping = function (attempt) {
+    fetch("/api/health", { cache: "no-store" })
+      .then(function (r) {
+        if (r && r.ok) { clearTimeout(t); hideBanner(); return; }
+        throw new Error("not ready");
+      })
+      .catch(function () {
+        if (attempt < 20) { showBanner(); setTimeout(function () { ping(attempt + 1); }, 2500); }
+        else { clearTimeout(t); hideBanner(); }
+      });
+  };
+  try { ping(0); } catch (e) {}
+})();
 
 /* ===================== 产品埋点 ===================== */
 function _visitorId() {

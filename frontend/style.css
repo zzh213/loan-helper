@@ -3388,3 +3388,31 @@ body.dark .viz-card.viz-best { border-color: #4a7fd6; box-shadow: 0 4px 14px rgb
 body.dark .vzc-name, body.dark .vzc-m b { color: #e5edf7; }
 body.dark .vzc-m small { color: #8296ac; }
 body.dark .vzc-tag { background: #1b2a40; color: #7aa8e6; }
+
+/* ===== 冷启动「服务启动中」提示条 ===== */
+#wake-banner {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 9px 16px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #fff;
+  background: linear-gradient(90deg, #2f6fed, #4a90e2);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.18);
+  transition: transform 0.35s ease, opacity 0.35s ease;
+}
+#wake-banner.wake-hide { transform: translateY(-100%); opacity: 0; }
+.wake-spin {
+  width: 14px; height: 14px;
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: wakeSpin 0.7s linear infinite;
+  flex: 0 0 auto;
+}
+@keyframes wakeSpin { to { transform: rotate(360deg); } }
